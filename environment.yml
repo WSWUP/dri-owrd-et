@@ -1,0 +1,11 @@
+name: py311
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - earthengine-api>=1.5.13
+  - geopandas>=0.14.4
+  - jupyterlab>=4.3.2
+  - pandas>=2.2.2
+  - numpy>=1.26.4
+  - python=3.11
