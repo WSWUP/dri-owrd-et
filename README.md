@@ -3,7 +3,7 @@ dri-owrd-et
 
 # [Oregon Statewide ET Project](https://www.dri.edu/project/owrd-et/)
 
-![Workflow Diagram](Oregon_Statewide_ET_data_processing_pipeline_clipped.jpg "Field- and HUC-level Data Processing Workflow")
+![Workflow Diagram](Oregon_Statewide_ET_data_processing_pipeline_clipped.jpeg "Field- and HUC-level Data Processing Workflow")
 
 Google Earth Engine (GEE) Python API tools for downloading/exporting OpenET and gridMET timeseries for field boundaries as part
 of the OWRD Statewide ET Project. Additional post-processing steps are provided to prepare field- and HUC-level summary tables/shapefiles
