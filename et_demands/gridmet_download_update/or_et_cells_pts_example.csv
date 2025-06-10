@@ -1,0 +1,6 @@
+LAT,LON,GRIDMET_ID,ELEV_M,ELEV_FT,FIPS_C,STPO,COUNTYNAME,CNTYCATEGO,STATENAME,HUC8,STATION_ID,GRID_FILE_PATH
+40.85833333,-118.4333333,525446,1311.88,4304.07,32013,NV,Humboldt,County,Nevada,16040201,525446,C:\dri-owrd-et\et_demands\gridmet_download_update\climate_data\gridmet_historical_525446.csv
+40.9,-118.4333333,526832,1395.8,4579.4,32013,NV,Humboldt,County,Nevada,16040201,526832,C:\dri-owrd-et\et_demands\gridmet_download_update\climate_data\gridmet_historical_526832.csv
+40.94166667,-118.225,528223,1272.88,4176.12,32013,NV,Humboldt,County,Nevada,16040201,528223,C:\dri-owrd-et\et_demands\gridmet_download_update\climate_data\gridmet_historical_528223.csv
+40.94166667,-118.1833333,528224,1278.48,4194.49,32013,NV,Humboldt,County,Nevada,16040201,528224,C:\dri-owrd-et\et_demands\gridmet_download_update\climate_data\gridmet_historical_528224.csv
+40.94166667,-118.1416666,528225,1291.76,4238.06,32013,NV,Humboldt,County,Nevada,16040201,528225,C:\dri-owrd-et\et_demands\gridmet_download_update\climate_data\gridmet_historical_528225.csv
