@@ -1,9 +1,0 @@
-# Example command line download command; Users should specify directories and files paths to match local installation structure. 
-
-python C:\dri-owrd-et\et_demands\gridmet_download_update\download_gridmet_opendap.py -i C:\dri-owrd-et\et_demands\gridmet_download_update\or_et_cells_pts_example.csv -o C:\dri-owrd-et\et_demands\gridmet_download_update\climate_data --years 1979-2024
-
-# If user desires to overwrite existing data in the timeseries data files, include '-u','--update-data' to trigger the overwrite feature
-
-# For example, the following command will redownload and overwrite existing data for 2023 and 2024
-python C:\dri-owrd-et\et_demands\gridmet_download_update\download_gridmet_opendap.py -i C:\dri-owrd-et\et_demands\gridmet_download_update\or_et_cells_pts_example.csv -o C:\dri-owrd-et\et_demands\gridmet_download_update\climate_data --years 2023-2024 -u
-
