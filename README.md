@@ -45,7 +45,7 @@ After installing Miniconda or if you already have Python installed, it is import
 
 If you previously installed conda/Miniconda/Anaconda and haven't updated in awhile, it would be good to update to the latest version: 
 ```
-> conda update -n base -c conda conda
+conda update -n base -c conda conda
 ```
 
 #### Creating the Environment
@@ -61,7 +61,7 @@ conda env create -f environment.yml
 
 After building the "py311" conda environment, it must be activated in order to use this version of Python and modules/packages.  The following command will need to be run everytime you open a new command prompt or terminal.
 ```
-> conda activate py311
+conda activate py311
 ```
 
 After activating, the environment name should show up before the path in the command prompt or terminal:
@@ -83,14 +83,14 @@ conda update pandas
 
 The external modules can also be updated all together with the following command:
 ```
-> conda update configparser gdal numpy pandas
+conda update configparser gdal numpy pandas
 ```
 
 ###### Earth Engine API
 
 After installing the Python Earth Engine API module, you will need to authorize access to Earth Engine by running the following command in the command prompt or terminal.
 ```
-> earthengine authenticate
+earthengine authenticate
 ```
 
 "To use Earth Engine, you need access either via a Google Cloud project that's registered to use Earth Engine or via an individually signed-up account."
@@ -100,7 +100,7 @@ After installing the Python Earth Engine API module, you will need to authorize 
 
 To test if the authentication was successful, you can run the following command which will build a simple Earth Engine object and test check it can be retrieved.
 ```
-> python -c "import ee; ee.Initialize(project='your_gcloud_project_id'); print(ee.Number(1).getInfo())"
+python -c "import ee; ee.Initialize(project='your_gcloud_project_id'); print(ee.Number(1).getInfo())"
 ```
 
 ###### GDAL
@@ -118,7 +118,7 @@ If GDAL_DATA is set, this will return a folder path (something similar to C:\Min
 
 If GDAL_DATA is not set, it can be set from the command prompt (note, your path may vary):
 ```
-> setx GDAL_DATA "C:\Miniconda3\envs\ee-tools\Library\share\gdal"
+setx GDAL_DATA "C:\Miniconda3\envs\ee-tools\Library\share\gdal"
 ```
 
 The GDAL_DATA environment variable can also be set through the Windows Control Panel (System -> Advanced system settings -> Environment Variables).
@@ -144,7 +144,7 @@ export GDAL_DATA=/Users/<USER>/miniconda3/envs/py311/share/gdal
 While the py311 is activated in command prompt/terminal, open the jupyter notebooks in a browser
 
 ```
-> jupyter lab
+jupyter lab
 ```
 
 Once the jupyter lab dashboard opens in a browser, use the File Browser on the left hand side to locate the "ee_zonal_stats.ipynb" and "post_processing.ipynb"
