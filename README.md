@@ -10,7 +10,7 @@ This repository was created with the following two goals in mind related to the 
 
 The repository is structured with a series of Jupyter Notebooks (found in the "notebooks" sub-folder), one for each of the following components of the overall workflow:
 1. **pre_processing.ipynb** - Field boundary pre-processing and attribution
-2. **ee_zonal_stats.ipynb** - Timeseries extractions using the Google Earth Engine ([GEE](https://earthengine.google.com/)) Python Application Programming Interface ([API](https://developers.google.com/earth-engine/tutorials/community/intro-to-python-api))
+2. **ee_zonal_stats.ipynb** - ET spatial reductions using the Google Earth Engine ([GEE](https://earthengine.google.com/)) Python Application Programming Interface ([API](https://developers.google.com/earth-engine/tutorials/community/intro-to-python-api))
 3. **post_processing.ipynb** - Post-processing, spatial joins of model outputs, spatial aggregations, and geopackage development
 
 The components above generally follow the workflow diagram below:
@@ -56,12 +56,14 @@ AW from irrigated fields within each HUC-8 and HUC-12 by water source type.
 ## **Workflow Details**
 
 ### 1. Field boundary pre-processing and attribution:
-Prepare a field boundary shapefile with static attributes, such as irrigation source type, irrigation system type, irrigation efficiency, HUC8/HUC12, OWRD admin basin, county codes, and Cuenca (1992) region assignments.
+Prepare a field boundary shapefile with static and dynamic (annual) attributes
+> Static attributes include irrigation source type, irrigation system type, irrigation efficiency, HUC8/HUC12, OWRD admin basin, county codes, and Cuenca (1992) region assignments
+> Dynamic (annual) attributes include irrigation status and CDL crop type codes  
    
-### 2. GEE zonal stats export workflow overview:
+### 2. GEE ET spatial reductions workflow overview:
 Export irrigation/water use field-level summaries and small pond evaporation HUC-level summaries to Google Drive (recommended) or Google Cloud Storage
 > Field-level exports are year-specific (shifted water-year months, Nov-Oct) and export separately as composite dataframes (similar to an ArcGIS attribute table for a shapefile)<br><br>
-> Field-level irrigation/water use summaries: monthly (e.g, ETa, ETo, EToF), annual (e.g., irrigation status), and static (e.g., HUC attributes) summaries for ~250,000 features<br><br>
+> Field-level irrigation/water use summaries: monthly (e.g, ETa, ETo, EToF) and monthly climatology (EToF only) summaries for ~250,000 features<br><br>
 > HUC-level small pond evaporation summaries: monthly and monthly climatology (ETo and Evaporation) summaries for HUC8 and HUC12 features
 
 ### 3. Post-processing workflow overview:
