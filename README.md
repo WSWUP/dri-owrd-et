@@ -8,10 +8,10 @@ This repository was created with the following two goals in mind related to the 
 2. Leverage the same workflow to add additional years (i.e., 2023 and forward) of data to the geopackage.
 
 
-The repository is structured with a series of Jupyter Notebooks, one for each of the following components of the overall workflow:
+The repository is structured with a series of Jupyter Notebooks (found in the "notebooks" sub-folder), one for each of the following components of the overall workflow:
 1. **pre_processing.ipynb** - Field boundary pre-processing and attribution
 2. **ee_zonal_stats.ipynb** - Timeseries extractions using the Google Earth Engine ([GEE](https://earthengine.google.com/)) Python Application Programming Interface ([API](https://developers.google.com/earth-engine/tutorials/community/intro-to-python-api))
-3. **post_processing** - Post-processing, spatial joins of model outputs, spatial aggregations, and geopackage development
+3. **post_processing.ipynb** - Post-processing, spatial joins of model outputs, spatial aggregations, and geopackage development
 
 The components above generally follow the workflow diagram below:
 
@@ -57,145 +57,12 @@ AW from irrigated fields within each HUC-8 and HUC-12 by water source type.
 
 1. Field boundary pre-processing and attribution:
 
-<<<<<<< Updated upstream
-### Earth Engine
-To run the ee_zonal_stats notebook you must have an Earth Engine account.  If you do not have an account, please go to the Earth Engine [signup page](https://signup.earthengine.google.com)
-
-#### Conda
-
-The easiest way of managing Python and all of the necessary external modules is to use conda environments and the conda package manager.  
-
-##### Miniconda / Anaconda
-
-The easiest way of obtaining conda is to install [Python 3.13 Miniconda](https://www.anaconda.com/download/) at the very bottom of the website, which is a minimal version of the full [Anaconda Distribution](https://www.anaconda.com/distribution/) that includes only conda and its dependencies. 
-
-After installing Miniconda or if you already have Python installed, it is important to double check that you are calling the expected version of Python. This is especially important if you have two or more version of Python installed (e.g. Anaconda and ArcGIS).  To check the default Python location on your computer, type the appropriate commands in a command prompt or terminal:
-+ Windows: "where python"
-+ Linux/Mac: "which python"
+### Prepare a field boundary shapefile with static attributes, such as irrigation source type, irrigation system type, irrigation efficiency, HUC8/HUC12, OWRD admin basin, and Cuenca (1992) region assignments.
 
 
-##### Updating Conda
-
-If you previously installed conda/Miniconda/Anaconda and haven't updated in awhile, it would be good to update to the latest version: 
-```
-conda update -n base -c conda conda
-```
-
-#### Creating the Environment
-
-A Conda environment is a separate instance of Python (stored in a sub-directory in the Python "envs" folder) that has a specific set of python modules and packages installed.  The environment can also be an entirely different version of Python (i.e. the environment could be Python 2.7 even though you have Python 3.11 Miniconda). It can be helpful to build a separate conda environment for each project to ensure that updating a python module for one project doesn't break anything else.
-
-After installing conda, the "py311" environment can be built directly from the provided [environment.yml](environment.yml) file using the following command:
-```
-conda env create -f environment.yml
-```
-
-##### Activating the Environment
-
-After building the "py311" conda environment, it must be activated in order to use this version of Python and modules/packages.  The following command will need to be run everytime you open a new command prompt or terminal.
-```
-conda activate py311
-```
-
-After activating, the environment name should show up before the path in the command prompt or terminal:
-```
-(py311) C:\
-```
-
-##### Installing/Updating Python Modules
-
-All of the modules needed for these scripts were installed when the environment was built above, but additional modules can be installed (and/or updated) using the "conda" CLI.  For example to install the pandas module, enter the following in a command prompt or terminal window:
-```
-conda install pandas
-```
-
-To update the pandas module to the latest version, enter the following in a command prompt or terminal window:
-```
-conda update pandas
-```
-
-The external modules can also be updated all together with the following command:
-```
-conda update configparser gdal numpy pandas
-```
-
-###### Earth Engine API
-
-After installing the Python Earth Engine API module, you will need to authorize access to Earth Engine by running the following command in the command prompt or terminal.
-```
-earthengine authenticate
-```
-
-"To use Earth Engine, you need access either via a Google Cloud project that's registered to use Earth Engine or via an individually signed-up account."
-[Register](https://code.earthengine.google.com/register) and
-[Guide](https://developers.google.com/earth-engine/guides/access)<br>
-> NOTE: All Earth Engine users will now need to use a Google Cloud project (which is also registered for designated uses, such as academic, gov., commercial, etc.) to access Earth Engine.
-
-To test if the authentication was successful, you can run the following command which will build a simple Earth Engine object and test check it can be retrieved.
-```
-python -c "import ee; ee.Initialize(project='your_gcloud_project_id'); print(ee.Number(1).getInfo())"
-```
-
-###### GDAL
-
-After installing GDAL, you may need to manually set the GDAL_DATA user environmental variable.
-
-####### Windows
-
-You can check the current value of the variable at the command prompt:
-```
-echo %GDAL_DATA%
-```
-
-If GDAL_DATA is set, this will return a folder path (something similar to C:\Miniconda3\envs\ee-tools\Library\share\gdal)
-
-If GDAL_DATA is not set, it can be set from the command prompt (note, your path may vary):
-```
-setx GDAL_DATA "C:\Miniconda3\envs\ee-tools\Library\share\gdal"
-```
-
-The GDAL_DATA environment variable can also be set through the Windows Control Panel (System -> Advanced system settings -> Environment Variables).
-
-####### Linux / Mac
-
-You can check the current value of the variable at the terminal:
-
-```
-echo $GDAL_DATA
-```
-
-If GDAL_DATA is set, this will return a folder path (something similar to /Users/<USER>/miniconda3/envs/py311/share/gdal)
-
-If GDAL_DATA is not set, it can be set from the terminal or added to your .bashrc (note, your path may vary):
-
-```
-export GDAL_DATA=/Users/<USER>/miniconda3/envs/py311/share/gdal
-```
-
-###### Jupyter Notebooks
-
-While the py311 is activated in command prompt/terminal, open the jupyter notebooks in a browser
-
-```
-jupyter lab
-```
-
-Once the jupyter lab dashboard opens in a browser, use the File Browser on the left hand side to locate the "ee_zonal_stats.ipynb" and "post_processing.ipynb"
-notebooks within the "notebooks" subfolder of this github repository. From there, you will be able to follow along the guides within each notebook.
-
---------
-
-## Field- and HUC-level geodatabase and geopackage development workflow (jupyter notebooks - python)
-1. Google Earth Engine (GEE) zonal stats export scripts - ee_zonal_stats.ipynb
-2. Python post-processing scripts, Field- and HUC-level geodatabase and geopackage preparation scripts - post_processing.ipynb
-
-
-1. GEE zonal stats export workflow overview:
-=======
-2. GEE zonal stats export workflow overview:
->>>>>>> Stashed changes
+3. GEE zonal stats export workflow overview:
    
-### Export irrigation/water use field-level summaries and small pond evaporation HUC-level summaries to Google Cloud Storage or Google Drive (recommended)<br>
+### Export irrigation/water use field-level summaries and small pond evaporation HUC-level summaries to Google Drive (recommended) or Google Cloud Storage<br>
 > Field-level exports are year-specific (shifted water-year months, Nov-Oct) and export separately as composite dataframes (similar to an ArcGIS attribute table for a shapefile)<br>
 > Field-level irrigation/water use summaries: monthly (e.g, ETa, ETo, EToF), annual (e.g., irrigation status), and static (e.g., HUC attributes) summaries for ~250,000 features<br>
 > HUC-level small pond evaporation summaries: monthly and monthly climatology (ETo and Evaporation) summaries for HUC8 and HUC12 features
