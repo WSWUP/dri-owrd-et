@@ -5,7 +5,7 @@ dri-owrd-et
 
 This repository was created with the following two goals in mind related to the **Oregon Statewide ET Project**, a coordinated effort between the Desert Research Institute ([DRI](https://www.dri.edu/)), Oregon Water Resources Department ([OWRD](https://www.oregon.gov/owrd/pages/index.aspx)), [OpenET](https://etdata.org/), and Oregon State University ([OSU](https://oregonstate.edu/)):
 1. Provide a chained-modeling workflow to reproduce historical evapotranspiration and consumptive use of irrigation geopackages that contains field- or HUC-level timeseries data for the 1985-2022 time period.
-2. Leverage the same workflow to add additional years (i.e., 2023 and forward) of data to the geopackage.
+2. Leverage the same workflow to add additional years (i.e., 2023 and forward) of data to the geopackages.
 
 
 The repository is structured with a series of Jupyter Notebooks (found in the "notebooks" sub-folder), one for each of the following components of the overall workflow:
@@ -55,23 +55,17 @@ AW from irrigated fields within each HUC-8 and HUC-12 by water source type.
 
 ## **Workflow Details**
 
-1. Field boundary pre-processing and attribution:
-
-### Prepare a field boundary shapefile with static attributes, such as irrigation source type, irrigation system type, irrigation efficiency, HUC8/HUC12, OWRD admin basin, and Cuenca (1992) region assignments.
-
-
-3. GEE zonal stats export workflow overview:
+### 1. Field boundary pre-processing and attribution:
+Prepare a field boundary shapefile with static attributes, such as irrigation source type, irrigation system type, irrigation efficiency, HUC8/HUC12, OWRD admin basin, county codes, and Cuenca (1992) region assignments.
    
-### Export irrigation/water use field-level summaries and small pond evaporation HUC-level summaries to Google Drive (recommended) or Google Cloud Storage<br>
-> Field-level exports are year-specific (shifted water-year months, Nov-Oct) and export separately as composite dataframes (similar to an ArcGIS attribute table for a shapefile)<br>
-> Field-level irrigation/water use summaries: monthly (e.g, ETa, ETo, EToF), annual (e.g., irrigation status), and static (e.g., HUC attributes) summaries for ~250,000 features<br>
+### 2. GEE zonal stats export workflow overview:
+Export irrigation/water use field-level summaries and small pond evaporation HUC-level summaries to Google Drive (recommended) or Google Cloud Storage
+> Field-level exports are year-specific (shifted water-year months, Nov-Oct) and export separately as composite dataframes (similar to an ArcGIS attribute table for a shapefile)<br><br>
+> Field-level irrigation/water use summaries: monthly (e.g, ETa, ETo, EToF), annual (e.g., irrigation status), and static (e.g., HUC attributes) summaries for ~250,000 features<br><br>
 > HUC-level small pond evaporation summaries: monthly and monthly climatology (ETo and Evaporation) summaries for HUC8 and HUC12 features
 
-
-3. Post-processing workflow overview:
-
-### **Post-Processing Workflow**
-#### NOTE: before proceeding with post-processing steps, please unzip the field boundary shapefile (Oregon_Hyd_Area_Ag_Boundaries_20241016.7z) located within the "shapefiles" sub-folder so that the shapefile can be read in with Python for post-processing
+### 3. Post-processing workflow overview:
+NOTE: before proceeding with post-processing steps, please unzip the field boundary shapefile (Oregon_Hyd_Area_Ag_Boundaries_20241016.7z) located within the "shapefiles" sub-folder so that the shapefile can be read in with Python for post-processing
 1. Concatenate individual static & annual irrigation/water use summaries (creates one table per year)
 2. Join ET Demands data to field summaries
 3. Gap-fill EToF using linear interpolation (1 mo) or climatologies (2+ mo)
