@@ -169,7 +169,7 @@ CSV files with ET spatial summaries for each field or HUC, uniquely identified b
      
             - bias-corrected ETo-based evaporation ("**[YEAR][MONTH]_EvpN**") - HUC8 or HUC12 average evaporation calculated as 1.05 times the bias-corrected ETo.<br><br>
          
-        - filename example "or_gridmet_huc8_summaries_monthly_climo_eto_small_pond_evap_inches.csv" or "or_gridmet_huc12_summaries_monthly_climo_eto_small_pond_evap_inches.csv"
+        - filename example "or_gridmet_huc8_summaries_monthly_climo_eto_small_pond_evap_inches.csv"
      
             - non bias-corrected reference ET climatology ("**[MONTH]_EToN**") - HUC8 or HUC12 average gridMET grass reference ET (ETo) climatology.<br><br>
 
