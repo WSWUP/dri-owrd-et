@@ -180,7 +180,7 @@ CSV files with ET spatial summaries for each field or HUC, uniquely identified b
             - bias-corrected ETo-based evaporation climatology ("**[MONTH]_EvpN**") - HUC8 or HUC12 average evaporation climatology, calculated as 1.05 times the bias-corrected ETo.
 
 ### 3. Post-processing
-Post-processes all individual static, annual, and monthly table/summary exports from step 2 above into single tables per year, joins monthly ET Demands output to field summaries, gap-fills missing ET data using climatologies and linear interpolation, calculates volumes and performs soil moisture carry forward and applied water calculations, aggregates field-level data into HUC-level summaries with irrigation status filtering and partitioning of totals for different irrigation source water types (i.e., groundwater and surface water), and builds geopackages summarizing the full timeseries.
+Post-processes all individual static, annual, and monthly table/summary exports from steps 1 & 2 above into single tables per year, joins monthly ET Demands output to field summaries, gap-fills missing ET data using climatologies and linear interpolation, calculates volumes and performs soil moisture carry forward and applied water calculations, aggregates field-level data into HUC-level summaries with irrigation status filtering and partitioning of totals for different irrigation source water types (i.e., groundwater and surface water), and builds geopackages summarizing the full timeseries.
 
 - INPUTS<br><br>
 Individual field-level irrigation/water use tables (per year) and HUC-level small pond evaporation tables exported during steps 1 & 2 above, ET Demands monthly timeseries (e.g., ETc, Prz, NIWR), and the ET Demands CDL crosswalk table ("OR_unique_cdl_etdemands_crosswalk_model_setup.csv").<br>
@@ -201,10 +201,11 @@ CSV files with ET spatial summaries for each field or HUC, uniquely identified b
                 > 1998-2003<br>
                 > 2004-2009<br>
                 > 2010-2015<br>
-                > 2016-2022
+                > 2016-2022 (note: if processing 2023 and 2024 extend the end year from 2022)
     4. Soil moisture carry forward and applied water calculations
         - output filename example "or_openet_etdemands_monthly_water_year_shift_1mo_1985_final.csv"
             - Final field-level stats tables/CSVs will be produced during this step
+            - **NOTE**: This step requires all individual gap-filled annual tables (1985-2022; 2023 & 2024 if updating the database within more recent data) from step 3 above to be prepared so that carry forward calculations are consistent throughout the study period
     5. HUC8/HUC12 aggregations of irrigation/water use summaries
         - output filename example "or_huc8_openet_etdemands_water_year_shift_1mo_srctype_all.csv"
     6. HUC-level irrigation/water use shapefile preparation
