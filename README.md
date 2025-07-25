@@ -70,7 +70,7 @@ AW from irrigated fields within each HUC-8 and HUC-12 by water source type.
 
 ### 1. Pre-processing and attribution
 
-Exports tables of static and dynamic (annual) attributes for field boundaries either to Google Drive (for GEE-based tasks) or to local storage.
+Exports tables of static and dynamic (annual) attributes for field boundaries either to Google Drive (for GEE-based tasks) or to local storage. **NOTE**: crop type and gridmet cell ID attributes for field boundaries are a required input for ET Demands modeling.
 
 - INPUTS<br><br>
 Field boundary shapefile (e.g., "Oregon_Hyd_Area_Ag_Boundaries_20241016.shp" located in the "shapefiles" sub-folder) along with a corresponding Google Earth Engine Feature Collection, both containing the unique identification attribute "**OPENET_ID**".<br>
