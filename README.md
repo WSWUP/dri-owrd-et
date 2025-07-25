@@ -109,7 +109,7 @@ CSV files with static and dynamic (annual) attributes for each field, uniquely i
     
     - Dynamic (annual) attribute information:
 
-        - Cropland Data Layer code ("**CROP_[YEAR]**") - an integer value indicating the GEE-computed mode of the Cropland Data Layer ([CDL](https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php)) codes for pixels within the field geometry. **Note**: CDL codes for the region are available starting in 2008. For years prior to 2008, the majority of the field's CDL codes from 2008-2022 were applied to represent these earlier, pre-CDL years.<br><br>
+        - Cropland Data Layer code ("**CROP_[YEAR]**") - an integer value indicating the GEE-computed mode of the Cropland Data Layer ([CDL](https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php)) codes for pixels within the field geometry. **Note**: CDL codes for the region are available starting in 2007. For years prior to 2007, the majority of the field's CDL codes from 2007-2021 were applied to represent these earlier, pre-CDL years.<br><br>
 
         - IrrMapper irrigated acreage ("**ACRES_IRRIGATED**") - represents the total acreage of pixels within the field geometry classified as irrigated by [IrrMapper](https://doi.org/10.3390/rs12142328). This value is used to determine the field's annual irrigation status, where a field is considered irrigated if more than 40% of its acreage is classified as irrigated.<br><br>
  
@@ -127,10 +127,10 @@ CSV files with static and dynamic (annual) attributes for each field, uniquely i
 
 ### 2. ET spatial reductions
 
-Exports field-level irrigation water use timeseries summaries and HUC-level small pond evaporation timeseries summaries to Google Drive (recommended) or Google Cloud Storage. **NOTE**: Field-level exports are year-specific (based on a shifted water-year from November to October) and are output separately as composite dataframes, similar in structure to an ArcGIS attribute.
+Exports field-level irrigation water use timeseries summaries and HUC-level small pond evaporation timeseries summaries to Google Drive (recommended) or Google Cloud Storage. **NOTE**: Field-level exports are year-specific (based on a shifted water-year from November to October) and are output separately as composite dataframes, similar in structure to an ArcGIS attribute. HUC-level exports are similar, however, they include data for the entire period of record (1985-2024).
 
 - INPUTS<br><br>
-Google Earth Engine Feature Collection equivalent to the field boundary shapefile ("Oregon_Hyd_Area_Ag_Boundaries_20241016.shp" located in the "shapefiles" sub-folder), containing the unique identification attribute "**OPENET_ID**".<br>
+Google Earth Engine Feature Collection equivalent to the field boundary shapefile ("Oregon_Hyd_Area_Ag_Boundaries_20241016.shp" located in the "shapefiles" sub-folder) containing the unique identification attribute "**OPENET_ID**" for field-level summaries and the gridMET agricultural cell shapefile ("or_gridmet_et_cells.shp" located in the "shapefiles" sub-folder) for HUC-level summaries, which is used to mask gridMET pixels to agricultural pixels within each HUC8/HUC12 only.<br>
 
 - OUTPUTS<br><br>
 CSV files with ET spatial summaries for each field or HUC, uniquely identified by the "**OPENET_ID**" attribute for field-level summaries and a "**HUC8_code**" or "**HUC12_code**" attribute for HUC-level summaries.<br><br>
