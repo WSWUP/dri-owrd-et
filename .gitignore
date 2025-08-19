@@ -11,3 +11,7 @@ __pycache__/
 
 # MacOS
 *.DS_Store
+
+# ET Demands model folders
+et_demands_v2_0_0.zip
+et-demands-2.0.0
