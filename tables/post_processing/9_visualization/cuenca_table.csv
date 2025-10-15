@@ -1,0 +1,3862 @@
+Month,Region,Region_1,Crop,Crop_cdl_match,ETCrop_5_10,NetIRR_5_10
+1,R1,1.0,Apples,Apples,,
+2,R1,1.0,Apples,Apples,,
+3,R1,1.0,Apples,Apples,35,0
+4,R1,1.0,Apples,Apples,61,1
+5,R1,1.0,Apples,Apples,92,13
+6,R1,1.0,Apples,Apples,101,38
+7,R1,1.0,Apples,Apples,112,89
+8,R1,1.0,Apples,Apples,96,70
+9,R1,1.0,Apples,Apples,77,12
+10,R1,1.0,Apples,Apples,42,2
+11,R1,1.0,Apples,Apples,17,0
+12,R1,1.0,Apples,Apples,,
+Season,R1,1.0,Apples,Apples,633,225
+1,R1,1.0,Cherries,Cherries,,
+2,R1,1.0,Cherries,Cherries,,
+3,R1,1.0,Cherries,Cherries,35,0
+4,R1,1.0,Cherries,Cherries,61,1
+5,R1,1.0,Cherries,Cherries,92,13
+6,R1,1.0,Cherries,Cherries,101,38
+7,R1,1.0,Cherries,Cherries,112,89
+8,R1,1.0,Cherries,Cherries,96,70
+9,R1,1.0,Cherries,Cherries,77,12
+10,R1,1.0,Cherries,Cherries,42,2
+11,R1,1.0,Cherries,Cherries,17,0
+12,R1,1.0,Cherries,Cherries,,
+Season,R1,1.0,Cherries,Cherries,633,225
+1,R1,1.0,Corn (silage),Corn,,
+2,R1,1.0,Corn (silage),Corn,,
+3,R1,1.0,Corn (silage),Corn,,
+4,R1,1.0,Corn (silage),Corn,,
+5,R1,1.0,Corn (silage),Corn,23,1
+6,R1,1.0,Corn (silage),Corn,56,4
+7,R1,1.0,Corn (silage),Corn,103,81
+8,R1,1.0,Corn (silage),Corn,91,65
+9,R1,1.0,Corn (silage),Corn,35,5
+10,R1,1.0,Corn (silage),Corn,,
+11,R1,1.0,Corn (silage),Corn,,
+12,R1,1.0,Corn (silage),Corn,,
+Season,R1,1.0,Corn (silage),Corn,308,156
+1,R1,1.0,Pasture,Grass/Pasture,,
+2,R1,1.0,Pasture,Grass/Pasture,,
+3,R1,1.0,Pasture,Grass/Pasture,16,0
+4,R1,1.0,Pasture,Grass/Pasture,64,2
+5,R1,1.0,Pasture,Grass/Pasture,87,8
+6,R1,1.0,Pasture,Grass/Pasture,87,27
+7,R1,1.0,Pasture,Grass/Pasture,96,74
+8,R1,1.0,Pasture,Grass/Pasture,84,57
+9,R1,1.0,Pasture,Grass/Pasture,69,7
+10,R1,1.0,Pasture,Grass/Pasture,47,2
+11,R1,1.0,Pasture,Grass/Pasture,,
+12,R1,1.0,Pasture,Grass/Pasture,,
+Season,R1,1.0,Pasture,Grass/Pasture,550,177
+1,R1,1.0,Pear,Pears,,
+2,R1,1.0,Pear,Pears,,
+3,R1,1.0,Pear,Pears,35,0
+4,R1,1.0,Pear,Pears,58,1
+5,R1,1.0,Pear,Pears,83,8
+6,R1,1.0,Pear,Pears,92,28
+7,R1,1.0,Pear,Pears,101,78
+8,R1,1.0,Pear,Pears,89,62
+9,R1,1.0,Pear,Pears,70,7
+10,R1,1.0,Pear,Pears,41,2
+11,R1,1.0,Pear,Pears,17,0
+12,R1,1.0,Pear,Pears,,
+Season,R1,1.0,Pear,Pears,586,186
+1,R1,1.0,Plums,Plums,,
+2,R1,1.0,Plums,Plums,,
+3,R1,1.0,Plums,Plums,35,0
+4,R1,1.0,Plums,Plums,58,1
+5,R1,1.0,Plums,Plums,83,8
+6,R1,1.0,Plums,Plums,92,28
+7,R1,1.0,Plums,Plums,101,78
+8,R1,1.0,Plums,Plums,89,62
+9,R1,1.0,Plums,Plums,70,7
+10,R1,1.0,Plums,Plums,41,2
+11,R1,1.0,Plums,Plums,17,0
+12,R1,1.0,Plums,Plums,,
+Season,R1,1.0,Plums,Plums,586,186
+1,R10,10.0,Alfalfa Hay,Alfalfa,,
+2,R10,10.0,Alfalfa Hay,Alfalfa,,
+3,R10,10.0,Alfalfa Hay,Alfalfa,,
+4,R10,10.0,Alfalfa Hay,Alfalfa,72,64
+5,R10,10.0,Alfalfa Hay,Alfalfa,150,142
+6,R10,10.0,Alfalfa Hay,Alfalfa,170,157
+7,R10,10.0,Alfalfa Hay,Alfalfa,200,198
+8,R10,10.0,Alfalfa Hay,Alfalfa,169,166
+9,R10,10.0,Alfalfa Hay,Alfalfa,116,108
+10,R10,10.0,Alfalfa Hay,Alfalfa,,
+11,R10,10.0,Alfalfa Hay,Alfalfa,,
+12,R10,10.0,Alfalfa Hay,Alfalfa,,
+Season,R10,10.0,Alfalfa Hay,Alfalfa,877,835
+1,R10,10.0,Apples,Apples,,
+2,R10,10.0,Apples,Apples,,
+3,R10,10.0,Apples,Apples,50,32
+4,R10,10.0,Apples,Apples,107,95
+5,R10,10.0,Apples,Apples,178,171
+6,R10,10.0,Apples,Apples,221,208
+7,R10,10.0,Apples,Apples,264,262
+8,R10,10.0,Apples,Apples,224,219
+9,R10,10.0,Apples,Apples,146,138
+10,R10,10.0,Apples,Apples,68,51
+11,R10,10.0,Apples,Apples,15,1
+12,R10,10.0,Apples,Apples,,
+Season,R10,10.0,Apples,Apples,1273,1177
+1,R10,10.0,Berries,,,
+2,R10,10.0,Berries,,,
+3,R10,10.0,Berries,,,
+4,R10,10.0,Berries,,,
+5,R10,10.0,Berries,,41,38
+6,R10,10.0,Berries,,101,91
+7,R10,10.0,Berries,,147,146
+8,R10,10.0,Berries,,131,129
+9,R10,10.0,Berries,,90,83
+10,R10,10.0,Berries,,52,37
+11,R10,10.0,Berries,,3,0
+12,R10,10.0,Berries,,,
+Season,R10,10.0,Berries,,565,524
+1,R10,10.0,Cherries,Cherries,,
+2,R10,10.0,Cherries,Cherries,,
+3,R10,10.0,Cherries,Cherries,50,32
+4,R10,10.0,Cherries,Cherries,107,95
+5,R10,10.0,Cherries,Cherries,178,171
+6,R10,10.0,Cherries,Cherries,221,208
+7,R10,10.0,Cherries,Cherries,264,262
+8,R10,10.0,Cherries,Cherries,224,219
+9,R10,10.0,Cherries,Cherries,146,138
+10,R10,10.0,Cherries,Cherries,68,51
+11,R10,10.0,Cherries,Cherries,15,1
+12,R10,10.0,Cherries,Cherries,,
+Season,R10,10.0,Cherries,Cherries,1273,1177
+1,R10,10.0,Filberts,,,
+2,R10,10.0,Filberts,,,
+3,R10,10.0,Filberts,,50,32
+4,R10,10.0,Filberts,,107,95
+5,R10,10.0,Filberts,,178,171
+6,R10,10.0,Filberts,,221,208
+7,R10,10.0,Filberts,,264,262
+8,R10,10.0,Filberts,,224,219
+9,R10,10.0,Filberts,,146,138
+10,R10,10.0,Filberts,,68,51
+11,R10,10.0,Filberts,,15,1
+12,R10,10.0,Filberts,,,
+Season,R10,10.0,Filberts,,1273,1177
+1,R10,10.0,Grain (Spring),Spring Wheat,,
+2,R10,10.0,Grain (Spring),Spring Wheat,,
+3,R10,10.0,Grain (Spring),Spring Wheat,,
+4,R10,10.0,Grain (Spring),Spring Wheat,67,58
+5,R10,10.0,Grain (Spring),Spring Wheat,170,162
+6,R10,10.0,Grain (Spring),Spring Wheat,206,193
+7,R10,10.0,Grain (Spring),Spring Wheat,219,215
+8,R10,10.0,Grain (Spring),Spring Wheat,41,41
+9,R10,10.0,Grain (Spring),Spring Wheat,,
+10,R10,10.0,Grain (Spring),Spring Wheat,,
+11,R10,10.0,Grain (Spring),Spring Wheat,,
+12,R10,10.0,Grain (Spring),Spring Wheat,,
+Season,R10,10.0,Grain (Spring),Spring Wheat,703,669
+1,R10,10.0,Grain (Winter),Winter Wheat,,
+2,R10,10.0,Grain (Winter),Winter Wheat,,
+3,R10,10.0,Grain (Winter),Winter Wheat,33,17
+4,R10,10.0,Grain (Winter),Winter Wheat,91,80
+5,R10,10.0,Grain (Winter),Winter Wheat,178,170
+6,R10,10.0,Grain (Winter),Winter Wheat,206,193
+7,R10,10.0,Grain (Winter),Winter Wheat,90,90
+8,R10,10.0,Grain (Winter),Winter Wheat,,
+9,R10,10.0,Grain (Winter),Winter Wheat,,
+10,R10,10.0,Grain (Winter),Winter Wheat,,
+11,R10,10.0,Grain (Winter),Winter Wheat,,
+12,R10,10.0,Grain (Winter),Winter Wheat,,
+Season,R10,10.0,Grain (Winter),Winter Wheat,598,550
+1,R10,10.0,Grain Seed (Spring),,5,0
+2,R10,10.0,Grain Seed (Spring),,14,1
+3,R10,10.0,Grain Seed (Spring),,23,5
+4,R10,10.0,Grain Seed (Spring),,55,45
+5,R10,10.0,Grain Seed (Spring),,88,78
+6,R10,10.0,Grain Seed (Spring),,138,126
+7,R10,10.0,Grain Seed (Spring),,213,211
+8,R10,10.0,Grain Seed (Spring),,203,201
+9,R10,10.0,Grain Seed (Spring),,140,131
+10,R10,10.0,Grain Seed (Spring),,82,66
+11,R10,10.0,Grain Seed (Spring),,20,1
+12,R10,10.0,Grain Seed (Spring),,3,0
+Season,R10,10.0,Grain Seed (Spring),,984,865
+1,R10,10.0,Grapes,Grapes,,
+2,R10,10.0,Grapes,Grapes,,
+3,R10,10.0,Grapes,Grapes,,
+4,R10,10.0,Grapes,Grapes,52,43
+5,R10,10.0,Grapes,Grapes,95,87
+6,R10,10.0,Grapes,Grapes,123,113
+7,R10,10.0,Grapes,Grapes,147,147
+8,R10,10.0,Grapes,Grapes,124,122
+9,R10,10.0,Grapes,Grapes,84,79
+10,R10,10.0,Grapes,Grapes,41,28
+11,R10,10.0,Grapes,Grapes,7,0
+12,R10,10.0,Grapes,Grapes,,
+Season,R10,10.0,Grapes,Grapes,673,619
+1,R10,10.0,Pasture,Grass/Pasture,,
+2,R10,10.0,Pasture,Grass/Pasture,,
+3,R10,10.0,Pasture,Grass/Pasture,24,17
+4,R10,10.0,Pasture,Grass/Pasture,109,98
+5,R10,10.0,Pasture,Grass/Pasture,160,152
+6,R10,10.0,Pasture,Grass/Pasture,181,169
+7,R10,10.0,Pasture,Grass/Pasture,214,210
+8,R10,10.0,Pasture,Grass/Pasture,181,178
+9,R10,10.0,Pasture,Grass/Pasture,124,116
+10,R10,10.0,Pasture,Grass/Pasture,71,56
+11,R10,10.0,Pasture,Grass/Pasture,,
+12,R10,10.0,Pasture,Grass/Pasture,,
+Season,R10,10.0,Pasture,Grass/Pasture,1064,996
+1,R10,10.0,Pears,Pears,,
+2,R10,10.0,Pears,Pears,,
+3,R10,10.0,Pears,Pears,50,32
+4,R10,10.0,Pears,Pears,101,90
+5,R10,10.0,Pears,Pears,162,154
+6,R10,10.0,Pears,Pears,203,190
+7,R10,10.0,Pears,Pears,243,240
+8,R10,10.0,Pears,Pears,206,203
+9,R10,10.0,Pears,Pears,134,125
+10,R10,10.0,Pears,Pears,64,48
+11,R10,10.0,Pears,Pears,15,1
+12,R10,10.0,Pears,Pears,,
+Season,R10,10.0,Pears,Pears,1178,1083
+1,R10,10.0,Plums,Plums,,
+2,R10,10.0,Plums,Plums,,
+3,R10,10.0,Plums,Plums,50,32
+4,R10,10.0,Plums,Plums,101,90
+5,R10,10.0,Plums,Plums,162,154
+6,R10,10.0,Plums,Plums,203,190
+7,R10,10.0,Plums,Plums,243,240
+8,R10,10.0,Plums,Plums,206,203
+9,R10,10.0,Plums,Plums,134,125
+10,R10,10.0,Plums,Plums,64,48
+11,R10,10.0,Plums,Plums,15,1
+12,R10,10.0,Plums,Plums,,
+Season,R10,10.0,Plums,Plums,1178,1083
+1,R10,10.0,Potatoes,Potatoes,,
+2,R10,10.0,Potatoes,Potatoes,,
+3,R10,10.0,Potatoes,Potatoes,,
+4,R10,10.0,Potatoes,Potatoes,44,36
+5,R10,10.0,Potatoes,Potatoes,89,80
+6,R10,10.0,Potatoes,Potatoes,175,164
+7,R10,10.0,Potatoes,Potatoes,245,243
+8,R10,10.0,Potatoes,Potatoes,208,204
+9,R10,10.0,Potatoes,Potatoes,123,116
+10,R10,10.0,Potatoes,Potatoes,19,16
+11,R10,10.0,Potatoes,Potatoes,,
+12,R10,10.0,Potatoes,Potatoes,,
+Season,R10,10.0,Potatoes,Potatoes,903,859
+1,R11,11.0,Alfalfa Hay,Alfalfa,,
+2,R11,11.0,Alfalfa Hay,Alfalfa,,
+3,R11,11.0,Alfalfa Hay,Alfalfa,,
+4,R11,11.0,Alfalfa Hay,Alfalfa,57,48
+5,R11,11.0,Alfalfa Hay,Alfalfa,122,106
+6,R11,11.0,Alfalfa Hay,Alfalfa,140,124
+7,R11,11.0,Alfalfa Hay,Alfalfa,176,173
+8,R11,11.0,Alfalfa Hay,Alfalfa,143,138
+9,R11,11.0,Alfalfa Hay,Alfalfa,104,91
+10,R11,11.0,Alfalfa Hay,Alfalfa,,
+11,R11,11.0,Alfalfa Hay,Alfalfa,,
+12,R11,11.0,Alfalfa Hay,Alfalfa,,
+Season,R11,11.0,Alfalfa Hay,Alfalfa,742,680
+1,R11,11.0,Apples,Apples,,
+2,R11,11.0,Apples,Apples,,
+3,R11,11.0,Apples,Apples,38,15
+4,R11,11.0,Apples,Apples,86,71
+5,R11,11.0,Apples,Apples,148,129
+6,R11,11.0,Apples,Apples,182,166
+7,R11,11.0,Apples,Apples,234,230
+8,R11,11.0,Apples,Apples,190,185
+9,R11,11.0,Apples,Apples,129,116
+10,R11,11.0,Apples,Apples,36,35
+11,R11,11.0,Apples,Apples,10,1
+12,R11,11.0,Apples,Apples,,
+Season,R11,11.0,Apples,Apples,1053,948
+1,R11,11.0,Berries,,,
+2,R11,11.0,Berries,,,
+3,R11,11.0,Berries,,,
+4,R11,11.0,Berries,,,
+5,R11,11.0,Berries,,22,19
+6,R11,11.0,Berries,,84,69
+7,R11,11.0,Berries,,128,125
+8,R11,11.0,Berries,,111,106
+9,R11,11.0,Berries,,80,69
+10,R11,11.0,Berries,,22,19
+11,R11,11.0,Berries,,,
+12,R11,11.0,Berries,,,
+Season,R11,11.0,Berries,,447,407
+1,R11,11.0,Cherries,Cherries,,
+2,R11,11.0,Cherries,Cherries,,
+3,R11,11.0,Cherries,Cherries,38,15
+4,R11,11.0,Cherries,Cherries,86,71
+5,R11,11.0,Cherries,Cherries,148,129
+6,R11,11.0,Cherries,Cherries,182,166
+7,R11,11.0,Cherries,Cherries,234,230
+8,R11,11.0,Cherries,Cherries,190,185
+9,R11,11.0,Cherries,Cherries,129,116
+10,R11,11.0,Cherries,Cherries,36,35
+11,R11,11.0,Cherries,Cherries,10,1
+12,R11,11.0,Cherries,Cherries,,
+Season,R11,11.0,Cherries,Cherries,1053,948
+1,R11,11.0,Grain (Spring),Spring Wheat,,
+2,R11,11.0,Grain (Spring),Spring Wheat,,
+3,R11,11.0,Grain (Spring),Spring Wheat,,
+4,R11,11.0,Grain (Spring),Spring Wheat,56,42
+5,R11,11.0,Grain (Spring),Spring Wheat,141,123
+6,R11,11.0,Grain (Spring),Spring Wheat,173,155
+7,R11,11.0,Grain (Spring),Spring Wheat,193,189
+8,R11,11.0,Grain (Spring),Spring Wheat,35,33
+9,R11,11.0,Grain (Spring),Spring Wheat,,
+10,R11,11.0,Grain (Spring),Spring Wheat,,
+11,R11,11.0,Grain (Spring),Spring Wheat,,
+12,R11,11.0,Grain (Spring),Spring Wheat,,
+Season,R11,11.0,Grain (Spring),Spring Wheat,598,542
+1,R11,11.0,Grain (Winter),Winter Wheat,,
+2,R11,11.0,Grain (Winter),Winter Wheat,,
+3,R11,11.0,Grain (Winter),Winter Wheat,27,7
+4,R11,11.0,Grain (Winter),Winter Wheat,76,59
+5,R11,11.0,Grain (Winter),Winter Wheat,146,129
+6,R11,11.0,Grain (Winter),Winter Wheat,173,154
+7,R11,11.0,Grain (Winter),Winter Wheat,79,78
+8,R11,11.0,Grain (Winter),Winter Wheat,,
+9,R11,11.0,Grain (Winter),Winter Wheat,,
+10,R11,11.0,Grain (Winter),Winter Wheat,,
+11,R11,11.0,Grain (Winter),Winter Wheat,,
+12,R11,11.0,Grain (Winter),Winter Wheat,,
+Season,R11,11.0,Grain (Winter),Winter Wheat,501,427
+1,R11,11.0,Grain Seed (Spring),,1,0
+2,R11,11.0,Grain Seed (Spring),,8,1
+3,R11,11.0,Grain Seed (Spring),,19,1
+4,R11,11.0,Grain Seed (Spring),,47,33
+5,R11,11.0,Grain Seed (Spring),,78,64
+6,R11,11.0,Grain Seed (Spring),,117,101
+7,R11,11.0,Grain Seed (Spring),,189,185
+8,R11,11.0,Grain Seed (Spring),,172,168
+9,R11,11.0,Grain Seed (Spring),,123,110
+10,R11,11.0,Grain Seed (Spring),,45,45
+11,R11,11.0,Grain Seed (Spring),,14,1
+12,R11,11.0,Grain Seed (Spring),,1,0
+Season,R11,11.0,Grain Seed (Spring),,814,709
+1,R11,11.0,Pasture,Grass/Pasture,,
+2,R11,11.0,Pasture,Grass/Pasture,,
+3,R11,11.0,Pasture,Grass/Pasture,19,11
+4,R11,11.0,Pasture,Grass/Pasture,87,72
+5,R11,11.0,Pasture,Grass/Pasture,133,115
+6,R11,11.0,Pasture,Grass/Pasture,152,134
+7,R11,11.0,Pasture,Grass/Pasture,189,185
+8,R11,11.0,Pasture,Grass/Pasture,153,148
+9,R11,11.0,Pasture,Grass/Pasture,111,97
+10,R11,11.0,Pasture,Grass/Pasture,39,39
+11,R11,11.0,Pasture,Grass/Pasture,,
+12,R11,11.0,Pasture,Grass/Pasture,,
+Season,R11,11.0,Pasture,Grass/Pasture,883,801
+1,R11,11.0,Pears,Pears,,
+2,R11,11.0,Pears,Pears,,
+3,R11,11.0,Pears,Pears,38,15
+4,R11,11.0,Pears,Pears,81,66
+5,R11,11.0,Pears,Pears,132,116
+6,R11,11.0,Pears,Pears,169,152
+7,R11,11.0,Pears,Pears,213,211
+8,R11,11.0,Pears,Pears,174,170
+9,R11,11.0,Pears,Pears,116,105
+10,R11,11.0,Pears,Pears,34,34
+11,R11,11.0,Pears,Pears,10,1
+12,R11,11.0,Pears,Pears,,
+Season,R11,11.0,Pears,Pears,967,870
+1,R11,11.0,Plums,Plums,,
+2,R11,11.0,Plums,Plums,,
+3,R11,11.0,Plums,Plums,38,15
+4,R11,11.0,Plums,Plums,81,66
+5,R11,11.0,Plums,Plums,132,116
+6,R11,11.0,Plums,Plums,169,152
+7,R11,11.0,Plums,Plums,213,211
+8,R11,11.0,Plums,Plums,174,170
+9,R11,11.0,Plums,Plums,116,105
+10,R11,11.0,Plums,Plums,34,34
+11,R11,11.0,Plums,Plums,10,1
+12,R11,11.0,Plums,Plums,,
+Season,R11,11.0,Plums,Plums,967,870
+1,R12,12.0,Alfalfa Hay,Alfalfa,,
+2,R12,12.0,Alfalfa Hay,Alfalfa,,
+3,R12,12.0,Alfalfa Hay,Alfalfa,,
+4,R12,12.0,Alfalfa Hay,Alfalfa,58,46
+5,R12,12.0,Alfalfa Hay,Alfalfa,126,102
+6,R12,12.0,Alfalfa Hay,Alfalfa,144,120
+7,R12,12.0,Alfalfa Hay,Alfalfa,177,169
+8,R12,12.0,Alfalfa Hay,Alfalfa,147,140
+9,R12,12.0,Alfalfa Hay,Alfalfa,101,89
+10,R12,12.0,Alfalfa Hay,Alfalfa,,
+11,R12,12.0,Alfalfa Hay,Alfalfa,,
+12,R12,12.0,Alfalfa Hay,Alfalfa,,
+Season,R12,12.0,Alfalfa Hay,Alfalfa,753,666
+1,R12,12.0,Apples,Apples,,
+2,R12,12.0,Apples,Apples,,
+3,R12,12.0,Apples,Apples,41,17
+4,R12,12.0,Apples,Apples,87,67
+5,R12,12.0,Apples,Apples,149,125
+6,R12,12.0,Apples,Apples,189,162
+7,R12,12.0,Apples,Apples,233,227
+8,R12,12.0,Apples,Apples,195,186
+9,R12,12.0,Apples,Apples,129,112
+10,R12,12.0,Apples,Apples,61,40
+11,R12,12.0,Apples,Apples,13,1
+12,R12,12.0,Apples,Apples,,
+Season,R12,12.0,Apples,Apples,1097,937
+1,R12,12.0,Berries,,,
+2,R12,12.0,Berries,,,
+3,R12,12.0,Berries,,,
+4,R12,12.0,Berries,,,
+5,R12,12.0,Berries,,37,28
+6,R12,12.0,Berries,,90,69
+7,R12,12.0,Berries,,131,127
+8,R12,12.0,Berries,,113,108
+9,R12,12.0,Berries,,80,67
+10,R12,12.0,Berries,,47,26
+11,R12,12.0,Berries,,2,0
+12,R12,12.0,Berries,,,
+Season,R12,12.0,Berries,,500,425
+1,R12,12.0,Cherries,Cherries,,
+2,R12,12.0,Cherries,Cherries,,
+3,R12,12.0,Cherries,Cherries,41,17
+4,R12,12.0,Cherries,Cherries,87,67
+5,R12,12.0,Cherries,Cherries,149,125
+6,R12,12.0,Cherries,Cherries,189,162
+7,R12,12.0,Cherries,Cherries,233,227
+8,R12,12.0,Cherries,Cherries,195,186
+9,R12,12.0,Cherries,Cherries,129,112
+10,R12,12.0,Cherries,Cherries,61,40
+11,R12,12.0,Cherries,Cherries,13,1
+12,R12,12.0,Cherries,Cherries,,
+Season,R12,12.0,Cherries,Cherries,1097,937
+1,R12,12.0,Grain (Spring),Spring Wheat,,
+2,R12,12.0,Grain (Spring),Spring Wheat,,
+3,R12,12.0,Grain (Spring),Spring Wheat,,
+4,R12,12.0,Grain (Spring),Spring Wheat,57,38
+5,R12,12.0,Grain (Spring),Spring Wheat,143,119
+6,R12,12.0,Grain (Spring),Spring Wheat,176,151
+7,R12,12.0,Grain (Spring),Spring Wheat,192,186
+8,R12,12.0,Grain (Spring),Spring Wheat,36,34
+9,R12,12.0,Grain (Spring),Spring Wheat,,
+10,R12,12.0,Grain (Spring),Spring Wheat,,
+11,R12,12.0,Grain (Spring),Spring Wheat,,
+12,R12,12.0,Grain (Spring),Spring Wheat,,
+Season,R12,12.0,Grain (Spring),Spring Wheat,604,528
+1,R12,12.0,Grain (Winter),Winter Wheat,,
+2,R12,12.0,Grain (Winter),Winter Wheat,,
+3,R12,12.0,Grain (Winter),Winter Wheat,26,9
+4,R12,12.0,Grain (Winter),Winter Wheat,75,56
+5,R12,12.0,Grain (Winter),Winter Wheat,149,123
+6,R12,12.0,Grain (Winter),Winter Wheat,175,149
+7,R12,12.0,Grain (Winter),Winter Wheat,79,78
+8,R12,12.0,Grain (Winter),Winter Wheat,,
+9,R12,12.0,Grain (Winter),Winter Wheat,,
+10,R12,12.0,Grain (Winter),Winter Wheat,,
+11,R12,12.0,Grain (Winter),Winter Wheat,,
+12,R12,12.0,Grain (Winter),Winter Wheat,,
+Season,R12,12.0,Grain (Winter),Winter Wheat,504,415
+1,R12,12.0,Grain Seed (Spring),,2,0
+2,R12,12.0,Grain Seed (Spring),,10,1
+3,R12,12.0,Grain Seed (Spring),,19,2
+4,R12,12.0,Grain Seed (Spring),,48,30
+5,R12,12.0,Grain Seed (Spring),,78,58
+6,R12,12.0,Grain Seed (Spring),,121,98
+7,R12,12.0,Grain Seed (Spring),,189,183
+8,R12,12.0,Grain Seed (Spring),,177,168
+9,R12,12.0,Grain Seed (Spring),,124,109
+10,R12,12.0,Grain Seed (Spring),,74,51
+11,R12,12.0,Grain Seed (Spring),,19,1
+12,R12,12.0,Grain Seed (Spring),,1,0
+Season,R12,12.0,Grain Seed (Spring),,862,701
+1,R12,12.0,Pasture,Grass/Pasture,,
+2,R12,12.0,Pasture,Grass/Pasture,,
+3,R12,12.0,Pasture,Grass/Pasture,19,11
+4,R12,12.0,Pasture,Grass/Pasture,89,69
+5,R12,12.0,Pasture,Grass/Pasture,134,110
+6,R12,12.0,Pasture,Grass/Pasture,154,130
+7,R12,12.0,Pasture,Grass/Pasture,189,181
+8,R12,12.0,Pasture,Grass/Pasture,157,150
+9,R12,12.0,Pasture,Grass/Pasture,110,96
+10,R12,12.0,Pasture,Grass/Pasture,64,43
+11,R12,12.0,Pasture,Grass/Pasture,,
+12,R12,12.0,Pasture,Grass/Pasture,,
+Season,R12,12.0,Pasture,Grass/Pasture,916,790
+1,R12,12.0,Pears,Pears,,
+2,R12,12.0,Pears,Pears,,
+3,R12,12.0,Pears,Pears,41,17
+4,R12,12.0,Pears,Pears,82,63
+5,R12,12.0,Pears,Pears,136,112
+6,R12,12.0,Pears,Pears,173,147
+7,R12,12.0,Pears,Pears,215,208
+8,R12,12.0,Pears,Pears,179,170
+9,R12,12.0,Pears,Pears,118,101
+10,R12,12.0,Pears,Pears,58,37
+11,R12,12.0,Pears,Pears,13,1
+12,R12,12.0,Pears,Pears,,
+Season,R12,12.0,Pears,Pears,1015,856
+1,R12,12.0,Plums,Plums,,
+2,R12,12.0,Plums,Plums,,
+3,R12,12.0,Plums,Plums,41,17
+4,R12,12.0,Plums,Plums,82,63
+5,R12,12.0,Plums,Plums,136,112
+6,R12,12.0,Plums,Plums,173,147
+7,R12,12.0,Plums,Plums,215,208
+8,R12,12.0,Plums,Plums,179,170
+9,R12,12.0,Plums,Plums,118,101
+10,R12,12.0,Plums,Plums,58,37
+11,R12,12.0,Plums,Plums,13,1
+12,R12,12.0,Plums,Plums,,
+Season,R12,12.0,Plums,Plums,1015,856
+1,R13,13.0,Alfalfa Hay,Alfalfa,,
+2,R13,13.0,Alfalfa Hay,Alfalfa,,
+3,R13,13.0,Alfalfa Hay,Alfalfa,,
+4,R13,13.0,Alfalfa Hay,Alfalfa,58,39
+5,R13,13.0,Alfalfa Hay,Alfalfa,120,89
+6,R13,13.0,Alfalfa Hay,Alfalfa,144,111
+7,R13,13.0,Alfalfa Hay,Alfalfa,165,160
+8,R13,13.0,Alfalfa Hay,Alfalfa,138,130
+9,R13,13.0,Alfalfa Hay,Alfalfa,94,76
+10,R13,13.0,Alfalfa Hay,Alfalfa,,
+11,R13,13.0,Alfalfa Hay,Alfalfa,,
+12,R13,13.0,Alfalfa Hay,Alfalfa,,
+Season,R13,13.0,Alfalfa Hay,Alfalfa,719,605
+1,R13,13.0,Apples,Apples,,
+2,R13,13.0,Apples,Apples,,
+3,R13,13.0,Apples,Apples,41,13
+4,R13,13.0,Apples,Apples,84,58
+5,R13,13.0,Apples,Apples,143,109
+6,R13,13.0,Apples,Apples,187,149
+7,R13,13.0,Apples,Apples,218,213
+8,R13,13.0,Apples,Apples,184,172
+9,R13,13.0,Apples,Apples,117,98
+10,R13,13.0,Apples,Apples,59,33
+11,R13,13.0,Apples,Apples,13,1
+12,R13,13.0,Apples,Apples,,
+Season,R13,13.0,Apples,Apples,1046,846
+1,R13,13.0,Berries,,,
+2,R13,13.0,Berries,,,
+3,R13,13.0,Berries,,,
+4,R13,13.0,Berries,,,
+5,R13,13.0,Berries,,37,22
+6,R13,13.0,Berries,,88,61
+7,R13,13.0,Berries,,122,117
+8,R13,13.0,Berries,,107,99
+9,R13,13.0,Berries,,72,56
+10,R13,13.0,Berries,,45,20
+11,R13,13.0,Berries,,2,0
+12,R13,13.0,Berries,,,
+Season,R13,13.0,Berries,,473,375
+1,R13,13.0,Cherries,Cherries,,
+2,R13,13.0,Cherries,Cherries,,
+3,R13,13.0,Cherries,Cherries,41,13
+4,R13,13.0,Cherries,Cherries,84,58
+5,R13,13.0,Cherries,Cherries,143,109
+6,R13,13.0,Cherries,Cherries,187,149
+7,R13,13.0,Cherries,Cherries,218,213
+8,R13,13.0,Cherries,Cherries,184,172
+9,R13,13.0,Cherries,Cherries,117,98
+10,R13,13.0,Cherries,Cherries,59,33
+11,R13,13.0,Cherries,Cherries,13,1
+12,R13,13.0,Cherries,Cherries,,
+Season,R13,13.0,Cherries,Cherries,1046,846
+1,R13,13.0,Corn (Field),Corn,,
+2,R13,13.0,Corn (Field),Corn,,
+3,R13,13.0,Corn (Field),Corn,,
+4,R13,13.0,Corn (Field),Corn,,
+5,R13,13.0,Corn (Field),Corn,59,36
+6,R13,13.0,Corn (Field),Corn,128,98
+7,R13,13.0,Corn (Field),Corn,198,192
+8,R13,13.0,Corn (Field),Corn,170,158
+9,R13,13.0,Corn (Field),Corn,85,66
+10,R13,13.0,Corn (Field),Corn,,
+11,R13,13.0,Corn (Field),Corn,,
+12,R13,13.0,Corn (Field),Corn,,
+Season,R13,13.0,Corn (Field),Corn,640,550
+1,R13,13.0,Corn (Sweet),Sweet Corn,,
+2,R13,13.0,Corn (Sweet),Sweet Corn,,
+3,R13,13.0,Corn (Sweet),Sweet Corn,,
+4,R13,13.0,Corn (Sweet),Sweet Corn,,
+5,R13,13.0,Corn (Sweet),Sweet Corn,35,22
+6,R13,13.0,Corn (Sweet),Sweet Corn,125,95
+7,R13,13.0,Corn (Sweet),Sweet Corn,202,196
+8,R13,13.0,Corn (Sweet),Sweet Corn,107,102
+9,R13,13.0,Corn (Sweet),Sweet Corn,,
+10,R13,13.0,Corn (Sweet),Sweet Corn,,
+11,R13,13.0,Corn (Sweet),Sweet Corn,,
+12,R13,13.0,Corn (Sweet),Sweet Corn,,
+Season,R13,13.0,Corn (Sweet),Sweet Corn,469,415
+1,R13,13.0,Grain (Spring),Spring Wheat,,
+2,R13,13.0,Grain (Spring),Spring Wheat,,
+3,R13,13.0,Grain (Spring),Spring Wheat,,
+4,R13,13.0,Grain (Spring),Spring Wheat,57,31
+5,R13,13.0,Grain (Spring),Spring Wheat,136,104
+6,R13,13.0,Grain (Spring),Spring Wheat,174,137
+7,R13,13.0,Grain (Spring),Spring Wheat,180,174
+8,R13,13.0,Grain (Spring),Spring Wheat,33,31
+9,R13,13.0,Grain (Spring),Spring Wheat,,
+10,R13,13.0,Grain (Spring),Spring Wheat,,
+11,R13,13.0,Grain (Spring),Spring Wheat,,
+12,R13,13.0,Grain (Spring),Spring Wheat,,
+Season,R13,13.0,Grain (Spring),Spring Wheat,580,477
+1,R13,13.0,Grain (Winter),Winter Wheat,,
+2,R13,13.0,Grain (Winter),Winter Wheat,,
+3,R13,13.0,Grain (Winter),Winter Wheat,29,6
+4,R13,13.0,Grain (Winter),Winter Wheat,93,65
+5,R13,13.0,Grain (Winter),Winter Wheat,145,111
+6,R13,13.0,Grain (Winter),Winter Wheat,168,131
+7,R13,13.0,Grain (Winter),Winter Wheat,98,94
+8,R13,13.0,Grain (Winter),Winter Wheat,,
+9,R13,13.0,Grain (Winter),Winter Wheat,,
+10,R13,13.0,Grain (Winter),Winter Wheat,,
+11,R13,13.0,Grain (Winter),Winter Wheat,,
+12,R13,13.0,Grain (Winter),Winter Wheat,,
+Season,R13,13.0,Grain (Winter),Winter Wheat,533,407
+1,R13,13.0,Onions,Onions,,
+2,R13,13.0,Onions,Onions,,
+3,R13,13.0,Onions,Onions,5,3
+4,R13,13.0,Onions,Onions,52,30
+5,R13,13.0,Onions,Onions,86,61
+6,R13,13.0,Onions,Onions,131,102
+7,R13,13.0,Onions,Onions,181,176
+8,R13,13.0,Onions,Onions,155,146
+9,R13,13.0,Onions,Onions,67,57
+10,R13,13.0,Onions,Onions,,
+11,R13,13.0,Onions,Onions,,
+12,R13,13.0,Onions,Onions,,
+Season,R13,13.0,Onions,Onions,677,575
+1,R13,13.0,Pasture,Grass/Pasture,,
+2,R13,13.0,Pasture,Grass/Pasture,,
+3,R13,13.0,Pasture,Grass/Pasture,19,9
+4,R13,13.0,Pasture,Grass/Pasture,89,59
+5,R13,13.0,Pasture,Grass/Pasture,128,96
+6,R13,13.0,Pasture,Grass/Pasture,153,119
+7,R13,13.0,Pasture,Grass/Pasture,176,171
+8,R13,13.0,Pasture,Grass/Pasture,148,139
+9,R13,13.0,Pasture,Grass/Pasture,100,82
+10,R13,13.0,Pasture,Grass/Pasture,62,36
+11,R13,13.0,Pasture,Grass/Pasture,,
+12,R13,13.0,Pasture,Grass/Pasture,,
+Season,R13,13.0,Pasture,Grass/Pasture,875,711
+1,R13,13.0,Pears,Pears,,
+2,R13,13.0,Pears,Pears,,
+3,R13,13.0,Pears,Pears,41,13
+4,R13,13.0,Pears,Pears,82,53
+5,R13,13.0,Pears,Pears,130,97
+6,R13,13.0,Pears,Pears,172,135
+7,R13,13.0,Pears,Pears,201,195
+8,R13,13.0,Pears,Pears,169,157
+9,R13,13.0,Pears,Pears,107,88
+10,R13,13.0,Pears,Pears,56,29
+11,R13,13.0,Pears,Pears,13,1
+12,R13,13.0,Pears,Pears,,
+Season,R13,13.0,Pears,Pears,971,768
+1,R13,13.0,Peas,Peas,,
+2,R13,13.0,Peas,Peas,,
+3,R13,13.0,Peas,Peas,16,3
+4,R13,13.0,Peas,Peas,67,40
+5,R13,13.0,Peas,Peas,142,109
+6,R13,13.0,Peas,Peas,174,136
+7,R13,13.0,Peas,Peas,123,120
+8,R13,13.0,Peas,Peas,,
+9,R13,13.0,Peas,Peas,,
+10,R13,13.0,Peas,Peas,,
+11,R13,13.0,Peas,Peas,,
+12,R13,13.0,Peas,Peas,,
+Season,R13,13.0,Peas,Peas,522,408
+1,R13,13.0,Plums,Plums,,
+2,R13,13.0,Plums,Plums,,
+3,R13,13.0,Plums,Plums,41,13
+4,R13,13.0,Plums,Plums,82,53
+5,R13,13.0,Plums,Plums,130,97
+6,R13,13.0,Plums,Plums,172,135
+7,R13,13.0,Plums,Plums,201,195
+8,R13,13.0,Plums,Plums,169,157
+9,R13,13.0,Plums,Plums,107,88
+10,R13,13.0,Plums,Plums,56,29
+11,R13,13.0,Plums,Plums,13,1
+12,R13,13.0,Plums,Plums,,
+Season,R13,13.0,Plums,Plums,971,768
+1,R14,14.0,Alfalfa Hay,Alfalfa,,
+2,R14,14.0,Alfalfa Hay,Alfalfa,,
+3,R14,14.0,Alfalfa Hay,Alfalfa,,
+4,R14,14.0,Alfalfa Hay,Alfalfa,66,56
+5,R14,14.0,Alfalfa Hay,Alfalfa,136,122
+6,R14,14.0,Alfalfa Hay,Alfalfa,157,142
+7,R14,14.0,Alfalfa Hay,Alfalfa,178,176
+8,R14,14.0,Alfalfa Hay,Alfalfa,151,148
+9,R14,14.0,Alfalfa Hay,Alfalfa,102,95
+10,R14,14.0,Alfalfa Hay,Alfalfa,,
+11,R14,14.0,Alfalfa Hay,Alfalfa,,
+12,R14,14.0,Alfalfa Hay,Alfalfa,,
+Season,R14,14.0,Alfalfa Hay,Alfalfa,790,739
+1,R14,14.0,Apples,Apples,,
+2,R14,14.0,Apples,Apples,,
+3,R14,14.0,Apples,Apples,46,32
+4,R14,14.0,Apples,Apples,98,81
+5,R14,14.0,Apples,Apples,161,148
+6,R14,14.0,Apples,Apples,204,190
+7,R14,14.0,Apples,Apples,236,233
+8,R14,14.0,Apples,Apples,200,195
+9,R14,14.0,Apples,Apples,131,121
+10,R14,14.0,Apples,Apples,61,47
+11,R14,14.0,Apples,Apples,15,1
+12,R14,14.0,Apples,Apples,,
+Season,R14,14.0,Apples,Apples,1152,1048
+1,R14,14.0,Berries,,,
+2,R14,14.0,Berries,,,
+3,R14,14.0,Berries,,,
+4,R14,14.0,Berries,,,
+5,R14,14.0,Berries,,39,33
+6,R14,14.0,Berries,,94,81
+7,R14,14.0,Berries,,131,128
+8,R14,14.0,Berries,,115,113
+9,R14,14.0,Berries,,80,71
+10,R14,14.0,Berries,,47,31
+11,R14,14.0,Berries,,3,0
+12,R14,14.0,Berries,,,
+Season,R14,14.0,Berries,,509,457
+1,R14,14.0,Cherries,Cherries,,
+2,R14,14.0,Cherries,Cherries,,
+3,R14,14.0,Cherries,Cherries,46,32
+4,R14,14.0,Cherries,Cherries,98,81
+5,R14,14.0,Cherries,Cherries,161,148
+6,R14,14.0,Cherries,Cherries,204,190
+7,R14,14.0,Cherries,Cherries,236,233
+8,R14,14.0,Cherries,Cherries,200,195
+9,R14,14.0,Cherries,Cherries,131,121
+10,R14,14.0,Cherries,Cherries,61,47
+11,R14,14.0,Cherries,Cherries,15,1
+12,R14,14.0,Cherries,Cherries,,
+Season,R14,14.0,Cherries,Cherries,1152,1048
+1,R14,14.0,Corn (Field),Corn,,
+2,R14,14.0,Corn (Field),Corn,,
+3,R14,14.0,Corn (Field),Corn,,
+4,R14,14.0,Corn (Field),Corn,,
+5,R14,14.0,Corn (Field),Corn,63,54
+6,R14,14.0,Corn (Field),Corn,138,124
+7,R14,14.0,Corn (Field),Corn,215,211
+8,R14,14.0,Corn (Field),Corn,185,180
+9,R14,14.0,Corn (Field),Corn,94,85
+10,R14,14.0,Corn (Field),Corn,,
+11,R14,14.0,Corn (Field),Corn,,
+12,R14,14.0,Corn (Field),Corn,,
+Season,R14,14.0,Corn (Field),Corn,695,654
+1,R14,14.0,Corn (Sweet),Sweet Corn,,
+2,R14,14.0,Corn (Sweet),Sweet Corn,,
+3,R14,14.0,Corn (Sweet),Sweet Corn,,
+4,R14,14.0,Corn (Sweet),Sweet Corn,,
+5,R14,14.0,Corn (Sweet),Sweet Corn,37,32
+6,R14,14.0,Corn (Sweet),Sweet Corn,136,122
+7,R14,14.0,Corn (Sweet),Sweet Corn,218,215
+8,R14,14.0,Corn (Sweet),Sweet Corn,116,115
+9,R14,14.0,Corn (Sweet),Sweet Corn,,
+10,R14,14.0,Corn (Sweet),Sweet Corn,,
+11,R14,14.0,Corn (Sweet),Sweet Corn,,
+12,R14,14.0,Corn (Sweet),Sweet Corn,,
+Season,R14,14.0,Corn (Sweet),Sweet Corn,507,484
+1,R14,14.0,Grain (Spring),Spring Wheat,,
+2,R14,14.0,Grain (Spring),Spring Wheat,,
+3,R14,14.0,Grain (Spring),Spring Wheat,18,12
+4,R14,14.0,Grain (Spring),Spring Wheat,74,58
+5,R14,14.0,Grain (Spring),Spring Wheat,148,134
+6,R14,14.0,Grain (Spring),Spring Wheat,190,176
+7,R14,14.0,Grain (Spring),Spring Wheat,195,194
+8,R14,14.0,Grain (Spring),Spring Wheat,36,35
+9,R14,14.0,Grain (Spring),Spring Wheat,,
+10,R14,14.0,Grain (Spring),Spring Wheat,,
+11,R14,14.0,Grain (Spring),Spring Wheat,,
+12,R14,14.0,Grain (Spring),Spring Wheat,,
+Season,R14,14.0,Grain (Spring),Spring Wheat,661,609
+1,R14,14.0,Grain (Winter),Winter Wheat,,
+2,R14,14.0,Grain (Winter),Winter Wheat,,
+3,R14,14.0,Grain (Winter),Winter Wheat,33,21
+4,R14,14.0,Grain (Winter),Winter Wheat,107,90
+5,R14,14.0,Grain (Winter),Winter Wheat,163,150
+6,R14,14.0,Grain (Winter),Winter Wheat,184,169
+7,R14,14.0,Grain (Winter),Winter Wheat,107,103
+8,R14,14.0,Grain (Winter),Winter Wheat,,
+9,R14,14.0,Grain (Winter),Winter Wheat,,
+10,R14,14.0,Grain (Winter),Winter Wheat,,
+11,R14,14.0,Grain (Winter),Winter Wheat,,
+12,R14,14.0,Grain (Winter),Winter Wheat,,
+Season,R14,14.0,Grain (Winter),Winter Wheat,594,533
+1,R14,14.0,Mint,Mint,,
+2,R14,14.0,Mint,Mint,,
+3,R14,14.0,Mint,Mint,1,1
+4,R14,14.0,Mint,Mint,50,35
+5,R14,14.0,Mint,Mint,142,128
+6,R14,14.0,Mint,Mint,197,181
+7,R14,14.0,Mint,Mint,194,193
+8,R14,14.0,Mint,Mint,26,25
+9,R14,14.0,Mint,Mint,,
+10,R14,14.0,Mint,Mint,,
+11,R14,14.0,Mint,Mint,,
+12,R14,14.0,Mint,Mint,,
+Season,R14,14.0,Mint,Mint,610,563
+1,R14,14.0,Onions,Onions,,
+2,R14,14.0,Onions,Onions,,
+3,R14,14.0,Onions,Onions,6,5
+4,R14,14.0,Onions,Onions,57,44
+5,R14,14.0,Onions,Onions,95,84
+6,R14,14.0,Onions,Onions,143,131
+7,R14,14.0,Onions,Onions,196,193
+8,R14,14.0,Onions,Onions,167,165
+9,R14,14.0,Onions,Onions,75,70
+10,R14,14.0,Onions,Onions,,
+11,R14,14.0,Onions,Onions,,
+12,R14,14.0,Onions,Onions,,
+Season,R14,14.0,Onions,Onions,739,692
+1,R14,14.0,Pasture,Grass/Pasture,,
+2,R14,14.0,Pasture,Grass/Pasture,,
+3,R14,14.0,Pasture,Grass/Pasture,21,17
+4,R14,14.0,Pasture,Grass/Pasture,100,84
+5,R14,14.0,Pasture,Grass/Pasture,144,131
+6,R14,14.0,Pasture,Grass/Pasture,166,153
+7,R14,14.0,Pasture,Grass/Pasture,190,186
+8,R14,14.0,Pasture,Grass/Pasture,161,158
+9,R14,14.0,Pasture,Grass/Pasture,111,102
+10,R14,14.0,Pasture,Grass/Pasture,64,49
+11,R14,14.0,Pasture,Grass/Pasture,,
+12,R14,14.0,Pasture,Grass/Pasture,,
+Season,R14,14.0,Pasture,Grass/Pasture,957,880
+1,R14,14.0,Pears,Pears,,
+2,R14,14.0,Pears,Pears,,
+3,R14,14.0,Pears,Pears,46,32
+4,R14,14.0,Pears,Pears,93,77
+5,R14,14.0,Pears,Pears,146,133
+6,R14,14.0,Pears,Pears,188,173
+7,R14,14.0,Pears,Pears,217,214
+8,R14,14.0,Pears,Pears,185,179
+9,R14,14.0,Pears,Pears,119,110
+10,R14,14.0,Pears,Pears,58,43
+11,R14,14.0,Pears,Pears,15,1
+12,R14,14.0,Pears,Pears,,
+Season,R14,14.0,Pears,Pears,1067,962
+1,R14,14.0,Peas,Peas,,
+2,R14,14.0,Peas,Peas,,
+3,R14,14.0,Peas,Peas,18,12
+4,R14,14.0,Peas,Peas,74,58
+5,R14,14.0,Peas,Peas,160,147
+6,R14,14.0,Peas,Peas,190,175
+7,R14,14.0,Peas,Peas,132,132
+8,R14,14.0,Peas,Peas,,
+9,R14,14.0,Peas,Peas,,
+10,R14,14.0,Peas,Peas,,
+11,R14,14.0,Peas,Peas,,
+12,R14,14.0,Peas,Peas,,
+Season,R14,14.0,Peas,Peas,574,524
+1,R14,14.0,Plums,Plums,,
+2,R14,14.0,Plums,Plums,,
+3,R14,14.0,Plums,Plums,46,32
+4,R14,14.0,Plums,Plums,93,77
+5,R14,14.0,Plums,Plums,146,133
+6,R14,14.0,Plums,Plums,188,173
+7,R14,14.0,Plums,Plums,217,214
+8,R14,14.0,Plums,Plums,185,179
+9,R14,14.0,Plums,Plums,119,110
+10,R14,14.0,Plums,Plums,58,43
+11,R14,14.0,Plums,Plums,15,1
+12,R14,14.0,Plums,Plums,,
+Season,R14,14.0,Plums,Plums,1067,962
+1,R14,14.0,Potatoes (Early),Potatoes,,
+2,R14,14.0,Potatoes (Early),Potatoes,,
+3,R14,14.0,Potatoes (Early),Potatoes,19,10
+4,R14,14.0,Potatoes (Early),Potatoes,57,42
+5,R14,14.0,Potatoes (Early),Potatoes,141,129
+6,R14,14.0,Potatoes (Early),Potatoes,191,176
+7,R14,14.0,Potatoes (Early),Potatoes,192,190
+8,R14,14.0,Potatoes (Early),Potatoes,,
+9,R14,14.0,Potatoes (Early),Potatoes,,
+10,R14,14.0,Potatoes (Early),Potatoes,,
+11,R14,14.0,Potatoes (Early),Potatoes,,
+12,R14,14.0,Potatoes (Early),Potatoes,,
+Season,R14,14.0,Potatoes (Early),Potatoes,600,547
+1,R14,14.0,Potatoes (Late),Potatoes,,
+2,R14,14.0,Potatoes (Late),Potatoes,,
+3,R14,14.0,Potatoes (Late),Potatoes,,
+4,R14,14.0,Potatoes (Late),Potatoes,7,6
+5,R14,14.0,Potatoes (Late),Potatoes,58,46
+6,R14,14.0,Potatoes (Late),Potatoes,114,101
+7,R14,14.0,Potatoes (Late),Potatoes,210,207
+8,R14,14.0,Potatoes (Late),Potatoes,185,182
+9,R14,14.0,Potatoes (Late),Potatoes,117,110
+10,R14,14.0,Potatoes (Late),Potatoes,27,21
+11,R14,14.0,Potatoes (Late),Potatoes,,
+12,R14,14.0,Potatoes (Late),Potatoes,,
+Season,R14,14.0,Potatoes (Late),Potatoes,718,673
+1,R14,14.0,Potatoes (Mid),Potatoes,,
+2,R14,14.0,Potatoes (Mid),Potatoes,,
+3,R14,14.0,Potatoes (Mid),Potatoes,,
+4,R14,14.0,Potatoes (Mid),Potatoes,28,20
+5,R14,14.0,Potatoes (Mid),Potatoes,72,60
+6,R14,14.0,Potatoes (Mid),Potatoes,154,141
+7,R14,14.0,Potatoes (Mid),Potatoes,219,217
+8,R14,14.0,Potatoes (Mid),Potatoes,185,182
+9,R14,14.0,Potatoes (Mid),Potatoes,102,95
+10,R14,14.0,Potatoes (Mid),Potatoes,,
+11,R14,14.0,Potatoes (Mid),Potatoes,,
+12,R14,14.0,Potatoes (Mid),Potatoes,,
+Season,R14,14.0,Potatoes (Mid),Potatoes,760,715
+1,R15,15.0,Alfalfa Hay,Alfalfa,,
+2,R15,15.0,Alfalfa Hay,Alfalfa,,
+3,R15,15.0,Alfalfa Hay,Alfalfa,34,2
+4,R15,15.0,Alfalfa Hay,Alfalfa,69,29
+5,R15,15.0,Alfalfa Hay,Alfalfa,105,62
+6,R15,15.0,Alfalfa Hay,Alfalfa,121,87
+7,R15,15.0,Alfalfa Hay,Alfalfa,172,162
+8,R15,15.0,Alfalfa Hay,Alfalfa,140,131
+9,R15,15.0,Alfalfa Hay,Alfalfa,84,59
+10,R15,15.0,Alfalfa Hay,Alfalfa,,
+11,R15,15.0,Alfalfa Hay,Alfalfa,,
+12,R15,15.0,Alfalfa Hay,Alfalfa,,
+Season,R15,15.0,Alfalfa Hay,Alfalfa,725,532
+1,R15,15.0,Apples,Apples,,
+2,R15,15.0,Apples,Apples,,
+3,R15,15.0,Apples,Apples,30,1
+4,R15,15.0,Apples,Apples,72,30
+5,R15,15.0,Apples,Apples,121,79
+6,R15,15.0,Apples,Apples,156,119
+7,R15,15.0,Apples,Apples,233,222
+8,R15,15.0,Apples,Apples,190,179
+9,R15,15.0,Apples,Apples,119,90
+10,R15,15.0,Apples,Apples,47,13
+11,R15,15.0,Apples,Apples,8,1
+12,R15,15.0,Apples,Apples,,
+Season,R15,15.0,Apples,Apples,976,734
+1,R15,15.0,Berries,,,
+2,R15,15.0,Berries,,,
+3,R15,15.0,Berries,,,
+4,R15,15.0,Berries,,,
+5,R15,15.0,Berries,,34,14
+6,R15,15.0,Berries,,79,50
+7,R15,15.0,Berries,,131,122
+8,R15,15.0,Berries,,111,102
+9,R15,15.0,Berries,,74,47
+10,R15,15.0,Berries,,39,4
+11,R15,15.0,Berries,,1,0
+12,R15,15.0,Berries,,,
+Season,R15,15.0,Berries,,469,339
+1,R15,15.0,Cherries,Cherries,,
+2,R15,15.0,Cherries,Cherries,,
+3,R15,15.0,Cherries,Cherries,30,1
+4,R15,15.0,Cherries,Cherries,72,30
+5,R15,15.0,Cherries,Cherries,121,79
+6,R15,15.0,Cherries,Cherries,156,119
+7,R15,15.0,Cherries,Cherries,233,222
+8,R15,15.0,Cherries,Cherries,190,179
+9,R15,15.0,Cherries,Cherries,119,90
+10,R15,15.0,Cherries,Cherries,47,13
+11,R15,15.0,Cherries,Cherries,8,1
+12,R15,15.0,Cherries,Cherries,,
+Season,R15,15.0,Cherries,Cherries,976,734
+1,R15,15.0,Corn (Sweet),Sweet Corn,,
+2,R15,15.0,Corn (Sweet),Sweet Corn,,
+3,R15,15.0,Corn (Sweet),Sweet Corn,,
+4,R15,15.0,Corn (Sweet),Sweet Corn,,
+5,R15,15.0,Corn (Sweet),Sweet Corn,33,14
+6,R15,15.0,Corn (Sweet),Sweet Corn,110,78
+7,R15,15.0,Corn (Sweet),Sweet Corn,215,205
+8,R15,15.0,Corn (Sweet),Sweet Corn,112,106
+9,R15,15.0,Corn (Sweet),Sweet Corn,,
+10,R15,15.0,Corn (Sweet),Sweet Corn,,
+11,R15,15.0,Corn (Sweet),Sweet Corn,,
+12,R15,15.0,Corn (Sweet),Sweet Corn,,
+Season,R15,15.0,Corn (Sweet),Sweet Corn,470,403
+1,R15,15.0,Grain (Spring),Spring Wheat,,
+2,R15,15.0,Grain (Spring),Spring Wheat,,
+3,R15,15.0,Grain (Spring),Spring Wheat,13,1
+4,R15,15.0,Grain (Spring),Spring Wheat,54,13
+5,R15,15.0,Grain (Spring),Spring Wheat,107,62
+6,R15,15.0,Grain (Spring),Spring Wheat,149,112
+7,R15,15.0,Grain (Spring),Spring Wheat,209,202
+8,R15,15.0,Grain (Spring),Spring Wheat,86,79
+9,R15,15.0,Grain (Spring),Spring Wheat,,
+10,R15,15.0,Grain (Spring),Spring Wheat,,
+11,R15,15.0,Grain (Spring),Spring Wheat,,
+12,R15,15.0,Grain (Spring),Spring Wheat,,
+Season,R15,15.0,Grain (Spring),Spring Wheat,618,469
+1,R15,15.0,Grain (Winter),Winter Wheat,,
+2,R15,15.0,Grain (Winter),Winter Wheat,,
+3,R15,15.0,Grain (Winter),Winter Wheat,23,1
+4,R15,15.0,Grain (Winter),Winter Wheat,80,36
+5,R15,15.0,Grain (Winter),Winter Wheat,125,83
+6,R15,15.0,Grain (Winter),Winter Wheat,142,105
+7,R15,15.0,Grain (Winter),Winter Wheat,104,96
+8,R15,15.0,Grain (Winter),Winter Wheat,,
+9,R15,15.0,Grain (Winter),Winter Wheat,,
+10,R15,15.0,Grain (Winter),Winter Wheat,,
+11,R15,15.0,Grain (Winter),Winter Wheat,,
+12,R15,15.0,Grain (Winter),Winter Wheat,,
+Season,R15,15.0,Grain (Winter),Winter Wheat,474,321
+1,R15,15.0,Onions,Onions,,
+2,R15,15.0,Onions,Onions,,
+3,R15,15.0,Onions,Onions,4,0
+4,R15,15.0,Onions,Onions,47,13
+5,R15,15.0,Onions,Onions,79,45
+6,R15,15.0,Onions,Onions,115,87
+7,R15,15.0,Onions,Onions,193,184
+8,R15,15.0,Onions,Onions,161,152
+9,R15,15.0,Onions,Onions,69,53
+10,R15,15.0,Onions,Onions,,
+11,R15,15.0,Onions,Onions,,
+12,R15,15.0,Onions,Onions,,
+Season,R15,15.0,Onions,Onions,668,534
+1,R15,15.0,Pasture,Grass/Pasture,,
+2,R15,15.0,Pasture,Grass/Pasture,,
+3,R15,15.0,Pasture,Grass/Pasture,14,1
+4,R15,15.0,Pasture,Grass/Pasture,76,32
+5,R15,15.0,Pasture,Grass/Pasture,114,71
+6,R15,15.0,Pasture,Grass/Pasture,130,97
+7,R15,15.0,Pasture,Grass/Pasture,187,177
+8,R15,15.0,Pasture,Grass/Pasture,153,142
+9,R15,15.0,Pasture,Grass/Pasture,102,71
+10,R15,15.0,Pasture,Grass/Pasture,53,17
+11,R15,15.0,Pasture,Grass/Pasture,,
+12,R15,15.0,Pasture,Grass/Pasture,,
+Season,R15,15.0,Pasture,Grass/Pasture,829,608
+1,R15,15.0,Pears,Pears,,
+2,R15,15.0,Pears,Pears,,
+3,R15,15.0,Pears,Pears,30,1
+4,R15,15.0,Pears,Pears,69,27
+5,R15,15.0,Pears,Pears,111,69
+6,R15,15.0,Pears,Pears,142,107
+7,R15,15.0,Pears,Pears,214,204
+8,R15,15.0,Pears,Pears,174,163
+9,R15,15.0,Pears,Pears,109,80
+10,R15,15.0,Pears,Pears,47,10
+11,R15,15.0,Pears,Pears,8,1
+12,R15,15.0,Pears,Pears,,
+Season,R15,15.0,Pears,Pears,904,662
+1,R15,15.0,Peas,Peas,,
+2,R15,15.0,Peas,Peas,,
+3,R15,15.0,Peas,Peas,12,1
+4,R15,15.0,Peas,Peas,59,18
+5,R15,15.0,Peas,Peas,124,80
+6,R15,15.0,Peas,Peas,146,109
+7,R15,15.0,Peas,Peas,130,125
+8,R15,15.0,Peas,Peas,,
+9,R15,15.0,Peas,Peas,,
+10,R15,15.0,Peas,Peas,,
+11,R15,15.0,Peas,Peas,,
+12,R15,15.0,Peas,Peas,,
+Season,R15,15.0,Peas,Peas,471,333
+1,R15,15.0,Plums,Plums,,
+2,R15,15.0,Plums,Plums,,
+3,R15,15.0,Plums,Plums,30,1
+4,R15,15.0,Plums,Plums,69,27
+5,R15,15.0,Plums,Plums,111,69
+6,R15,15.0,Plums,Plums,142,107
+7,R15,15.0,Plums,Plums,214,204
+8,R15,15.0,Plums,Plums,174,163
+9,R15,15.0,Plums,Plums,109,80
+10,R15,15.0,Plums,Plums,47,10
+11,R15,15.0,Plums,Plums,8,1
+12,R15,15.0,Plums,Plums,,
+Season,R15,15.0,Plums,Plums,904,662
+1,R15,15.0,Potatoes,Potatoes,,
+2,R15,15.0,Potatoes,Potatoes,,
+3,R15,15.0,Potatoes,Potatoes,,
+4,R15,15.0,Potatoes,Potatoes,24,2
+5,R15,15.0,Potatoes,Potatoes,61,26
+6,R15,15.0,Potatoes,Potatoes,123,92
+7,R15,15.0,Potatoes,Potatoes,216,206
+8,R15,15.0,Potatoes,Potatoes,176,166
+9,R15,15.0,Potatoes,Potatoes,94,67
+10,R15,15.0,Potatoes,Potatoes,,
+11,R15,15.0,Potatoes,Potatoes,,
+12,R15,15.0,Potatoes,Potatoes,,
+Season,R15,15.0,Potatoes,Potatoes,694,559
+1,R15,15.0,Tomatoes,,,
+2,R15,15.0,Tomatoes,,,
+3,R15,15.0,Tomatoes,,,
+4,R15,15.0,Tomatoes,,,
+5,R15,15.0,Tomatoes,,50,14
+6,R15,15.0,Tomatoes,,124,90
+7,R15,15.0,Tomatoes,,217,211
+8,R15,15.0,Tomatoes,,92,86
+9,R15,15.0,Tomatoes,,,
+10,R15,15.0,Tomatoes,,,
+11,R15,15.0,Tomatoes,,,
+12,R15,15.0,Tomatoes,,,
+Season,R15,15.0,Tomatoes,,483,401
+1,R16,16.0,Alfalfa Hay,Alfalfa,,
+2,R16,16.0,Alfalfa Hay,Alfalfa,,
+3,R16,16.0,Alfalfa Hay,Alfalfa,,
+4,R16,16.0,Alfalfa Hay,Alfalfa,56,47
+5,R16,16.0,Alfalfa Hay,Alfalfa,114,91
+6,R16,16.0,Alfalfa Hay,Alfalfa,136,111
+7,R16,16.0,Alfalfa Hay,Alfalfa,167,159
+8,R16,16.0,Alfalfa Hay,Alfalfa,131,127
+9,R16,16.0,Alfalfa Hay,Alfalfa,97,84
+10,R16,16.0,Alfalfa Hay,Alfalfa,,
+11,R16,16.0,Alfalfa Hay,Alfalfa,,
+12,R16,16.0,Alfalfa Hay,Alfalfa,,
+Season,R16,16.0,Alfalfa Hay,Alfalfa,701,619
+1,R16,16.0,Corn (Silage),Corn,,
+2,R16,16.0,Corn (Silage),Corn,,
+3,R16,16.0,Corn (Silage),Corn,,
+4,R16,16.0,Corn (Silage),Corn,,
+5,R16,16.0,Corn (Silage),Corn,57,41
+6,R16,16.0,Corn (Silage),Corn,122,98
+7,R16,16.0,Corn (Silage),Corn,201,192
+8,R16,16.0,Corn (Silage),Corn,161,155
+9,R16,16.0,Corn (Silage),Corn,113,98
+10,R16,16.0,Corn (Silage),Corn,,
+11,R16,16.0,Corn (Silage),Corn,,
+12,R16,16.0,Corn (Silage),Corn,,
+Season,R16,16.0,Corn (Silage),Corn,654,584
+1,R16,16.0,Grain (Spring),Spring Wheat,,
+2,R16,16.0,Grain (Spring),Spring Wheat,,
+3,R16,16.0,Grain (Spring),Spring Wheat,,
+4,R16,16.0,Grain (Spring),Spring Wheat,55,42
+5,R16,16.0,Grain (Spring),Spring Wheat,130,107
+6,R16,16.0,Grain (Spring),Spring Wheat,165,137
+7,R16,16.0,Grain (Spring),Spring Wheat,182,173
+8,R16,16.0,Grain (Spring),Spring Wheat,32,30
+9,R16,16.0,Grain (Spring),Spring Wheat,,
+10,R16,16.0,Grain (Spring),Spring Wheat,,
+11,R16,16.0,Grain (Spring),Spring Wheat,,
+12,R16,16.0,Grain (Spring),Spring Wheat,,
+Season,R16,16.0,Grain (Spring),Spring Wheat,564,489
+1,R16,16.0,Grain (Winter),Winter Wheat,,
+2,R16,16.0,Grain (Winter),Winter Wheat,,
+3,R16,16.0,Grain (Winter),Winter Wheat,17,9
+4,R16,16.0,Grain (Winter),Winter Wheat,71,58
+5,R16,16.0,Grain (Winter),Winter Wheat,138,115
+6,R16,16.0,Grain (Winter),Winter Wheat,165,137
+7,R16,16.0,Grain (Winter),Winter Wheat,184,175
+8,R16,16.0,Grain (Winter),Winter Wheat,18,18
+9,R16,16.0,Grain (Winter),Winter Wheat,,
+10,R16,16.0,Grain (Winter),Winter Wheat,,
+11,R16,16.0,Grain (Winter),Winter Wheat,,
+12,R16,16.0,Grain (Winter),Winter Wheat,,
+Season,R16,16.0,Grain (Winter),Winter Wheat,593,512
+1,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,4,0
+2,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,14,1
+3,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,40,23
+4,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,87,74
+5,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,139,115
+6,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,165,139
+7,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,204,194
+8,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,143,138
+9,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,53,42
+10,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,47,31
+11,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,15,1
+12,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,2,0
+Season,R16,16.0,Grass Seed (Fall),Sod/Grass Seed,913,758
+1,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,5,0
+2,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,12,1
+3,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,19,3
+4,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,47,34
+5,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,72,52
+6,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,114,91
+7,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,179,171
+8,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,158,151
+9,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,117,103
+10,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,76,58
+11,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,22,2
+12,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,2,0
+Season,R16,16.0,Grass Seed (Spring),Sod/Grass Seed,823,666
+1,R16,16.0,Mint,Mint,,
+2,R16,16.0,Mint,Mint,,
+3,R16,16.0,Mint,Mint,,
+4,R16,16.0,Mint,Mint,42,30
+5,R16,16.0,Mint,Mint,116,94
+6,R16,16.0,Mint,Mint,170,142
+7,R16,16.0,Mint,Mint,187,177
+8,R16,16.0,Mint,Mint,30,29
+9,R16,16.0,Mint,Mint,,
+10,R16,16.0,Mint,Mint,,
+11,R16,16.0,Mint,Mint,,
+12,R16,16.0,Mint,Mint,,
+Season,R16,16.0,Mint,Mint,545,472
+1,R16,16.0,Onions,Onions,,
+2,R16,16.0,Onions,Onions,,
+3,R16,16.0,Onions,Onions,,
+4,R16,16.0,Onions,Onions,16,14
+5,R16,16.0,Onions,Onions,78,62
+6,R16,16.0,Onions,Onions,125,104
+7,R16,16.0,Onions,Onions,185,177
+8,R16,16.0,Onions,Onions,145,141
+9,R16,16.0,Onions,Onions,46,41
+10,R16,16.0,Onions,Onions,,
+11,R16,16.0,Onions,Onions,,
+12,R16,16.0,Onions,Onions,,
+Season,R16,16.0,Onions,Onions,595,539
+1,R16,16.0,Pasture,Grass/Pasture,,
+2,R16,16.0,Pasture,Grass/Pasture,,
+3,R16,16.0,Pasture,Grass/Pasture,,
+4,R16,16.0,Pasture,Grass/Pasture,54,46
+5,R16,16.0,Pasture,Grass/Pasture,120,98
+6,R16,16.0,Pasture,Grass/Pasture,144,120
+7,R16,16.0,Pasture,Grass/Pasture,178,169
+8,R16,16.0,Pasture,Grass/Pasture,141,134
+9,R16,16.0,Pasture,Grass/Pasture,103,91
+10,R16,16.0,Pasture,Grass/Pasture,52,39
+11,R16,16.0,Pasture,Grass/Pasture,,
+12,R16,16.0,Pasture,Grass/Pasture,,
+Season,R16,16.0,Pasture,Grass/Pasture,792,697
+1,R16,16.0,Peas,Peas,,
+2,R16,16.0,Peas,Peas,,
+3,R16,16.0,Peas,Peas,,
+4,R16,16.0,Peas,Peas,36,29
+5,R16,16.0,Peas,Peas,123,101
+6,R16,16.0,Peas,Peas,164,134
+7,R16,16.0,Peas,Peas,157,152
+8,R16,16.0,Peas,Peas,,
+9,R16,16.0,Peas,Peas,,
+10,R16,16.0,Peas,Peas,,
+11,R16,16.0,Peas,Peas,,
+12,R16,16.0,Peas,Peas,,
+Season,R16,16.0,Peas,Peas,480,416
+1,R16,16.0,Potatoes,Potatoes,,
+2,R16,16.0,Potatoes,Potatoes,,
+3,R16,16.0,Potatoes,Potatoes,,
+4,R16,16.0,Potatoes,Potatoes,,
+5,R16,16.0,Potatoes,Potatoes,25,16
+6,R16,16.0,Potatoes,Potatoes,85,65
+7,R16,16.0,Potatoes,Potatoes,198,190
+8,R16,16.0,Potatoes,Potatoes,161,156
+9,R16,16.0,Potatoes,Potatoes,111,97
+10,R16,16.0,Potatoes,Potatoes,27,20
+11,R16,16.0,Potatoes,Potatoes,,
+12,R16,16.0,Potatoes,Potatoes,,
+Season,R16,16.0,Potatoes,Potatoes,607,544
+1,R17,17.0,Alfalfa Hay,Alfalfa,,
+2,R17,17.0,Alfalfa Hay,Alfalfa,,
+3,R17,17.0,Alfalfa Hay,Alfalfa,,
+4,R17,17.0,Alfalfa Hay,Alfalfa,47,26
+5,R17,17.0,Alfalfa Hay,Alfalfa,100,72
+6,R17,17.0,Alfalfa Hay,Alfalfa,121,95
+7,R17,17.0,Alfalfa Hay,Alfalfa,149,140
+8,R17,17.0,Alfalfa Hay,Alfalfa,118,108
+9,R17,17.0,Alfalfa Hay,Alfalfa,83,68
+10,R17,17.0,Alfalfa Hay,Alfalfa,,
+11,R17,17.0,Alfalfa Hay,Alfalfa,,
+12,R17,17.0,Alfalfa Hay,Alfalfa,,
+Season,R17,17.0,Alfalfa Hay,Alfalfa,618,509
+1,R17,17.0,Corn (Sweet),Sweet Corn,,
+2,R17,17.0,Corn (Sweet),Sweet Corn,,
+3,R17,17.0,Corn (Sweet),Sweet Corn,,
+4,R17,17.0,Corn (Sweet),Sweet Corn,,
+5,R17,17.0,Corn (Sweet),Sweet Corn,30,18
+6,R17,17.0,Corn (Sweet),Sweet Corn,95,69
+7,R17,17.0,Corn (Sweet),Sweet Corn,171,161
+8,R17,17.0,Corn (Sweet),Sweet Corn,145,134
+9,R17,17.0,Corn (Sweet),Sweet Corn,16,15
+10,R17,17.0,Corn (Sweet),Sweet Corn,,
+11,R17,17.0,Corn (Sweet),Sweet Corn,,
+12,R17,17.0,Corn (Sweet),Sweet Corn,,
+Season,R17,17.0,Corn (Sweet),Sweet Corn,457,397
+1,R17,17.0,Grain (Spring),Spring Wheat,,
+2,R17,17.0,Grain (Spring),Spring Wheat,,
+3,R17,17.0,Grain (Spring),Spring Wheat,,
+4,R17,17.0,Grain (Spring),Spring Wheat,48,19
+5,R17,17.0,Grain (Spring),Spring Wheat,114,86
+6,R17,17.0,Grain (Spring),Spring Wheat,146,119
+7,R17,17.0,Grain (Spring),Spring Wheat,163,153
+8,R17,17.0,Grain (Spring),Spring Wheat,28,26
+9,R17,17.0,Grain (Spring),Spring Wheat,,
+10,R17,17.0,Grain (Spring),Spring Wheat,,
+11,R17,17.0,Grain (Spring),Spring Wheat,,
+12,R17,17.0,Grain (Spring),Spring Wheat,,
+Season,R17,17.0,Grain (Spring),Spring Wheat,499,403
+1,R17,17.0,Grain (Winter),Winter Wheat,,
+2,R17,17.0,Grain (Winter),Winter Wheat,,
+3,R17,17.0,Grain (Winter),Winter Wheat,13,1
+4,R17,17.0,Grain (Winter),Winter Wheat,60,30
+5,R17,17.0,Grain (Winter),Winter Wheat,121,92
+6,R17,17.0,Grain (Winter),Winter Wheat,146,119
+7,R17,17.0,Grain (Winter),Winter Wheat,164,155
+8,R17,17.0,Grain (Winter),Winter Wheat,16,15
+9,R17,17.0,Grain (Winter),Winter Wheat,,
+10,R17,17.0,Grain (Winter),Winter Wheat,,
+11,R17,17.0,Grain (Winter),Winter Wheat,,
+12,R17,17.0,Grain (Winter),Winter Wheat,,
+Season,R17,17.0,Grain (Winter),Winter Wheat,520,412
+1,R17,17.0,Mint,Mint,,
+2,R17,17.0,Mint,Mint,,
+3,R17,17.0,Mint,Mint,1,1
+4,R17,17.0,Mint,Mint,39,10
+5,R17,17.0,Mint,Mint,106,78
+6,R17,17.0,Mint,Mint,151,124
+7,R17,17.0,Mint,Mint,162,153
+8,R17,17.0,Mint,Mint,20,19
+9,R17,17.0,Mint,Mint,,
+10,R17,17.0,Mint,Mint,,
+11,R17,17.0,Mint,Mint,,
+12,R17,17.0,Mint,Mint,,
+Season,R17,17.0,Mint,Mint,479,385
+1,R17,17.0,Pasture,Grass/Pasture,,
+2,R17,17.0,Pasture,Grass/Pasture,,
+3,R17,17.0,Pasture,Grass/Pasture,,
+4,R17,17.0,Pasture,Grass/Pasture,45,26
+5,R17,17.0,Pasture,Grass/Pasture,106,78
+6,R17,17.0,Pasture,Grass/Pasture,129,102
+7,R17,17.0,Pasture,Grass/Pasture,159,150
+8,R17,17.0,Pasture,Grass/Pasture,124,115
+9,R17,17.0,Pasture,Grass/Pasture,89,74
+10,R17,17.0,Pasture,Grass/Pasture,45,18
+11,R17,17.0,Pasture,Grass/Pasture,,
+12,R17,17.0,Pasture,Grass/Pasture,,
+Season,R17,17.0,Pasture,Grass/Pasture,697,563
+1,R17,17.0,Peas,Peas,,
+2,R17,17.0,Peas,Peas,,
+3,R17,17.0,Peas,Peas,,
+4,R17,17.0,Peas,Peas,31,12
+5,R17,17.0,Peas,Peas,109,80
+6,R17,17.0,Peas,Peas,146,118
+7,R17,17.0,Peas,Peas,141,134
+8,R17,17.0,Peas,Peas,,
+9,R17,17.0,Peas,Peas,,
+10,R17,17.0,Peas,Peas,,
+11,R17,17.0,Peas,Peas,,
+12,R17,17.0,Peas,Peas,,
+Season,R17,17.0,Peas,Peas,427,344
+1,R17,17.0,Potatoes,Potatoes,,
+2,R17,17.0,Potatoes,Potatoes,,
+3,R17,17.0,Potatoes,Potatoes,,
+4,R17,17.0,Potatoes,Potatoes,,
+5,R17,17.0,Potatoes,Potatoes,23,13
+6,R17,17.0,Potatoes,Potatoes,79,56
+7,R17,17.0,Potatoes,Potatoes,178,169
+8,R17,17.0,Potatoes,Potatoes,145,135
+9,R17,17.0,Potatoes,Potatoes,95,81
+10,R17,17.0,Potatoes,Potatoes,23,9
+11,R17,17.0,Potatoes,Potatoes,,
+12,R17,17.0,Potatoes,Potatoes,,
+Season,R17,17.0,Potatoes,Potatoes,543,463
+1,R18,18.0,Alfalfa Hay,Alfalfa,,
+2,R18,18.0,Alfalfa Hay,Alfalfa,,
+3,R18,18.0,Alfalfa Hay,Alfalfa,,
+4,R18,18.0,Alfalfa Hay,Alfalfa,,
+5,R18,18.0,Alfalfa Hay,Alfalfa,58,45
+6,R18,18.0,Alfalfa Hay,Alfalfa,130,108
+7,R18,18.0,Alfalfa Hay,Alfalfa,167,161
+8,R18,18.0,Alfalfa Hay,Alfalfa,131,125
+9,R18,18.0,Alfalfa Hay,Alfalfa,,
+10,R18,18.0,Alfalfa Hay,Alfalfa,,
+11,R18,18.0,Alfalfa Hay,Alfalfa,,
+12,R18,18.0,Alfalfa Hay,Alfalfa,,
+Season,R18,18.0,Alfalfa Hay,Alfalfa,486,439
+1,R18,18.0,Grain (Spring),Spring Wheat,,
+2,R18,18.0,Grain (Spring),Spring Wheat,,
+3,R18,18.0,Grain (Spring),Spring Wheat,,
+4,R18,18.0,Grain (Spring),Spring Wheat,,
+5,R18,18.0,Grain (Spring),Spring Wheat,41,26
+6,R18,18.0,Grain (Spring),Spring Wheat,117,95
+7,R18,18.0,Grain (Spring),Spring Wheat,205,200
+8,R18,18.0,Grain (Spring),Spring Wheat,153,144
+9,R18,18.0,Grain (Spring),Spring Wheat,24,19
+10,R18,18.0,Grain (Spring),Spring Wheat,,
+11,R18,18.0,Grain (Spring),Spring Wheat,,
+12,R18,18.0,Grain (Spring),Spring Wheat,,
+Season,R18,18.0,Grain (Spring),Spring Wheat,540,484
+1,R18,18.0,Grain (Winter),Winter Wheat,,
+2,R18,18.0,Grain (Winter),Winter Wheat,,
+3,R18,18.0,Grain (Winter),Winter Wheat,,
+4,R18,18.0,Grain (Winter),Winter Wheat,39,18
+5,R18,18.0,Grain (Winter),Winter Wheat,111,86
+6,R18,18.0,Grain (Winter),Winter Wheat,157,133
+7,R18,18.0,Grain (Winter),Winter Wheat,165,159
+8,R18,18.0,Grain (Winter),Winter Wheat,16,15
+9,R18,18.0,Grain (Winter),Winter Wheat,,
+10,R18,18.0,Grain (Winter),Winter Wheat,,
+11,R18,18.0,Grain (Winter),Winter Wheat,,
+12,R18,18.0,Grain (Winter),Winter Wheat,,
+Season,R18,18.0,Grain (Winter),Winter Wheat,488,411
+1,R18,18.0,Pasture,Grass/Pasture,,
+2,R18,18.0,Pasture,Grass/Pasture,,
+3,R18,18.0,Pasture,Grass/Pasture,,
+4,R18,18.0,Pasture,Grass/Pasture,73,44
+5,R18,18.0,Pasture,Grass/Pasture,110,84
+6,R18,18.0,Pasture,Grass/Pasture,138,114
+7,R18,18.0,Pasture,Grass/Pasture,179,172
+8,R18,18.0,Pasture,Grass/Pasture,145,137
+9,R18,18.0,Pasture,Grass/Pasture,107,93
+10,R18,18.0,Pasture,Grass/Pasture,32,16
+11,R18,18.0,Pasture,Grass/Pasture,,
+12,R18,18.0,Pasture,Grass/Pasture,,
+Season,R18,18.0,Pasture,Grass/Pasture,784,660
+1,R18,18.0,Potatoes,Potatoes,,
+2,R18,18.0,Potatoes,Potatoes,,
+3,R18,18.0,Potatoes,Potatoes,,
+4,R18,18.0,Potatoes,Potatoes,,
+5,R18,18.0,Potatoes,Potatoes,24,14
+6,R18,18.0,Potatoes,Potatoes,82,64
+7,R18,18.0,Potatoes,Potatoes,199,192
+8,R18,18.0,Potatoes,Potatoes,167,160
+9,R18,18.0,Potatoes,Potatoes,114,100
+10,R18,18.0,Potatoes,Potatoes,27,13
+11,R18,18.0,Potatoes,Potatoes,,
+12,R18,18.0,Potatoes,Potatoes,,
+Season,R18,18.0,Potatoes,Potatoes,613,543
+1,R19,19.0,Alfalfa Hay,Alfalfa,,
+2,R19,19.0,Alfalfa Hay,Alfalfa,,
+3,R19,19.0,Alfalfa Hay,Alfalfa,,
+4,R19,19.0,Alfalfa Hay,Alfalfa,,
+5,R19,19.0,Alfalfa Hay,Alfalfa,61,48
+6,R19,19.0,Alfalfa Hay,Alfalfa,133,103
+7,R19,19.0,Alfalfa Hay,Alfalfa,165,158
+8,R19,19.0,Alfalfa Hay,Alfalfa,127,121
+9,R19,19.0,Alfalfa Hay,Alfalfa,,
+10,R19,19.0,Alfalfa Hay,Alfalfa,,
+11,R19,19.0,Alfalfa Hay,Alfalfa,,
+12,R19,19.0,Alfalfa Hay,Alfalfa,,
+Season,R19,19.0,Alfalfa Hay,Alfalfa,486,430
+1,R19,19.0,Grain (Spring),Spring Wheat,,
+2,R19,19.0,Grain (Spring),Spring Wheat,,
+3,R19,19.0,Grain (Spring),Spring Wheat,,
+4,R19,19.0,Grain (Spring),Spring Wheat,,
+5,R19,19.0,Grain (Spring),Spring Wheat,43,26
+6,R19,19.0,Grain (Spring),Spring Wheat,118,91
+7,R19,19.0,Grain (Spring),Spring Wheat,202,195
+8,R19,19.0,Grain (Spring),Spring Wheat,148,140
+9,R19,19.0,Grain (Spring),Spring Wheat,23,20
+10,R19,19.0,Grain (Spring),Spring Wheat,,
+11,R19,19.0,Grain (Spring),Spring Wheat,,
+12,R19,19.0,Grain (Spring),Spring Wheat,,
+Season,R19,19.0,Grain (Spring),Spring Wheat,534,472
+1,R19,19.0,Grain (Winter),Winter Wheat,,
+2,R19,19.0,Grain (Winter),Winter Wheat,,
+3,R19,19.0,Grain (Winter),Winter Wheat,,
+4,R19,19.0,Grain (Winter),Winter Wheat,42,29
+5,R19,19.0,Grain (Winter),Winter Wheat,118,89
+6,R19,19.0,Grain (Winter),Winter Wheat,161,129
+7,R19,19.0,Grain (Winter),Winter Wheat,163,156
+8,R19,19.0,Grain (Winter),Winter Wheat,16,15
+9,R19,19.0,Grain (Winter),Winter Wheat,,
+10,R19,19.0,Grain (Winter),Winter Wheat,,
+11,R19,19.0,Grain (Winter),Winter Wheat,,
+12,R19,19.0,Grain (Winter),Winter Wheat,,
+Season,R19,19.0,Grain (Winter),Winter Wheat,500,418
+1,R19,19.0,Pasture,Grass/Pasture,,
+2,R19,19.0,Pasture,Grass/Pasture,,
+3,R19,19.0,Pasture,Grass/Pasture,,
+4,R19,19.0,Pasture,Grass/Pasture,82,64
+5,R19,19.0,Pasture,Grass/Pasture,116,89
+6,R19,19.0,Pasture,Grass/Pasture,141,111
+7,R19,19.0,Pasture,Grass/Pasture,175,169
+8,R19,19.0,Pasture,Grass/Pasture,141,133
+9,R19,19.0,Pasture,Grass/Pasture,103,89
+10,R19,19.0,Pasture,Grass/Pasture,34,25
+11,R19,19.0,Pasture,Grass/Pasture,,
+12,R19,19.0,Pasture,Grass/Pasture,,
+Season,R19,19.0,Pasture,Grass/Pasture,792,680
+1,R2,2.0,Apples,Apples,,
+2,R2,2.0,Apples,Apples,,
+3,R2,2.0,Apples,Apples,35,0
+4,R2,2.0,Apples,Apples,58,2
+5,R2,2.0,Apples,Apples,86,23
+6,R2,2.0,Apples,Apples,103,69
+7,R2,2.0,Apples,Apples,111,104
+8,R2,2.0,Apples,Apples,95,85
+9,R2,2.0,Apples,Apples,76,35
+10,R2,2.0,Apples,Apples,47,3
+11,R2,2.0,Apples,Apples,22,0
+12,R2,2.0,Apples,Apples,,
+Season,R2,2.0,Apples,Apples,633,321
+1,R2,2.0,Cherries,Cherries,,
+2,R2,2.0,Cherries,Cherries,,
+3,R2,2.0,Cherries,Cherries,35,0
+4,R2,2.0,Cherries,Cherries,58,2
+5,R2,2.0,Cherries,Cherries,86,23
+6,R2,2.0,Cherries,Cherries,103,69
+7,R2,2.0,Cherries,Cherries,111,104
+8,R2,2.0,Cherries,Cherries,95,85
+9,R2,2.0,Cherries,Cherries,76,35
+10,R2,2.0,Cherries,Cherries,47,3
+11,R2,2.0,Cherries,Cherries,22,0
+12,R2,2.0,Cherries,Cherries,,
+Season,R2,2.0,Cherries,Cherries,633,321
+1,R2,2.0,Corn (Silage),Corn,,
+2,R2,2.0,Corn (Silage),Corn,,
+3,R2,2.0,Corn (Silage),Corn,,
+4,R2,2.0,Corn (Silage),Corn,,
+5,R2,2.0,Corn (Silage),Corn,17,1
+6,R2,2.0,Corn (Silage),Corn,59,28
+7,R2,2.0,Corn (Silage),Corn,94,88
+8,R2,2.0,Corn (Silage),Corn,91,81
+9,R2,2.0,Corn (Silage),Corn,72,32
+10,R2,2.0,Corn (Silage),Corn,,
+11,R2,2.0,Corn (Silage),Corn,,
+12,R2,2.0,Corn (Silage),Corn,,
+Season,R2,2.0,Corn (Silage),Corn,333,230
+1,R2,2.0,Pasture,Grass/Pasture,,
+2,R2,2.0,Pasture,Grass/Pasture,,
+3,R2,2.0,Pasture,Grass/Pasture,16,0
+4,R2,2.0,Pasture,Grass/Pasture,61,3
+5,R2,2.0,Pasture,Grass/Pasture,81,19
+6,R2,2.0,Pasture,Grass/Pasture,89,55
+7,R2,2.0,Pasture,Grass/Pasture,94,89
+8,R2,2.0,Pasture,Grass/Pasture,82,72
+9,R2,2.0,Pasture,Grass/Pasture,69,29
+10,R2,2.0,Pasture,Grass/Pasture,51,3
+11,R2,2.0,Pasture,Grass/Pasture,,
+12,R2,2.0,Pasture,Grass/Pasture,,
+Season,R2,2.0,Pasture,Grass/Pasture,543,270
+1,R2,2.0,Pear,Pears,,
+2,R2,2.0,Pear,Pears,,
+3,R2,2.0,Pear,Pears,35,0
+4,R2,2.0,Pear,Pears,55,2
+5,R2,2.0,Pear,Pears,77,17
+6,R2,2.0,Pear,Pears,94,61
+7,R2,2.0,Pear,Pears,101,94
+8,R2,2.0,Pear,Pears,86,78
+9,R2,2.0,Pear,Pears,70,30
+10,R2,2.0,Pear,Pears,46,2
+11,R2,2.0,Pear,Pears,22,0
+12,R2,2.0,Pear,Pears,,
+Season,R2,2.0,Pear,Pears,586,284
+1,R2,2.0,Plums,Plums,,
+2,R2,2.0,Plums,Plums,,
+3,R2,2.0,Plums,Plums,35,0
+4,R2,2.0,Plums,Plums,55,2
+5,R2,2.0,Plums,Plums,77,17
+6,R2,2.0,Plums,Plums,94,61
+7,R2,2.0,Plums,Plums,101,94
+8,R2,2.0,Plums,Plums,86,78
+9,R2,2.0,Plums,Plums,70,30
+10,R2,2.0,Plums,Plums,46,2
+11,R2,2.0,Plums,Plums,22,0
+12,R2,2.0,Plums,Plums,,
+Season,R2,2.0,Plums,Plums,586,284
+1,R20,20.0,Alfalfa Hay,Alfalfa,,
+2,R20,20.0,Alfalfa Hay,Alfalfa,,
+3,R20,20.0,Alfalfa Hay,Alfalfa,,
+4,R20,20.0,Alfalfa Hay,Alfalfa,,
+5,R20,20.0,Alfalfa Hay,Alfalfa,61,49
+6,R20,20.0,Alfalfa Hay,Alfalfa,133,111
+7,R20,20.0,Alfalfa Hay,Alfalfa,160,154
+8,R20,20.0,Alfalfa Hay,Alfalfa,126,120
+9,R20,20.0,Alfalfa Hay,Alfalfa,,
+10,R20,20.0,Alfalfa Hay,Alfalfa,,
+11,R20,20.0,Alfalfa Hay,Alfalfa,,
+12,R20,20.0,Alfalfa Hay,Alfalfa,,
+Season,R20,20.0,Alfalfa Hay,Alfalfa,480,434
+1,R20,20.0,Grain (Spring),Spring Wheat,,
+2,R20,20.0,Grain (Spring),Spring Wheat,,
+3,R20,20.0,Grain (Spring),Spring Wheat,,
+4,R20,20.0,Grain (Spring),Spring Wheat,,
+5,R20,20.0,Grain (Spring),Spring Wheat,42,30
+6,R20,20.0,Grain (Spring),Spring Wheat,119,97
+7,R20,20.0,Grain (Spring),Spring Wheat,196,189
+8,R20,20.0,Grain (Spring),Spring Wheat,143,139
+9,R20,20.0,Grain (Spring),Spring Wheat,22,19
+10,R20,20.0,Grain (Spring),Spring Wheat,,
+11,R20,20.0,Grain (Spring),Spring Wheat,,
+12,R20,20.0,Grain (Spring),Spring Wheat,,
+Season,R20,20.0,Grain (Spring),Spring Wheat,522,474
+1,R20,20.0,Grain (Winter),Winter Wheat,,
+2,R20,20.0,Grain (Winter),Winter Wheat,,
+3,R20,20.0,Grain (Winter),Winter Wheat,,
+4,R20,20.0,Grain (Winter),Winter Wheat,40,28
+5,R20,20.0,Grain (Winter),Winter Wheat,118,93
+6,R20,20.0,Grain (Winter),Winter Wheat,160,139
+7,R20,20.0,Grain (Winter),Winter Wheat,159,152
+8,R20,20.0,Grain (Winter),Winter Wheat,15,14
+9,R20,20.0,Grain (Winter),Winter Wheat,,
+10,R20,20.0,Grain (Winter),Winter Wheat,,
+11,R20,20.0,Grain (Winter),Winter Wheat,,
+12,R20,20.0,Grain (Winter),Winter Wheat,,
+Season,R20,20.0,Grain (Winter),Winter Wheat,492,426
+1,R20,20.0,Mint,Mint,,
+2,R20,20.0,Mint,Mint,,
+3,R20,20.0,Mint,Mint,1,1
+4,R20,20.0,Mint,Mint,41,27
+5,R20,20.0,Mint,Mint,117,92
+6,R20,20.0,Mint,Mint,166,142
+7,R20,20.0,Mint,Mint,173,168
+8,R20,20.0,Mint,Mint,22,21
+9,R20,20.0,Mint,Mint,,
+10,R20,20.0,Mint,Mint,,
+11,R20,20.0,Mint,Mint,,
+12,R20,20.0,Mint,Mint,,
+Season,R20,20.0,Mint,Mint,520,451
+1,R20,20.0,Pasture,Grass/Pasture,,
+2,R20,20.0,Pasture,Grass/Pasture,,
+3,R20,20.0,Pasture,Grass/Pasture,,
+4,R20,20.0,Pasture,Grass/Pasture,77,61
+5,R20,20.0,Pasture,Grass/Pasture,117,93
+6,R20,20.0,Pasture,Grass/Pasture,141,119
+7,R20,20.0,Pasture,Grass/Pasture,171,164
+8,R20,20.0,Pasture,Grass/Pasture,138,133
+9,R20,20.0,Pasture,Grass/Pasture,97,87
+10,R20,20.0,Pasture,Grass/Pasture,31,25
+11,R20,20.0,Pasture,Grass/Pasture,,
+12,R20,20.0,Pasture,Grass/Pasture,,
+Season,R20,20.0,Pasture,Grass/Pasture,772,682
+1,R21,21.0,Alfalfa Hay,Alfalfa,,
+2,R21,21.0,Alfalfa Hay,Alfalfa,,
+3,R21,21.0,Alfalfa Hay,Alfalfa,,
+4,R21,21.0,Alfalfa Hay,Alfalfa,53,36
+5,R21,21.0,Alfalfa Hay,Alfalfa,110,77
+6,R21,21.0,Alfalfa Hay,Alfalfa,133,102
+7,R21,21.0,Alfalfa Hay,Alfalfa,167,156
+8,R21,21.0,Alfalfa Hay,Alfalfa,130,121
+9,R21,21.0,Alfalfa Hay,Alfalfa,94,76
+10,R21,21.0,Alfalfa Hay,Alfalfa,,
+11,R21,21.0,Alfalfa Hay,Alfalfa,,
+12,R21,21.0,Alfalfa Hay,Alfalfa,,
+Season,R21,21.0,Alfalfa Hay,Alfalfa,687,568
+1,R21,21.0,Grain (Winter),Winter Wheat,,
+2,R21,21.0,Grain (Winter),Winter Wheat,,
+3,R21,21.0,Grain (Winter),Winter Wheat,13,1
+4,R21,21.0,Grain (Winter),Winter Wheat,77,52
+5,R21,21.0,Grain (Winter),Winter Wheat,134,99
+6,R21,21.0,Grain (Winter),Winter Wheat,161,127
+7,R21,21.0,Grain (Winter),Winter Wheat,137,130
+8,R21,21.0,Grain (Winter),Winter Wheat,,
+9,R21,21.0,Grain (Winter),Winter Wheat,,
+10,R21,21.0,Grain (Winter),Winter Wheat,,
+11,R21,21.0,Grain (Winter),Winter Wheat,,
+12,R21,21.0,Grain (Winter),Winter Wheat,,
+Season,R21,21.0,Grain (Winter),Winter Wheat,522,409
+1,R21,21.0,Mint,Mint,,
+2,R21,21.0,Mint,Mint,,
+3,R21,21.0,Mint,Mint,1,1
+4,R21,21.0,Mint,Mint,43,19
+5,R21,21.0,Mint,Mint,116,82
+6,R21,21.0,Mint,Mint,166,132
+7,R21,21.0,Mint,Mint,181,170
+8,R21,21.0,Mint,Mint,22,22
+9,R21,21.0,Mint,Mint,,
+10,R21,21.0,Mint,Mint,,
+11,R21,21.0,Mint,Mint,,
+12,R21,21.0,Mint,Mint,,
+Season,R21,21.0,Mint,Mint,529,426
+1,R21,21.0,Pasture,Grass/Pasture,,
+2,R21,21.0,Pasture,Grass/Pasture,,
+3,R21,21.0,Pasture,Grass/Pasture,,
+4,R21,21.0,Pasture,Grass/Pasture,52,36
+5,R21,21.0,Pasture,Grass/Pasture,118,84
+6,R21,21.0,Pasture,Grass/Pasture,142,109
+7,R21,21.0,Pasture,Grass/Pasture,178,167
+8,R21,21.0,Pasture,Grass/Pasture,139,129
+9,R21,21.0,Pasture,Grass/Pasture,101,82
+10,R21,21.0,Pasture,Grass/Pasture,48,32
+11,R21,21.0,Pasture,Grass/Pasture,,
+12,R21,21.0,Pasture,Grass/Pasture,,
+Season,R21,21.0,Pasture,Grass/Pasture,778,639
+1,R22,22.0,Alfalfa Hay,Alfalfa,,
+2,R22,22.0,Alfalfa Hay,Alfalfa,,
+3,R22,22.0,Alfalfa Hay,Alfalfa,,
+4,R22,22.0,Alfalfa Hay,Alfalfa,51,30
+5,R22,22.0,Alfalfa Hay,Alfalfa,105,61
+6,R22,22.0,Alfalfa Hay,Alfalfa,121,80
+7,R22,22.0,Alfalfa Hay,Alfalfa,156,139
+8,R22,22.0,Alfalfa Hay,Alfalfa,126,113
+9,R22,22.0,Alfalfa Hay,Alfalfa,87,62
+10,R22,22.0,Alfalfa Hay,Alfalfa,,
+11,R22,22.0,Alfalfa Hay,Alfalfa,,
+12,R22,22.0,Alfalfa Hay,Alfalfa,,
+Season,R22,22.0,Alfalfa Hay,Alfalfa,646,485
+1,R22,22.0,Grain (Spring),Spring Wheat,,
+2,R22,22.0,Grain (Spring),Spring Wheat,,
+3,R22,22.0,Grain (Spring),Spring Wheat,,
+4,R22,22.0,Grain (Spring),Spring Wheat,51,22
+5,R22,22.0,Grain (Spring),Spring Wheat,119,76
+6,R22,22.0,Grain (Spring),Spring Wheat,146,103
+7,R22,22.0,Grain (Spring),Spring Wheat,169,153
+8,R22,22.0,Grain (Spring),Spring Wheat,31,25
+9,R22,22.0,Grain (Spring),Spring Wheat,,
+10,R22,22.0,Grain (Spring),Spring Wheat,,
+11,R22,22.0,Grain (Spring),Spring Wheat,,
+12,R22,22.0,Grain (Spring),Spring Wheat,,
+Season,R22,22.0,Grain (Spring),Spring Wheat,516,379
+1,R22,22.0,Grain (Winter),Winter Wheat,,
+2,R22,22.0,Grain (Winter),Winter Wheat,,
+3,R22,22.0,Grain (Winter),Winter Wheat,13,1
+4,R22,22.0,Grain (Winter),Winter Wheat,73,41
+5,R22,22.0,Grain (Winter),Winter Wheat,127,82
+6,R22,22.0,Grain (Winter),Winter Wheat,146,102
+7,R22,22.0,Grain (Winter),Winter Wheat,128,113
+8,R22,22.0,Grain (Winter),Winter Wheat,,
+9,R22,22.0,Grain (Winter),Winter Wheat,,
+10,R22,22.0,Grain (Winter),Winter Wheat,,
+11,R22,22.0,Grain (Winter),Winter Wheat,,
+12,R22,22.0,Grain (Winter),Winter Wheat,,
+Season,R22,22.0,Grain (Winter),Winter Wheat,487,339
+1,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,0,0
+2,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,3,0
+3,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,15,1
+4,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,43,13
+5,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,68,30
+6,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,103,62
+7,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,169,151
+8,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,152,139
+9,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,108,79
+10,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,63,30
+11,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,11,1
+12,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,1,0
+Season,R22,22.0,Grass Seed (Spring),Sod/Grass Seed,736,506
+1,R22,22.0,Pasture,Grass/Pasture,,
+2,R22,22.0,Pasture,Grass/Pasture,,
+3,R22,22.0,Pasture,Grass/Pasture,13,3
+4,R22,22.0,Pasture,Grass/Pasture,77,45
+5,R22,22.0,Pasture,Grass/Pasture,113,68
+6,R22,22.0,Pasture,Grass/Pasture,129,86
+7,R22,22.0,Pasture,Grass/Pasture,166,150
+8,R22,22.0,Pasture,Grass/Pasture,135,122
+9,R22,22.0,Pasture,Grass/Pasture,94,68
+10,R22,22.0,Pasture,Grass/Pasture,54,20
+11,R22,22.0,Pasture,Grass/Pasture,,
+12,R22,22.0,Pasture,Grass/Pasture,,
+Season,R22,22.0,Pasture,Grass/Pasture,781,562
+1,R22,22.0,Peas,Peas,,
+2,R22,22.0,Peas,Peas,,
+3,R22,22.0,Peas,Peas,,
+4,R22,22.0,Peas,Peas,33,13
+5,R22,22.0,Peas,Peas,114,70
+6,R22,22.0,Peas,Peas,146,102
+7,R22,22.0,Peas,Peas,147,134
+8,R22,22.0,Peas,Peas,,
+9,R22,22.0,Peas,Peas,,
+10,R22,22.0,Peas,Peas,,
+11,R22,22.0,Peas,Peas,,
+12,R22,22.0,Peas,Peas,,
+Season,R22,22.0,Peas,Peas,440,319
+1,R22,22.0,Potatoes,Potatoes,,
+2,R22,22.0,Potatoes,Potatoes,,
+3,R22,22.0,Potatoes,Potatoes,,
+4,R22,22.0,Potatoes,Potatoes,,
+5,R22,22.0,Potatoes,Potatoes,32,10
+6,R22,22.0,Potatoes,Potatoes,79,45
+7,R22,22.0,Potatoes,Potatoes,176,159
+8,R22,22.0,Potatoes,Potatoes,155,143
+9,R22,22.0,Potatoes,Potatoes,102,76
+10,R22,22.0,Potatoes,Potatoes,15,6
+11,R22,22.0,Potatoes,Potatoes,,
+12,R22,22.0,Potatoes,Potatoes,,
+Season,R22,22.0,Potatoes,Potatoes,559,439
+1,R23,23.0,Alfalfa Hay,Alfalfa,,
+2,R23,23.0,Alfalfa Hay,Alfalfa,,
+3,R23,23.0,Alfalfa Hay,Alfalfa,,
+4,R23,23.0,Alfalfa Hay,Alfalfa,51,30
+5,R23,23.0,Alfalfa Hay,Alfalfa,105,61
+6,R23,23.0,Alfalfa Hay,Alfalfa,121,80
+7,R23,23.0,Alfalfa Hay,Alfalfa,156,139
+8,R23,23.0,Alfalfa Hay,Alfalfa,126,113
+9,R23,23.0,Alfalfa Hay,Alfalfa,87,62
+10,R23,23.0,Alfalfa Hay,Alfalfa,,
+11,R23,23.0,Alfalfa Hay,Alfalfa,,
+12,R23,23.0,Alfalfa Hay,Alfalfa,,
+Season,R23,23.0,Alfalfa Hay,Alfalfa,646,485
+1,R23,23.0,Grain (Spring),Spring Wheat,,
+2,R23,23.0,Grain (Spring),Spring Wheat,,
+3,R23,23.0,Grain (Spring),Spring Wheat,,
+4,R23,23.0,Grain (Spring),Spring Wheat,53,20
+5,R23,23.0,Grain (Spring),Spring Wheat,120,75
+6,R23,23.0,Grain (Spring),Spring Wheat,149,106
+7,R23,23.0,Grain (Spring),Spring Wheat,179,163
+8,R23,23.0,Grain (Spring),Spring Wheat,33,30
+9,R23,23.0,Grain (Spring),Spring Wheat,,
+10,R23,23.0,Grain (Spring),Spring Wheat,,
+11,R23,23.0,Grain (Spring),Spring Wheat,,
+12,R23,23.0,Grain (Spring),Spring Wheat,,
+Season,R23,23.0,Grain (Spring),Spring Wheat,534,394
+1,R23,23.0,Grain (Winter),Winter Wheat,,
+2,R23,23.0,Grain (Winter),Winter Wheat,,
+3,R23,23.0,Grain (Winter),Winter Wheat,14,1
+4,R23,23.0,Grain (Winter),Winter Wheat,76,41
+5,R23,23.0,Grain (Winter),Winter Wheat,129,81
+6,R23,23.0,Grain (Winter),Winter Wheat,149,105
+7,R23,23.0,Grain (Winter),Winter Wheat,135,121
+8,R23,23.0,Grain (Winter),Winter Wheat,,
+9,R23,23.0,Grain (Winter),Winter Wheat,,
+10,R23,23.0,Grain (Winter),Winter Wheat,,
+11,R23,23.0,Grain (Winter),Winter Wheat,,
+12,R23,23.0,Grain (Winter),Winter Wheat,,
+Season,R23,23.0,Grain (Winter),Winter Wheat,503,349
+1,R23,23.0,Grain Seed (Fall),,1,0
+2,R23,23.0,Grain Seed (Fall),,10,1
+3,R23,23.0,Grain Seed (Fall),,34,2
+4,R23,23.0,Grain Seed (Fall),,84,47
+5,R23,23.0,Grain Seed (Fall),,130,82
+6,R23,23.0,Grain Seed (Fall),,150,105
+7,R23,23.0,Grain Seed (Fall),,200,184
+8,R23,23.0,Grain Seed (Fall),,149,137
+9,R23,23.0,Grain Seed (Fall),,52,32
+10,R23,23.0,Grain Seed (Fall),,44,11
+11,R23,23.0,Grain Seed (Fall),,12,1
+12,R23,23.0,Grain Seed (Fall),,1,0
+Season,R23,23.0,Grain Seed (Fall),,867,602
+1,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,1,0
+2,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,8,0
+3,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,16,1
+4,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,46,13
+5,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,70,29
+6,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,106,64
+7,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,179,163
+8,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,165,151
+9,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,114,90
+10,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,67,33
+11,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,19,1
+12,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,1,0
+Season,R23,23.0,Grass Seed (Spring),Sod/Grass Seed,792,545
+1,R23,23.0,Pasture,Grass/Pasture,,
+2,R23,23.0,Pasture,Grass/Pasture,,
+3,R23,23.0,Pasture,Grass/Pasture,15,2
+4,R23,23.0,Pasture,Grass/Pasture,81,45
+5,R23,23.0,Pasture,Grass/Pasture,113,68
+6,R23,23.0,Pasture,Grass/Pasture,133,89
+7,R23,23.0,Pasture,Grass/Pasture,177,161
+8,R23,23.0,Pasture,Grass/Pasture,147,134
+9,R23,23.0,Pasture,Grass/Pasture,101,78
+10,R23,23.0,Pasture,Grass/Pasture,58,25
+11,R23,23.0,Pasture,Grass/Pasture,,
+12,R23,23.0,Pasture,Grass/Pasture,,
+Season,R23,23.0,Pasture,Grass/Pasture,825,602
+1,R23,23.0,Peas,Peas,,
+2,R23,23.0,Peas,Peas,,
+3,R23,23.0,Peas,Peas,,
+4,R23,23.0,Peas,Peas,35,13
+5,R23,23.0,Peas,Peas,115,69
+6,R23,23.0,Peas,Peas,148,105
+7,R23,23.0,Peas,Peas,156,143
+8,R23,23.0,Peas,Peas,,
+9,R23,23.0,Peas,Peas,,
+10,R23,23.0,Peas,Peas,,
+11,R23,23.0,Peas,Peas,,
+12,R23,23.0,Peas,Peas,,
+Season,R23,23.0,Peas,Peas,454,330
+1,R23,23.0,Potatoes,Potatoes,,
+2,R23,23.0,Potatoes,Potatoes,,
+3,R23,23.0,Potatoes,Potatoes,,
+4,R23,23.0,Potatoes,Potatoes,,
+5,R23,23.0,Potatoes,Potatoes,33,10
+6,R23,23.0,Potatoes,Potatoes,81,48
+7,R23,23.0,Potatoes,Potatoes,187,172
+8,R23,23.0,Potatoes,Potatoes,168,156
+9,R23,23.0,Potatoes,Potatoes,108,86
+10,R23,23.0,Potatoes,Potatoes,16,7
+11,R23,23.0,Potatoes,Potatoes,,
+12,R23,23.0,Potatoes,Potatoes,,
+Season,R23,23.0,Potatoes,Potatoes,593,479
+1,R24,24.0,Alfalfa Hay,Alfalfa,,
+2,R24,24.0,Alfalfa Hay,Alfalfa,,
+3,R24,24.0,Alfalfa Hay,Alfalfa,,
+4,R24,24.0,Alfalfa Hay,Alfalfa,53,39
+5,R24,24.0,Alfalfa Hay,Alfalfa,108,82
+6,R24,24.0,Alfalfa Hay,Alfalfa,130,98
+7,R24,24.0,Alfalfa Hay,Alfalfa,171,156
+8,R24,24.0,Alfalfa Hay,Alfalfa,135,122
+9,R24,24.0,Alfalfa Hay,Alfalfa,99,86
+10,R24,24.0,Alfalfa Hay,Alfalfa,,
+11,R24,24.0,Alfalfa Hay,Alfalfa,,
+12,R24,24.0,Alfalfa Hay,Alfalfa,,
+Season,R24,24.0,Alfalfa Hay,Alfalfa,696,583
+1,R24,24.0,Corn (Field),Corn,,
+2,R24,24.0,Corn (Field),Corn,,
+3,R24,24.0,Corn (Field),Corn,,
+4,R24,24.0,Corn (Field),Corn,,
+5,R24,24.0,Corn (Field),Corn,55,35
+6,R24,24.0,Corn (Field),Corn,118,86
+7,R24,24.0,Corn (Field),Corn,206,191
+8,R24,24.0,Corn (Field),Corn,166,153
+9,R24,24.0,Corn (Field),Corn,90,76
+10,R24,24.0,Corn (Field),Corn,,
+11,R24,24.0,Corn (Field),Corn,,
+12,R24,24.0,Corn (Field),Corn,,
+Season,R24,24.0,Corn (Field),Corn,635,541
+1,R24,24.0,Corn (Sweet),Sweet Corn,,
+2,R24,24.0,Corn (Sweet),Sweet Corn,,
+3,R24,24.0,Corn (Sweet),Sweet Corn,,
+4,R24,24.0,Corn (Sweet),Sweet Corn,,
+5,R24,24.0,Corn (Sweet),Sweet Corn,32,21
+6,R24,24.0,Corn (Sweet),Sweet Corn,99,68
+7,R24,24.0,Corn (Sweet),Sweet Corn,195,180
+8,R24,24.0,Corn (Sweet),Sweet Corn,166,153
+9,R24,24.0,Corn (Sweet),Sweet Corn,19,18
+10,R24,24.0,Corn (Sweet),Sweet Corn,,
+11,R24,24.0,Corn (Sweet),Sweet Corn,,
+12,R24,24.0,Corn (Sweet),Sweet Corn,,
+Season,R24,24.0,Corn (Sweet),Sweet Corn,511,440
+1,R24,24.0,Grain (Spring),Spring Wheat,,
+2,R24,24.0,Grain (Spring),Spring Wheat,,
+3,R24,24.0,Grain (Spring),Spring Wheat,,
+4,R24,24.0,Grain (Spring),Spring Wheat,52,36
+5,R24,24.0,Grain (Spring),Spring Wheat,123,95
+6,R24,24.0,Grain (Spring),Spring Wheat,158,121
+7,R24,24.0,Grain (Spring),Spring Wheat,186,171
+8,R24,24.0,Grain (Spring),Spring Wheat,32,29
+9,R24,24.0,Grain (Spring),Spring Wheat,,
+10,R24,24.0,Grain (Spring),Spring Wheat,,
+11,R24,24.0,Grain (Spring),Spring Wheat,,
+12,R24,24.0,Grain (Spring),Spring Wheat,,
+Season,R24,24.0,Grain (Spring),Spring Wheat,551,452
+1,R24,24.0,Grain (Winter),Winter Wheat,,
+2,R24,24.0,Grain (Winter),Winter Wheat,,
+3,R24,24.0,Grain (Winter),Winter Wheat,12,4
+4,R24,24.0,Grain (Winter),Winter Wheat,76,56
+5,R24,24.0,Grain (Winter),Winter Wheat,130,103
+6,R24,24.0,Grain (Winter),Winter Wheat,157,121
+7,R24,24.0,Grain (Winter),Winter Wheat,140,127
+8,R24,24.0,Grain (Winter),Winter Wheat,,
+9,R24,24.0,Grain (Winter),Winter Wheat,,
+10,R24,24.0,Grain (Winter),Winter Wheat,,
+11,R24,24.0,Grain (Winter),Winter Wheat,,
+12,R24,24.0,Grain (Winter),Winter Wheat,,
+Season,R24,24.0,Grain (Winter),Winter Wheat,515,411
+1,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,0,0
+2,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,2,0
+3,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,14,1
+4,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,44,28
+5,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,71,46
+6,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,111,80
+7,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,185,171
+8,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,163,150
+9,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,120,107
+10,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,69,55
+11,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,12,1
+12,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,0,0
+Season,R24,24.0,Grass Seed (Spring),Sod/Grass Seed,791,639
+1,R24,24.0,Onions,Onions,,
+2,R24,24.0,Onions,Onions,,
+3,R24,24.0,Onions,Onions,,
+4,R24,24.0,Onions,Onions,16,12
+5,R24,24.0,Onions,Onions,77,55
+6,R24,24.0,Onions,Onions,120,93
+7,R24,24.0,Onions,Onions,189,177
+8,R24,24.0,Onions,Onions,150,139
+9,R24,24.0,Onions,Onions,47,43
+10,R24,24.0,Onions,Onions,,
+11,R24,24.0,Onions,Onions,,
+12,R24,24.0,Onions,Onions,,
+Season,R24,24.0,Onions,Onions,599,519
+1,R24,24.0,Pasture,Grass/Pasture,,
+2,R24,24.0,Pasture,Grass/Pasture,,
+3,R24,24.0,Pasture,Grass/Pasture,13,7
+4,R24,24.0,Pasture,Grass/Pasture,80,59
+5,R24,24.0,Pasture,Grass/Pasture,116,89
+6,R24,24.0,Pasture,Grass/Pasture,139,106
+7,R24,24.0,Pasture,Grass/Pasture,182,168
+8,R24,24.0,Pasture,Grass/Pasture,144,132
+9,R24,24.0,Pasture,Grass/Pasture,107,93
+10,R24,24.0,Pasture,Grass/Pasture,60,46
+11,R24,24.0,Pasture,Grass/Pasture,,
+12,R24,24.0,Pasture,Grass/Pasture,,
+Season,R24,24.0,Pasture,Grass/Pasture,841,700
+1,R24,24.0,Peas,Peas,,
+2,R24,24.0,Peas,Peas,,
+3,R24,24.0,Peas,Peas,,
+4,R24,24.0,Peas,Peas,34,24
+5,R24,24.0,Peas,Peas,118,90
+6,R24,24.0,Peas,Peas,157,121
+7,R24,24.0,Peas,Peas,160,151
+8,R24,24.0,Peas,Peas,,
+9,R24,24.0,Peas,Peas,,
+10,R24,24.0,Peas,Peas,,
+11,R24,24.0,Peas,Peas,,
+12,R24,24.0,Peas,Peas,,
+Season,R24,24.0,Peas,Peas,469,386
+1,R24,24.0,Potatoes,Potatoes,,
+2,R24,24.0,Potatoes,Potatoes,,
+3,R24,24.0,Potatoes,Potatoes,,
+4,R24,24.0,Potatoes,Potatoes,,
+5,R24,24.0,Potatoes,Potatoes,33,20
+6,R24,24.0,Potatoes,Potatoes,84,57
+7,R24,24.0,Potatoes,Potatoes,192,179
+8,R24,24.0,Potatoes,Potatoes,166,154
+9,R24,24.0,Potatoes,Potatoes,114,102
+10,R24,24.0,Potatoes,Potatoes,16,14
+11,R24,24.0,Potatoes,Potatoes,,
+12,R24,24.0,Potatoes,Potatoes,,
+Season,R24,24.0,Potatoes,Potatoes,605,526
+1,R25,25.0,Alfalfa Hay,Alfalfa,,
+2,R25,25.0,Alfalfa Hay,Alfalfa,,
+3,R25,25.0,Alfalfa Hay,Alfalfa,,
+4,R25,25.0,Alfalfa Hay,Alfalfa,71,57
+5,R25,25.0,Alfalfa Hay,Alfalfa,139,113
+6,R25,25.0,Alfalfa Hay,Alfalfa,167,139
+7,R25,25.0,Alfalfa Hay,Alfalfa,195,189
+8,R25,25.0,Alfalfa Hay,Alfalfa,142,136
+9,R25,25.0,Alfalfa Hay,Alfalfa,103,92
+10,R25,25.0,Alfalfa Hay,Alfalfa,,
+11,R25,25.0,Alfalfa Hay,Alfalfa,,
+12,R25,25.0,Alfalfa Hay,Alfalfa,,
+Season,R25,25.0,Alfalfa Hay,Alfalfa,817,726
+1,R25,25.0,Corn (Field),Corn,,
+2,R25,25.0,Corn (Field),Corn,,
+3,R25,25.0,Corn (Field),Corn,,
+4,R25,25.0,Corn (Field),Corn,,
+5,R25,25.0,Corn (Field),Corn,65,46
+6,R25,25.0,Corn (Field),Corn,146,120
+7,R25,25.0,Corn (Field),Corn,234,227
+8,R25,25.0,Corn (Field),Corn,174,167
+9,R25,25.0,Corn (Field),Corn,93,83
+10,R25,25.0,Corn (Field),Corn,,
+11,R25,25.0,Corn (Field),Corn,,
+12,R25,25.0,Corn (Field),Corn,,
+Season,R25,25.0,Corn (Field),Corn,712,643
+1,R25,25.0,Corn (Sweet),Sweet Corn,,
+2,R25,25.0,Corn (Sweet),Sweet Corn,,
+3,R25,25.0,Corn (Sweet),Sweet Corn,,
+4,R25,25.0,Corn (Sweet),Sweet Corn,,
+5,R25,25.0,Corn (Sweet),Sweet Corn,37,27
+6,R25,25.0,Corn (Sweet),Sweet Corn,119,93
+7,R25,25.0,Corn (Sweet),Sweet Corn,220,213
+8,R25,25.0,Corn (Sweet),Sweet Corn,174,167
+9,R25,25.0,Corn (Sweet),Sweet Corn,20,20
+10,R25,25.0,Corn (Sweet),Sweet Corn,,
+11,R25,25.0,Corn (Sweet),Sweet Corn,,
+12,R25,25.0,Corn (Sweet),Sweet Corn,,
+Season,R25,25.0,Corn (Sweet),Sweet Corn,570,520
+1,R25,25.0,Grain (Spring),Spring Wheat,,
+2,R25,25.0,Grain (Spring),Spring Wheat,,
+3,R25,25.0,Grain (Spring),Spring Wheat,,
+4,R25,25.0,Grain (Spring),Spring Wheat,66,48
+5,R25,25.0,Grain (Spring),Spring Wheat,158,130
+6,R25,25.0,Grain (Spring),Spring Wheat,203,171
+7,R25,25.0,Grain (Spring),Spring Wheat,214,206
+8,R25,25.0,Grain (Spring),Spring Wheat,34,34
+9,R25,25.0,Grain (Spring),Spring Wheat,,
+10,R25,25.0,Grain (Spring),Spring Wheat,,
+11,R25,25.0,Grain (Spring),Spring Wheat,,
+12,R25,25.0,Grain (Spring),Spring Wheat,,
+Season,R25,25.0,Grain (Spring),Spring Wheat,675,589
+1,R25,25.0,Grain (Winter),Winter Wheat,,
+2,R25,25.0,Grain (Winter),Winter Wheat,,
+3,R25,25.0,Grain (Winter),Winter Wheat,18,6
+4,R25,25.0,Grain (Winter),Winter Wheat,101,80
+5,R25,25.0,Grain (Winter),Winter Wheat,169,138
+6,R25,25.0,Grain (Winter),Winter Wheat,203,171
+7,R25,25.0,Grain (Winter),Winter Wheat,161,154
+8,R25,25.0,Grain (Winter),Winter Wheat,,
+9,R25,25.0,Grain (Winter),Winter Wheat,,
+10,R25,25.0,Grain (Winter),Winter Wheat,,
+11,R25,25.0,Grain (Winter),Winter Wheat,,
+12,R25,25.0,Grain (Winter),Winter Wheat,,
+Season,R25,25.0,Grain (Winter),Winter Wheat,652,549
+1,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,1,0
+2,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,7,0
+3,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,22,2
+4,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,54,38
+5,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,83,60
+6,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,135,110
+7,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,209,202
+8,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,170,165
+9,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,124,110
+10,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,78,65
+11,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,17,1
+12,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,0,0
+Season,R25,25.0,Grass Seed (Spring),Sod/Grass Seed,900,753
+1,R25,25.0,Onions,Onions,,
+2,R25,25.0,Onions,Onions,,
+3,R25,25.0,Onions,Onions,,
+4,R25,25.0,Onions,Onions,19,15
+5,R25,25.0,Onions,Onions,92,71
+6,R25,25.0,Onions,Onions,150,127
+7,R25,25.0,Onions,Onions,215,208
+8,R25,25.0,Onions,Onions,156,151
+9,R25,25.0,Onions,Onions,48,45
+10,R25,25.0,Onions,Onions,,
+11,R25,25.0,Onions,Onions,,
+12,R25,25.0,Onions,Onions,,
+Season,R25,25.0,Onions,Onions,680,617
+1,R25,25.0,Pasture,Grass/Pasture,,
+2,R25,25.0,Pasture,Grass/Pasture,,
+3,R25,25.0,Pasture,Grass/Pasture,20,12
+4,R25,25.0,Pasture,Grass/Pasture,108,85
+5,R25,25.0,Pasture,Grass/Pasture,148,120
+6,R25,25.0,Pasture,Grass/Pasture,178,148
+7,R25,25.0,Pasture,Grass/Pasture,208,201
+8,R25,25.0,Pasture,Grass/Pasture,152,146
+9,R25,25.0,Pasture,Grass/Pasture,110,98
+10,R25,25.0,Pasture,Grass/Pasture,69,54
+11,R25,25.0,Pasture,Grass/Pasture,,
+12,R25,25.0,Pasture,Grass/Pasture,,
+Season,R25,25.0,Pasture,Grass/Pasture,993,864
+1,R25,25.0,Peas,Peas,,
+2,R25,25.0,Peas,Peas,,
+3,R25,25.0,Peas,Peas,,
+4,R25,25.0,Peas,Peas,42,31
+5,R25,25.0,Peas,Peas,150,122
+6,R25,25.0,Peas,Peas,203,171
+7,R25,25.0,Peas,Peas,184,180
+8,R25,25.0,Peas,Peas,,
+9,R25,25.0,Peas,Peas,,
+10,R25,25.0,Peas,Peas,,
+11,R25,25.0,Peas,Peas,,
+12,R25,25.0,Peas,Peas,,
+Season,R25,25.0,Peas,Peas,579,504
+1,R25,25.0,Potatoes,Potatoes,,
+2,R25,25.0,Potatoes,Potatoes,,
+3,R25,25.0,Potatoes,Potatoes,,
+4,R25,25.0,Potatoes,Potatoes,,
+5,R25,25.0,Potatoes,Potatoes,37,24
+6,R25,25.0,Potatoes,Potatoes,100,79
+7,R25,25.0,Potatoes,Potatoes,217,211
+8,R25,25.0,Potatoes,Potatoes,174,168
+9,R25,25.0,Potatoes,Potatoes,117,104
+10,R25,25.0,Potatoes,Potatoes,18,16
+11,R25,25.0,Potatoes,Potatoes,,
+12,R25,25.0,Potatoes,Potatoes,,
+Season,R25,25.0,Potatoes,Potatoes,663,602
+1,R26,26.0,Alfalfa Hay,Alfalfa,,
+2,R26,26.0,Alfalfa Hay,Alfalfa,,
+3,R26,26.0,Alfalfa Hay,Alfalfa,,
+4,R26,26.0,Alfalfa Hay,Alfalfa,88,74
+5,R26,26.0,Alfalfa Hay,Alfalfa,134,110
+6,R26,26.0,Alfalfa Hay,Alfalfa,160,139
+7,R26,26.0,Alfalfa Hay,Alfalfa,199,194
+8,R26,26.0,Alfalfa Hay,Alfalfa,156,149
+9,R26,26.0,Alfalfa Hay,Alfalfa,110,103
+10,R26,26.0,Alfalfa Hay,Alfalfa,56,47
+11,R26,26.0,Alfalfa Hay,Alfalfa,,
+12,R26,26.0,Alfalfa Hay,Alfalfa,,
+Season,R26,26.0,Alfalfa Hay,Alfalfa,903,816
+1,R26,26.0,Corn (Field),Corn,,
+2,R26,26.0,Corn (Field),Corn,,
+3,R26,26.0,Corn (Field),Corn,,
+4,R26,26.0,Corn (Field),Corn,,
+5,R26,26.0,Corn (Field),Corn,63,46
+6,R26,26.0,Corn (Field),Corn,120,100
+7,R26,26.0,Corn (Field),Corn,234,228
+8,R26,26.0,Corn (Field),Corn,192,185
+9,R26,26.0,Corn (Field),Corn,117,109
+10,R26,26.0,Corn (Field),Corn,17,14
+11,R26,26.0,Corn (Field),Corn,,
+12,R26,26.0,Corn (Field),Corn,,
+Season,R26,26.0,Corn (Field),Corn,743,682
+1,R26,26.0,Corn (Silage),Corn,,
+2,R26,26.0,Corn (Silage),Corn,,
+3,R26,26.0,Corn (Silage),Corn,,
+4,R26,26.0,Corn (Silage),Corn,,
+5,R26,26.0,Corn (Silage),Corn,69,50
+6,R26,26.0,Corn (Silage),Corn,146,125
+7,R26,26.0,Corn (Silage),Corn,241,236
+8,R26,26.0,Corn (Silage),Corn,192,185
+9,R26,26.0,Corn (Silage),Corn,129,121
+10,R26,26.0,Corn (Silage),Corn,3,3
+11,R26,26.0,Corn (Silage),Corn,,
+12,R26,26.0,Corn (Silage),Corn,,
+Season,R26,26.0,Corn (Silage),Corn,780,720
+1,R26,26.0,Corn (Sweet),Sweet Corn,,
+2,R26,26.0,Corn (Sweet),Sweet Corn,,
+3,R26,26.0,Corn (Sweet),Sweet Corn,,
+4,R26,26.0,Corn (Sweet),Sweet Corn,,
+5,R26,26.0,Corn (Sweet),Sweet Corn,64,45
+6,R26,26.0,Corn (Sweet),Sweet Corn,125,104
+7,R26,26.0,Corn (Sweet),Sweet Corn,236,230
+8,R26,26.0,Corn (Sweet),Sweet Corn,84,82
+9,R26,26.0,Corn (Sweet),Sweet Corn,,
+10,R26,26.0,Corn (Sweet),Sweet Corn,,
+11,R26,26.0,Corn (Sweet),Sweet Corn,,
+12,R26,26.0,Corn (Sweet),Sweet Corn,,
+Season,R26,26.0,Corn (Sweet),Sweet Corn,509,461
+1,R26,26.0,Grain (Spring),Spring Wheat,,
+2,R26,26.0,Grain (Spring),Spring Wheat,,
+3,R26,26.0,Grain (Spring),Spring Wheat,3,3
+4,R26,26.0,Grain (Spring),Spring Wheat,56,42
+5,R26,26.0,Grain (Spring),Spring Wheat,104,82
+6,R26,26.0,Grain (Spring),Spring Wheat,184,161
+7,R26,26.0,Grain (Spring),Spring Wheat,226,221
+8,R26,26.0,Grain (Spring),Spring Wheat,17,17
+9,R26,26.0,Grain (Spring),Spring Wheat,,
+10,R26,26.0,Grain (Spring),Spring Wheat,,
+11,R26,26.0,Grain (Spring),Spring Wheat,,
+12,R26,26.0,Grain (Spring),Spring Wheat,,
+Season,R26,26.0,Grain (Spring),Spring Wheat,590,526
+1,R26,26.0,Grain (Winter),Winter Wheat,,
+2,R26,26.0,Grain (Winter),Winter Wheat,8,1
+3,R26,26.0,Grain (Winter),Winter Wheat,38,22
+4,R26,26.0,Grain (Winter),Winter Wheat,87,73
+5,R26,26.0,Grain (Winter),Winter Wheat,150,127
+6,R26,26.0,Grain (Winter),Winter Wheat,195,171
+7,R26,26.0,Grain (Winter),Winter Wheat,165,162
+8,R26,26.0,Grain (Winter),Winter Wheat,,
+9,R26,26.0,Grain (Winter),Winter Wheat,,
+10,R26,26.0,Grain (Winter),Winter Wheat,,
+11,R26,26.0,Grain (Winter),Winter Wheat,,
+12,R26,26.0,Grain (Winter),Winter Wheat,,
+Season,R26,26.0,Grain (Winter),Winter Wheat,643,556
+1,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,1,0
+2,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,9,1
+3,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,22,6
+4,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,52,40
+5,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,81,59
+6,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,132,111
+7,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,213,208
+8,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,188,181
+9,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,132,125
+10,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,85,75
+11,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,22,2
+12,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,1,0
+Season,R26,26.0,Grass Seed (Spring),Sod/Grass Seed,938,808
+1,R26,26.0,Onions,Onions,,
+2,R26,26.0,Onions,Onions,,
+3,R26,26.0,Onions,Onions,,
+4,R26,26.0,Onions,Onions,47,37
+5,R26,26.0,Onions,Onions,84,65
+6,R26,26.0,Onions,Onions,139,120
+7,R26,26.0,Onions,Onions,216,212
+8,R26,26.0,Onions,Onions,149,144
+9,R26,26.0,Onions,Onions,,
+10,R26,26.0,Onions,Onions,,
+11,R26,26.0,Onions,Onions,,
+12,R26,26.0,Onions,Onions,,
+Season,R26,26.0,Onions,Onions,635,578
+1,R26,26.0,Pasture,Grass/Pasture,,
+2,R26,26.0,Pasture,Grass/Pasture,,
+3,R26,26.0,Pasture,Grass/Pasture,8,8
+4,R26,26.0,Pasture,Grass/Pasture,101,84
+5,R26,26.0,Pasture,Grass/Pasture,142,118
+6,R26,26.0,Pasture,Grass/Pasture,170,148
+7,R26,26.0,Pasture,Grass/Pasture,212,207
+8,R26,26.0,Pasture,Grass/Pasture,164,160
+9,R26,26.0,Pasture,Grass/Pasture,120,110
+10,R26,26.0,Pasture,Grass/Pasture,78,65
+11,R26,26.0,Pasture,Grass/Pasture,,
+12,R26,26.0,Pasture,Grass/Pasture,,
+Season,R26,26.0,Pasture,Grass/Pasture,995,900
+1,R26,26.0,Potatoes,Potatoes,,
+2,R26,26.0,Potatoes,Potatoes,,
+3,R26,26.0,Potatoes,Potatoes,,
+4,R26,26.0,Potatoes,Potatoes,22,17
+5,R26,26.0,Potatoes,Potatoes,69,50
+6,R26,26.0,Potatoes,Potatoes,165,144
+7,R26,26.0,Potatoes,Potatoes,244,239
+8,R26,26.0,Potatoes,Potatoes,186,180
+9,R26,26.0,Potatoes,Potatoes,68,65
+10,R26,26.0,Potatoes,Potatoes,,
+11,R26,26.0,Potatoes,Potatoes,,
+12,R26,26.0,Potatoes,Potatoes,,
+Season,R26,26.0,Potatoes,Potatoes,754,695
+1,R27,27.0,Alfalfa Hay,Alfalfa,,
+2,R27,27.0,Alfalfa Hay,Alfalfa,,
+3,R27,27.0,Alfalfa Hay,Alfalfa,,
+4,R27,27.0,Alfalfa Hay,Alfalfa,78,59
+5,R27,27.0,Alfalfa Hay,Alfalfa,121,93
+6,R27,27.0,Alfalfa Hay,Alfalfa,147,121
+7,R27,27.0,Alfalfa Hay,Alfalfa,181,175
+8,R27,27.0,Alfalfa Hay,Alfalfa,142,139
+9,R27,27.0,Alfalfa Hay,Alfalfa,103,93
+10,R27,27.0,Alfalfa Hay,Alfalfa,54,42
+11,R27,27.0,Alfalfa Hay,Alfalfa,,
+12,R27,27.0,Alfalfa Hay,Alfalfa,,
+Season,R27,27.0,Alfalfa Hay,Alfalfa,826,722
+1,R27,27.0,Corn (Silage),Corn,,
+2,R27,27.0,Corn (Silage),Corn,,
+3,R27,27.0,Corn (Silage),Corn,,
+4,R27,27.0,Corn (Silage),Corn,,
+5,R27,27.0,Corn (Silage),Corn,65,43
+6,R27,27.0,Corn (Silage),Corn,135,110
+7,R27,27.0,Corn (Silage),Corn,220,212
+8,R27,27.0,Corn (Silage),Corn,174,172
+9,R27,27.0,Corn (Silage),Corn,121,109
+10,R27,27.0,Corn (Silage),Corn,2,2
+11,R27,27.0,Corn (Silage),Corn,,
+12,R27,27.0,Corn (Silage),Corn,,
+Season,R27,27.0,Corn (Silage),Corn,717,648
+1,R27,27.0,Grain (Spring),Spring Wheat,,
+2,R27,27.0,Grain (Spring),Spring Wheat,,
+3,R27,27.0,Grain (Spring),Spring Wheat,3,2
+4,R27,27.0,Grain (Spring),Spring Wheat,52,32
+5,R27,27.0,Grain (Spring),Spring Wheat,96,68
+6,R27,27.0,Grain (Spring),Spring Wheat,170,143
+7,R27,27.0,Grain (Spring),Spring Wheat,206,199
+8,R27,27.0,Grain (Spring),Spring Wheat,16,15
+9,R27,27.0,Grain (Spring),Spring Wheat,,
+10,R27,27.0,Grain (Spring),Spring Wheat,,
+11,R27,27.0,Grain (Spring),Spring Wheat,,
+12,R27,27.0,Grain (Spring),Spring Wheat,,
+Season,R27,27.0,Grain (Spring),Spring Wheat,543,459
+1,R27,27.0,Grain (Winter),Winter Wheat,,
+2,R27,27.0,Grain (Winter),Winter Wheat,8,1
+3,R27,27.0,Grain (Winter),Winter Wheat,33,14
+4,R27,27.0,Grain (Winter),Winter Wheat,78,58
+5,R27,27.0,Grain (Winter),Winter Wheat,136,107
+6,R27,27.0,Grain (Winter),Winter Wheat,179,152
+7,R27,27.0,Grain (Winter),Winter Wheat,151,145
+8,R27,27.0,Grain (Winter),Winter Wheat,,
+9,R27,27.0,Grain (Winter),Winter Wheat,,
+10,R27,27.0,Grain (Winter),Winter Wheat,,
+11,R27,27.0,Grain (Winter),Winter Wheat,,
+12,R27,27.0,Grain (Winter),Winter Wheat,,
+Season,R27,27.0,Grain (Winter),Winter Wheat,585,477
+1,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,1,0
+2,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,8,1
+3,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,18,2
+4,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,48,30
+5,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,76,51
+6,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,123,98
+7,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,195,188
+8,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,171,168
+9,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,125,113
+10,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,83,66
+11,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,20,2
+12,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,1,0
+Season,R27,27.0,Grass Seed (Spring),Sod/Grass Seed,869,719
+1,R27,27.0,Pasture,Grass/Pasture,,
+2,R27,27.0,Pasture,Grass/Pasture,,
+3,R27,27.0,Pasture,Grass/Pasture,7,6
+4,R27,27.0,Pasture,Grass/Pasture,89,68
+5,R27,27.0,Pasture,Grass/Pasture,128,100
+6,R27,27.0,Pasture,Grass/Pasture,157,131
+7,R27,27.0,Pasture,Grass/Pasture,193,185
+8,R27,27.0,Pasture,Grass/Pasture,151,149
+9,R27,27.0,Pasture,Grass/Pasture,111,98
+10,R27,27.0,Pasture,Grass/Pasture,75,58
+11,R27,27.0,Pasture,Grass/Pasture,,
+12,R27,27.0,Pasture,Grass/Pasture,,
+Season,R27,27.0,Pasture,Grass/Pasture,911,795
+1,R27,27.0,Potatoes,Potatoes,,
+2,R27,27.0,Potatoes,Potatoes,,
+3,R27,27.0,Potatoes,Potatoes,,
+4,R27,27.0,Potatoes,Potatoes,20,12
+5,R27,27.0,Potatoes,Potatoes,65,42
+6,R27,27.0,Potatoes,Potatoes,152,126
+7,R27,27.0,Potatoes,Potatoes,222,215
+8,R27,27.0,Potatoes,Potatoes,170,167
+9,R27,27.0,Potatoes,Potatoes,64,58
+10,R27,27.0,Potatoes,Potatoes,,
+11,R27,27.0,Potatoes,Potatoes,,
+12,R27,27.0,Potatoes,Potatoes,,
+Season,R27,27.0,Potatoes,Potatoes,693,620
+1,R3,3.0,Alfalfa Hay,Alfalfa,,
+2,R3,3.0,Alfalfa Hay,Alfalfa,,
+3,R3,3.0,Alfalfa Hay,Alfalfa,,
+4,R3,3.0,Alfalfa Hay,Alfalfa,52,3
+5,R3,3.0,Alfalfa Hay,Alfalfa,106,35
+6,R3,3.0,Alfalfa Hay,Alfalfa,116,56
+7,R3,3.0,Alfalfa Hay,Alfalfa,134,118
+8,R3,3.0,Alfalfa Hay,Alfalfa,115,90
+9,R3,3.0,Alfalfa Hay,Alfalfa,87,29
+10,R3,3.0,Alfalfa Hay,Alfalfa,54,3
+11,R3,3.0,Alfalfa Hay,Alfalfa,5,0
+12,R3,3.0,Alfalfa Hay,Alfalfa,,
+Season,R3,3.0,Alfalfa Hay,Alfalfa,669,334
+1,R3,3.0,Apples,Apples,,
+2,R3,3.0,Apples,Apples,,
+3,R3,3.0,Apples,Apples,43,0
+4,R3,3.0,Apples,Apples,78,4
+5,R3,3.0,Apples,Apples,125,52
+6,R3,3.0,Apples,Apples,151,85
+7,R3,3.0,Apples,Apples,175,158
+8,R3,3.0,Apples,Apples,148,126
+9,R3,3.0,Apples,Apples,107,48
+10,R3,3.0,Apples,Apples,53,3
+11,R3,3.0,Apples,Apples,16,0
+12,R3,3.0,Apples,Apples,,
+Season,R3,3.0,Apples,Apples,896,476
+1,R3,3.0,Beans (Dry Field),Dry Beans,,
+2,R3,3.0,Beans (Dry Field),Dry Beans,,
+3,R3,3.0,Beans (Dry Field),Dry Beans,,
+4,R3,3.0,Beans (Dry Field),Dry Beans,,
+5,R3,3.0,Beans (Dry Field),Dry Beans,61,3
+6,R3,3.0,Beans (Dry Field),Dry Beans,124,64
+7,R3,3.0,Beans (Dry Field),Dry Beans,109,99
+8,R3,3.0,Beans (Dry Field),Dry Beans,,
+9,R3,3.0,Beans (Dry Field),Dry Beans,,
+10,R3,3.0,Beans (Dry Field),Dry Beans,,
+11,R3,3.0,Beans (Dry Field),Dry Beans,,
+12,R3,3.0,Beans (Dry Field),Dry Beans,,
+Season,R3,3.0,Beans (Dry Field),Dry Beans,294,166
+1,R3,3.0,Berries,,,
+2,R3,3.0,Berries,,,
+3,R3,3.0,Berries,,,
+4,R3,3.0,Berries,,,
+5,R3,3.0,Berries,,64,4
+6,R3,3.0,Berries,,80,25
+7,R3,3.0,Berries,,104,92
+8,R3,3.0,Berries,,90,69
+9,R3,3.0,Berries,,68,11
+10,R3,3.0,Berries,,42,3
+11,R3,3.0,Berries,,10,0
+12,R3,3.0,Berries,,,
+Season,R3,3.0,Berries,,458,204
+1,R3,3.0,Cherries,Cherries,,
+2,R3,3.0,Cherries,Cherries,,
+3,R3,3.0,Cherries,Cherries,43,0
+4,R3,3.0,Cherries,Cherries,78,4
+5,R3,3.0,Cherries,Cherries,125,52
+6,R3,3.0,Cherries,Cherries,151,85
+7,R3,3.0,Cherries,Cherries,175,158
+8,R3,3.0,Cherries,Cherries,148,126
+9,R3,3.0,Cherries,Cherries,107,48
+10,R3,3.0,Cherries,Cherries,53,3
+11,R3,3.0,Cherries,Cherries,16,0
+12,R3,3.0,Cherries,Cherries,,
+Season,R3,3.0,Cherries,Cherries,896,476
+1,R3,3.0,Corn (Field),Corn,,
+2,R3,3.0,Corn (Field),Corn,,
+3,R3,3.0,Corn (Field),Corn,,
+4,R3,3.0,Corn (Field),Corn,,
+5,R3,3.0,Corn (Field),Corn,23,0
+6,R3,3.0,Corn (Field),Corn,67,14
+7,R3,3.0,Corn (Field),Corn,154,136
+8,R3,3.0,Corn (Field),Corn,136,114
+9,R3,3.0,Corn (Field),Corn,49,12
+10,R3,3.0,Corn (Field),Corn,,
+11,R3,3.0,Corn (Field),Corn,,
+12,R3,3.0,Corn (Field),Corn,,
+Season,R3,3.0,Corn (Field),Corn,429,276
+1,R3,3.0,Corn (Silage),Corn,,
+2,R3,3.0,Corn (Silage),Corn,,
+3,R3,3.0,Corn (Silage),Corn,,
+4,R3,3.0,Corn (Silage),Corn,,
+5,R3,3.0,Corn (Silage),Corn,31,1
+6,R3,3.0,Corn (Silage),Corn,98,41
+7,R3,3.0,Corn (Silage),Corn,165,147
+8,R3,3.0,Corn (Silage),Corn,139,114
+9,R3,3.0,Corn (Silage),Corn,26,12
+10,R3,3.0,Corn (Silage),Corn,,
+11,R3,3.0,Corn (Silage),Corn,,
+12,R3,3.0,Corn (Silage),Corn,,
+Season,R3,3.0,Corn (Silage),Corn,459,315
+1,R3,3.0,Corn (Sweet),Sweet Corn,,
+2,R3,3.0,Corn (Sweet),Sweet Corn,,
+3,R3,3.0,Corn (Sweet),Sweet Corn,,
+4,R3,3.0,Corn (Sweet),Sweet Corn,,
+5,R3,3.0,Corn (Sweet),Sweet Corn,38,2
+6,R3,3.0,Corn (Sweet),Sweet Corn,99,41
+7,R3,3.0,Corn (Sweet),Sweet Corn,164,147
+8,R3,3.0,Corn (Sweet),Sweet Corn,142,118
+9,R3,3.0,Corn (Sweet),Sweet Corn,33,15
+10,R3,3.0,Corn (Sweet),Sweet Corn,,
+11,R3,3.0,Corn (Sweet),Sweet Corn,,
+12,R3,3.0,Corn (Sweet),Sweet Corn,,
+Season,R3,3.0,Corn (Sweet),Sweet Corn,476,323
+1,R3,3.0,Filberts,,,
+2,R3,3.0,Filberts,,,
+3,R3,3.0,Filberts,,43,0
+4,R3,3.0,Filberts,,78,4
+5,R3,3.0,Filberts,,125,52
+6,R3,3.0,Filberts,,151,85
+7,R3,3.0,Filberts,,175,158
+8,R3,3.0,Filberts,,148,126
+9,R3,3.0,Filberts,,107,48
+10,R3,3.0,Filberts,,53,3
+11,R3,3.0,Filberts,,16,0
+12,R3,3.0,Filberts,,,
+Season,R3,3.0,Filberts,,896,476
+1,R3,3.0,Grain (Spring),Spring Wheat,,
+2,R3,3.0,Grain (Spring),Spring Wheat,,
+3,R3,3.0,Grain (Spring),Spring Wheat,17,0
+4,R3,3.0,Grain (Spring),Spring Wheat,55,2
+5,R3,3.0,Grain (Spring),Spring Wheat,109,37
+6,R3,3.0,Grain (Spring),Spring Wheat,142,77
+7,R3,3.0,Grain (Spring),Spring Wheat,144,128
+8,R3,3.0,Grain (Spring),Spring Wheat,16,11
+9,R3,3.0,Grain (Spring),Spring Wheat,,
+10,R3,3.0,Grain (Spring),Spring Wheat,,
+11,R3,3.0,Grain (Spring),Spring Wheat,,
+12,R3,3.0,Grain (Spring),Spring Wheat,,
+Season,R3,3.0,Grain (Spring),Spring Wheat,483,255
+1,R3,3.0,Grain (Winter),Winter Wheat,,
+2,R3,3.0,Grain (Winter),Winter Wheat,,
+3,R3,3.0,Grain (Winter),Winter Wheat,28,0
+4,R3,3.0,Grain (Winter),Winter Wheat,58,2
+5,R3,3.0,Grain (Winter),Winter Wheat,111,40
+6,R3,3.0,Grain (Winter),Winter Wheat,142,77
+7,R3,3.0,Grain (Winter),Winter Wheat,137,123
+8,R3,3.0,Grain (Winter),Winter Wheat,4,4
+9,R3,3.0,Grain (Winter),Winter Wheat,,
+10,R3,3.0,Grain (Winter),Winter Wheat,,
+11,R3,3.0,Grain (Winter),Winter Wheat,,
+12,R3,3.0,Grain (Winter),Winter Wheat,,
+Season,R3,3.0,Grain (Winter),Winter Wheat,480,246
+1,R3,3.0,Grain Seed (Fall),,7,0
+2,R3,3.0,Grain Seed (Fall),,17,0
+3,R3,3.0,Grain Seed (Fall),,43,0
+4,R3,3.0,Grain Seed (Fall),,83,4
+5,R3,3.0,Grain Seed (Fall),,130,56
+6,R3,3.0,Grain Seed (Fall),,142,78
+7,R3,3.0,Grain Seed (Fall),,164,146
+8,R3,3.0,Grain Seed (Fall),,126,103
+9,R3,3.0,Grain Seed (Fall),,50,4
+10,R3,3.0,Grain Seed (Fall),,41,2
+11,R3,3.0,Grain Seed (Fall),,14,0
+12,R3,3.0,Grain Seed (Fall),,7,0
+Season,R3,3.0,Grain Seed (Fall),,824,393
+1,R3,3.0,Grain Seed (Spring),,7,0
+2,R3,3.0,Grain Seed (Spring),,13,0
+3,R3,3.0,Grain Seed (Spring),,21,0
+4,R3,3.0,Grain Seed (Spring),,46,1
+5,R3,3.0,Grain Seed (Spring),,71,5
+6,R3,3.0,Grain Seed (Spring),,99,41
+7,R3,3.0,Grain Seed (Spring),,145,129
+8,R3,3.0,Grain Seed (Spring),,137,114
+9,R3,3.0,Grain Seed (Spring),,105,43
+10,R3,3.0,Grain Seed (Spring),,65,4
+11,R3,3.0,Grain Seed (Spring),,21,0
+12,R3,3.0,Grain Seed (Spring),,9,0
+Season,R3,3.0,Grain Seed (Spring),,739,337
+1,R3,3.0,Grapes,Grapes,,
+2,R3,3.0,Grapes,Grapes,,
+3,R3,3.0,Grapes,Grapes,,
+4,R3,3.0,Grapes,Grapes,40,1
+5,R3,3.0,Grapes,Grapes,68,5
+6,R3,3.0,Grapes,Grapes,84,26
+7,R3,3.0,Grapes,Grapes,98,84
+8,R3,3.0,Grapes,Grapes,82,64
+9,R3,3.0,Grapes,Grapes,62,7
+10,R3,3.0,Grapes,Grapes,32,2
+11,R3,3.0,Grapes,Grapes,7,0
+12,R3,3.0,Grapes,Grapes,,
+Season,R3,3.0,Grapes,Grapes,473,189
+1,R3,3.0,Onions,Onions,,
+2,R3,3.0,Onions,Onions,,
+3,R3,3.0,Onions,Onions,,
+4,R3,3.0,Onions,Onions,25,1
+5,R3,3.0,Onions,Onions,101,43
+6,R3,3.0,Onions,Onions,129,74
+7,R3,3.0,Onions,Onions,146,133
+8,R3,3.0,Onions,Onions,111,91
+9,R3,3.0,Onions,Onions,,
+10,R3,3.0,Onions,Onions,,
+11,R3,3.0,Onions,Onions,,
+12,R3,3.0,Onions,Onions,,
+Season,R3,3.0,Onions,Onions,512,342
+1,R3,3.0,Pasture,Grass/Pasture,,
+2,R3,3.0,Pasture,Grass/Pasture,,
+3,R3,3.0,Pasture,Grass/Pasture,34,1
+4,R3,3.0,Pasture,Grass/Pasture,81,4
+5,R3,3.0,Pasture,Grass/Pasture,114,42
+6,R3,3.0,Pasture,Grass/Pasture,126,65
+7,R3,3.0,Pasture,Grass/Pasture,145,127
+8,R3,3.0,Pasture,Grass/Pasture,121,101
+9,R3,3.0,Pasture,Grass/Pasture,92,33
+10,R3,3.0,Pasture,Grass/Pasture,58,4
+11,R3,3.0,Pasture,Grass/Pasture,9,0
+12,R3,3.0,Pasture,Grass/Pasture,,
+Season,R3,3.0,Pasture,Grass/Pasture,780,377
+1,R3,3.0,Pears,Pears,,
+2,R3,3.0,Pears,Pears,,
+3,R3,3.0,Pears,Pears,43,0
+4,R3,3.0,Pears,Pears,74,3
+5,R3,3.0,Pears,Pears,114,41
+6,R3,3.0,Pears,Pears,138,76
+7,R3,3.0,Pears,Pears,162,143
+8,R3,3.0,Pears,Pears,139,114
+9,R3,3.0,Pears,Pears,100,38
+10,R3,3.0,Pears,Pears,50,3
+11,R3,3.0,Pears,Pears,16,0
+12,R3,3.0,Pears,Pears,,
+Season,R3,3.0,Pears,Pears,836,418
+1,R3,3.0,Peas,Peas,,
+2,R3,3.0,Peas,Peas,,
+3,R3,3.0,Peas,Peas,34,0
+4,R3,3.0,Peas,Peas,81,4
+5,R3,3.0,Peas,Peas,129,56
+6,R3,3.0,Peas,Peas,53,31
+7,R3,3.0,Peas,Peas,,
+8,R3,3.0,Peas,Peas,,
+9,R3,3.0,Peas,Peas,,
+10,R3,3.0,Peas,Peas,,
+11,R3,3.0,Peas,Peas,,
+12,R3,3.0,Peas,Peas,,
+Season,R3,3.0,Peas,Peas,297,91
+1,R3,3.0,Plums,Plums,,
+2,R3,3.0,Plums,Plums,,
+3,R3,3.0,Plums,Plums,43,0
+4,R3,3.0,Plums,Plums,74,3
+5,R3,3.0,Plums,Plums,114,41
+6,R3,3.0,Plums,Plums,138,76
+7,R3,3.0,Plums,Plums,162,143
+8,R3,3.0,Plums,Plums,139,114
+9,R3,3.0,Plums,Plums,100,38
+10,R3,3.0,Plums,Plums,50,3
+11,R3,3.0,Plums,Plums,16,0
+12,R3,3.0,Plums,Plums,,
+Season,R3,3.0,Plums,Plums,836,418
+1,R3,3.0,Potatoes,Potatoes,,
+2,R3,3.0,Potatoes,Potatoes,,
+3,R3,3.0,Potatoes,Potatoes,,
+4,R3,3.0,Potatoes,Potatoes,6,0
+5,R3,3.0,Potatoes,Potatoes,52,3
+6,R3,3.0,Potatoes,Potatoes,95,41
+7,R3,3.0,Potatoes,Potatoes,160,144
+8,R3,3.0,Potatoes,Potatoes,142,119
+9,R3,3.0,Potatoes,Potatoes,96,42
+10,R3,3.0,Potatoes,Potatoes,15,1
+11,R3,3.0,Potatoes,Potatoes,,
+12,R3,3.0,Potatoes,Potatoes,,
+Season,R3,3.0,Potatoes,Potatoes,566,350
+1,R3,3.0,Tomatoes,,,
+2,R3,3.0,Tomatoes,,,
+3,R3,3.0,Tomatoes,,,
+4,R3,3.0,Tomatoes,,,
+5,R3,3.0,Tomatoes,,51,2
+6,R3,3.0,Tomatoes,,118,57
+7,R3,3.0,Tomatoes,,167,150
+8,R3,3.0,Tomatoes,,72,60
+9,R3,3.0,Tomatoes,,,
+10,R3,3.0,Tomatoes,,,
+11,R3,3.0,Tomatoes,,,
+12,R3,3.0,Tomatoes,,,
+Season,R3,3.0,Tomatoes,,408,269
+1,R4,4.0,Alfalfa Hay,Alfalfa,,
+2,R4,4.0,Alfalfa Hay,Alfalfa,,
+3,R4,4.0,Alfalfa Hay,Alfalfa,,
+4,R4,4.0,Alfalfa Hay,Alfalfa,52,13
+5,R4,4.0,Alfalfa Hay,Alfalfa,102,59
+6,R4,4.0,Alfalfa Hay,Alfalfa,110,77
+7,R4,4.0,Alfalfa Hay,Alfalfa,126,116
+8,R4,4.0,Alfalfa Hay,Alfalfa,108,99
+9,R4,4.0,Alfalfa Hay,Alfalfa,83,47
+10,R4,4.0,Alfalfa Hay,Alfalfa,49,3
+11,R4,4.0,Alfalfa Hay,Alfalfa,4,0
+12,R4,4.0,Alfalfa Hay,Alfalfa,,
+Season,R4,4.0,Alfalfa Hay,Alfalfa,634,414
+1,R4,4.0,Apples,Apples,,
+2,R4,4.0,Apples,Apples,,
+3,R4,4.0,Apples,Apples,41,2
+4,R4,4.0,Apples,Apples,78,20
+5,R4,4.0,Apples,Apples,122,77
+6,R4,4.0,Apples,Apples,144,108
+7,R4,4.0,Apples,Apples,166,155
+8,R4,4.0,Apples,Apples,143,131
+9,R4,4.0,Apples,Apples,104,62
+10,R4,4.0,Apples,Apples,48,3
+11,R4,4.0,Apples,Apples,14,0
+12,R4,4.0,Apples,Apples,,
+Season,R4,4.0,Apples,Apples,860,558
+1,R4,4.0,Beans (Dry Field),Dry Beans,,
+2,R4,4.0,Beans (Dry Field),Dry Beans,,
+3,R4,4.0,Beans (Dry Field),Dry Beans,,
+4,R4,4.0,Beans (Dry Field),Dry Beans,,
+5,R4,4.0,Beans (Dry Field),Dry Beans,59,24
+6,R4,4.0,Beans (Dry Field),Dry Beans,119,85
+7,R4,4.0,Beans (Dry Field),Dry Beans,104,96
+8,R4,4.0,Beans (Dry Field),Dry Beans,,
+9,R4,4.0,Beans (Dry Field),Dry Beans,,
+10,R4,4.0,Beans (Dry Field),Dry Beans,,
+11,R4,4.0,Beans (Dry Field),Dry Beans,,
+12,R4,4.0,Beans (Dry Field),Dry Beans,,
+Season,R4,4.0,Beans (Dry Field),Dry Beans,282,205
+1,R4,4.0,Berries,,,
+2,R4,4.0,Berries,,,
+3,R4,4.0,Berries,,,
+4,R4,4.0,Berries,,,
+5,R4,4.0,Berries,,63,26
+6,R4,4.0,Berries,,78,44
+7,R4,4.0,Berries,,98,89
+8,R4,4.0,Berries,,86,78
+9,R4,4.0,Berries,,65,31
+10,R4,4.0,Berries,,39,2
+11,R4,4.0,Berries,,9,0
+12,R4,4.0,Berries,,,
+Season,R4,4.0,Berries,,438,270
+1,R4,4.0,Cherries,Cherries,,
+2,R4,4.0,Cherries,Cherries,,
+3,R4,4.0,Cherries,Cherries,41,2
+4,R4,4.0,Cherries,Cherries,78,20
+5,R4,4.0,Cherries,Cherries,122,77
+6,R4,4.0,Cherries,Cherries,144,108
+7,R4,4.0,Cherries,Cherries,166,155
+8,R4,4.0,Cherries,Cherries,143,131
+9,R4,4.0,Cherries,Cherries,104,62
+10,R4,4.0,Cherries,Cherries,48,3
+11,R4,4.0,Cherries,Cherries,14,0
+12,R4,4.0,Cherries,Cherries,,
+Season,R4,4.0,Cherries,Cherries,860,558
+1,R4,4.0,Corn (Field),Corn,,
+2,R4,4.0,Corn (Field),Corn,,
+3,R4,4.0,Corn (Field),Corn,,
+4,R4,4.0,Corn (Field),Corn,,
+5,R4,4.0,Corn (Field),Corn,23,1
+6,R4,4.0,Corn (Field),Corn,63,36
+7,R4,4.0,Corn (Field),Corn,144,134
+8,R4,4.0,Corn (Field),Corn,132,121
+9,R4,4.0,Corn (Field),Corn,47,24
+10,R4,4.0,Corn (Field),Corn,,
+11,R4,4.0,Corn (Field),Corn,,
+12,R4,4.0,Corn (Field),Corn,,
+Season,R4,4.0,Corn (Field),Corn,409,316
+1,R4,4.0,Corn (Silage),Corn,,
+2,R4,4.0,Corn (Silage),Corn,,
+3,R4,4.0,Corn (Silage),Corn,,
+4,R4,4.0,Corn (Silage),Corn,,
+5,R4,4.0,Corn (Silage),Corn,31,3
+6,R4,4.0,Corn (Silage),Corn,94,64
+7,R4,4.0,Corn (Silage),Corn,154,144
+8,R4,4.0,Corn (Silage),Corn,131,120
+9,R4,4.0,Corn (Silage),Corn,25,17
+10,R4,4.0,Corn (Silage),Corn,,
+11,R4,4.0,Corn (Silage),Corn,,
+12,R4,4.0,Corn (Silage),Corn,,
+Season,R4,4.0,Corn (Silage),Corn,435,348
+1,R4,4.0,Corn (Sweet),Sweet Corn,,
+2,R4,4.0,Corn (Sweet),Sweet Corn,,
+3,R4,4.0,Corn (Sweet),Sweet Corn,,
+4,R4,4.0,Corn (Sweet),Sweet Corn,,
+5,R4,4.0,Corn (Sweet),Sweet Corn,37,16
+6,R4,4.0,Corn (Sweet),Sweet Corn,95,64
+7,R4,4.0,Corn (Sweet),Sweet Corn,154,144
+8,R4,4.0,Corn (Sweet),Sweet Corn,134,123
+9,R4,4.0,Corn (Sweet),Sweet Corn,32,22
+10,R4,4.0,Corn (Sweet),Sweet Corn,,
+11,R4,4.0,Corn (Sweet),Sweet Corn,,
+12,R4,4.0,Corn (Sweet),Sweet Corn,,
+Season,R4,4.0,Corn (Sweet),Sweet Corn,452,369
+1,R4,4.0,Filberts,,,
+2,R4,4.0,Filberts,,,
+3,R4,4.0,Filberts,,41,2
+4,R4,4.0,Filberts,,78,20
+5,R4,4.0,Filberts,,122,77
+6,R4,4.0,Filberts,,144,108
+7,R4,4.0,Filberts,,166,155
+8,R4,4.0,Filberts,,143,131
+9,R4,4.0,Filberts,,104,62
+10,R4,4.0,Filberts,,48,3
+11,R4,4.0,Filberts,,14,0
+12,R4,4.0,Filberts,,,
+Season,R4,4.0,Filberts,,860,558
+1,R4,4.0,Grain (Spring),Spring Wheat,,
+2,R4,4.0,Grain (Spring),Spring Wheat,,
+3,R4,4.0,Grain (Spring),Spring Wheat,16,1
+4,R4,4.0,Grain (Spring),Spring Wheat,54,4
+5,R4,4.0,Grain (Spring),Spring Wheat,105,64
+6,R4,4.0,Grain (Spring),Spring Wheat,136,99
+7,R4,4.0,Grain (Spring),Spring Wheat,136,126
+8,R4,4.0,Grain (Spring),Spring Wheat,15,14
+9,R4,4.0,Grain (Spring),Spring Wheat,,
+10,R4,4.0,Grain (Spring),Spring Wheat,,
+11,R4,4.0,Grain (Spring),Spring Wheat,,
+12,R4,4.0,Grain (Spring),Spring Wheat,,
+Season,R4,4.0,Grain (Spring),Spring Wheat,462,308
+1,R4,4.0,Grain (Winter),Winter Wheat,,
+2,R4,4.0,Grain (Winter),Winter Wheat,,
+3,R4,4.0,Grain (Winter),Winter Wheat,28,1
+4,R4,4.0,Grain (Winter),Winter Wheat,57,5
+5,R4,4.0,Grain (Winter),Winter Wheat,108,67
+6,R4,4.0,Grain (Winter),Winter Wheat,136,99
+7,R4,4.0,Grain (Winter),Winter Wheat,130,121
+8,R4,4.0,Grain (Winter),Winter Wheat,3,3
+9,R4,4.0,Grain (Winter),Winter Wheat,,
+10,R4,4.0,Grain (Winter),Winter Wheat,,
+11,R4,4.0,Grain (Winter),Winter Wheat,,
+12,R4,4.0,Grain (Winter),Winter Wheat,,
+Season,R4,4.0,Grain (Winter),Winter Wheat,462,296
+1,R4,4.0,Grain Seed (Fall),,7,0
+2,R4,4.0,Grain Seed (Fall),,17,0
+3,R4,4.0,Grain Seed (Fall),,41,2
+4,R4,4.0,Grain Seed (Fall),,83,22
+5,R4,4.0,Grain Seed (Fall),,126,80
+6,R4,4.0,Grain Seed (Fall),,136,99
+7,R4,4.0,Grain Seed (Fall),,154,143
+8,R4,4.0,Grain Seed (Fall),,119,110
+9,R4,4.0,Grain Seed (Fall),,48,14
+10,R4,4.0,Grain Seed (Fall),,38,2
+11,R4,4.0,Grain Seed (Fall),,12,0
+12,R4,4.0,Grain Seed (Fall),,4,0
+Season,R4,4.0,Grain Seed (Fall),,785,472
+1,R4,4.0,Grain Seed (Spring),,6,0
+2,R4,4.0,Grain Seed (Spring),,14,0
+3,R4,4.0,Grain Seed (Spring),,19,0
+4,R4,4.0,Grain Seed (Spring),,45,3
+5,R4,4.0,Grain Seed (Spring),,68,29
+6,R4,4.0,Grain Seed (Spring),,95,64
+7,R4,4.0,Grain Seed (Spring),,138,127
+8,R4,4.0,Grain Seed (Spring),,131,120
+9,R4,4.0,Grain Seed (Spring),,100,60
+10,R4,4.0,Grain Seed (Spring),,59,4
+11,R4,4.0,Grain Seed (Spring),,19,0
+12,R4,4.0,Grain Seed (Spring),,7,0
+Season,R4,4.0,Grain Seed (Spring),,701,407
+1,R4,4.0,Grapes,Grapes,,
+2,R4,4.0,Grapes,Grapes,,
+3,R4,4.0,Grapes,Grapes,,
+4,R4,4.0,Grapes,Grapes,39,2
+5,R4,4.0,Grapes,Grapes,66,27
+6,R4,4.0,Grapes,Grapes,80,48
+7,R4,4.0,Grapes,Grapes,92,83
+8,R4,4.0,Grapes,Grapes,79,72
+9,R4,4.0,Grapes,Grapes,61,25
+10,R4,4.0,Grapes,Grapes,28,1
+11,R4,4.0,Grapes,Grapes,7,0
+12,R4,4.0,Grapes,Grapes,,
+Season,R4,4.0,Grapes,Grapes,452,258
+1,R4,4.0,Onions,Onions,,
+2,R4,4.0,Onions,Onions,,
+3,R4,4.0,Onions,Onions,,
+4,R4,4.0,Onions,Onions,24,2
+5,R4,4.0,Onions,Onions,98,62
+6,R4,4.0,Onions,Onions,123,93
+7,R4,4.0,Onions,Onions,140,131
+8,R4,4.0,Onions,Onions,105,96
+9,R4,4.0,Onions,Onions,,
+10,R4,4.0,Onions,Onions,,
+11,R4,4.0,Onions,Onions,,
+12,R4,4.0,Onions,Onions,,
+Season,R4,4.0,Onions,Onions,490,384
+1,R4,4.0,Pasture,Grass/Pasture,,
+2,R4,4.0,Pasture,Grass/Pasture,,
+3,R4,4.0,Pasture,Grass/Pasture,35,1
+4,R4,4.0,Pasture,Grass/Pasture,80,21
+5,R4,4.0,Pasture,Grass/Pasture,110,70
+6,R4,4.0,Pasture,Grass/Pasture,120,86
+7,R4,4.0,Pasture,Grass/Pasture,136,127
+8,R4,4.0,Pasture,Grass/Pasture,117,108
+9,R4,4.0,Pasture,Grass/Pasture,90,52
+10,R4,4.0,Pasture,Grass/Pasture,53,3
+11,R4,4.0,Pasture,Grass/Pasture,9,0
+12,R4,4.0,Pasture,Grass/Pasture,,
+Season,R4,4.0,Pasture,Grass/Pasture,750,468
+1,R4,4.0,Pears,Pears,,
+2,R4,4.0,Pears,Pears,,
+3,R4,4.0,Pears,Pears,41,2
+4,R4,4.0,Pears,Pears,74,13
+5,R4,4.0,Pears,Pears,110,70
+6,R4,4.0,Pears,Pears,132,97
+7,R4,4.0,Pears,Pears,152,142
+8,R4,4.0,Pears,Pears,131,120
+9,R4,4.0,Pears,Pears,95,55
+10,R4,4.0,Pears,Pears,45,3
+11,R4,4.0,Pears,Pears,14,0
+12,R4,4.0,Pears,Pears,,
+Season,R4,4.0,Pears,Pears,794,502
+1,R4,4.0,Peas,Peas,,
+2,R4,4.0,Peas,Peas,,
+3,R4,4.0,Peas,Peas,32,1
+4,R4,4.0,Peas,Peas,81,21
+5,R4,4.0,Peas,Peas,125,79
+6,R4,4.0,Peas,Peas,50,40
+7,R4,4.0,Peas,Peas,,
+8,R4,4.0,Peas,Peas,,
+9,R4,4.0,Peas,Peas,,
+10,R4,4.0,Peas,Peas,,
+11,R4,4.0,Peas,Peas,,
+12,R4,4.0,Peas,Peas,,
+Season,R4,4.0,Peas,Peas,288,141
+1,R4,4.0,Plums,Plums,,
+2,R4,4.0,Plums,Plums,,
+3,R4,4.0,Plums,Plums,41,2
+4,R4,4.0,Plums,Plums,74,13
+5,R4,4.0,Plums,Plums,110,70
+6,R4,4.0,Plums,Plums,132,97
+7,R4,4.0,Plums,Plums,152,142
+8,R4,4.0,Plums,Plums,131,120
+9,R4,4.0,Plums,Plums,95,55
+10,R4,4.0,Plums,Plums,45,3
+11,R4,4.0,Plums,Plums,14,0
+12,R4,4.0,Plums,Plums,,
+Season,R4,4.0,Plums,Plums,794,502
+1,R4,4.0,Potatoes,Potatoes,,
+2,R4,4.0,Potatoes,Potatoes,,
+3,R4,4.0,Potatoes,Potatoes,,
+4,R4,4.0,Potatoes,Potatoes,6,0
+5,R4,4.0,Potatoes,Potatoes,51,16
+6,R4,4.0,Potatoes,Potatoes,91,63
+7,R4,4.0,Potatoes,Potatoes,151,141
+8,R4,4.0,Potatoes,Potatoes,133,120
+9,R4,4.0,Potatoes,Potatoes,91,54
+10,R4,4.0,Potatoes,Potatoes,14,1
+11,R4,4.0,Potatoes,Potatoes,,
+12,R4,4.0,Potatoes,Potatoes,,
+Season,R4,4.0,Potatoes,Potatoes,537,395
+1,R4,4.0,Tomatoes,,,
+2,R4,4.0,Tomatoes,,,
+3,R4,4.0,Tomatoes,,,
+4,R4,4.0,Tomatoes,,,
+5,R4,4.0,Tomatoes,,50,15
+6,R4,4.0,Tomatoes,,112,79
+7,R4,4.0,Tomatoes,,158,148
+8,R4,4.0,Tomatoes,,69,64
+9,R4,4.0,Tomatoes,,,
+10,R4,4.0,Tomatoes,,,
+11,R4,4.0,Tomatoes,,,
+12,R4,4.0,Tomatoes,,,
+Season,R4,4.0,Tomatoes,,389,306
+1,R5,5.0,Alfalfa Hay,Alfalfa,,
+2,R5,5.0,Alfalfa Hay,Alfalfa,,
+3,R5,5.0,Alfalfa Hay,Alfalfa,,
+4,R5,5.0,Alfalfa Hay,Alfalfa,49,3
+5,R5,5.0,Alfalfa Hay,Alfalfa,98,36
+6,R5,5.0,Alfalfa Hay,Alfalfa,115,70
+7,R5,5.0,Alfalfa Hay,Alfalfa,139,131
+8,R5,5.0,Alfalfa Hay,Alfalfa,114,103
+9,R5,5.0,Alfalfa Hay,Alfalfa,87,47
+10,R5,5.0,Alfalfa Hay,Alfalfa,54,3
+11,R5,5.0,Alfalfa Hay,Alfalfa,4,0
+12,R5,5.0,Alfalfa Hay,Alfalfa,,
+Season,R5,5.0,Alfalfa Hay,Alfalfa,660,393
+1,R5,5.0,Apples,Apples,,
+2,R5,5.0,Apples,Apples,,
+3,R5,5.0,Apples,Apples,38,1
+4,R5,5.0,Apples,Apples,73,5
+5,R5,5.0,Apples,Apples,116,51
+6,R5,5.0,Apples,Apples,152,103
+7,R5,5.0,Apples,Apples,186,175
+8,R5,5.0,Apples,Apples,152,140
+9,R5,5.0,Apples,Apples,111,65
+10,R5,5.0,Apples,Apples,53,3
+11,R5,5.0,Apples,Apples,14,0
+12,R5,5.0,Apples,Apples,,
+Season,R5,5.0,Apples,Apples,895,543
+1,R5,5.0,Beans (Dry Field),Dry Beans,,
+2,R5,5.0,Beans (Dry Field),Dry Beans,,
+3,R5,5.0,Beans (Dry Field),Dry Beans,,
+4,R5,5.0,Beans (Dry Field),Dry Beans,,
+5,R5,5.0,Beans (Dry Field),Dry Beans,57,5
+6,R5,5.0,Beans (Dry Field),Dry Beans,125,77
+7,R5,5.0,Beans (Dry Field),Dry Beans,116,109
+8,R5,5.0,Beans (Dry Field),Dry Beans,,
+9,R5,5.0,Beans (Dry Field),Dry Beans,,
+10,R5,5.0,Beans (Dry Field),Dry Beans,,
+11,R5,5.0,Beans (Dry Field),Dry Beans,,
+12,R5,5.0,Beans (Dry Field),Dry Beans,,
+Season,R5,5.0,Beans (Dry Field),Dry Beans,298,191
+1,R5,5.0,Berries,,,
+2,R5,5.0,Berries,,,
+3,R5,5.0,Berries,,,
+4,R5,5.0,Berries,,,
+5,R5,5.0,Berries,,61,5
+6,R5,5.0,Berries,,82,37
+7,R5,5.0,Berries,,109,100
+8,R5,5.0,Berries,,90,78
+9,R5,5.0,Berries,,69,30
+10,R5,5.0,Berries,,42,2
+11,R5,5.0,Berries,,9,0
+12,R5,5.0,Berries,,,
+Season,R5,5.0,Berries,,462,252
+1,R5,5.0,Cherries,Cherries,,
+2,R5,5.0,Cherries,Cherries,,
+3,R5,5.0,Cherries,Cherries,38,1
+4,R5,5.0,Cherries,Cherries,73,5
+5,R5,5.0,Cherries,Cherries,116,51
+6,R5,5.0,Cherries,Cherries,152,103
+7,R5,5.0,Cherries,Cherries,186,175
+8,R5,5.0,Cherries,Cherries,152,140
+9,R5,5.0,Cherries,Cherries,111,65
+10,R5,5.0,Cherries,Cherries,53,3
+11,R5,5.0,Cherries,Cherries,14,0
+12,R5,5.0,Cherries,Cherries,,
+Season,R5,5.0,Cherries,Cherries,895,543
+1,R5,5.0,Corn (Field),Corn,,
+2,R5,5.0,Corn (Field),Corn,,
+3,R5,5.0,Corn (Field),Corn,,
+4,R5,5.0,Corn (Field),Corn,,
+5,R5,5.0,Corn (Field),Corn,22,1
+6,R5,5.0,Corn (Field),Corn,68,26
+7,R5,5.0,Corn (Field),Corn,161,150
+8,R5,5.0,Corn (Field),Corn,140,127
+9,R5,5.0,Corn (Field),Corn,50,24
+10,R5,5.0,Corn (Field),Corn,,
+11,R5,5.0,Corn (Field),Corn,,
+12,R5,5.0,Corn (Field),Corn,,
+Season,R5,5.0,Corn (Field),Corn,441,328
+1,R5,5.0,Corn (Silage),Corn,,
+2,R5,5.0,Corn (Silage),Corn,,
+3,R5,5.0,Corn (Silage),Corn,,
+4,R5,5.0,Corn (Silage),Corn,,
+5,R5,5.0,Corn (Silage),Corn,30,1
+6,R5,5.0,Corn (Silage),Corn,99,54
+7,R5,5.0,Corn (Silage),Corn,173,162
+8,R5,5.0,Corn (Silage),Corn,139,127
+9,R5,5.0,Corn (Silage),Corn,26,18
+10,R5,5.0,Corn (Silage),Corn,,
+11,R5,5.0,Corn (Silage),Corn,,
+12,R5,5.0,Corn (Silage),Corn,,
+Season,R5,5.0,Corn (Silage),Corn,467,362
+1,R5,5.0,Corn (Sweet),Sweet Corn,,
+2,R5,5.0,Corn (Sweet),Sweet Corn,,
+3,R5,5.0,Corn (Sweet),Sweet Corn,,
+4,R5,5.0,Corn (Sweet),Sweet Corn,,
+5,R5,5.0,Corn (Sweet),Sweet Corn,36,3
+6,R5,5.0,Corn (Sweet),Sweet Corn,100,54
+7,R5,5.0,Corn (Sweet),Sweet Corn,173,162
+8,R5,5.0,Corn (Sweet),Sweet Corn,142,129
+9,R5,5.0,Corn (Sweet),Sweet Corn,34,22
+10,R5,5.0,Corn (Sweet),Sweet Corn,,
+11,R5,5.0,Corn (Sweet),Sweet Corn,,
+12,R5,5.0,Corn (Sweet),Sweet Corn,,
+Season,R5,5.0,Corn (Sweet),Sweet Corn,485,370
+1,R5,5.0,Filberts,,,
+2,R5,5.0,Filberts,,,
+3,R5,5.0,Filberts,,38,1
+4,R5,5.0,Filberts,,73,5
+5,R5,5.0,Filberts,,116,51
+6,R5,5.0,Filberts,,152,103
+7,R5,5.0,Filberts,,186,175
+8,R5,5.0,Filberts,,152,140
+9,R5,5.0,Filberts,,111,65
+10,R5,5.0,Filberts,,53,3
+11,R5,5.0,Filberts,,14,0
+12,R5,5.0,Filberts,,,
+Season,R5,5.0,Filberts,,895,543
+1,R5,5.0,Grain (Spring),Spring Wheat,,
+2,R5,5.0,Grain (Spring),Spring Wheat,,
+3,R5,5.0,Grain (Spring),Spring Wheat,15,0
+4,R5,5.0,Grain (Spring),Spring Wheat,53,2
+5,R5,5.0,Grain (Spring),Spring Wheat,102,38
+6,R5,5.0,Grain (Spring),Spring Wheat,143,93
+7,R5,5.0,Grain (Spring),Spring Wheat,150,140
+8,R5,5.0,Grain (Spring),Spring Wheat,15,13
+9,R5,5.0,Grain (Spring),Spring Wheat,,
+10,R5,5.0,Grain (Spring),Spring Wheat,,
+11,R5,5.0,Grain (Spring),Spring Wheat,,
+12,R5,5.0,Grain (Spring),Spring Wheat,,
+Season,R5,5.0,Grain (Spring),Spring Wheat,478,286
+1,R5,5.0,Grain (Winter),Winter Wheat,,
+2,R5,5.0,Grain (Winter),Winter Wheat,,
+3,R5,5.0,Grain (Winter),Winter Wheat,25,0
+4,R5,5.0,Grain (Winter),Winter Wheat,56,2
+5,R5,5.0,Grain (Winter),Winter Wheat,104,39
+6,R5,5.0,Grain (Winter),Winter Wheat,143,93
+7,R5,5.0,Grain (Winter),Winter Wheat,145,135
+8,R5,5.0,Grain (Winter),Winter Wheat,4,4
+9,R5,5.0,Grain (Winter),Winter Wheat,,
+10,R5,5.0,Grain (Winter),Winter Wheat,,
+11,R5,5.0,Grain (Winter),Winter Wheat,,
+12,R5,5.0,Grain (Winter),Winter Wheat,,
+Season,R5,5.0,Grain (Winter),Winter Wheat,477,273
+1,R5,5.0,Grain Seed (Fall),,4,0
+2,R5,5.0,Grain Seed (Fall),,15,0
+3,R5,5.0,Grain Seed (Fall),,37,1
+4,R5,5.0,Grain Seed (Fall),,77,5
+5,R5,5.0,Grain Seed (Fall),,120,55
+6,R5,5.0,Grain Seed (Fall),,143,93
+7,R5,5.0,Grain Seed (Fall),,172,161
+8,R5,5.0,Grain Seed (Fall),,126,115
+9,R5,5.0,Grain Seed (Fall),,50,11
+10,R5,5.0,Grain Seed (Fall),,42,2
+11,R5,5.0,Grain Seed (Fall),,13,0
+12,R5,5.0,Grain Seed (Fall),,4,0
+Season,R5,5.0,Grain Seed (Fall),,803,443
+1,R5,5.0,Grain Seed (Spring),,6,0
+2,R5,5.0,Grain Seed (Spring),,12,0
+3,R5,5.0,Grain Seed (Spring),,18,0
+4,R5,5.0,Grain Seed (Spring),,44,1
+5,R5,5.0,Grain Seed (Spring),,66,7
+6,R5,5.0,Grain Seed (Spring),,101,54
+7,R5,5.0,Grain Seed (Spring),,152,142
+8,R5,5.0,Grain Seed (Spring),,138,126
+9,R5,5.0,Grain Seed (Spring),,106,61
+10,R5,5.0,Grain Seed (Spring),,65,4
+11,R5,5.0,Grain Seed (Spring),,21,0
+12,R5,5.0,Grain Seed (Spring),,6,0
+Season,R5,5.0,Grain Seed (Spring),,735,395
+1,R5,5.0,Grapes,Grapes,,
+2,R5,5.0,Grapes,Grapes,,
+3,R5,5.0,Grapes,Grapes,,
+4,R5,5.0,Grapes,Grapes,37,1
+5,R5,5.0,Grapes,Grapes,62,6
+6,R5,5.0,Grapes,Grapes,84,40
+7,R5,5.0,Grapes,Grapes,103,96
+8,R5,5.0,Grapes,Grapes,86,73
+9,R5,5.0,Grapes,Grapes,64,24
+10,R5,5.0,Grapes,Grapes,32,2
+11,R5,5.0,Grapes,Grapes,7,0
+12,R5,5.0,Grapes,Grapes,,
+Season,R5,5.0,Grapes,Grapes,475,242
+1,R5,5.0,Mint,Mint,,
+2,R5,5.0,Mint,Mint,,
+3,R5,5.0,Mint,Mint,13,0
+4,R5,5.0,Mint,Mint,51,2
+5,R5,5.0,Mint,Mint,117,51
+6,R5,5.0,Mint,Mint,144,94
+7,R5,5.0,Mint,Mint,120,111
+8,R5,5.0,Mint,Mint,,
+9,R5,5.0,Mint,Mint,,
+10,R5,5.0,Mint,Mint,,
+11,R5,5.0,Mint,Mint,,
+12,R5,5.0,Mint,Mint,,
+Season,R5,5.0,Mint,Mint,445,258
+1,R5,5.0,Onions,Onions,,
+2,R5,5.0,Onions,Onions,,
+3,R5,5.0,Onions,Onions,,
+4,R5,5.0,Onions,Onions,23,1
+5,R5,5.0,Onions,Onions,94,42
+6,R5,5.0,Onions,Onions,129,89
+7,R5,5.0,Onions,Onions,155,147
+8,R5,5.0,Onions,Onions,111,102
+9,R5,5.0,Onions,Onions,,
+10,R5,5.0,Onions,Onions,,
+11,R5,5.0,Onions,Onions,,
+12,R5,5.0,Onions,Onions,,
+Season,R5,5.0,Onions,Onions,512,381
+1,R5,5.0,Pasture,Grass/Pasture,,
+2,R5,5.0,Pasture,Grass/Pasture,,
+3,R5,5.0,Pasture,Grass/Pasture,32,1
+4,R5,5.0,Pasture,Grass/Pasture,75,5
+5,R5,5.0,Pasture,Grass/Pasture,106,40
+6,R5,5.0,Pasture,Grass/Pasture,127,78
+7,R5,5.0,Pasture,Grass/Pasture,151,141
+8,R5,5.0,Pasture,Grass/Pasture,124,112
+9,R5,5.0,Pasture,Grass/Pasture,95,53
+10,R5,5.0,Pasture,Grass/Pasture,58,4
+11,R5,5.0,Pasture,Grass/Pasture,9,0
+12,R5,5.0,Pasture,Grass/Pasture,,
+Season,R5,5.0,Pasture,Grass/Pasture,777,434
+1,R5,5.0,Pears,Pears,,
+2,R5,5.0,Pears,Pears,,
+3,R5,5.0,Pears,Pears,38,1
+4,R5,5.0,Pears,Pears,69,4
+5,R5,5.0,Pears,Pears,105,41
+6,R5,5.0,Pears,Pears,139,90
+7,R5,5.0,Pears,Pears,171,160
+8,R5,5.0,Pears,Pears,139,127
+9,R5,5.0,Pears,Pears,101,58
+10,R5,5.0,Pears,Pears,49,3
+11,R5,5.0,Pears,Pears,14,0
+12,R5,5.0,Pears,Pears,,
+Season,R5,5.0,Pears,Pears,825,484
+1,R5,5.0,Peas,Peas,,
+2,R5,5.0,Peas,Peas,,
+3,R5,5.0,Peas,Peas,30,1
+4,R5,5.0,Peas,Peas,76,5
+5,R5,5.0,Peas,Peas,119,54
+6,R5,5.0,Peas,Peas,53,37
+7,R5,5.0,Peas,Peas,,
+8,R5,5.0,Peas,Peas,,
+9,R5,5.0,Peas,Peas,,
+10,R5,5.0,Peas,Peas,,
+11,R5,5.0,Peas,Peas,,
+12,R5,5.0,Peas,Peas,,
+Season,R5,5.0,Peas,Peas,278,97
+1,R5,5.0,Plums,Plums,,
+2,R5,5.0,Plums,Plums,,
+3,R5,5.0,Plums,Plums,38,1
+4,R5,5.0,Plums,Plums,69,4
+5,R5,5.0,Plums,Plums,105,41
+6,R5,5.0,Plums,Plums,139,90
+7,R5,5.0,Plums,Plums,171,160
+8,R5,5.0,Plums,Plums,139,127
+9,R5,5.0,Plums,Plums,101,58
+10,R5,5.0,Plums,Plums,49,3
+11,R5,5.0,Plums,Plums,14,0
+12,R5,5.0,Plums,Plums,,
+Season,R5,5.0,Plums,Plums,825,484
+1,R5,5.0,Potatoes,Potatoes,,
+2,R5,5.0,Potatoes,Potatoes,,
+3,R5,5.0,Potatoes,Potatoes,,
+4,R5,5.0,Potatoes,Potatoes,6,0
+5,R5,5.0,Potatoes,Potatoes,49,4
+6,R5,5.0,Potatoes,Potatoes,96,55
+7,R5,5.0,Potatoes,Potatoes,168,159
+8,R5,5.0,Potatoes,Potatoes,142,131
+9,R5,5.0,Potatoes,Potatoes,97,57
+10,R5,5.0,Potatoes,Potatoes,15,1
+11,R5,5.0,Potatoes,Potatoes,,
+12,R5,5.0,Potatoes,Potatoes,,
+Season,R5,5.0,Potatoes,Potatoes,573,407
+1,R5,5.0,Tomatoes,,,
+2,R5,5.0,Tomatoes,,,
+3,R5,5.0,Tomatoes,,,
+4,R5,5.0,Tomatoes,,,
+5,R5,5.0,Tomatoes,,48,3
+6,R5,5.0,Tomatoes,,120,72
+7,R5,5.0,Tomatoes,,178,167
+8,R5,5.0,Tomatoes,,75,67
+9,R5,5.0,Tomatoes,,,
+10,R5,5.0,Tomatoes,,,
+11,R5,5.0,Tomatoes,,,
+12,R5,5.0,Tomatoes,,,
+Season,R5,5.0,Tomatoes,,421,309
+1,R6,6.0,Alfalfa Hay,Alfalfa,,
+2,R6,6.0,Alfalfa Hay,Alfalfa,,
+3,R6,6.0,Alfalfa Hay,Alfalfa,23,1
+4,R6,6.0,Alfalfa Hay,Alfalfa,70,18
+5,R6,6.0,Alfalfa Hay,Alfalfa,98,59
+6,R6,6.0,Alfalfa Hay,Alfalfa,116,94
+7,R6,6.0,Alfalfa Hay,Alfalfa,150,146
+8,R6,6.0,Alfalfa Hay,Alfalfa,123,117
+9,R6,6.0,Alfalfa Hay,Alfalfa,93,70
+10,R6,6.0,Alfalfa Hay,Alfalfa,,
+11,R6,6.0,Alfalfa Hay,Alfalfa,,
+12,R6,6.0,Alfalfa Hay,Alfalfa,,
+Season,R6,6.0,Alfalfa Hay,Alfalfa,673,505
+1,R6,6.0,Apples,Apples,,
+2,R6,6.0,Apples,Apples,,
+3,R6,6.0,Apples,Apples,37,2
+4,R6,6.0,Apples,Apples,72,22
+5,R6,6.0,Apples,Apples,115,74
+6,R6,6.0,Apples,Apples,152,129
+7,R6,6.0,Apples,Apples,200,192
+8,R6,6.0,Apples,Apples,163,156
+9,R6,6.0,Apples,Apples,119,92
+10,R6,6.0,Apples,Apples,57,5
+11,R6,6.0,Apples,Apples,18,1
+12,R6,6.0,Apples,Apples,,
+Season,R6,6.0,Apples,Apples,933,673
+1,R6,6.0,Beans (Dry Field),Dry Beans,,
+2,R6,6.0,Beans (Dry Field),Dry Beans,,
+3,R6,6.0,Beans (Dry Field),Dry Beans,,
+4,R6,6.0,Beans (Dry Field),Dry Beans,,
+5,R6,6.0,Beans (Dry Field),Dry Beans,57,57
+6,R6,6.0,Beans (Dry Field),Dry Beans,125,126
+7,R6,6.0,Beans (Dry Field),Dry Beans,124,125
+8,R6,6.0,Beans (Dry Field),Dry Beans,,
+9,R6,6.0,Beans (Dry Field),Dry Beans,,
+10,R6,6.0,Beans (Dry Field),Dry Beans,,
+11,R6,6.0,Beans (Dry Field),Dry Beans,,
+12,R6,6.0,Beans (Dry Field),Dry Beans,,
+Season,R6,6.0,Beans (Dry Field),Dry Beans,306,308
+1,R6,6.0,Cherries,Cherries,,
+2,R6,6.0,Cherries,Cherries,,
+3,R6,6.0,Cherries,Cherries,37,2
+4,R6,6.0,Cherries,Cherries,72,22
+5,R6,6.0,Cherries,Cherries,115,74
+6,R6,6.0,Cherries,Cherries,152,129
+7,R6,6.0,Cherries,Cherries,200,192
+8,R6,6.0,Cherries,Cherries,163,156
+9,R6,6.0,Cherries,Cherries,119,92
+10,R6,6.0,Cherries,Cherries,57,5
+11,R6,6.0,Cherries,Cherries,18,1
+12,R6,6.0,Cherries,Cherries,,
+Season,R6,6.0,Cherries,Cherries,933,673
+1,R6,6.0,Corn (Silage),Corn,,
+2,R6,6.0,Corn (Silage),Corn,,
+3,R6,6.0,Corn (Silage),Corn,,
+4,R6,6.0,Corn (Silage),Corn,,
+5,R6,6.0,Corn (Silage),Corn,30,3
+6,R6,6.0,Corn (Silage),Corn,100,81
+7,R6,6.0,Corn (Silage),Corn,184,181
+8,R6,6.0,Corn (Silage),Corn,149,142
+9,R6,6.0,Corn (Silage),Corn,29,25
+10,R6,6.0,Corn (Silage),Corn,,
+11,R6,6.0,Corn (Silage),Corn,,
+12,R6,6.0,Corn (Silage),Corn,,
+Season,R6,6.0,Corn (Silage),Corn,492,432
+1,R6,6.0,Corn (Sweet),Sweet Corn,,
+2,R6,6.0,Corn (Sweet),Sweet Corn,,
+3,R6,6.0,Corn (Sweet),Sweet Corn,,
+4,R6,6.0,Corn (Sweet),Sweet Corn,,
+5,R6,6.0,Corn (Sweet),Sweet Corn,59,24
+6,R6,6.0,Corn (Sweet),Sweet Corn,113,94
+7,R6,6.0,Corn (Sweet),Sweet Corn,185,179
+8,R6,6.0,Corn (Sweet),Sweet Corn,150,143
+9,R6,6.0,Corn (Sweet),Sweet Corn,54,43
+10,R6,6.0,Corn (Sweet),Sweet Corn,,
+11,R6,6.0,Corn (Sweet),Sweet Corn,,
+12,R6,6.0,Corn (Sweet),Sweet Corn,,
+Season,R6,6.0,Corn (Sweet),Sweet Corn,561,483
+1,R6,6.0,Filberts,,,
+2,R6,6.0,Filberts,,,
+3,R6,6.0,Filberts,,37,2
+4,R6,6.0,Filberts,,72,22
+5,R6,6.0,Filberts,,115,74
+6,R6,6.0,Filberts,,152,129
+7,R6,6.0,Filberts,,200,192
+8,R6,6.0,Filberts,,163,156
+9,R6,6.0,Filberts,,119,92
+10,R6,6.0,Filberts,,57,5
+11,R6,6.0,Filberts,,18,1
+12,R6,6.0,Filberts,,,
+Season,R6,6.0,Filberts,,933,673
+1,R6,6.0,Grain (Spring),Spring Wheat,,
+2,R6,6.0,Grain (Spring),Spring Wheat,,
+3,R6,6.0,Grain (Spring),Spring Wheat,15,1
+4,R6,6.0,Grain (Spring),Spring Wheat,58,8
+5,R6,6.0,Grain (Spring),Spring Wheat,116,76
+6,R6,6.0,Grain (Spring),Spring Wheat,144,119
+7,R6,6.0,Grain (Spring),Spring Wheat,143,139
+8,R6,6.0,Grain (Spring),Spring Wheat,11,11
+9,R6,6.0,Grain (Spring),Spring Wheat,,
+10,R6,6.0,Grain (Spring),Spring Wheat,,
+11,R6,6.0,Grain (Spring),Spring Wheat,,
+12,R6,6.0,Grain (Spring),Spring Wheat,,
+Season,R6,6.0,Grain (Spring),Spring Wheat,487,354
+1,R6,6.0,Grain (Winter),Winter Wheat,,
+2,R6,6.0,Grain (Winter),Winter Wheat,,
+3,R6,6.0,Grain (Winter),Winter Wheat,24,1
+4,R6,6.0,Grain (Winter),Winter Wheat,57,7
+5,R6,6.0,Grain (Winter),Winter Wheat,112,71
+6,R6,6.0,Grain (Winter),Winter Wheat,144,119
+7,R6,6.0,Grain (Winter),Winter Wheat,133,130
+8,R6,6.0,Grain (Winter),Winter Wheat,,
+9,R6,6.0,Grain (Winter),Winter Wheat,,
+10,R6,6.0,Grain (Winter),Winter Wheat,,
+11,R6,6.0,Grain (Winter),Winter Wheat,,
+12,R6,6.0,Grain (Winter),Winter Wheat,,
+Season,R6,6.0,Grain (Winter),Winter Wheat,470,328
+1,R6,6.0,Grain Seed (Spring),,9,0
+2,R6,6.0,Grain Seed (Spring),,14,0
+3,R6,6.0,Grain Seed (Spring),,17,1
+4,R6,6.0,Grain Seed (Spring),,44,3
+5,R6,6.0,Grain Seed (Spring),,66,28
+6,R6,6.0,Grain Seed (Spring),,101,82
+7,R6,6.0,Grain Seed (Spring),,163,158
+8,R6,6.0,Grain Seed (Spring),,148,141
+9,R6,6.0,Grain Seed (Spring),,114,87
+10,R6,6.0,Grain Seed (Spring),,71,15
+11,R6,6.0,Grain Seed (Spring),,27,1
+12,R6,6.0,Grain Seed (Spring),,9,0
+Season,R6,6.0,Grain Seed (Spring),,783,516
+1,R6,6.0,Pasture,Grass/Pasture,,
+2,R6,6.0,Pasture,Grass/Pasture,,
+3,R6,6.0,Pasture,Grass/Pasture,44,3
+4,R6,6.0,Pasture,Grass/Pasture,75,24
+5,R6,6.0,Pasture,Grass/Pasture,105,65
+6,R6,6.0,Pasture,Grass/Pasture,125,103
+7,R6,6.0,Pasture,Grass/Pasture,162,157
+8,R6,6.0,Pasture,Grass/Pasture,132,125
+9,R6,6.0,Pasture,Grass/Pasture,102,76
+10,R6,6.0,Pasture,Grass/Pasture,63,8
+11,R6,6.0,Pasture,Grass/Pasture,12,1
+12,R6,6.0,Pasture,Grass/Pasture,,
+Season,R6,6.0,Pasture,Grass/Pasture,820,562
+1,R6,6.0,Pears,Pears,,
+2,R6,6.0,Pears,Pears,,
+3,R6,6.0,Pears,Pears,37,2
+4,R6,6.0,Pears,Pears,69,18
+5,R6,6.0,Pears,Pears,104,64
+6,R6,6.0,Pears,Pears,139,115
+7,R6,6.0,Pears,Pears,182,179
+8,R6,6.0,Pears,Pears,149,142
+9,R6,6.0,Pears,Pears,109,82
+10,R6,6.0,Pears,Pears,53,5
+11,R6,6.0,Pears,Pears,18,1
+12,R6,6.0,Pears,Pears,,
+Season,R6,6.0,Pears,Pears,860,608
+1,R6,6.0,Peas,Peas,,
+2,R6,6.0,Peas,Peas,,
+3,R6,6.0,Peas,Peas,16,1
+4,R6,6.0,Peas,Peas,73,22
+5,R6,6.0,Peas,Peas,118,77
+6,R6,6.0,Peas,Peas,136,114
+7,R6,6.0,Peas,Peas,,
+8,R6,6.0,Peas,Peas,,
+9,R6,6.0,Peas,Peas,,
+10,R6,6.0,Peas,Peas,,
+11,R6,6.0,Peas,Peas,,
+12,R6,6.0,Peas,Peas,,
+Season,R6,6.0,Peas,Peas,343,214
+1,R6,6.0,Plums,Plums,,
+2,R6,6.0,Plums,Plums,,
+3,R6,6.0,Plums,Plums,37,2
+4,R6,6.0,Plums,Plums,69,18
+5,R6,6.0,Plums,Plums,104,64
+6,R6,6.0,Plums,Plums,139,115
+7,R6,6.0,Plums,Plums,182,179
+8,R6,6.0,Plums,Plums,149,142
+9,R6,6.0,Plums,Plums,109,82
+10,R6,6.0,Plums,Plums,53,5
+11,R6,6.0,Plums,Plums,18,1
+12,R6,6.0,Plums,Plums,,
+Season,R6,6.0,Plums,Plums,860,608
+1,R6,6.0,Tomatoes,,,
+2,R6,6.0,Tomatoes,,,
+3,R6,6.0,Tomatoes,,,
+4,R6,6.0,Tomatoes,,,
+5,R6,6.0,Tomatoes,,48,14
+6,R6,6.0,Tomatoes,,119,100
+7,R6,6.0,Tomatoes,,189,183
+8,R6,6.0,Tomatoes,,79,75
+9,R6,6.0,Tomatoes,,,
+10,R6,6.0,Tomatoes,,,
+11,R6,6.0,Tomatoes,,,
+12,R6,6.0,Tomatoes,,,
+Season,R6,6.0,Tomatoes,,435,372
+1,R7,7.0,Alfalfa Hay,Alfalfa,,
+2,R7,7.0,Alfalfa Hay,Alfalfa,,
+3,R7,7.0,Alfalfa Hay,Alfalfa,5,2
+4,R7,7.0,Alfalfa Hay,Alfalfa,85,52
+5,R7,7.0,Alfalfa Hay,Alfalfa,119,89
+6,R7,7.0,Alfalfa Hay,Alfalfa,143,123
+7,R7,7.0,Alfalfa Hay,Alfalfa,174,171
+8,R7,7.0,Alfalfa Hay,Alfalfa,146,142
+9,R7,7.0,Alfalfa Hay,Alfalfa,107,88
+10,R7,7.0,Alfalfa Hay,Alfalfa,,
+11,R7,7.0,Alfalfa Hay,Alfalfa,,
+12,R7,7.0,Alfalfa Hay,Alfalfa,,
+Season,R7,7.0,Alfalfa Hay,Alfalfa,779,667
+1,R7,7.0,Apples,Apples,,
+2,R7,7.0,Apples,Apples,,
+3,R7,7.0,Apples,Apples,44,4
+4,R7,7.0,Apples,Apples,88,55
+5,R7,7.0,Apples,Apples,141,108
+6,R7,7.0,Apples,Apples,186,162
+7,R7,7.0,Apples,Apples,231,226
+8,R7,7.0,Apples,Apples,191,188
+9,R7,7.0,Apples,Apples,135,115
+10,R7,7.0,Apples,Apples,64,25
+11,R7,7.0,Apples,Apples,18,1
+12,R7,7.0,Apples,Apples,,
+Season,R7,7.0,Apples,Apples,1098,884
+1,R7,7.0,Cherries,Cherries,,
+2,R7,7.0,Cherries,Cherries,,
+3,R7,7.0,Cherries,Cherries,44,4
+4,R7,7.0,Cherries,Cherries,88,55
+5,R7,7.0,Cherries,Cherries,141,108
+6,R7,7.0,Cherries,Cherries,186,162
+7,R7,7.0,Cherries,Cherries,231,226
+8,R7,7.0,Cherries,Cherries,191,188
+9,R7,7.0,Cherries,Cherries,135,115
+10,R7,7.0,Cherries,Cherries,64,25
+11,R7,7.0,Cherries,Cherries,18,1
+12,R7,7.0,Cherries,Cherries,,
+Season,R7,7.0,Cherries,Cherries,1098,884
+1,R7,7.0,Filberts,,,
+2,R7,7.0,Filberts,,,
+3,R7,7.0,Filberts,,44,4
+4,R7,7.0,Filberts,,88,55
+5,R7,7.0,Filberts,,141,108
+6,R7,7.0,Filberts,,186,162
+7,R7,7.0,Filberts,,231,226
+8,R7,7.0,Filberts,,191,188
+9,R7,7.0,Filberts,,135,115
+10,R7,7.0,Filberts,,64,25
+11,R7,7.0,Filberts,,18,1
+12,R7,7.0,Filberts,,,
+Season,R7,7.0,Filberts,,1098,884
+1,R7,7.0,Grain (Spring),Spring Wheat,,
+2,R7,7.0,Grain (Spring),Spring Wheat,,
+3,R7,7.0,Grain (Spring),Spring Wheat,17,1
+4,R7,7.0,Grain (Spring),Spring Wheat,68,36
+5,R7,7.0,Grain (Spring),Spring Wheat,142,109
+6,R7,7.0,Grain (Spring),Spring Wheat,173,151
+7,R7,7.0,Grain (Spring),Spring Wheat,165,162
+8,R7,7.0,Grain (Spring),Spring Wheat,13,13
+9,R7,7.0,Grain (Spring),Spring Wheat,,
+10,R7,7.0,Grain (Spring),Spring Wheat,,
+11,R7,7.0,Grain (Spring),Spring Wheat,,
+12,R7,7.0,Grain (Spring),Spring Wheat,,
+Season,R7,7.0,Grain (Spring),Spring Wheat,578,472
+1,R7,7.0,Grain (Winter),Winter Wheat,,
+2,R7,7.0,Grain (Winter),Winter Wheat,,
+3,R7,7.0,Grain (Winter),Winter Wheat,28,2
+4,R7,7.0,Grain (Winter),Winter Wheat,67,35
+5,R7,7.0,Grain (Winter),Winter Wheat,135,103
+6,R7,7.0,Grain (Winter),Winter Wheat,174,150
+7,R7,7.0,Grain (Winter),Winter Wheat,154,151
+8,R7,7.0,Grain (Winter),Winter Wheat,,
+9,R7,7.0,Grain (Winter),Winter Wheat,,
+10,R7,7.0,Grain (Winter),Winter Wheat,,
+11,R7,7.0,Grain (Winter),Winter Wheat,,
+12,R7,7.0,Grain (Winter),Winter Wheat,,
+Season,R7,7.0,Grain (Winter),Winter Wheat,558,441
+1,R7,7.0,Grain Seed (Spring),,7,0
+2,R7,7.0,Grain Seed (Spring),,15,1
+3,R7,7.0,Grain Seed (Spring),,21,2
+4,R7,7.0,Grain Seed (Spring),,49,18
+5,R7,7.0,Grain Seed (Spring),,76,47
+6,R7,7.0,Grain Seed (Spring),,120,103
+7,R7,7.0,Grain Seed (Spring),,187,182
+8,R7,7.0,Grain Seed (Spring),,175,170
+9,R7,7.0,Grain Seed (Spring),,127,109
+10,R7,7.0,Grain Seed (Spring),,78,39
+11,R7,7.0,Grain Seed (Spring),,24,1
+12,R7,7.0,Grain Seed (Spring),,6,0
+Season,R7,7.0,Grain Seed (Spring),,885,672
+1,R7,7.0,Onions,Onions,,
+2,R7,7.0,Onions,Onions,,
+3,R7,7.0,Onions,Onions,17,2
+4,R7,7.0,Onions,Onions,72,45
+5,R7,7.0,Onions,Onions,132,103
+6,R7,7.0,Onions,Onions,158,139
+7,R7,7.0,Onions,Onions,188,184
+8,R7,7.0,Onions,Onions,136,132
+9,R7,7.0,Onions,Onions,,
+10,R7,7.0,Onions,Onions,,
+11,R7,7.0,Onions,Onions,,
+12,R7,7.0,Onions,Onions,,
+Season,R7,7.0,Onions,Onions,703,605
+1,R7,7.0,Pasture,Grass/Pasture,,
+2,R7,7.0,Pasture,Grass/Pasture,,
+3,R7,7.0,Pasture,Grass/Pasture,50,6
+4,R7,7.0,Pasture,Grass/Pasture,91,58
+5,R7,7.0,Pasture,Grass/Pasture,128,96
+6,R7,7.0,Pasture,Grass/Pasture,153,131
+7,R7,7.0,Pasture,Grass/Pasture,186,183
+8,R7,7.0,Pasture,Grass/Pasture,154,150
+9,R7,7.0,Pasture,Grass/Pasture,113,95
+10,R7,7.0,Pasture,Grass/Pasture,72,31
+11,R7,7.0,Pasture,Grass/Pasture,10,1
+12,R7,7.0,Pasture,Grass/Pasture,,
+Season,R7,7.0,Pasture,Grass/Pasture,957,751
+1,R7,7.0,Pears,Pears,,
+2,R7,7.0,Pears,Pears,,
+3,R7,7.0,Pears,Pears,44,4
+4,R7,7.0,Pears,Pears,81,51
+5,R7,7.0,Pears,Pears,128,96
+6,R7,7.0,Pears,Pears,170,148
+7,R7,7.0,Pears,Pears,212,207
+8,R7,7.0,Pears,Pears,177,172
+9,R7,7.0,Pears,Pears,123,104
+10,R7,7.0,Pears,Pears,61,22
+11,R7,7.0,Pears,Pears,18,1
+12,R7,7.0,Pears,Pears,,
+Season,R7,7.0,Pears,Pears,1014,805
+1,R7,7.0,Plums,Plums,,
+2,R7,7.0,Plums,Plums,,
+3,R7,7.0,Plums,Plums,44,4
+4,R7,7.0,Plums,Plums,81,51
+5,R7,7.0,Plums,Plums,128,96
+6,R7,7.0,Plums,Plums,170,148
+7,R7,7.0,Plums,Plums,212,207
+8,R7,7.0,Plums,Plums,177,172
+9,R7,7.0,Plums,Plums,123,104
+10,R7,7.0,Plums,Plums,61,22
+11,R7,7.0,Plums,Plums,18,1
+12,R7,7.0,Plums,Plums,,
+Season,R7,7.0,Plums,Plums,1014,805
+1,R7,7.0,Potatoes,Potatoes,,
+2,R7,7.0,Potatoes,Potatoes,,
+3,R7,7.0,Potatoes,Potatoes,,
+4,R7,7.0,Potatoes,Potatoes,,
+5,R7,7.0,Potatoes,Potatoes,26,14
+6,R7,7.0,Potatoes,Potatoes,89,74
+7,R7,7.0,Potatoes,Potatoes,207,203
+8,R7,7.0,Potatoes,Potatoes,180,173
+9,R7,7.0,Potatoes,Potatoes,122,104
+10,R7,7.0,Potatoes,Potatoes,29,12
+11,R7,7.0,Potatoes,Potatoes,,
+12,R7,7.0,Potatoes,Potatoes,,
+Season,R7,7.0,Potatoes,Potatoes,653,580
+1,R8,8.0,Alfalfa Hay,Alfalfa,,
+2,R8,8.0,Alfalfa Hay,Alfalfa,,
+3,R8,8.0,Alfalfa Hay,Alfalfa,4,0
+4,R8,8.0,Alfalfa Hay,Alfalfa,80,27
+5,R8,8.0,Alfalfa Hay,Alfalfa,116,70
+6,R8,8.0,Alfalfa Hay,Alfalfa,136,110
+7,R8,8.0,Alfalfa Hay,Alfalfa,169,165
+8,R8,8.0,Alfalfa Hay,Alfalfa,139,132
+9,R8,8.0,Alfalfa Hay,Alfalfa,102,78
+10,R8,8.0,Alfalfa Hay,Alfalfa,,
+11,R8,8.0,Alfalfa Hay,Alfalfa,,
+12,R8,8.0,Alfalfa Hay,Alfalfa,,
+Season,R8,8.0,Alfalfa Hay,Alfalfa,746,582
+1,R8,8.0,Apples,Apples,,
+2,R8,8.0,Apples,Apples,,
+3,R8,8.0,Apples,Apples,40,2
+4,R8,8.0,Apples,Apples,83,30
+5,R8,8.0,Apples,Apples,137,88
+6,R8,8.0,Apples,Apples,178,148
+7,R8,8.0,Apples,Apples,223,221
+8,R8,8.0,Apples,Apples,184,178
+9,R8,8.0,Apples,Apples,128,104
+10,R8,8.0,Apples,Apples,61,7
+11,R8,8.0,Apples,Apples,16,1
+12,R8,8.0,Apples,Apples,,
+Season,R8,8.0,Apples,Apples,1050,779
+1,R8,8.0,Cherries,Cherries,,
+2,R8,8.0,Cherries,Cherries,,
+3,R8,8.0,Cherries,Cherries,40,2
+4,R8,8.0,Cherries,Cherries,83,30
+5,R8,8.0,Cherries,Cherries,137,88
+6,R8,8.0,Cherries,Cherries,178,148
+7,R8,8.0,Cherries,Cherries,223,221
+8,R8,8.0,Cherries,Cherries,184,178
+9,R8,8.0,Cherries,Cherries,128,104
+10,R8,8.0,Cherries,Cherries,61,7
+11,R8,8.0,Cherries,Cherries,16,1
+12,R8,8.0,Cherries,Cherries,,
+Season,R8,8.0,Cherries,Cherries,1050,779
+1,R8,8.0,Corn (Sweet),Sweet Corn,,
+2,R8,8.0,Corn (Sweet),Sweet Corn,,
+3,R8,8.0,Corn (Sweet),Sweet Corn,,
+4,R8,8.0,Corn (Sweet),Sweet Corn,,
+5,R8,8.0,Corn (Sweet),Sweet Corn,65,23
+6,R8,8.0,Corn (Sweet),Sweet Corn,131,102
+7,R8,8.0,Corn (Sweet),Sweet Corn,206,203
+8,R8,8.0,Corn (Sweet),Sweet Corn,169,163
+9,R8,8.0,Corn (Sweet),Sweet Corn,59,48
+10,R8,8.0,Corn (Sweet),Sweet Corn,,
+11,R8,8.0,Corn (Sweet),Sweet Corn,,
+12,R8,8.0,Corn (Sweet),Sweet Corn,,
+Season,R8,8.0,Corn (Sweet),Sweet Corn,630,539
+1,R8,8.0,Filberts,,,
+2,R8,8.0,Filberts,,,
+3,R8,8.0,Filberts,,40,2
+4,R8,8.0,Filberts,,83,30
+5,R8,8.0,Filberts,,137,88
+6,R8,8.0,Filberts,,178,148
+7,R8,8.0,Filberts,,223,221
+8,R8,8.0,Filberts,,184,178
+9,R8,8.0,Filberts,,128,104
+10,R8,8.0,Filberts,,61,7
+11,R8,8.0,Filberts,,16,1
+12,R8,8.0,Filberts,,,
+Season,R8,8.0,Filberts,,1050,779
+1,R8,8.0,Grain (Spring),Spring Wheat,,
+2,R8,8.0,Grain (Spring),Spring Wheat,,
+3,R8,8.0,Grain (Spring),Spring Wheat,16,1
+4,R8,8.0,Grain (Spring),Spring Wheat,64,14
+5,R8,8.0,Grain (Spring),Spring Wheat,138,89
+6,R8,8.0,Grain (Spring),Spring Wheat,168,138
+7,R8,8.0,Grain (Spring),Spring Wheat,160,156
+8,R8,8.0,Grain (Spring),Spring Wheat,12,12
+9,R8,8.0,Grain (Spring),Spring Wheat,,
+10,R8,8.0,Grain (Spring),Spring Wheat,,
+11,R8,8.0,Grain (Spring),Spring Wheat,,
+12,R8,8.0,Grain (Spring),Spring Wheat,,
+Season,R8,8.0,Grain (Spring),Spring Wheat,558,410
+1,R8,8.0,Grain (Winter),Winter Wheat,,
+2,R8,8.0,Grain (Winter),Winter Wheat,,
+3,R8,8.0,Grain (Winter),Winter Wheat,27,1
+4,R8,8.0,Grain (Winter),Winter Wheat,63,13
+5,R8,8.0,Grain (Winter),Winter Wheat,131,84
+6,R8,8.0,Grain (Winter),Winter Wheat,168,138
+7,R8,8.0,Grain (Winter),Winter Wheat,149,145
+8,R8,8.0,Grain (Winter),Winter Wheat,,
+9,R8,8.0,Grain (Winter),Winter Wheat,,
+10,R8,8.0,Grain (Winter),Winter Wheat,,
+11,R8,8.0,Grain (Winter),Winter Wheat,,
+12,R8,8.0,Grain (Winter),Winter Wheat,,
+Season,R8,8.0,Grain (Winter),Winter Wheat,538,381
+1,R8,8.0,Grain Seed (Spring),,6,0
+2,R8,8.0,Grain Seed (Spring),,14,1
+3,R8,8.0,Grain Seed (Spring),,19,1
+4,R8,8.0,Grain Seed (Spring),,46,4
+5,R8,8.0,Grain Seed (Spring),,74,30
+6,R8,8.0,Grain Seed (Spring),,117,92
+7,R8,8.0,Grain Seed (Spring),,181,177
+8,R8,8.0,Grain Seed (Spring),,167,160
+9,R8,8.0,Grain Seed (Spring),,122,97
+10,R8,8.0,Grain Seed (Spring),,76,11
+11,R8,8.0,Grain Seed (Spring),,22,1
+12,R8,8.0,Grain Seed (Spring),,3,0
+Season,R8,8.0,Grain Seed (Spring),,847,574
+1,R8,8.0,Onions,Onions,,
+2,R8,8.0,Onions,Onions,,
+3,R8,8.0,Onions,Onions,16,1
+4,R8,8.0,Onions,Onions,68,23
+5,R8,8.0,Onions,Onions,128,84
+6,R8,8.0,Onions,Onions,151,127
+7,R8,8.0,Onions,Onions,182,179
+8,R8,8.0,Onions,Onions,131,125
+9,R8,8.0,Onions,Onions,,
+10,R8,8.0,Onions,Onions,,
+11,R8,8.0,Onions,Onions,,
+12,R8,8.0,Onions,Onions,,
+Season,R8,8.0,Onions,Onions,676,539
+1,R8,8.0,Pasture,Grass/Pasture,,
+2,R8,8.0,Pasture,Grass/Pasture,,
+3,R8,8.0,Pasture,Grass/Pasture,48,3
+4,R8,8.0,Pasture,Grass/Pasture,84,32
+5,R8,8.0,Pasture,Grass/Pasture,124,76
+6,R8,8.0,Pasture,Grass/Pasture,147,118
+7,R8,8.0,Pasture,Grass/Pasture,180,175
+8,R8,8.0,Pasture,Grass/Pasture,149,142
+9,R8,8.0,Pasture,Grass/Pasture,108,85
+10,R8,8.0,Pasture,Grass/Pasture,68,8
+11,R8,8.0,Pasture,Grass/Pasture,9,0
+12,R8,8.0,Pasture,Grass/Pasture,,
+Season,R8,8.0,Pasture,Grass/Pasture,917,639
+1,R8,8.0,Pears,Pears,,
+2,R8,8.0,Pears,Pears,,
+3,R8,8.0,Pears,Pears,40,2
+4,R8,8.0,Pears,Pears,78,25
+5,R8,8.0,Pears,Pears,125,77
+6,R8,8.0,Pears,Pears,167,136
+7,R8,8.0,Pears,Pears,204,202
+8,R8,8.0,Pears,Pears,169,163
+9,R8,8.0,Pears,Pears,117,94
+10,R8,8.0,Pears,Pears,58,6
+11,R8,8.0,Pears,Pears,16,1
+12,R8,8.0,Pears,Pears,,
+Season,R8,8.0,Pears,Pears,974,706
+1,R8,8.0,Peas,Peas,,
+2,R8,8.0,Peas,Peas,,
+3,R8,8.0,Peas,Peas,17,1
+4,R8,8.0,Peas,Peas,83,29
+5,R8,8.0,Peas,Peas,140,90
+6,R8,8.0,Peas,Peas,162,133
+7,R8,8.0,Peas,Peas,,
+8,R8,8.0,Peas,Peas,,
+9,R8,8.0,Peas,Peas,,
+10,R8,8.0,Peas,Peas,,
+11,R8,8.0,Peas,Peas,,
+12,R8,8.0,Peas,Peas,,
+Season,R8,8.0,Peas,Peas,402,253
+1,R8,8.0,Plums,Plums,,
+2,R8,8.0,Plums,Plums,,
+3,R8,8.0,Plums,Plums,40,2
+4,R8,8.0,Plums,Plums,78,25
+5,R8,8.0,Plums,Plums,125,77
+6,R8,8.0,Plums,Plums,167,136
+7,R8,8.0,Plums,Plums,204,202
+8,R8,8.0,Plums,Plums,169,163
+9,R8,8.0,Plums,Plums,117,94
+10,R8,8.0,Plums,Plums,58,6
+11,R8,8.0,Plums,Plums,16,1
+12,R8,8.0,Plums,Plums,,
+Season,R8,8.0,Plums,Plums,974,706
+1,R9,9.0,Alfalfa Hay,Alfalfa,,
+2,R9,9.0,Alfalfa Hay,Alfalfa,,
+3,R9,9.0,Alfalfa Hay,Alfalfa,,
+4,R9,9.0,Alfalfa Hay,Alfalfa,60,27
+5,R9,9.0,Alfalfa Hay,Alfalfa,124,90
+6,R9,9.0,Alfalfa Hay,Alfalfa,141,121
+7,R9,9.0,Alfalfa Hay,Alfalfa,171,166
+8,R9,9.0,Alfalfa Hay,Alfalfa,142,134
+9,R9,9.0,Alfalfa Hay,Alfalfa,99,75
+10,R9,9.0,Alfalfa Hay,Alfalfa,,
+11,R9,9.0,Alfalfa Hay,Alfalfa,,
+12,R9,9.0,Alfalfa Hay,Alfalfa,,
+Season,R9,9.0,Alfalfa Hay,Alfalfa,737,613
+1,R9,9.0,Apples,Apples,,
+2,R9,9.0,Apples,Apples,,
+3,R9,9.0,Apples,Apples,41,2
+4,R9,9.0,Apples,Apples,87,40
+5,R9,9.0,Apples,Apples,148,112
+6,R9,9.0,Apples,Apples,183,158
+7,R9,9.0,Apples,Apples,226,219
+8,R9,9.0,Apples,Apples,188,177
+9,R9,9.0,Apples,Apples,125,97
+10,R9,9.0,Apples,Apples,56,5
+11,R9,9.0,Apples,Apples,11,0
+12,R9,9.0,Apples,Apples,,
+Season,R9,9.0,Apples,Apples,1065,810
+1,R9,9.0,Berries,,,
+2,R9,9.0,Berries,,,
+3,R9,9.0,Berries,,,
+4,R9,9.0,Berries,,,
+5,R9,9.0,Berries,,21,14
+6,R9,9.0,Berries,,83,65
+7,R9,9.0,Berries,,123,120
+8,R9,9.0,Berries,,110,102
+9,R9,9.0,Berries,,77,51
+10,R9,9.0,Berries,,32,2
+11,R9,9.0,Berries,,,
+12,R9,9.0,Berries,,,
+Season,R9,9.0,Berries,,446,354
+1,R9,9.0,Cherries,Cherries,,
+2,R9,9.0,Cherries,Cherries,,
+3,R9,9.0,Cherries,Cherries,41,2
+4,R9,9.0,Cherries,Cherries,87,40
+5,R9,9.0,Cherries,Cherries,148,112
+6,R9,9.0,Cherries,Cherries,183,158
+7,R9,9.0,Cherries,Cherries,226,219
+8,R9,9.0,Cherries,Cherries,188,177
+9,R9,9.0,Cherries,Cherries,125,97
+10,R9,9.0,Cherries,Cherries,56,5
+11,R9,9.0,Cherries,Cherries,11,0
+12,R9,9.0,Cherries,Cherries,,
+Season,R9,9.0,Cherries,Cherries,1065,810
+1,R9,9.0,Corn (Field),Corn,,
+2,R9,9.0,Corn (Field),Corn,,
+3,R9,9.0,Corn (Field),Corn,,
+4,R9,9.0,Corn (Field),Corn,,
+5,R9,9.0,Corn (Field),Corn,60,36
+6,R9,9.0,Corn (Field),Corn,125,106
+7,R9,9.0,Corn (Field),Corn,204,198
+8,R9,9.0,Corn (Field),Corn,175,164
+9,R9,9.0,Corn (Field),Corn,90,65
+10,R9,9.0,Corn (Field),Corn,,
+11,R9,9.0,Corn (Field),Corn,,
+12,R9,9.0,Corn (Field),Corn,,
+Season,R9,9.0,Corn (Field),Corn,654,569
+1,R9,9.0,Corn (Sweet),Sweet Corn,,
+2,R9,9.0,Corn (Sweet),Sweet Corn,,
+3,R9,9.0,Corn (Sweet),Sweet Corn,,
+4,R9,9.0,Corn (Sweet),Sweet Corn,,
+5,R9,9.0,Corn (Sweet),Sweet Corn,35,21
+6,R9,9.0,Corn (Sweet),Sweet Corn,103,85
+7,R9,9.0,Corn (Sweet),Sweet Corn,192,187
+8,R9,9.0,Corn (Sweet),Sweet Corn,175,164
+9,R9,9.0,Corn (Sweet),Sweet Corn,19,16
+10,R9,9.0,Corn (Sweet),Sweet Corn,,
+11,R9,9.0,Corn (Sweet),Sweet Corn,,
+12,R9,9.0,Corn (Sweet),Sweet Corn,,
+Season,R9,9.0,Corn (Sweet),Sweet Corn,524,473
+1,R9,9.0,Filberts,,,
+2,R9,9.0,Filberts,,,
+3,R9,9.0,Filberts,,41,2
+4,R9,9.0,Filberts,,87,40
+5,R9,9.0,Filberts,,148,112
+6,R9,9.0,Filberts,,183,158
+7,R9,9.0,Filberts,,226,219
+8,R9,9.0,Filberts,,188,177
+9,R9,9.0,Filberts,,125,97
+10,R9,9.0,Filberts,,56,5
+11,R9,9.0,Filberts,,11,0
+12,R9,9.0,Filberts,,,
+Season,R9,9.0,Filberts,,1065,810
+1,R9,9.0,Grain (Spring),Spring Wheat,,
+2,R9,9.0,Grain (Spring),Spring Wheat,,
+3,R9,9.0,Grain (Spring),Spring Wheat,,
+4,R9,9.0,Grain (Spring),Spring Wheat,59,15
+5,R9,9.0,Grain (Spring),Spring Wheat,142,106
+6,R9,9.0,Grain (Spring),Spring Wheat,171,148
+7,R9,9.0,Grain (Spring),Spring Wheat,187,182
+8,R9,9.0,Grain (Spring),Spring Wheat,34,32
+9,R9,9.0,Grain (Spring),Spring Wheat,,
+10,R9,9.0,Grain (Spring),Spring Wheat,,
+11,R9,9.0,Grain (Spring),Spring Wheat,,
+12,R9,9.0,Grain (Spring),Spring Wheat,,
+Season,R9,9.0,Grain (Spring),Spring Wheat,593,483
+1,R9,9.0,Grain (Winter),Winter Wheat,,
+2,R9,9.0,Grain (Winter),Winter Wheat,,
+3,R9,9.0,Grain (Winter),Winter Wheat,27,1
+4,R9,9.0,Grain (Winter),Winter Wheat,77,30
+5,R9,9.0,Grain (Winter),Winter Wheat,148,112
+6,R9,9.0,Grain (Winter),Winter Wheat,167,147
+7,R9,9.0,Grain (Winter),Winter Wheat,76,74
+8,R9,9.0,Grain (Winter),Winter Wheat,,
+9,R9,9.0,Grain (Winter),Winter Wheat,,
+10,R9,9.0,Grain (Winter),Winter Wheat,,
+11,R9,9.0,Grain (Winter),Winter Wheat,,
+12,R9,9.0,Grain (Winter),Winter Wheat,,
+Season,R9,9.0,Grain (Winter),Winter Wheat,495,364
+1,R9,9.0,Grapes,Grapes,,
+2,R9,9.0,Grapes,Grapes,,
+3,R9,9.0,Grapes,Grapes,,
+4,R9,9.0,Grapes,Grapes,43,4
+5,R9,9.0,Grapes,Grapes,78,48
+6,R9,9.0,Grapes,Grapes,102,83
+7,R9,9.0,Grapes,Grapes,125,122
+8,R9,9.0,Grapes,Grapes,105,96
+9,R9,9.0,Grapes,Grapes,72,47
+10,R9,9.0,Grapes,Grapes,33,2
+11,R9,9.0,Grapes,Grapes,6,0
+12,R9,9.0,Grapes,Grapes,,
+Season,R9,9.0,Grapes,Grapes,564,402
+1,R9,9.0,Onions,Onions,,
+2,R9,9.0,Onions,Onions,,
+3,R9,9.0,Onions,Onions,,
+4,R9,9.0,Onions,Onions,17,5
+5,R9,9.0,Onions,Onions,86,59
+6,R9,9.0,Onions,Onions,128,112
+7,R9,9.0,Onions,Onions,188,182
+8,R9,9.0,Onions,Onions,158,149
+9,R9,9.0,Onions,Onions,47,36
+10,R9,9.0,Onions,Onions,,
+11,R9,9.0,Onions,Onions,,
+12,R9,9.0,Onions,Onions,,
+Season,R9,9.0,Onions,Onions,624,543
+1,R9,9.0,Pasture,Grass/Pasture,,
+2,R9,9.0,Pasture,Grass/Pasture,,
+3,R9,9.0,Pasture,Grass/Pasture,19,1
+4,R9,9.0,Pasture,Grass/Pasture,89,41
+5,R9,9.0,Pasture,Grass/Pasture,133,98
+6,R9,9.0,Pasture,Grass/Pasture,150,131
+7,R9,9.0,Pasture,Grass/Pasture,182,177
+8,R9,9.0,Pasture,Grass/Pasture,152,144
+9,R9,9.0,Pasture,Grass/Pasture,106,81
+10,R9,9.0,Pasture,Grass/Pasture,58,5
+11,R9,9.0,Pasture,Grass/Pasture,,
+12,R9,9.0,Pasture,Grass/Pasture,,
+Season,R9,9.0,Pasture,Grass/Pasture,889,678
+1,R9,9.0,Pears,Pears,,
+2,R9,9.0,Pears,Pears,,
+3,R9,9.0,Pears,Pears,41,2
+4,R9,9.0,Pears,Pears,84,36
+5,R9,9.0,Pears,Pears,133,99
+6,R9,9.0,Pears,Pears,168,145
+7,R9,9.0,Pears,Pears,208,200
+8,R9,9.0,Pears,Pears,173,162
+9,R9,9.0,Pears,Pears,114,87
+10,R9,9.0,Pears,Pears,52,4
+11,R9,9.0,Pears,Pears,11,0
+12,R9,9.0,Pears,Pears,,
+Season,R9,9.0,Pears,Pears,984,735
+1,R9,9.0,Peas,Peas,,
+2,R9,9.0,Peas,Peas,,
+3,R9,9.0,Peas,Peas,,
+4,R9,9.0,Peas,Peas,38,9
+5,R9,9.0,Peas,Peas,135,99
+6,R9,9.0,Peas,Peas,171,148
+7,R9,9.0,Peas,Peas,161,156
+8,R9,9.0,Peas,Peas,,
+9,R9,9.0,Peas,Peas,,
+10,R9,9.0,Peas,Peas,,
+11,R9,9.0,Peas,Peas,,
+12,R9,9.0,Peas,Peas,,
+Season,R9,9.0,Peas,Peas,505,412
+1,R9,9.0,Plums,Plums,,
+2,R9,9.0,Plums,Plums,,
+3,R9,9.0,Plums,Plums,41,2
+4,R9,9.0,Plums,Plums,84,36
+5,R9,9.0,Plums,Plums,133,99
+6,R9,9.0,Plums,Plums,168,145
+7,R9,9.0,Plums,Plums,208,200
+8,R9,9.0,Plums,Plums,173,162
+9,R9,9.0,Plums,Plums,114,87
+10,R9,9.0,Plums,Plums,52,4
+11,R9,9.0,Plums,Plums,11,0
+12,R9,9.0,Plums,Plums,,
+Season,R9,9.0,Plums,Plums,984,735
