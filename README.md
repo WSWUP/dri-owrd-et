@@ -228,7 +228,7 @@ CSV files with ET spatial summaries for each field or HUC, uniquely identified b
         e. Eddy covariance & OpenET Ensemble ETa scatterplot intercomparison<br><br>
             <center><img src="tables\post_processing\9_visualization\ec_vs_ensemble_plot_S2.png" width="300"/></center><br>
         f. Monthly cumulative ETa, Prz, and CUirr volume timeseries & distribution plots<br><br>
-            <center><img src="docs\Oregon_Statewide_ET_et_cu_cumulative_plot_snippet.jpg" width="500"/></center><br>
+            <center><img src="docs\Oregon_Statewide_ET_et_cu_cumulative_plot_snippet.jpg" width="500"/></center><br><br>
     10. Database reformatting for field-level GEE App [tool](https://dri-apps.projects.earthengine.app/view/owrd-oregon-etcu-field-summaries)<br><br>
         <center><img src="docs/Oregon_Statewide_ET_data_viz_tool_snippet.jpg" width="800"/></center><br>
 
