@@ -10,6 +10,8 @@ of Hydrologic Sciences, Desert Research Institute report 41306, 94 p., 10 append
 
 --------
 
+<center><img src="docs/Oregon_Statewide_ET_data_viz_snippet.jpg" width='600'/></center>
+
 ## **Overview**
 The repository was created for the **Oregon Statewide ET Project** with the following two primary objectives in mind:<br>
 - Provide a chained-modeling workflow that integrates the OpenET and ET Demands models to reproduce Oregon-specific historical evapotranspiration (ET) and consumptive use of irrigation (CUirr) geopackages that contain field- or HUC-level timeseries data for the 1985-2022 time period.<br><br>
@@ -28,7 +30,7 @@ The repository includes a collection of Jupyter Notebooks (located in the "noteb
 ## **Workflow Diagram**
 The components of the notebooks above generally follow the workflow diagram below (excepting geopackage development):
 
-![Workflow Diagram](docs/Oregon_Statewide_ET_data_processing_pipeline_clipped.jpeg "Field- and HUC-level Data Processing Workflow")
+<center><img src="docs/Oregon_Statewide_ET_data_processing_pipeline_clipped.jpeg" width='600'/></center>
 
 Workflow Diagram steps from page 27 of the report:
 
@@ -92,9 +94,8 @@ CSV files with static and dynamic (annual) attributes for each field, uniquely i
         - Irrigation system type ("**ITYPE**") - an integer value (0-5 range) indicating the generalized category of irrigation system equipment used for the field, as defined in the table below (table 1 of the report).<br>
  
         - Irrigation efficiency ("**IRR_EFF**") - a floating point value (0-0.9 range) indicating the average irrigation system efficiency for the field, which is based on the irrigation system equipment and the associated ranges of irrigation efficiencies defined in the table below (table 1 of the report). A value of 0 indicates that no irrigation system type and efficiency could be determined for the field or was outside of the scope for this project (e.g., fields outside the Oregon state border).
-
-            ![System type and efficiency table 1](docs/Oregon_Statewide_ET_irrigation_system_type_efficiency_table1.jpeg "System type and efficiency table 1")<br><br>
-
+            <center><img src="docs/Oregon_Statewide_ET_irrigation_system_type_efficiency_table1.jpeg" width='500'/></center><br>
+          
         - GridMET cell code ("**GRIDMET_ID**") - an integer value indicating the unique identification code for the gridMET cell containing the field geometry.<br><br>
 
         - Hydrologic Unit code ("**HUC8**" or "**HUC12**") - a string value indicating the 8- or 12-digit identification code for the watershed containing the field geometry.<br><br>
@@ -215,8 +216,21 @@ CSV files with ET spatial summaries for each field or HUC, uniquely identified b
     8. HUC-level geopackage preparation
         - output filename "or_huc_geopackage.gpkg"
             - includes irrigation/water use and small pond evaporation summaries
-<br>
-
+    9. Visualization tools<br>
+        a. HUC8 CUirr/acreage histograms for 2017 & 2021<br><br>
+            <center><img src="tables\post_processing\9_visualization\oregon_huc8_histograms_cuirr.png" width="500"/></center><br>
+        b. HUC8 ETa/ETc and CUirr/NIWR box & whisker plots<br><br>
+            <center><img src="tables\post_processing\9_visualization\oregon_et_huc8_box_whisker_plot1.png" width="500"/></center><br>
+        c. HUC8 CUirr/Applied Water heatmaps & timeseries plots<br><br>
+            <center><img src="tables\post_processing\9_visualization\HUC8_Summer Lake (17120005)_volumes_rates.png" width="500"/></center><br>
+        d. Cuenca & ET Demands ETc/NIWR bar chart intercomparison<br><br>
+            <center><img src="tables\post_processing\9_visualization\oregon_cuenca_comparisons_R18_Pasture.png" width="500"/></center><br>
+        e. Eddy covariance & OpenET Ensemble ETa scatterplot intercomparison<br><br>
+            <center><img src="tables\post_processing\9_visualization\ec_vs_ensemble_plot_S2.png" width="300"/></center><br>
+        f. Monthly cumulative ETa, Prz, and CUirr volume timeseries & distribution plots<br><br>
+            <center><img src="docs\Oregon_Statewide_ET_et_cu_cumulative_plot_snippet.jpg" width="500"/></center><br>
+    10. Database reformatting for field-level GEE App [tool](https://dri-apps.projects.earthengine.app/view/owrd-oregon-etcu-field-summaries)<br><br>
+        <center><img src="docs/Oregon_Statewide_ET_data_viz_tool_snippet.jpg" width="800"/></center><br>
 
 --------
 
