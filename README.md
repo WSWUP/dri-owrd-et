@@ -218,15 +218,15 @@ CSV files with ET spatial summaries for each field or HUC, uniquely identified b
             - includes irrigation/water use and small pond evaporation summaries
     9. Visualization tools<br>
         a. HUC8 CUirr/acreage histograms for 2017 & 2021<br><br>
-            <center><img src="tables\post_processing\9_visualization\oregon_huc8_histograms_cuirr.png" width="500"/></center><br>
+            <center><img src="tables\post_processing\9_visualization\oregon_huc8_histograms_cuirr.png" width="500"/></center><br><br>
         b. HUC8 ETa/ETc and CUirr/NIWR box & whisker plots<br><br>
-            <center><img src="tables\post_processing\9_visualization\oregon_et_huc8_box_whisker_plot1.png" width="500"/></center><br>
+            <center><img src="tables\post_processing\9_visualization\oregon_et_huc8_box_whisker_plot1.png" width="500"/></center><br><br>
         c. HUC8 CUirr/Applied Water heatmaps & timeseries plots<br><br>
-            <center><img src="tables\post_processing\9_visualization\HUC8_Summer Lake (17120005)_volumes_rates.png" width="500"/></center><br>
+            <center><img src="tables\post_processing\9_visualization\HUC8_Summer Lake (17120005)_volumes_rates.png" width="500"/></center><br><br>
         d. Cuenca & ET Demands ETc/NIWR bar chart intercomparison<br><br>
-            <center><img src="tables\post_processing\9_visualization\oregon_cuenca_comparisons_R18_Pasture.png" width="500"/></center><br>
+            <center><img src="tables\post_processing\9_visualization\oregon_cuenca_comparisons_R18_Pasture.png" width="500"/></center><br><br>
         e. Eddy covariance & OpenET Ensemble ETa scatterplot intercomparison<br><br>
-            <center><img src="tables\post_processing\9_visualization\ec_vs_ensemble_plot_S2.png" width="300"/></center><br>
+            <center><img src="tables\post_processing\9_visualization\ec_vs_ensemble_plot_S2.png" width="300"/></center><br><br>
         f. Monthly cumulative ETa, Prz, and CUirr volume timeseries & distribution plots<br><br>
             <center><img src="docs\Oregon_Statewide_ET_et_cu_cumulative_plot_snippet.jpg" width="500"/></center><br><br>
     10. Database reformatting for field-level GEE App [tool](https://dri-apps.projects.earthengine.app/view/owrd-oregon-etcu-field-summaries)<br><br>
