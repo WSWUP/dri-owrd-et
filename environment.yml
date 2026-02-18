@@ -12,5 +12,7 @@ dependencies:
   - refet
   - xarray
   - netcdf4
+  - joblib>=1.5.3
+  - tqdm>=4.67.1
 
 
