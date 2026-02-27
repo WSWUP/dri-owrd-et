@@ -46,11 +46,11 @@ def main(ini_path=None):
     ini = inputs.read(ini_path)
     inputs.parse_section(ini, section='INPUTS')
 
-    # Initialize Earth Engine API key
-    logging.info('\nPost Processing Field Level Data')
-
     # root directory where this code repository is located on the local file system
     root_path = ini['INPUTS']['root_directory']
+
+    # field boundary shapefile name
+    shapefile_name = ini['INPUTS']['field_boundary_shapefile_name']
     
     # unique ID column/attribute for the field boundary dataset
     unique_id = ini['INPUTS']['unique_field_id']
@@ -94,31 +94,34 @@ def main(ini_path=None):
     
     ### static attributes
     # huc attributes
-    df_huc = pd.read_csv(os.path.join(table_path, 'or_field_summaries_huc_attributes.csv'), index_col='OPENET_ID')
+    df_huc = pd.read_csv(os.path.join(table_path, 'or_field_summaries_huc_attributes.csv'), index_col=unique_id)
     
     # annual crop type and gridmet ID attributes 
-    df_c_pre = pd.read_csv(os.path.join(table_path, 'crop_type_codes_and_gridmet_cells.csv'), index_col='OPENET_ID')
+    df_c_pre = pd.read_csv(os.path.join(table_path, 'crop_type_codes_and_gridmet_cells.csv'), index_col=unique_id)
     
     # irrigation system type, irrigation source type, efficiencies, and OWRD admin boundary attributes
     try:
-        gdf_typ = gpd.read_file(os.path.join(shp_path, 'Oregon_Hyd_Area_Ag_Boundaries_20241016.shp'), columns=['OPENET_ID', 'ITYPE', 'srctype', 'IRR_EFF']).set_index('OPENET_ID')
+        gdf_typ = gpd.read_file(os.path.join(shp_path, shapefile_name), columns=[unique_id, 'ITYPE', 'srctype', 'IRR_EFF']).set_index(unique_id)
         gdf_typ.drop(columns='geometry', inplace=True)
     except Exception as e:
-        print('field boundary shapefile not found, please unzip the file so the shapefile can be read')
+        logging.error(
+            '\nERROR: field boundary shapefile not found, please ensure the shapefile is unzipped and the filename/path matches the configuration file\n'
+            '  {}'.format(os.path.join(shp_path, shapefile_name)))
+        sys.exit()
     
     # fill blank srctypes and efficiencies with 0's
     gdf_typ.loc[gdf_typ['srctype'].isnull(), 'srctype'] = 0
     gdf_typ.loc[gdf_typ['IRR_EFF'].isnull(), 'IRR_EFF'] = 0
     
     # cuenca region attributes
-    df_cue = pd.read_csv(os.path.join(table_path, 'cuenca_regions.csv'), index_col='OPENET_ID')
+    df_cue = pd.read_csv(os.path.join(table_path, 'cuenca_regions.csv'), index_col=unique_id)
     df_cue = df_cue.fillna(0)
     
     # owrd administrative basin attributes
-    df_owrd = pd.read_csv(os.path.join(table_path, 'owrd_admin_bound.csv'), index_col='OPENET_ID')
+    df_owrd = pd.read_csv(os.path.join(table_path, 'owrd_admin_bound.csv'), index_col=unique_id)
     
     # bad geometries (slivers) identified and need to be removed
-    df_bad = pd.read_csv(os.path.join(table_path, 'bad_geometry_list.csv'), index_col='OPENET_ID')
+    df_bad = pd.read_csv(os.path.join(table_path, 'bad_geometry_list.csv'), index_col=unique_id)
     bad_list = list(df_bad.index)
     
     # only process a single field if test_flag is True
@@ -137,36 +140,36 @@ def main(ini_path=None):
     
         try:
             # ET dataframe
-            df_et = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_et.csv'), index_col='OPENET_ID')
+            df_et = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_et.csv'), index_col=unique_id)
         
             # ET Fraction dataframe
-            df_etf = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_et_fraction.csv'), index_col='OPENET_ID')
+            df_etf = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_et_fraction.csv'), index_col=unique_id)
         
             # create columns for missing monthly ET flags
             # for col in df_etf.columns:
             #     df_etf[col+"_missing"] = df_etf[col].isnull()
                 
             # ET Reference dataframe
-            df_eto = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_et_reference.csv'), index_col='OPENET_ID')
+            df_eto = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_et_reference.csv'), index_col=unique_id)
         
             # Crop Type and gridmet ID dataframe
             df_c = df_c_pre[[f'CROP_{year}', 'GRIDMET_ID']]
         
             # precip dataframe
-            df_ppt = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_ppt.csv'), index_col='OPENET_ID') 
+            df_ppt = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_ppt.csv'), index_col=unique_id) 
                 
             # IrrMapper Irrigated dataframe
-            df_irr = pd.read_csv(os.path.join(table_path, f'or_field_summaries_{year}_irrmapper_irrigated.csv'), index_col='OPENET_ID')
+            df_irr = pd.read_csv(os.path.join(table_path, f'or_field_summaries_{year}_irrmapper_irrigated.csv'), index_col=unique_id)
             df_irr[f'%_IRRIGATED_{str(year)[2:]}'] = (df_irr['ACRES_IRRIGATED'] / df_irr['ACRES_ALL']) * 100
             df_irr = df_irr[[f'%_IRRIGATED_{str(year)[2:]}']]
         
             # IrrMapper Wetland dataframe
-            df_wtl = pd.read_csv(os.path.join(table_path, f'or_field_summaries_{year}_irrmapper_wetland.csv'), index_col='OPENET_ID')
+            df_wtl = pd.read_csv(os.path.join(table_path, f'or_field_summaries_{year}_irrmapper_wetland.csv'), index_col=unique_id)
             df_wtl[f'%_WETLAND_{str(year)[2:]}'] = (df_wtl['ACRES_WETLAND'] / df_wtl['ACRES_ALL']) * 100
             df_wtl = df_wtl[[f'%_WETLAND_{str(year)[2:]}']]
         
             # EToF irrigation status dataframe
-            df_etof_irr_status = pd.read_csv(os.path.join(table_path, f'or_field_summaries_{year}_etof_irr_status.csv'), index_col='OPENET_ID')
+            df_etof_irr_status = pd.read_csv(os.path.join(table_path, f'or_field_summaries_{year}_etof_irr_status.csv'), index_col=unique_id)
             
         except Exception as e:
             print(e)
@@ -200,7 +203,7 @@ def main(ini_path=None):
 def arg_parse():
     """"""
     parser = argparse.ArgumentParser(
-        description='Earth Engine Field-Level Monthly ET Zonal Stats Table Export',
+        description='Field Summary Concatentation (Step 1)',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     
     parser.add_argument(

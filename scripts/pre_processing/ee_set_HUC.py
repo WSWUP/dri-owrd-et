@@ -56,6 +56,13 @@ def main(ini_path=None):
 
     # field boundary feature collection in earth engine
     fb_asset_id = ini['INPUTS']['field_boundary_asset_id']
+    try:
+        test_exist = ee.data.getAsset(fb_asset_id)
+    except:
+        logging.error(
+            '\nERROR: field boundary earth engine asset not found, exiting\n'
+            '  {}'.format(fb_asset_id))
+        sys.exit()
 
     # unique ID column/attribute for the field boundary dataset
     unique_id = ini['INPUTS']['unique_field_id']

@@ -35,7 +35,7 @@ pp = pprint.PrettyPrinter(indent=4)
 
 
 def main(ini_path=None):
-    """ CSV joining between ET Demands and the field summaries
+    """ CSV joining between ET Demands and the field summaries based on crop type and gridMET cell
 
     Parameters
     ----------
@@ -48,9 +48,6 @@ def main(ini_path=None):
     # Read config file
     ini = inputs.read(ini_path)
     inputs.parse_section(ini, section='INPUTS')
-
-    # Initialize Earth Engine API key
-    logging.info('\nPost Processing Field Level Data')
 
     # root directory where this code repository is located on the local file system
     root_path = ini['INPUTS']['root_directory']
@@ -65,19 +62,6 @@ def main(ini_path=None):
     # flag to export data for an individual field (True) or the entire field boundary dataset (False)
     single_field_flag = ini['INPUTS']['test_flag']
 
-    # table export location in the cloud (cloud_storage or google_drive)
-    out_location = ini['ZONAL_STATS']['export_location']
-
-    # google drive folder name (default oregon_exports)
-    gdrive_folder_name = ini['ZONAL_STATS']['gdrive_folder']
-
-    # google cloud storage bucket name
-    bucket = ini['ZONAL_STATS']['gcloud_bucket']
-
-    # google cloud storage path within the bucket
-    bucket_path = ini['ZONAL_STATS']['gcloud_bucket_path']
-
-
     # table path
     table_path = os.path.join(root_path, 'tables', 'post_processing')
     
@@ -91,7 +75,7 @@ def main(ini_path=None):
     out_path = os.path.join(table_path, '3_pre_gap_filled')
     
     # list of years based on start/end parameters
-    year_list = list(range(start_year, end_year+1))
+    year_list = list(range(start_yr, end_yr+1))
     
     # ET Demands variables
     variable_map = {
@@ -103,7 +87,7 @@ def main(ini_path=None):
     
     # vectorized crosswalk
     cross_df = pd.read_csv(
-        os.path.join(cross_dir, "OR_unique_cdl_etdemands_crosswalk_model_setup_1979_2024.csv")
+        os.path.join(in_path, "OR_unique_cdl_etdemands_crosswalk_model_setup_1979_2024.csv")
     )
     
     cross_df["etd_no"] = (
@@ -170,7 +154,7 @@ def main(ini_path=None):
         return df
     
     
-    for year in year_lst:
+    for year in year_list:
         t0 = perf_counter()
         print(f"\nProcessing {year}")
     
@@ -180,7 +164,7 @@ def main(ini_path=None):
                 in_path,
                  f'or_field_summaries_water_year_shift_1mo_{year}_pre_et_demands.csv',
             ),
-            index_col="OPENET_ID",
+            index_col=unique_id,
         )
     
         # --- Map CDL → ETD crop
@@ -298,7 +282,7 @@ def main(ini_path=None):
 def arg_parse():
     """"""
     parser = argparse.ArgumentParser(
-        description='Earth Engine Field-Level Monthly ET Zonal Stats Table Export',
+        description='ET Demands to Field Summary Crop Type/Grid Cell Join (Step 2)',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     
     parser.add_argument(
