@@ -14,12 +14,15 @@ from pathlib import Path
 import json
 import os
 import pandas as pd
+from joblib import Parallel, delayed
+from tqdm import tqdm
+from time import perf_counter
 
 dri_owrd_et_path = os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.abspath(os.path.realpath(__file__)))))
 sys.path.insert(0, os.path.join(dri_owrd_et_path, 'dri_owrd_et'))
 sys.path.insert(0, dri_owrd_et_path)
-import dri_owrd_et.inputs as inputs
+import dri_owrd_et.inputs_post_processing as inputs
 import dri_owrd_et.utils as utils
 
 """
@@ -58,9 +61,6 @@ def main(ini_path=None):
     # start and end years
     start_yr = ini['INPUTS']['start_year']
     end_yr = ini['INPUTS']['end_year']
-    
-    # flag to export data for an individual field (True) or the entire field boundary dataset (False)
-    single_field_flag = ini['INPUTS']['test_flag']
 
     # table path
     table_path = os.path.join(root_path, 'tables', 'post_processing')
@@ -111,7 +111,7 @@ def main(ini_path=None):
                     csv_path,
                     header=1,
                     index_col="Date",
-                    parse_dates=True,a
+                    parse_dates=True,
                 )
                 return df.reset_index()
             except Exception:
@@ -169,7 +169,7 @@ def main(ini_path=None):
     
         # --- Map CDL → ETD crop
         df_fields["ETD_CROP"] = (
-            df_fields[f"CDL_{year}"]
+            df_fields[f"CROP_{year}"]
             .round()
             .map(cross_dict)
             .astype("Int64")

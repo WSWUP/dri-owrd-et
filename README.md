@@ -27,6 +27,102 @@ The repository includes a collection of Jupyter Notebooks (located in the "noteb
 
 --------
 
+## **Python Scripts**
+The repository includes a collection of Python Scripts (located in the "scripts" sub-folder), with each python script corresponding to a specific component of the overall workflow:
+1. **pre_processing subfolder** - Pre-processing and attribution of field boundaries
+    > **ee_set_HUC.py** - Spatially joins HUC watershed boundaries with field boundaries and exports a table with the static attributes (CSV)<br><br>
+    > **ee_annual_field_zonal_stats.py** - Exports annual summaries of CDL crop type or irrigation status (irrmapper irrigated, irrmapper wetland, or EToF classifications) for field boundaries using Earth Engine & zonal statistics (1 year at a time)<br><br>
+2. **ee_zonal_stats subfolder** - ET spatial reductions using the Google Earth Engine ([GEE](https://earthengine.google.com/)) Python Application Programming Interface ([API](https://developers.google.com/earth-engine/tutorials/community/intro-to-python-api))
+    > **ee_monthly_field_climo_zonal_stats.py** - Exports monthly EToF climatologies for the field boundary dataset using Earth Engine & zonal statistics (fixed climatology windows: 1984-1991, 1992-1997, 1998-2003, 2004-2010, 2011-2015, and 2016-2021)<br><br>
+    > **ee_monthly_field_zonal_stats.py** - Exports monthly ET, PPT, Prz, ETo, or EToF climatologies for the field boundary dataset using Earth Engine & zonal statistics (1 year at a time)<br><br>
+    > **ee_monthly_huc_evap_climo_zonal_stats.py** - Exports monthly evaporation climatologies for HUC8/HUC12 watersheds (specify start/end years to build the climatology; 1985-2024 for example)<br><br>
+    > **ee_monthly_huc_evap_zonal_stats.py** - Exports monthly evaporation for HUC8/HUC12 watersheds (specify start/end years; 1985-2024)<br><br>
+3. **post_processing subfolder** - Post-processing of data, spatial joins of model outputs, spatial aggregations, and geopackage development
+    > **1_file_concatentation.py** - Concatenates/joins all individual data variable files/exports from earth engine into one composite file (~250k fields) for each year<br><br>
+    > **2_et_demands_join.py** - Joins potential crop ET (ETc) and effective precipitation (Prz) estimates from ET Demands to the field summaries<br><br>
+    > **3_gap_fill.py** - Gap fills missing months of EToF using linear interpolation (1mo) and fixed-window (e.g., 1984-1991) EToF climatologies (2+ mo)<br><br>
+    > **4_soil_moisture_carry_forward.py** - Carries forward excess/stored soil moisture when monthly ETa < Prz and recalculates consumptive use<br><br>
+    > **5_HUC_aggregations.py** - HUC8/HUC12 aggregations of field-level volumes with groundwater & surface water irrigation source breakouts<br><br>
+    > **6_HUC_shapefile_prep.py** - HUC8/HUC12 shapefile preparation for the geopackage/geodatabase from standalone tables<br><br>
+    > **7_field_geopackage_prep.py** - Field-level geopackage/geodatabase preparation from standalone tables<br><br>
+    > **8_HUC_geopackage_prep.py** - HUC-level geopackage/geodatabase preparation from shapefiles<br>
+
+The python scripts are initialized/controlled by configuration files (e.g., example_ee_exports.ini) within the "config" subfolder. Python scripts can be run from the Command Prompt (Windows) or Terminal (MacOS) after specifying parameters/settings in a configuration file:
+
+```ini
+# Earth Engine zonal stats export configuration file for the DRI-OWRD Statewide ET Project
+
+[INPUTS]
+
+# Google Cloud Project ID (a registered cloud project is required for any earth engine exports)
+gcloud_project_id = ee-bminor
+
+# field boundary Earth Engine assetID in Earth Engine upload after pre-processing has been completed
+field_boundary_asset_id = projects/openet/field_boundaries/Oregon_Hyd/Oregon_Hyd_Area_Ag_Boundaries_20240501
+
+# unique ID column/attribute for the field boundary dataset
+unique_field_id = OPENET_ID
+
+# watershed HUC-level to use for small pond evaporation exports (HUC8 or HUC12 only)
+huc_level = HUC12
+
+# start and end years to extract data for (only used for field boundary exports, not HUC watershed evaporation exports)
+# 1985-2024 available (as of March 2026); recommend running one year at first to limit compute costs
+start_year = 1985
+end_year = 1985
+
+# start and end years to extract EToF climatology data (used for gap-filling missing months of EToF for field boundaries)
+# EToF CLIMATOLOGY WINDOW OPTIONS: 1984-1991, 1992-1997, 1998-2003, 2004-2009, 2010-2015, 2016-2021 (NOTE: 2016-2021 climo is used for 2022, 2023, and 2024 gap-filling; do not need to extend the climo end year beyond 2021)
+start_year_climo = 1984
+end_year_climo = 1991
+
+# flag to export data for an individual field/HUC (True) or the entire field boundary/HUC datasets (False)
+test_flag = True
+
+
+[ZONAL_STATS]
+
+# monthly data variable to extract for the field boundary dataset (et, et_reference, et_fraction, or ppt)
+monthly_variable = et
+
+# annual data variable to extract for the field boundary dataset (crop_type, irrmapper_irrigated, irrmapper_wetland, or etof_irr_status)
+# crop type is based on the Cropland Data Layer
+# irrmapper and etof variables are used to determine irrigation status
+annual_variable = crop_type
+
+# table export location (google_drive or cloud_storage)
+export_location = google_drive
+
+# google drive folder name (only used if exporting to google drive)
+gdrive_folder = oregon_exports
+
+# google cloud storage bucket name (only used if exporting to google cloud storage)
+gcloud_bucket = openet
+
+# google cloud storage path within the bucket (only used if exporting to google cloud storage)
+gcloud_bucket_path = intercomparison/output_main/Oregon_Statewide_2023/field_summaries/historical
+```
+
+After modifying the configuration file as needed (and saving), a python script can be run (using the following structure as an example) in the Command Line/Prompt (Windows) and Terminal (MacOS):
+
+Windows Examples:
+```
+python ee_set_HUC.py -i ..\..\config\example_ee_exports.ini
+
+
+python 1_file_concatentation.py -i ..\..\config\example_post_processing.ini
+```
+
+MacOS Examples:
+```
+python ee_set_HUC.py -i ../../config/example_ee_exports.ini
+
+
+python 1_file_concatentation.py -i ../../config/example_post_processing.ini
+```
+
+--------
+
 ## **Workflow Diagram**
 The components of the notebooks above generally follow the workflow diagram below (excepting geopackage development):
 

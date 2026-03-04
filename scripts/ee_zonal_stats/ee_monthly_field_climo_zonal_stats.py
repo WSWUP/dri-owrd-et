@@ -96,7 +96,7 @@ def main(ini_path=None):
     variable = 'et_fraction_climo'
     
     # flag to export data for an individual field (True) or the entire field boundary dataset (False)
-    single_field_flag = ini['ZONAL_STATS']['test_flag']
+    single_field_flag = ini['INPUTS']['test_flag']
 
     # table export location in the cloud (cloud_storage or google_drive)
     out_location = ini['ZONAL_STATS']['export_location']

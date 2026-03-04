@@ -12,12 +12,16 @@ import sys
 from pathlib import Path
 import os
 import pandas as pd
+import datetime
+import geopandas as gpd
+# Set pyogrio as the IO engine
+gpd.options.io_engine = "pyogrio"
 
 dri_owrd_et_path = os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.abspath(os.path.realpath(__file__)))))
 sys.path.insert(0, os.path.join(dri_owrd_et_path, 'dri_owrd_et'))
 sys.path.insert(0, dri_owrd_et_path)
-import dri_owrd_et.inputs as inputs
+import dri_owrd_et.inputs_post_processing as inputs
 import dri_owrd_et.utils as utils
 
 """
@@ -51,7 +55,7 @@ def main(ini_path=None):
 
     # field boundary shapefile name
     shapefile_name = ini['INPUTS']['field_boundary_shapefile_name']
-    
+
     # unique ID column/attribute for the field boundary dataset
     unique_id = ini['INPUTS']['unique_field_id']
     
@@ -62,142 +66,146 @@ def main(ini_path=None):
     # flag to export data for an individual field (True) or the entire field boundary dataset (False)
     single_field_flag = ini['INPUTS']['test_flag']
 
-    # start/end dates for the statewide et project through 2024
-    study_start = '1984-11-01'
-    study_end = '2024-11-01' # exclusive
+    def concat_field_summaries(year_list, paths, unique_id, bad_list, df_huc, df_cue, df_owrd, gdf_typ, df_c_pre):
+        """
+        Concatenate all field summary tables for each water year.
     
-    # dictionary containg variables (keys) and output variable names/dataset source assetIDs (values) that are used
-    dataset_dict = {
-        'et': ['ETa', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0'],
-        'et_reference': ['ET_Reference', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
-        'et_fraction': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
-        'ppt': ['PPT', 'IDAHO_EPSCOR/GRIDMET'],
-        # 'count': ['MODEL_COUNT', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0']
+        Parameters
+        ----------
+        year_list : list of int
+            Water years to process
+        paths : dict
+            Dictionary of paths to CSVs
+        unique_id : str
+            Unique ID column for joining
+        bad_list : list
+            List of bad geometries to filter
+        df_huc, df_cue, df_owrd, gdf_typ, df_c_pre : DataFrames
+            Static attribute data
+    
+        Returns
+        -------
+        None (writes out per-year CSVs)
+        """
+    
+        for year in year_list:
+            yr_str = str(year)
+            yr_abbr = yr_str[2:]
+    
+            # Build a list of DataFrames to concat
+            dfs_to_concat = []
+    
+            # Static attributes
+            dfs_to_concat.extend([df_huc, df_cue, df_owrd, gdf_typ, df_c_pre[[f'CROP_{year}', 'GRIDMET_ID']]])
+    
+            # Dynamic tables (ET, ET Fraction, ET Reference, PPT)
+            dynamic_files = {
+                'df_et': f'or_field_summaries_water_year_shift_1mo_{year}_et.csv',
+                'df_etf': f'or_field_summaries_water_year_shift_1mo_{year}_et_fraction.csv',
+                'df_eto': f'or_field_summaries_water_year_shift_1mo_{year}_et_reference.csv',
+                'df_ppt': f'or_field_summaries_water_year_shift_1mo_{year}_ppt.csv'
+            }
+            for key, fname in dynamic_files.items():
+                try:
+                    dfs_to_concat.append(pd.read_csv(os.path.join(paths['table_path'], fname), index_col=unique_id))
+                except FileNotFoundError:
+                    print(f"Warning: {fname} not found.")
+                    continue
+    
+            # Irrigation / wetland
+            df_irr = pd.read_csv(os.path.join(paths['table_path'], f'or_field_summaries_{year}_irrmapper_irrigated.csv'), index_col=unique_id)
+            df_irr[f'%_IRRIGATED_{yr_abbr}'] = (df_irr['ACRES_IRRIGATED'] / df_irr['ACRES_ALL']) * 100
+            dfs_to_concat.append(df_irr[[f'%_IRRIGATED_{yr_abbr}']])
+    
+            df_wtl = pd.read_csv(os.path.join(paths['table_path'], f'or_field_summaries_{year}_irrmapper_wetland.csv'), index_col=unique_id)
+            df_wtl[f'%_WETLAND_{yr_abbr}'] = (df_wtl['ACRES_WETLAND'] / df_wtl['ACRES_ALL']) * 100
+            dfs_to_concat.append(df_wtl[[f'%_WETLAND_{yr_abbr}']])
+    
+            df_etof = pd.read_csv(os.path.join(paths['table_path'], f'or_field_summaries_{year}_etof_irr_status.csv'), index_col=unique_id)
+            df_etof[f'ETOF_IRR_STATUS_{yr_abbr}_MODE'] = df_etof[f'ETOF_IRR_STATUS_{yr_abbr}_MODE'].fillna(5)
+            dfs_to_concat.append(df_etof[[f'ETOF_IRR_STATUS_{yr_abbr}_MODE']])
+    
+            # Concatenate all
+            df_combined = pd.concat(dfs_to_concat, axis=1)
+    
+            # Filter bad geometries
+            df_combined = df_combined.loc[~df_combined.index.isin(bad_list)]
+    
+            # Create irrigation status
+            df_combined[f'IRR_STATUS_{year}'] = (
+                (df_combined[f'%_IRRIGATED_{yr_abbr}'] > 40) |
+                ((df_combined[f'%_IRRIGATED_{yr_abbr}'] <= 40) &
+                 (df_combined[f'%_WETLAND_{yr_abbr}'] > 40) &
+                 (df_combined['srctype'] != 0) &
+                 (df_combined[f'ETOF_IRR_STATUS_{yr_abbr}_MODE'].isin([2,3,5])))
+            ).astype(int)
+    
+            # Reset index and save
+            df_combined.reset_index().to_csv(
+                os.path.join(paths['out_path'], f'or_field_summaries_water_year_shift_1mo_{year}_pre_et_demands.csv'),
+                index=False
+            )
+            print(f'Exported dataframe for {year}')
+    
+    # --- Configuration and paths ---
+    table_path = os.path.join(root_path, "tables", "ee_exports")
+    supp_path = os.path.join(root_path, "tables", "supplemental")
+    shp_path = os.path.join(root_path, "shapefiles")
+    out_path = os.path.join(root_path, "tables", "post_processing", "2_for_et_demands_join")
+    
+    paths = {
+        "table_path": table_path,
+        "supp_path": supp_path,
+        "shp_path": shp_path,
+        "out_path": out_path
     }
     
-    ###################################################################
-    
-    # table path containing all earth engine export files created from the ee_zonal_stats.ipynb
-    table_path = os.path.join(root_path, 'tables', 'ee_exports')
-    
-    # shapefile location
-    shp_path = os.path.join(root_path, 'shapefiles')
-    
-    # output location
-    out_path = os.path.join(table_path_main, 'post_processing', '2_for_et_demands_join')
-    
-    # list of years to process based on start/end year
     year_list = list(range(start_yr, end_yr+1))
     
-    ###################################################################
-    
-    
-    ### static attributes
-    # huc attributes
+    # --- Load static attributes ---
     df_huc = pd.read_csv(os.path.join(table_path, 'or_field_summaries_huc_attributes.csv'), index_col=unique_id)
+    df_cue = pd.read_csv(os.path.join(supp_path, 'cuenca_regions.csv'), index_col=unique_id).fillna(0)
+    df_owrd = pd.read_csv(os.path.join(supp_path, 'owrd_admin_bound.csv'), index_col=unique_id)
+    df_c_pre = pd.read_csv(os.path.join(supp_path, 'crop_type_codes_and_gridmet_cells.csv'), index_col=unique_id)
     
-    # annual crop type and gridmet ID attributes 
-    df_c_pre = pd.read_csv(os.path.join(table_path, 'crop_type_codes_and_gridmet_cells.csv'), index_col=unique_id)
+    # Irrigation types from shapefile
+    gdf_typ = gpd.read_file(os.path.join(shp_path, shapefile_name), columns=[unique_id, "ITYPE", "srctype", "IRR_EFF"]).set_index(unique_id)
+    gdf_typ.drop(columns='geometry', inplace=True)
+    gdf_typ['srctype'] = gdf_typ['srctype'].fillna(0)
+    gdf_typ['IRR_EFF'] = gdf_typ['IRR_EFF'].fillna(0)
     
-    # irrigation system type, irrigation source type, efficiencies, and OWRD admin boundary attributes
-    try:
-        gdf_typ = gpd.read_file(os.path.join(shp_path, shapefile_name), columns=[unique_id, 'ITYPE', 'srctype', 'IRR_EFF']).set_index(unique_id)
-        gdf_typ.drop(columns='geometry', inplace=True)
-    except Exception as e:
-        logging.error(
-            '\nERROR: field boundary shapefile not found, please ensure the shapefile is unzipped and the filename/path matches the configuration file\n'
-            '  {}'.format(os.path.join(shp_path, shapefile_name)))
-        sys.exit()
-    
-    # fill blank srctypes and efficiencies with 0's
-    gdf_typ.loc[gdf_typ['srctype'].isnull(), 'srctype'] = 0
-    gdf_typ.loc[gdf_typ['IRR_EFF'].isnull(), 'IRR_EFF'] = 0
-    
-    # cuenca region attributes
-    df_cue = pd.read_csv(os.path.join(table_path, 'cuenca_regions.csv'), index_col=unique_id)
-    df_cue = df_cue.fillna(0)
-    
-    # owrd administrative basin attributes
-    df_owrd = pd.read_csv(os.path.join(table_path, 'owrd_admin_bound.csv'), index_col=unique_id)
-    
-    # bad geometries (slivers) identified and need to be removed
-    df_bad = pd.read_csv(os.path.join(table_path, 'bad_geometry_list.csv'), index_col=unique_id)
+    # List of bad geometries to remove
+    df_bad = pd.read_csv(os.path.join(supp_path, "bad_geometry_list.csv"), index_col=unique_id)
     bad_list = list(df_bad.index)
     
-    # only process a single field if test_flag is True
-    if test_flag:
-        print('processing a single field: ORx_62521')
-        df_huc = df_huc.loc[df_huc.index == 'ORx_62521']
-        df_c_pre = df_c_pre.loc[df_c_pre.index == 'ORx_62521']
-        gdf_typ = gdf_typ.loc[gdf_typ.index == 'ORx_62521']
-        df_cue = df_cue.loc[df_cue.index == 'ORx_62521']
+    if single_field_flag:
+        try:
+            df_lookup = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year_list[0]}_et.csv'), index_col=unique_id, nrows=1)
+            oid = df_lookup.index[0]
+        except Exception as e:
+            print(e)
+        
+        print(f'processing a single field: {oid}')
+        df_huc = df_huc.loc[df_huc.index == oid]
+        df_c_pre = df_c_pre.loc[df_c_pre.index == oid]
+        gdf_typ = gdf_typ.loc[gdf_typ.index == oid]
+        df_cue = df_cue.loc[df_cue.index == oid]
+        df_owrd = df_owrd.loc[df_owrd.index == oid]
     else:
         print('processing all fields')
     
-    
-    # loop through each year
-    for year in year_list:
-    
-        try:
-            # ET dataframe
-            df_et = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_et.csv'), index_col=unique_id)
-        
-            # ET Fraction dataframe
-            df_etf = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_et_fraction.csv'), index_col=unique_id)
-        
-            # create columns for missing monthly ET flags
-            # for col in df_etf.columns:
-            #     df_etf[col+"_missing"] = df_etf[col].isnull()
-                
-            # ET Reference dataframe
-            df_eto = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_et_reference.csv'), index_col=unique_id)
-        
-            # Crop Type and gridmet ID dataframe
-            df_c = df_c_pre[[f'CROP_{year}', 'GRIDMET_ID']]
-        
-            # precip dataframe
-            df_ppt = pd.read_csv(os.path.join(table_path, f'or_field_summaries_water_year_shift_1mo_{year}_ppt.csv'), index_col=unique_id) 
-                
-            # IrrMapper Irrigated dataframe
-            df_irr = pd.read_csv(os.path.join(table_path, f'or_field_summaries_{year}_irrmapper_irrigated.csv'), index_col=unique_id)
-            df_irr[f'%_IRRIGATED_{str(year)[2:]}'] = (df_irr['ACRES_IRRIGATED'] / df_irr['ACRES_ALL']) * 100
-            df_irr = df_irr[[f'%_IRRIGATED_{str(year)[2:]}']]
-        
-            # IrrMapper Wetland dataframe
-            df_wtl = pd.read_csv(os.path.join(table_path, f'or_field_summaries_{year}_irrmapper_wetland.csv'), index_col=unique_id)
-            df_wtl[f'%_WETLAND_{str(year)[2:]}'] = (df_wtl['ACRES_WETLAND'] / df_wtl['ACRES_ALL']) * 100
-            df_wtl = df_wtl[[f'%_WETLAND_{str(year)[2:]}']]
-        
-            # EToF irrigation status dataframe
-            df_etof_irr_status = pd.read_csv(os.path.join(table_path, f'or_field_summaries_{year}_etof_irr_status.csv'), index_col=unique_id)
-            
-        except Exception as e:
-            print(e)
-    
-        # unclassified field nans need to be filled with code 5 for filtering (they are assumed irrigated since they are usually small polygons for single home lawns)
-        df_etof_irr_status[f'ETOF_IRR_STATUS_{str(year)[2:]}_MODE'] =  df_etof_irr_status[f'ETOF_IRR_STATUS_{str(year)[2:]}_MODE'].fillna(5)
-        df_etof_irr_status[[f'ETOF_IRR_STATUS_{str(year)[2:]}_MODE']]
-    
-        # concatenate dataframes on columns using index (unique ID) to match fields
-        df = pd.concat([df_huc, df_cue, df_owrd, gdf_typ, df_c, df_irr, df_wtl, df_etof_irr_status, df_et, df_etf, df_eto, df_ppt], axis=1)
-    
-        # filter out bad geometries
-        df = df.loc[~df.index.isin(bad_list)]
-    
-        # create irrigation status column based on the following criteria
-        # 1. IrrMapper % Irrigated > 40%
-        # 2. IrrMapper % Irrigated <= 40% AND IrrMapper % Wetland > 40% AND non-zero irrigation source type AND EToF Classification is 2, 3, or 5 (irrigated, shorted, unclassified/assumed irrigated)
-        # first initialize the new irrigation status column with 0s
-        df[f'IRR_STATUS_{year}'] = 0
-        df.loc[(df[f'%_IRRIGATED_{str(year)[2:]}'] > 40) | ((df[f'%_IRRIGATED_{str(year)[2:]}'] <= 40) & (df[f'%_WETLAND_{str(year)[2:]}'] > 40) & (df['srctype'] != 0) & (df[f'ETOF_IRR_STATUS_{str(year)[2:]}_MODE'].isin([2,3,5]))), f'IRR_STATUS_{year}'] = 1 
-        
-        # reset the index
-        df = df.reset_index()
-    
-        # export joined dataframe for pairing with ET Demands
-        df.to_csv(os.path.join(out_path, f'or_field_summaries_water_year_shift_1mo_{year}_pre_et_demands.csv'), index=False)
-            
-        print(f'exported dataframe for {year}')
+    # --- Call the concatenation function ---
+    concat_field_summaries(
+        year_list=year_list,
+        paths=paths,
+        unique_id=unique_id,
+        bad_list=bad_list,
+        df_huc=df_huc,
+        df_cue=df_cue,
+        df_owrd=df_owrd,
+        gdf_typ=gdf_typ,
+        df_c_pre=df_c_pre
+    )
     
 
 def arg_parse():

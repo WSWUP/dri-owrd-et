@@ -115,9 +115,7 @@ def parse_inputs(ini, section='INPUTS'):
     # MANDATORY PARAMETERS
     # section, input_name, output_name, description, get_type
     param_list = [
-        ['root_directory', 'root_directory', str],
         ['gcloud_project_id', 'gcloud_project_id', str],
-        ['field_boundary_shapefile_name', 'field_boundary_shapefile_name', str],
         ['field_boundary_asset_id', 'field_boundary_asset_id', str],
         ['unique_field_id', 'unique_field_id', str],
         ['huc_level', 'huc_level', str],
@@ -129,19 +127,10 @@ def parse_inputs(ini, section='INPUTS'):
     for input_name, output_name, get_type in param_list:
         get_param(ini, section, input_name, output_name, get_type)
 
-
-    if not os.path.isdir(os.path.dirname(ini[section]['root_directory'])):
-        logging.error(
-            '\nERROR: The root directory/path does not exist, exiting\n'
-            '  {}'.format(os.path.dirname(ini[section]['root_directory'])))
-        sys.exit()
         
     # Google Cloud project ID
     if ini[section]['gcloud_project_id']:
         ini[section]['gcloud_project_id'] = ini[section]['gcloud_project_id']
-
-    if ini[section]['field_boundary_shapefile_name']:
-        ini[section]['field_boundary_shapefile_name'] = ini[section]['field_boundary_shapefile_name']
 
     if ini[section]['field_boundary_asset_id']:
         ini[section]['field_boundary_asset_id'] = ini[section]['field_boundary_asset_id']

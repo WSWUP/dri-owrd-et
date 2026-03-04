@@ -74,11 +74,11 @@ def main(ini_path=None):
     start_yr = ini['INPUTS']['start_year']
     end_yr = ini['INPUTS']['end_year']
 
-    # monthly data variable to extract
-    variable = ini['ZONAL_STATS']['monthly_variable']
+    # annual data variable to extract
+    variable = ini['ZONAL_STATS']['annual_variable']
     
     # flag to export data for an individual field (True) or the entire field boundary dataset (False)
-    single_field_flag = ini['ZONAL_STATS']['test_flag']
+    single_field_flag = ini['INPUTS']['test_flag']
 
     # table export location in the cloud (cloud_storage or google_drive)
     out_location = ini['ZONAL_STATS']['export_location']
@@ -104,16 +104,57 @@ def main(ini_path=None):
         'etof_irr_status': ['ETOF_IRR_STATUS_MODE', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
     }
     
+    def addDates(img):
+        """sets the image date (start of the month) as a property on each field/feature
     
-    # full list of years within the study period
-    potential_year_list = list(range(1985, 2025))
+        Args:
+            img: earth engine image
     
-    if start_yr > end_yr:
-        print('end_year cannot be less than start_year, please check the parameters')
-    if start_yr not in potential_year_list:
-        print('start_year is not within the 1985-2024 study period')
-    if end_yr not in potential_year_list:
-        print('end_year is not within the 1985-2024 study period')
+        Returns:
+            img: earth engine image with updated properties
+        """
+        
+        img_date = ee.Date(img.get('system:time_start'))
+        return img.set('date', img_date.format('yyyy-MM-dd'))
+    
+    def removGeom(ftr):
+        """removes the geometry column from the field/feature
+    
+        Args:
+            ftr: earth engine feature
+    
+        Returns:
+            earth engine feature without geometry attributes
+        """
+        
+        return ftr.setGeometry(None)
+    
+    if variable == 'crop_type':
+        # full list of years within the study period
+        potential_year_list = list(range(2007, 2025))
+        
+        if start_yr > end_yr:
+            logging.error('end_year cannot be less than start_year, please check the parameters')
+            sys.exit()
+        if start_yr not in potential_year_list:
+            logging.error('start_year for crop type cannot be below 2007 (based on CDL)')
+            sys.exit()
+        if end_yr not in potential_year_list:
+            logging.error('end_year is not within the 2007-2024 study period')
+            sys.exit()
+    else:
+        # full list of years within the study period
+        potential_year_list = list(range(1985, 2025))
+        
+        if start_yr > end_yr:
+            logging.error('end_year cannot be less than start_year, please check the parameters')
+            sys.exit()
+        if start_yr not in potential_year_list:
+            logging.error('start_year is not within the 1985-2024 study period')
+            sys.exit()
+        if end_yr not in potential_year_list:
+            logging.error('end_year is not within the 1985-2024 study period')    
+            sys.exit()
     
     # list of years to process based on start/end year parameters
     year_list = list(range(start_yr, end_yr+1))
@@ -121,13 +162,13 @@ def main(ini_path=None):
     
     # field boundary assetID on GEE
     if single_field_flag:
-        field_bound_pre = (
+        field_bound = (
             ee.FeatureCollection(fb_asset_id)
                 .select([unique_id])
                 .limit(1)
         )
     else:
-        field_bound_pre = (
+        field_bound = (
             ee.FeatureCollection(fb_asset_id)
                 .select([unique_id])
         )

@@ -14,12 +14,18 @@ from pathlib import Path
 import json
 import os
 import pandas as pd
+import re
+from pandas.errors import SettingWithCopyWarning
+import warnings
+warnings.simplefilter(action='ignore', category=SettingWithCopyWarning)
+warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.simplefilter(action='ignore', category=pd.errors.PerformanceWarning)
 
 dri_owrd_et_path = os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.abspath(os.path.realpath(__file__)))))
 sys.path.insert(0, os.path.join(dri_owrd_et_path, 'dri_owrd_et'))
 sys.path.insert(0, dri_owrd_et_path)
-import dri_owrd_et.inputs as inputs
+import dri_owrd_et.inputs_post_processing as inputs
 import dri_owrd_et.utils as utils
 
 """
@@ -55,9 +61,6 @@ def main(ini_path=None):
     # start and end years
     start_yr = ini['INPUTS']['start_year']
     end_yr = ini['INPUTS']['end_year']
-    
-    # flag to export data for an individual field (True) or the entire field boundary dataset (False)
-    single_field_flag = ini['INPUTS']['test_flag']
 
     # ET Demands effective precip variable name
     eff_ppt_var = 'P_rz'
@@ -77,620 +80,347 @@ def main(ini_path=None):
     yr_list = list(range(start_yr, end_yr+1))
     yr_abr_list = [int(str(yr)[2:]) for yr in yr_list]
     
-    # EToF Climatology  dataframe to gap-fill if multiple adjacent-months missing (also first and last values)
-    try:
-        if (yr_list[0] == 1985 and yr_list[-1] == 1991):
-            df_c = pd.read_csv(os.path.join(table_path_ee, f'or_field_summaries_water_year_shift_1mo_1984_{yr_list[-1]}_et_fraction_climo.csv'), index_col=unique_id)
-        elif (yr_list[0] == 2016 and yr_list[-1] == 2022):
-            df_c = pd.read_csv(os.path.join(table_path_ee, f'or_field_summaries_water_year_shift_1mo_{yr_list[0]}_2021_et_fraction_climo.csv'), index_col=unique_id)
-        elif (yr_list[0] == 2016 and yr_list[-1] == 2023):
-            df_c = pd.read_csv(os.path.join(table_path_ee, f'or_field_summaries_water_year_shift_1mo_{yr_list[0]}_2021_et_fraction_climo.csv'), index_col=unique_id)
-        elif (yr_list[0] == 2016 and yr_list[-1] == 2024):
-            df_c = pd.read_csv(os.path.join(table_path_ee, f'or_field_summaries_water_year_shift_1mo_{yr_list[0]}_2021_et_fraction_climo.csv'), index_col=unique_id)
+    mm_vars = ["ETa", "ETDa", "ET_Reference", "PPT", "P_rz", "NIWR"]
+    
+    # ---------------------------
+    # HELPER: Water year month order
+    # ---------------------------
+    def water_year_months(year):
+        yr = int(str(year)[2:])
+        prev = int(str(year - 1)[2:])
+        return [
+            ("11", prev),
+            ("12", prev),
+            ("01", yr), ("02", yr), ("03", yr),
+            ("04", yr), ("05", yr), ("06", yr),
+            ("07", yr), ("08", yr), ("09", yr),
+            ("10", yr),
+        ]
+    
+    def load_climatology(table_path_ee, yr_list):
+        if yr_list[0] >= 2016:
+            climo_start, climo_end = 2016, 2021
+        elif yr_list[0] == 1985:
+            climo_start, climo_end = 1984, 1991
         else:
-            df_c = pd.read_csv(os.path.join(table_path_ee, f'or_field_summaries_water_year_shift_1mo_{yr_list[0]}_{yr_list[-1]}_et_fraction_climo.csv'), index_col=unique_id)
+            climo_start, climo_end = yr_list[0], yr_list[-1]
     
-        # rename columns for climo file
-        df_c.columns = ['ETc_Fraction_11','ETc_Fraction_12','ETc_Fraction_01','ETc_Fraction_02','ETc_Fraction_03','ETc_Fraction_04','ETc_Fraction_05','ETc_Fraction_06',
-                        'ETc_Fraction_07','ETc_Fraction_08','ETc_Fraction_09','ETc_Fraction_10']
+        climo_file = os.path.join(
+            table_path_ee,
+            f"or_field_summaries_water_year_shift_1mo_{climo_start}_{climo_end}_et_fraction_climo.csv",
+        )
     
-        # read all years into dataframes in order to concatenate and gap fill properly
-        
-        if (yr_list[0] == 1985 and yr_list[-1] == 1991):
-            df1 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_1985_pre_gapfill.csv'), index_col=unique_id)
-            df1 = df1.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[0]:02d}'})
-            df2 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_1986_pre_gapfill.csv'), index_col=unique_id)
-            df2 = df2.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[1]:02d}'})
-            df3 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_1987_pre_gapfill.csv'), index_col=unique_id)
-            df3 = df3.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[2]:02d}'})
-            df4 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_1988_pre_gapfill.csv'), index_col=unique_id)
-            df4 = df4.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[3]:02d}'})
-            df5 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_1989_pre_gapfill.csv'), index_col=unique_id)
-            df5 = df5.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[4]:02d}'})
-            df6 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_1990_pre_gapfill.csv'), index_col=unique_id)
-            df6 = df6.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[5]:02d}'})
-            df7 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_1991_pre_gapfill.csv'), index_col=unique_id)
-            df7 = df7.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[6]:02d}'})
-        
-            df = pd.concat([df_c, df1, df2, df3, df4, df5, df6, df7], axis=1)
-        elif (yr_list[0] == 2016 and yr_list[-1] == 2022):
-            df1 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2016_pre_gapfill.csv'), index_col=unique_id)
-            df1 = df1.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[0]:02d}'})
-            df2 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2017_pre_gapfill.csv'), index_col=unique_id)
-            df2 = df2.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[1]:02d}'})
-            df3 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2018_pre_gapfill.csv'), index_col=unique_id)
-            df3 = df3.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[2]:02d}'})
-            df4 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2019_pre_gapfill.csv'), index_col=unique_id)
-            df4 = df4.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[3]:02d}'})
-            df5 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2020_pre_gapfill.csv'), index_col=unique_id)
-            df5 = df5.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[4]:02d}'})
-            df6 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2021_pre_gapfill.csv'), index_col=unique_id)
-            df6 = df6.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[5]:02d}'})
-            df7 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2022_pre_gapfill.csv'), index_col=unique_id)
-            df7 = df7.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[6]:02d}'})
-        
-            df = pd.concat([df_c, df1, df2, df3, df4, df5, df6, df7], axis=1)
-        elif (yr_list[0] == 2016 and yr_list[-1] == 2023):
-            df1 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2016_pre_gapfill.csv'), index_col=unique_id)
-            df1 = df1.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[0]:02d}'})
-            df2 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2017_pre_gapfill.csv'), index_col=unique_id)
-            df2 = df2.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[1]:02d}'})
-            df3 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2018_pre_gapfill.csv'), index_col=unique_id)
-            df3 = df3.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[2]:02d}'})
-            df4 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2019_pre_gapfill.csv'), index_col=unique_id)
-            df4 = df4.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[3]:02d}'})
-            df5 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2020_pre_gapfill.csv'), index_col=unique_id)
-            df5 = df5.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[4]:02d}'})
-            df6 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2021_pre_gapfill.csv'), index_col=unique_id)
-            df6 = df6.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[5]:02d}'})
-            df7 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2022_pre_gapfill.csv'), index_col=unique_id)
-            df7 = df7.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[6]:02d}'})
-            df8 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2023_pre_gapfill.csv'), index_col=unique_id)
-            df8 = df8.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[7]:02d}'})
-        
-            df = pd.concat([df_c, df1, df2, df3, df4, df5, df6, df7, df8], axis=1)
-        elif (yr_list[0] == 2016 and yr_list[-1] == 2024):
-            df1 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2016_pre_gapfill.csv'), index_col=unique_id)
-            df1 = df1.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[0]:02d}'})
-            df2 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2017_pre_gapfill.csv'), index_col=unique_id)
-            df2 = df2.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[1]:02d}'})
-            df3 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2018_pre_gapfill.csv'), index_col=unique_id)
-            df3 = df3.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[2]:02d}'})
-            df4 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2019_pre_gapfill.csv'), index_col=unique_id)
-            df4 = df4.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[3]:02d}'})
-            df5 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2020_pre_gapfill.csv'), index_col=unique_id)
-            df5 = df5.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[4]:02d}'})
-            df6 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2021_pre_gapfill.csv'), index_col=unique_id)
-            df6 = df6.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[5]:02d}'})
-            df7 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2022_pre_gapfill.csv'), index_col=unique_id)
-            df7 = df7.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[6]:02d}'})
-            df8 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2023_pre_gapfill.csv'), index_col=unique_id)
-            df8 = df8.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[7]:02d}'})
-            df9 = pd.read_csv(os.path.join(in_path, 'or_openet_etdemands_monthly_water_year_shift_1mo_2024_pre_gapfill.csv'), index_col=unique_id)
-            df9 = df9.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[8]:02d}'})
-        
-            df = pd.concat([df_c, df1, df2, df3, df4, df5, df6, df7, df8, df9], axis=1)
+        df_c = pd.read_csv(climo_file, index_col=unique_id)
+    
+        df_c.columns = [
+            "ETc_Fraction_11", "ETc_Fraction_12",
+            "ETc_Fraction_01", "ETc_Fraction_02", "ETc_Fraction_03",
+            "ETc_Fraction_04", "ETc_Fraction_05", "ETc_Fraction_06",
+            "ETc_Fraction_07", "ETc_Fraction_08", "ETc_Fraction_09",
+            "ETc_Fraction_10",
+        ]
+    
+        return df_c
+    
+    def load_year_data(in_path, year):
+        yr_abr = int(str(year)[2:])
+    
+        file_path = os.path.join(
+            in_path,
+            f"or_openet_etdemands_monthly_water_year_shift_1mo_{year}_pre_gapfill.csv",
+        )
+    
+        df = pd.read_csv(file_path, index_col=unique_id)
+    
+        df = df.rename(columns={
+            "ACRES_FTR_GEOM": f"ACRES_FTR_GEOM_{yr_abr:02d}"
+        })
+    
+        return df
+    
+    def build_master_dataframe(table_path_ee, in_path, yr_list):
+        df_c = load_climatology(table_path_ee, yr_list)
+    
+        dfs = [df_c]
+        for yr in yr_list:
+            dfs.append(load_year_data(in_path, yr))
+    
+        return pd.concat(dfs, axis=1)
+    
+    def fill_final_october(df, yr_list):
+        last_yr = int(str(yr_list[-1])[2:])
+        col = f"ET_Fraction_10_{last_yr:02d}"
+    
+        if col in df.columns:
+            df[col] = df[col].fillna(df["ETc_Fraction_10"])
+    
+        return df
+    
+    def interpolate_single_month_gaps(df):
+        frac_cols = df.filter(regex="ET_Fraction").columns
+    
+        interp_vals = (
+            df[frac_cols].shift(1, axis=1)
+            .add(df[frac_cols].shift(-1, axis=1))
+            / 2
+        )
+    
+        df[frac_cols] = df[frac_cols].fillna(interp_vals)
+    
+        return df
+    
+    def fill_with_climatology(df, yr_list):
+    
+        for yr in yr_list:
+            for m, y in water_year_months(yr):
+                frac_col = f"ET_Fraction_{m}_{y:02d}"
+                climo_col = f"ETc_Fraction_{m}"
+    
+                if frac_col in df.columns:
+                    df[frac_col] = df[frac_col].fillna(df[climo_col])
+    
+        return df
+    
+    def backfill_eta(df, yr_list):
+    
+        for yr in yr_list:
+            for m, y in water_year_months(yr):
+    
+                eta = f"ETa_{m}_{y:02d}"
+                frac = f"ET_Fraction_{m}_{y:02d}"
+                eto = f"ET_Reference_{m}_{y:02d}"
+    
+                if eta in df.columns:
+                    df[eta] = df[eta].fillna(df[frac] * df[eto])
+    
+        return df
+    
+    def convert_mm_to_inches(df, mm_vars):
+    
+        for col in df.columns:
+            for v in mm_vars:
+                if col.startswith(v + "_") and not col.endswith("_in"):
+                    df[f"{col}_in"] = df[col] / 25.4
+    
+        return df
+    
+    def calculate_volumes(df, yr_list, eff_ppt_var):
+    
+        for yr in yr_list:
+            yr_abr = int(str(yr)[2:])
+            acres_col = f"ACRES_FTR_GEOM_{yr_abr:02d}"
+    
+            for m, y in water_year_months(yr):
+    
+                for var in ["ETa", "ETDa", "ET_Reference", "PPT", eff_ppt_var, 'IRR_CU', 'NIWR']:
+    
+                    depth_col = f"{var}_{m}_{y:02d}_in"
+    
+                    if depth_col in df.columns:
+                        if var == 'ETa':
+                            vol_col = f"ET_VOLUME_{m}_{y:02d}_acft"
+                        elif var == 'ET_Reference':
+                            vol_col = f"ETO_VOLUME_{m}_{y:02d}_acft"
+                        elif var == eff_ppt_var:
+                            vol_col = f"EFF_VOLUME_{m}_{y:02d}_acft"
+                        else:
+                            vol_col = f"{var}_VOLUME_{m}_{y:02d}_acft"
+                        df[vol_col] = (df[depth_col] / 12) * df[acres_col]
+                        
+                    # IRR_CU is calculated from ET and EFF volumes after they are made
+                    else:
+                        vol_col = f"{var}_VOLUME_{m}_{y:02d}_acft"
+                        df[vol_col] = df[f"ET_VOLUME_{m}_{y:02d}_acft"] - df[f"EFF_VOLUME_{m}_{y:02d}_acft"]
+                        
+    
+        return df
+    
+    def run_pipeline(table_path_ee, in_path, yr_list):
+    
+        df = build_master_dataframe(table_path_ee, in_path, yr_list)
+    
+        df = fill_final_october(df, yr_list)
+        df = interpolate_single_month_gaps(df)
+        df = fill_with_climatology(df, yr_list)
+        df = backfill_eta(df, yr_list)
+        df = convert_mm_to_inches(df, mm_vars)
+        df = calculate_volumes(df, yr_list, eff_ppt_var)
+    
+        return df
+    
+    yr_list = list(range(start_yr, end_yr + 1))
+    
+    df_final = run_pipeline(
+        table_path_ee=table_path_ee,
+        in_path=in_path,
+        yr_list=yr_list,
+    )
+
+    def parse_month_year(col):
+    
+        match = re.search(r'_(\d{2})_(\d{2})(?:_|$)', col)
+        if not match:
+            return None
+    
+        month = int(match.group(1))
+        yy = int(match.group(2))
+    
+        # Convert 2-digit year correctly
+        if yy >= 80:
+            year = 1900 + yy
         else:
-            df1 = pd.read_csv(os.path.join(in_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[0]}_pre_gapfill.csv'), index_col=unique_id)
-            df1 = df1.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[0]:02d}'})
-            df2 = pd.read_csv(os.path.join(in_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[1]}_pre_gapfill.csv'), index_col=unique_id)
-            df2 = df2.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[1]:02d}'})
-            df3 = pd.read_csv(os.path.join(in_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[2]}_pre_gapfill.csv'), index_col=unique_id)
-            df3 = df3.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[2]:02d}'})
-            df4 = pd.read_csv(os.path.join(in_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[3]}_pre_gapfill.csv'), index_col=unique_id)
-            df4 = df4.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[3]:02d}'})
-            df5 = pd.read_csv(os.path.join(in_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[4]}_pre_gapfill.csv'), index_col=unique_id)
-            df5 = df5.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[4]:02d}'})
-            df6 = pd.read_csv(os.path.join(in_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[5]}_pre_gapfill.csv'), index_col=unique_id)
-            df6 = df6.rename(columns={'ACRES_FTR_GEOM': f'ACRES_FTR_GEOM_{yr_abr_list[5]:02d}'})
+            year = 2000 + yy
     
-    except Exception as e:
-        print(e)
+        return month, year
         
-        df = pd.concat([df_c, df1, df2, df3, df4, df5, df6], axis=1)
+    def parse_annual_year(col):
     
-    # Last month of period needs to be filled with climo before linear interpolation (first month does not since interp doesn't catch it)
-    df[f'ET_Fraction_10_{yr_abr_list[-1]:02d}'] = df[f'ET_Fraction_10_{yr_abr_list[-1]:02d}'].fillna(df['ETc_Fraction_10'])
+        # First try 4-digit year at end
+        match4 = re.search(r'_(\d{4})$', col)
+        if match4:
+            return int(match4.group(1))
     
-    # linearly interpolate isolated monthly nans/gaps 
-    # df_t = df.loc[:,df.columns.str.contains('ET_Fraction')]
-    # df.loc[:,df.columns.str.contains('ET_Fraction')] = df.loc[:,df.columns.str.contains('ET_Fraction')].interpolate(method='linear',limit=1,limit_area='inside',axis=1)
+        # Then try 2-digit year before optional suffix
+        match2 = re.search(r'_(\d{2})(?:_|$)', col)
+        if match2:
+            yy = int(match2.group(1))
     
-    # linearly interpolate isolated monthly nans/gaps only, not consecutive nans
-    fval = (df.loc[:, df.columns.str.contains('ET_Fraction')].shift(1, axis=1).add(df.loc[:, df.columns.str.contains('ET_Fraction')].shift(-1, axis=1)) / 2)
-    df.loc[:, df.columns.str.contains('ET_Fraction')] = df.loc[:, df.columns.str.contains('ET_Fraction')].fillna(value=fval, axis=1)
+            if yy >= 80:
+                return 1900 + yy
+            else:
+                return 2000 + yy
     
-    # fill non-isolated (i.e., consecutive/adjacent) monthly nans/gaps with the climo values explicitly
-    for yr in yr_abr_list:
-        print(f'gap filling {yr}')
+        return None
+
+    def columns_for_water_year(df, water_year):
     
-        # fill the rest of the nans (consecutive nans) with the climatologies
-        # the year 2000 has to have this special condition for subtracting 1 from 0 (2000 actual year value)
-        if yr == 0:
-            df['ET_Fraction_11_99'] = df['ET_Fraction_11_99'].fillna(df['ETc_Fraction_11'])
-            df['ET_Fraction_12_99'] = df['ET_Fraction_12_99'].fillna(df['ETc_Fraction_12'])
-        else:
-            df[f'ET_Fraction_11_{yr-1:02d}'] = df[f'ET_Fraction_11_{yr-1:02d}'].fillna(df['ETc_Fraction_11'])
-            df[f'ET_Fraction_12_{yr-1:02d}'] = df[f'ET_Fraction_12_{yr-1:02d}'].fillna(df['ETc_Fraction_12'])
-        df[f'ET_Fraction_01_{yr:02d}'] = df[f'ET_Fraction_01_{yr:02d}'].fillna(df['ETc_Fraction_01'])
-        df[f'ET_Fraction_02_{yr:02d}'] = df[f'ET_Fraction_02_{yr:02d}'].fillna(df['ETc_Fraction_02'])
-        df[f'ET_Fraction_03_{yr:02d}'] = df[f'ET_Fraction_03_{yr:02d}'].fillna(df['ETc_Fraction_03'])
-        df[f'ET_Fraction_04_{yr:02d}'] = df[f'ET_Fraction_04_{yr:02d}'].fillna(df['ETc_Fraction_04'])
-        df[f'ET_Fraction_05_{yr:02d}'] = df[f'ET_Fraction_05_{yr:02d}'].fillna(df['ETc_Fraction_05'])
-        df[f'ET_Fraction_06_{yr:02d}'] = df[f'ET_Fraction_06_{yr:02d}'].fillna(df['ETc_Fraction_06'])
-        df[f'ET_Fraction_07_{yr:02d}'] = df[f'ET_Fraction_07_{yr:02d}'].fillna(df['ETc_Fraction_07'])
-        df[f'ET_Fraction_08_{yr:02d}'] = df[f'ET_Fraction_08_{yr:02d}'].fillna(df['ETc_Fraction_08'])
-        df[f'ET_Fraction_09_{yr:02d}'] = df[f'ET_Fraction_09_{yr:02d}'].fillna(df['ETc_Fraction_09'])
-        df[f'ET_Fraction_10_{yr:02d}'] = df[f'ET_Fraction_10_{yr:02d}'].fillna(df['ETc_Fraction_10'])
+        cols_keep = []
     
-        # some fields' EToF climos for Dec 1984 were missing so need to interpolate those months after above gap-filling
-        if yr == 85:
-            df.loc[:,df.columns.str.contains('ET_Fraction')] = df.loc[:,df.columns.str.contains('ET_Fraction')].interpolate(method='linear', axis=1)        
+        for col in df.columns:
     
-        # fill nans in actual et with the gap-filled et fraction * et reference
-        if yr == 0:
-            df[f'ETa_11_99'] = df[f'ETa_11_99'].fillna(df[f'ET_Fraction_11_99'] * df[f'ET_Reference_11_99'])
-            df[f'ETa_12_99'] = df[f'ETa_12_99'].fillna(df[f'ET_Fraction_12_99'] * df[f'ET_Reference_12_99'])
-        else:  
-            df[f'ETa_11_{yr-1:02d}'] = df[f'ETa_11_{yr-1:02d}'].fillna(df[f'ET_Fraction_11_{yr-1:02d}'] * df[f'ET_Reference_11_{yr-1:02d}'])
-            df[f'ETa_12_{yr-1:02d}'] = df[f'ETa_12_{yr-1:02d}'].fillna(df[f'ET_Fraction_12_{yr-1:02d}'] * df[f'ET_Reference_12_{yr-1:02d}'])
-        df[f'ETa_01_{yr:02d}'] = df[f'ETa_01_{yr:02d}'].fillna(df[f'ET_Fraction_01_{yr:02d}'] * df[f'ET_Reference_01_{yr:02d}'])
-        df[f'ETa_02_{yr:02d}'] = df[f'ETa_02_{yr:02d}'].fillna(df[f'ET_Fraction_02_{yr:02d}'] * df[f'ET_Reference_02_{yr:02d}'])
-        df[f'ETa_03_{yr:02d}'] = df[f'ETa_03_{yr:02d}'].fillna(df[f'ET_Fraction_03_{yr:02d}'] * df[f'ET_Reference_03_{yr:02d}'])
-        df[f'ETa_04_{yr:02d}'] = df[f'ETa_04_{yr:02d}'].fillna(df[f'ET_Fraction_04_{yr:02d}'] * df[f'ET_Reference_04_{yr:02d}'])
-        df[f'ETa_05_{yr:02d}'] = df[f'ETa_05_{yr:02d}'].fillna(df[f'ET_Fraction_05_{yr:02d}'] * df[f'ET_Reference_05_{yr:02d}'])
-        df[f'ETa_06_{yr:02d}'] = df[f'ETa_06_{yr:02d}'].fillna(df[f'ET_Fraction_06_{yr:02d}'] * df[f'ET_Reference_06_{yr:02d}'])
-        df[f'ETa_07_{yr:02d}'] = df[f'ETa_07_{yr:02d}'].fillna(df[f'ET_Fraction_07_{yr:02d}'] * df[f'ET_Reference_07_{yr:02d}'])
-        df[f'ETa_08_{yr:02d}'] = df[f'ETa_08_{yr:02d}'].fillna(df[f'ET_Fraction_08_{yr:02d}'] * df[f'ET_Reference_08_{yr:02d}'])
-        df[f'ETa_09_{yr:02d}'] = df[f'ETa_09_{yr:02d}'].fillna(df[f'ET_Fraction_09_{yr:02d}'] * df[f'ET_Reference_09_{yr:02d}'])
-        df[f'ETa_10_{yr:02d}'] = df[f'ETa_10_{yr:02d}'].fillna(df[f'ET_Fraction_10_{yr:02d}'] * df[f'ET_Reference_10_{yr:02d}'])
+            # -------------------------------------------------
+            #  Monthly columns
+            # -------------------------------------------------
+            parsed_month = parse_month_year(col)
+    
+            if parsed_month is not None:
+                month, year = parsed_month
+    
+                # Keep only water-year months
+                if (
+                    (year == water_year - 1 and month in [11, 12]) or
+                    (year == water_year and 1 <= month <= 10)
+                ):
+    
+                    # Remove millimeter monthly columns
+                    # (those that end exactly in _MM_YY)
+                    if (re.search(r'_\d{2}_\d{2}$', col) and 'ET_Fraction' not in col):
+                        continue
+    
+                    # ✅ Keep inch + acft versions
+                    cols_keep.append(col)
+    
+                continue
+    
+            # -------------------------------------------------
+            # 2️Annual columns (2-digit or 4-digit year)
+            # -------------------------------------------------
+            annual_year = parse_annual_year(col)
+    
+            if annual_year is not None:
+                if annual_year == water_year:
+                    cols_keep.append(col)
+                continue
+    
+            # -------------------------------------------------
+            # 3️Acreage column
+            # -------------------------------------------------
+            if col.startswith("ACRES_FTR_GEOM_"):
+                if col.endswith(str(water_year)[-2:]):
+                    cols_keep.append(col)
+                continue
+    
+            # -------------------------------------------------
+            # 4️⃣ Static columns (no year)
+            # -------------------------------------------------
+            cols_keep.append(col)
+    
+        return cols_keep
+
+    def reorder_volume_columns(df, water_year):
+        """Reorder volumetric columns by variable and water-year month order (Nov–Oct)"""
         
-        # convert units from mm to inches 
-        if yr == 0:
-            df[f'ETa_11_99_in'] = df[f'ETa_11_99'] / 25.4
-            df[f'ETa_12_99_in'] = df[f'ETa_12_99'] / 25.4
-        else:
-            df[f'ETa_11_{yr-1:02d}_in'] = df[f'ETa_11_{yr-1:02d}'] / 25.4
-            df[f'ETa_12_{yr-1:02d}_in'] = df[f'ETa_12_{yr-1:02d}'] / 25.4
-        df[f'ETa_01_{yr:02d}_in'] = df[f'ETa_01_{yr:02d}'] / 25.4
-        df[f'ETa_02_{yr:02d}_in'] = df[f'ETa_02_{yr:02d}'] / 25.4
-        df[f'ETa_03_{yr:02d}_in'] = df[f'ETa_03_{yr:02d}'] / 25.4
-        df[f'ETa_04_{yr:02d}_in'] = df[f'ETa_04_{yr:02d}'] / 25.4
-        df[f'ETa_05_{yr:02d}_in'] = df[f'ETa_05_{yr:02d}'] / 25.4
-        df[f'ETa_06_{yr:02d}_in'] = df[f'ETa_06_{yr:02d}'] / 25.4
-        df[f'ETa_07_{yr:02d}_in'] = df[f'ETa_07_{yr:02d}'] / 25.4
-        df[f'ETa_08_{yr:02d}_in'] = df[f'ETa_08_{yr:02d}'] / 25.4
-        df[f'ETa_09_{yr:02d}_in'] = df[f'ETa_09_{yr:02d}'] / 25.4
-        df[f'ETa_10_{yr:02d}_in'] = df[f'ETa_10_{yr:02d}'] / 25.4
+        # Water year month order: Nov-Dec previous year, Jan–Oct current year
+        wy_months = [11, 12] + list(range(1, 11))
         
-        # convert units from mm to inches 
-        if yr == 0:
-            df[f'ETDa_11_99_in'] = df[f'ETDa_11_99'] / 25.4
-            df[f'ETDa_12_99_in'] = df[f'ETDa_12_99'] / 25.4
-        else:
-            df[f'ETDa_11_{yr-1:02d}_in'] = df[f'ETDa_11_{yr-1:02d}'] / 25.4
-            df[f'ETDa_12_{yr-1:02d}_in'] = df[f'ETDa_12_{yr-1:02d}'] / 25.4
-        df[f'ETDa_01_{yr:02d}_in'] = df[f'ETDa_01_{yr:02d}'] / 25.4
-        df[f'ETDa_02_{yr:02d}_in'] = df[f'ETDa_02_{yr:02d}'] / 25.4
-        df[f'ETDa_03_{yr:02d}_in'] = df[f'ETDa_03_{yr:02d}'] / 25.4
-        df[f'ETDa_04_{yr:02d}_in'] = df[f'ETDa_04_{yr:02d}'] / 25.4
-        df[f'ETDa_05_{yr:02d}_in'] = df[f'ETDa_05_{yr:02d}'] / 25.4
-        df[f'ETDa_06_{yr:02d}_in'] = df[f'ETDa_06_{yr:02d}'] / 25.4
-        df[f'ETDa_07_{yr:02d}_in'] = df[f'ETDa_07_{yr:02d}'] / 25.4
-        df[f'ETDa_08_{yr:02d}_in'] = df[f'ETDa_08_{yr:02d}'] / 25.4
-        df[f'ETDa_09_{yr:02d}_in'] = df[f'ETDa_09_{yr:02d}'] / 25.4
-        df[f'ETDa_10_{yr:02d}_in'] = df[f'ETDa_10_{yr:02d}'] / 25.4
-    
-        if yr == 0:
-            df[f'ET_Reference_11_99_in'] = df[f'ET_Reference_11_99'] / 25.4
-            df[f'ET_Reference_12_99_in'] = df[f'ET_Reference_12_99'] / 25.4
-        else:
-            df[f'ET_Reference_11_{yr-1:02d}_in'] = df[f'ET_Reference_11_{yr-1:02d}'] / 25.4
-            df[f'ET_Reference_12_{yr-1:02d}_in'] = df[f'ET_Reference_12_{yr-1:02d}'] / 25.4
-        df[f'ET_Reference_01_{yr:02d}_in'] = df[f'ET_Reference_01_{yr:02d}'] / 25.4
-        df[f'ET_Reference_02_{yr:02d}_in'] = df[f'ET_Reference_02_{yr:02d}'] / 25.4
-        df[f'ET_Reference_03_{yr:02d}_in'] = df[f'ET_Reference_03_{yr:02d}'] / 25.4
-        df[f'ET_Reference_04_{yr:02d}_in'] = df[f'ET_Reference_04_{yr:02d}'] / 25.4
-        df[f'ET_Reference_05_{yr:02d}_in'] = df[f'ET_Reference_05_{yr:02d}'] / 25.4
-        df[f'ET_Reference_06_{yr:02d}_in'] = df[f'ET_Reference_06_{yr:02d}'] / 25.4
-        df[f'ET_Reference_07_{yr:02d}_in'] = df[f'ET_Reference_07_{yr:02d}'] / 25.4
-        df[f'ET_Reference_08_{yr:02d}_in'] = df[f'ET_Reference_08_{yr:02d}'] / 25.4
-        df[f'ET_Reference_09_{yr:02d}_in'] = df[f'ET_Reference_09_{yr:02d}'] / 25.4
-        df[f'ET_Reference_10_{yr:02d}_in'] = df[f'ET_Reference_10_{yr:02d}'] / 25.4
+        # Identify volume columns
+        vol_cols = [c for c in df.columns if "_VOLUME_" in c]
         
-        if yr == 0:
-            df[f'PPT_11_99_in'] = df[f'PPT_11_99'] / 25.4
-            df[f'PPT_12_99_in'] = df[f'PPT_12_99'] / 25.4
-        else:
-            df[f'PPT_11_{yr-1:02d}_in'] = df[f'PPT_11_{yr-1:02d}'] / 25.4
-            df[f'PPT_12_{yr-1:02d}_in'] = df[f'PPT_12_{yr-1:02d}'] / 25.4
-        df[f'PPT_01_{yr:02d}_in'] = df[f'PPT_01_{yr:02d}'] / 25.4
-        df[f'PPT_02_{yr:02d}_in'] = df[f'PPT_02_{yr:02d}'] / 25.4
-        df[f'PPT_03_{yr:02d}_in'] = df[f'PPT_03_{yr:02d}'] / 25.4
-        df[f'PPT_04_{yr:02d}_in'] = df[f'PPT_04_{yr:02d}'] / 25.4
-        df[f'PPT_05_{yr:02d}_in'] = df[f'PPT_05_{yr:02d}'] / 25.4
-        df[f'PPT_06_{yr:02d}_in'] = df[f'PPT_06_{yr:02d}'] / 25.4
-        df[f'PPT_07_{yr:02d}_in'] = df[f'PPT_07_{yr:02d}'] / 25.4
-        df[f'PPT_08_{yr:02d}_in'] = df[f'PPT_08_{yr:02d}'] / 25.4
-        df[f'PPT_09_{yr:02d}_in'] = df[f'PPT_09_{yr:02d}'] / 25.4
-        df[f'PPT_10_{yr:02d}_in'] = df[f'PPT_10_{yr:02d}'] / 25.4
+        # Parse variable and month from volume column names
+        parsed = []
+        for c in vol_cols:
+            # Example format: ETa_VOLUME_11_85_acft
+            m = re.search(r'^(.*)_VOLUME_(\d{2})_(\d{2})_acft$', c)
+            if m:
+                var = m.group(1)
+                month = int(m.group(2))
+                year = int("20" + m.group(3)) if int(m.group(3)) < 50 else int("19" + m.group(3))
+                parsed.append((var, month, year, c))
         
-        # if yr == 0:
-        #     df[f'P_eft_11_99_in'] = df[f'P_eft_11_99'] / 25.4
-        #     df[f'P_eft_12_99_in'] = df[f'P_eft_12_99'] / 25.4    
-        # else:
-        #     df[f'P_eft_11_{yr-1:02d}_in'] = df[f'P_eft_11_{yr-1:02d}'] / 25.4
-        #     df[f'P_eft_12_{yr-1:02d}_in'] = df[f'P_eft_12_{yr-1:02d}'] / 25.4
-        # df[f'P_eft_01_{yr:02d}_in'] = df[f'P_eft_01_{yr:02d}'] / 25.4
-        # df[f'P_eft_02_{yr:02d}_in'] = df[f'P_eft_02_{yr:02d}'] / 25.4
-        # df[f'P_eft_03_{yr:02d}_in'] = df[f'P_eft_03_{yr:02d}'] / 25.4
-        # df[f'P_eft_04_{yr:02d}_in'] = df[f'P_eft_04_{yr:02d}'] / 25.4
-        # df[f'P_eft_05_{yr:02d}_in'] = df[f'P_eft_05_{yr:02d}'] / 25.4
-        # df[f'P_eft_06_{yr:02d}_in'] = df[f'P_eft_06_{yr:02d}'] / 25.4
-        # df[f'P_eft_07_{yr:02d}_in'] = df[f'P_eft_07_{yr:02d}'] / 25.4
-        # df[f'P_eft_08_{yr:02d}_in'] = df[f'P_eft_08_{yr:02d}'] / 25.4
-        # df[f'P_eft_09_{yr:02d}_in'] = df[f'P_eft_09_{yr:02d}'] / 25.4
-        # df[f'P_eft_10_{yr:02d}_in'] = df[f'P_eft_10_{yr:02d}'] / 25.4
-    
-        if yr == 0:
-            df[f'P_rz_11_99_in'] = df[f'P_rz_11_99'] / 25.4
-            df[f'P_rz_12_99_in'] = df[f'P_rz_12_99'] / 25.4  
-        else:
-            df[f'P_rz_11_{yr-1:02d}_in'] = df[f'P_rz_11_{yr-1:02d}'] / 25.4
-            df[f'P_rz_12_{yr-1:02d}_in'] = df[f'P_rz_12_{yr-1:02d}'] / 25.4
-        df[f'P_rz_01_{yr:02d}_in'] = df[f'P_rz_01_{yr:02d}'] / 25.4
-        df[f'P_rz_02_{yr:02d}_in'] = df[f'P_rz_02_{yr:02d}'] / 25.4
-        df[f'P_rz_03_{yr:02d}_in'] = df[f'P_rz_03_{yr:02d}'] / 25.4
-        df[f'P_rz_04_{yr:02d}_in'] = df[f'P_rz_04_{yr:02d}'] / 25.4
-        df[f'P_rz_05_{yr:02d}_in'] = df[f'P_rz_05_{yr:02d}'] / 25.4
-        df[f'P_rz_06_{yr:02d}_in'] = df[f'P_rz_06_{yr:02d}'] / 25.4
-        df[f'P_rz_07_{yr:02d}_in'] = df[f'P_rz_07_{yr:02d}'] / 25.4
-        df[f'P_rz_08_{yr:02d}_in'] = df[f'P_rz_08_{yr:02d}'] / 25.4
-        df[f'P_rz_09_{yr:02d}_in'] = df[f'P_rz_09_{yr:02d}'] / 25.4
-        df[f'P_rz_10_{yr:02d}_in'] = df[f'P_rz_10_{yr:02d}'] / 25.4
-    
-        if yr == 0:
-            df[f'NIWR_11_99_in'] = (df[f'NIWR_11_99'] / 25.4)
-            df[f'NIWR_12_99_in'] = (df[f'NIWR_12_99'] / 25.4)
-        else:
-            df[f'NIWR_11_{yr-1:02d}_in'] = (df[f'NIWR_11_{yr-1:02d}'] / 25.4)
-            df[f'NIWR_12_{yr-1:02d}_in'] = (df[f'NIWR_12_{yr-1:02d}'] / 25.4)
-        df[f'NIWR_01_{yr:02d}_in'] = (df[f'NIWR_01_{yr:02d}'] / 25.4)
-        df[f'NIWR_02_{yr:02d}_in'] = (df[f'NIWR_02_{yr:02d}'] / 25.4)
-        df[f'NIWR_03_{yr:02d}_in'] = (df[f'NIWR_03_{yr:02d}'] / 25.4)
-        df[f'NIWR_04_{yr:02d}_in'] = (df[f'NIWR_04_{yr:02d}'] / 25.4)
-        df[f'NIWR_05_{yr:02d}_in'] = (df[f'NIWR_05_{yr:02d}'] / 25.4)
-        df[f'NIWR_06_{yr:02d}_in'] = (df[f'NIWR_06_{yr:02d}'] / 25.4)
-        df[f'NIWR_07_{yr:02d}_in'] = (df[f'NIWR_07_{yr:02d}'] / 25.4)
-        df[f'NIWR_08_{yr:02d}_in'] = (df[f'NIWR_08_{yr:02d}'] / 25.4)
-        df[f'NIWR_09_{yr:02d}_in'] = (df[f'NIWR_09_{yr:02d}'] / 25.4)
-        df[f'NIWR_10_{yr:02d}_in'] = (df[f'NIWR_10_{yr:02d}'] / 25.4)
+        # Group by variable, then sort columns within each variable by water-year month order
+        vol_sorted = []
+        for var in sorted(set([p[0] for p in parsed])):  # maintain consistent variable order
+            var_cols = [p for p in parsed if p[0] == var]
+            # sort by water-year month order
+            var_cols_sorted = sorted(
+                var_cols,
+                key=lambda x: wy_months.index(x[1]) if x[1] in wy_months else 99
+            )
+            vol_sorted.extend([x[3] for x in var_cols_sorted])
         
-        # calculate volumes of each monthly value for all variables
-        if yr == 0:
-            df[f'ET_VOLUME_11_99_acft'] = (df[f'ETa_11_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-            df[f'ET_VOLUME_12_99_acft'] = (df[f'ETa_12_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']        
-        else:
-            df[f'ET_VOLUME_11_{yr-1:02d}_acft'] = (df[f'ETa_11_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-            df[f'ET_VOLUME_12_{yr-1:02d}_acft'] = (df[f'ETa_12_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ET_VOLUME_01_{yr:02d}_acft'] = (df[f'ETa_01_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ET_VOLUME_02_{yr:02d}_acft'] = (df[f'ETa_02_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ET_VOLUME_03_{yr:02d}_acft'] = (df[f'ETa_03_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ET_VOLUME_04_{yr:02d}_acft'] = (df[f'ETa_04_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ET_VOLUME_05_{yr:02d}_acft'] = (df[f'ETa_05_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ET_VOLUME_06_{yr:02d}_acft'] = (df[f'ETa_06_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ET_VOLUME_07_{yr:02d}_acft'] = (df[f'ETa_07_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ET_VOLUME_08_{yr:02d}_acft'] = (df[f'ETa_08_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ET_VOLUME_09_{yr:02d}_acft'] = (df[f'ETa_09_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ET_VOLUME_10_{yr:02d}_acft'] = (df[f'ETa_10_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
+        # All other columns (non-volume)
+        other_cols = [c for c in df.columns if c not in vol_sorted]
         
-        # calculate volumes of each monthly value for all variables
-        if yr == 0:
-            df[f'ETDa_VOLUME_11_99_acft'] = (df[f'ETDa_11_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-            df[f'ETDa_VOLUME_12_99_acft'] = (df[f'ETDa_12_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        else:
-            df[f'ETDa_VOLUME_11_{yr-1:02d}_acft'] = (df[f'ETDa_11_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-            df[f'ETDa_VOLUME_12_{yr-1:02d}_acft'] = (df[f'ETDa_12_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETDa_VOLUME_01_{yr:02d}_acft'] = (df[f'ETDa_01_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETDa_VOLUME_02_{yr:02d}_acft'] = (df[f'ETDa_02_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETDa_VOLUME_03_{yr:02d}_acft'] = (df[f'ETDa_03_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETDa_VOLUME_04_{yr:02d}_acft'] = (df[f'ETDa_04_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETDa_VOLUME_05_{yr:02d}_acft'] = (df[f'ETDa_05_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETDa_VOLUME_06_{yr:02d}_acft'] = (df[f'ETDa_06_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETDa_VOLUME_07_{yr:02d}_acft'] = (df[f'ETDa_07_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETDa_VOLUME_08_{yr:02d}_acft'] = (df[f'ETDa_08_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETDa_VOLUME_09_{yr:02d}_acft'] = (df[f'ETDa_09_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETDa_VOLUME_10_{yr:02d}_acft'] = (df[f'ETDa_10_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-    
-        if yr == 0:
-            df[f'ETO_VOLUME_11_99_acft'] = (df[f'ET_Reference_11_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-            df[f'ETO_VOLUME_12_99_acft'] = (df[f'ET_Reference_12_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        else:
-            df[f'ETO_VOLUME_11_{yr-1:02d}_acft'] = (df[f'ET_Reference_11_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-            df[f'ETO_VOLUME_12_{yr-1:02d}_acft'] = (df[f'ET_Reference_12_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETO_VOLUME_01_{yr:02d}_acft'] = (df[f'ET_Reference_01_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETO_VOLUME_02_{yr:02d}_acft'] = (df[f'ET_Reference_02_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETO_VOLUME_03_{yr:02d}_acft'] = (df[f'ET_Reference_03_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETO_VOLUME_04_{yr:02d}_acft'] = (df[f'ET_Reference_04_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETO_VOLUME_05_{yr:02d}_acft'] = (df[f'ET_Reference_05_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETO_VOLUME_06_{yr:02d}_acft'] = (df[f'ET_Reference_06_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETO_VOLUME_07_{yr:02d}_acft'] = (df[f'ET_Reference_07_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETO_VOLUME_08_{yr:02d}_acft'] = (df[f'ET_Reference_08_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETO_VOLUME_09_{yr:02d}_acft'] = (df[f'ET_Reference_09_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'ETO_VOLUME_10_{yr:02d}_acft'] = (df[f'ET_Reference_10_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-     
-        if yr == 0:
-            df[f'PPT_VOLUME_11_99_acft'] = (df[f'PPT_11_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-            df[f'PPT_VOLUME_12_99_acft'] = (df[f'PPT_12_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']    
-        else:
-            df[f'PPT_VOLUME_11_{yr-1:02d}_acft'] = (df[f'PPT_11_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-            df[f'PPT_VOLUME_12_{yr-1:02d}_acft'] = (df[f'PPT_12_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'PPT_VOLUME_01_{yr:02d}_acft'] = (df[f'PPT_01_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'PPT_VOLUME_02_{yr:02d}_acft'] = (df[f'PPT_02_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'PPT_VOLUME_03_{yr:02d}_acft'] = (df[f'PPT_03_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'PPT_VOLUME_04_{yr:02d}_acft'] = (df[f'PPT_04_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'PPT_VOLUME_05_{yr:02d}_acft'] = (df[f'PPT_05_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'PPT_VOLUME_06_{yr:02d}_acft'] = (df[f'PPT_06_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'PPT_VOLUME_07_{yr:02d}_acft'] = (df[f'PPT_07_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'PPT_VOLUME_08_{yr:02d}_acft'] = (df[f'PPT_08_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'PPT_VOLUME_09_{yr:02d}_acft'] = (df[f'PPT_09_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'PPT_VOLUME_10_{yr:02d}_acft'] = (df[f'PPT_10_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-    
-        if yr == 0:
-            df[f'EFF_VOLUME_11_99_acft'] = (df[f'{eff_ppt_var}_11_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-            df[f'EFF_VOLUME_12_99_acft'] = (df[f'{eff_ppt_var}_12_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']    
-        else:
-            df[f'EFF_VOLUME_11_{yr-1:02d}_acft'] = (df[f'{eff_ppt_var}_11_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-            df[f'EFF_VOLUME_12_{yr-1:02d}_acft'] = (df[f'{eff_ppt_var}_12_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'EFF_VOLUME_01_{yr:02d}_acft'] = (df[f'{eff_ppt_var}_01_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'EFF_VOLUME_02_{yr:02d}_acft'] = (df[f'{eff_ppt_var}_02_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'EFF_VOLUME_03_{yr:02d}_acft'] = (df[f'{eff_ppt_var}_03_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'EFF_VOLUME_04_{yr:02d}_acft'] = (df[f'{eff_ppt_var}_04_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'EFF_VOLUME_05_{yr:02d}_acft'] = (df[f'{eff_ppt_var}_05_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'EFF_VOLUME_06_{yr:02d}_acft'] = (df[f'{eff_ppt_var}_06_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'EFF_VOLUME_07_{yr:02d}_acft'] = (df[f'{eff_ppt_var}_07_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'EFF_VOLUME_08_{yr:02d}_acft'] = (df[f'{eff_ppt_var}_08_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'EFF_VOLUME_09_{yr:02d}_acft'] = (df[f'{eff_ppt_var}_09_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-        df[f'EFF_VOLUME_10_{yr:02d}_acft'] = (df[f'{eff_ppt_var}_10_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}']
-    
-        # cap the effective ppt from ET Demands to the max (total precip) from the field averaged gridMET ppt
-        # if yr == 0:
-        #     df.loc[df[f'EFF_VOLUME_11_99_acft'] > df[f'PPT_VOLUME_11_99_acft'], f'EFF_VOLUME_11_99_acft'] = df[f'PPT_VOLUME_11_99_acft']
-        #     df.loc[df[f'EFF_VOLUME_12_99_acft'] > df[f'PPT_VOLUME_11_99_acft'], f'EFF_VOLUME_11_99_acft'] = df[f'PPT_VOLUME_11_99_acft']    
-        # else:
-        #     df.loc[df[f'EFF_VOLUME_11_{yr-1:02d}_acft'] > df[f'PPT_VOLUME_11_{yr-1:02d}_acft'], f'EFF_VOLUME_11_{yr-1:02d}_acft'] = df[f'PPT_VOLUME_11_{yr-1:02d}_acft']
-        #     df.loc[df[f'EFF_VOLUME_12_{yr-1:02d}_acft'] > df[f'PPT_VOLUME_11_{yr-1:02d}_acft'], f'EFF_VOLUME_11_{yr-1:02d}_acft'] = df[f'PPT_VOLUME_11_{yr-1:02d}_acft']
-        # df.loc[df[f'EFF_VOLUME_01_{yr:02d}_acft'] > df[f'PPT_VOLUME_01_{yr:02d}_acft'], f'EFF_VOLUME_01_{yr:02d}_acft'] = df[f'PPT_VOLUME_01_{yr:02d}_acft']
-        # df.loc[df[f'EFF_VOLUME_02_{yr:02d}_acft'] > df[f'PPT_VOLUME_02_{yr:02d}_acft'], f'EFF_VOLUME_02_{yr:02d}_acft'] = df[f'PPT_VOLUME_02_{yr:02d}_acft']
-        # df.loc[df[f'EFF_VOLUME_03_{yr:02d}_acft'] > df[f'PPT_VOLUME_03_{yr:02d}_acft'], f'EFF_VOLUME_03_{yr:02d}_acft'] = df[f'PPT_VOLUME_03_{yr:02d}_acft']
-        # df.loc[df[f'EFF_VOLUME_04_{yr:02d}_acft'] > df[f'PPT_VOLUME_04_{yr:02d}_acft'], f'EFF_VOLUME_04_{yr:02d}_acft'] = df[f'PPT_VOLUME_04_{yr:02d}_acft']
-        # df.loc[df[f'EFF_VOLUME_05_{yr:02d}_acft'] > df[f'PPT_VOLUME_05_{yr:02d}_acft'], f'EFF_VOLUME_05_{yr:02d}_acft'] = df[f'PPT_VOLUME_05_{yr:02d}_acft']
-        # df.loc[df[f'EFF_VOLUME_06_{yr:02d}_acft'] > df[f'PPT_VOLUME_06_{yr:02d}_acft'], f'EFF_VOLUME_06_{yr:02d}_acft'] = df[f'PPT_VOLUME_06_{yr:02d}_acft']
-        # df.loc[df[f'EFF_VOLUME_07_{yr:02d}_acft'] > df[f'PPT_VOLUME_07_{yr:02d}_acft'], f'EFF_VOLUME_07_{yr:02d}_acft'] = df[f'PPT_VOLUME_07_{yr:02d}_acft']
-        # df.loc[df[f'EFF_VOLUME_08_{yr:02d}_acft'] > df[f'PPT_VOLUME_08_{yr:02d}_acft'], f'EFF_VOLUME_08_{yr:02d}_acft'] = df[f'PPT_VOLUME_08_{yr:02d}_acft']
-        # df.loc[df[f'EFF_VOLUME_09_{yr:02d}_acft'] > df[f'PPT_VOLUME_09_{yr:02d}_acft'], f'EFF_VOLUME_09_{yr:02d}_acft'] = df[f'PPT_VOLUME_09_{yr:02d}_acft']
-        # df.loc[df[f'EFF_VOLUME_10_{yr:02d}_acft'] > df[f'PPT_VOLUME_10_{yr:02d}_acft'], f'EFF_VOLUME_10_{yr:02d}_acft'] = df[f'PPT_VOLUME_10_{yr:02d}_acft']
+        return df[other_cols + vol_sorted]
         
-        # calculate the consumptive use by subtracting effective ppt from actual et
-        if yr == 0:
-            df[f'IRR_CU_VOLUME_11_99_acft'] = df[f'ET_VOLUME_11_99_acft'] - df[f'EFF_VOLUME_11_99_acft']
-            df[f'IRR_CU_VOLUME_12_99_acft'] = df[f'ET_VOLUME_12_99_acft'] - df[f'EFF_VOLUME_12_99_acft']        
-        else:
-            df[f'IRR_CU_VOLUME_11_{yr-1:02d}_acft'] = df[f'ET_VOLUME_11_{yr-1:02d}_acft'] - df[f'EFF_VOLUME_11_{yr-1:02d}_acft']
-            df[f'IRR_CU_VOLUME_12_{yr-1:02d}_acft'] = df[f'ET_VOLUME_12_{yr-1:02d}_acft'] - df[f'EFF_VOLUME_12_{yr-1:02d}_acft']
-        df[f'IRR_CU_VOLUME_01_{yr:02d}_acft'] = df[f'ET_VOLUME_01_{yr:02d}_acft'] - df[f'EFF_VOLUME_01_{yr:02d}_acft']
-        df[f'IRR_CU_VOLUME_02_{yr:02d}_acft'] = df[f'ET_VOLUME_02_{yr:02d}_acft'] - df[f'EFF_VOLUME_02_{yr:02d}_acft']
-        df[f'IRR_CU_VOLUME_03_{yr:02d}_acft'] = df[f'ET_VOLUME_03_{yr:02d}_acft'] - df[f'EFF_VOLUME_03_{yr:02d}_acft']
-        df[f'IRR_CU_VOLUME_04_{yr:02d}_acft'] = df[f'ET_VOLUME_04_{yr:02d}_acft'] - df[f'EFF_VOLUME_04_{yr:02d}_acft']
-        df[f'IRR_CU_VOLUME_05_{yr:02d}_acft'] = df[f'ET_VOLUME_05_{yr:02d}_acft'] - df[f'EFF_VOLUME_05_{yr:02d}_acft']
-        df[f'IRR_CU_VOLUME_06_{yr:02d}_acft'] = df[f'ET_VOLUME_06_{yr:02d}_acft'] - df[f'EFF_VOLUME_06_{yr:02d}_acft']
-        df[f'IRR_CU_VOLUME_07_{yr:02d}_acft'] = df[f'ET_VOLUME_07_{yr:02d}_acft'] - df[f'EFF_VOLUME_07_{yr:02d}_acft']
-        df[f'IRR_CU_VOLUME_08_{yr:02d}_acft'] = df[f'ET_VOLUME_08_{yr:02d}_acft'] - df[f'EFF_VOLUME_08_{yr:02d}_acft']
-        df[f'IRR_CU_VOLUME_09_{yr:02d}_acft'] = df[f'ET_VOLUME_09_{yr:02d}_acft'] - df[f'EFF_VOLUME_09_{yr:02d}_acft']
-        df[f'IRR_CU_VOLUME_10_{yr:02d}_acft'] = df[f'ET_VOLUME_10_{yr:02d}_acft'] - df[f'EFF_VOLUME_10_{yr:02d}_acft']
+    def split_and_save_by_water_year(df_final, yr_list, out_path):
     
-        if yr == 0:
-            df[f'NIWR_VOLUME_11_99_acft'] = ((df[f'NIWR_11_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-            df[f'NIWR_VOLUME_12_99_acft'] = ((df[f'NIWR_12_99_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])   
-        else:
-            df[f'NIWR_VOLUME_11_{yr-1:02d}_acft'] = ((df[f'NIWR_11_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-            df[f'NIWR_VOLUME_12_{yr-1:02d}_acft'] = ((df[f'NIWR_12_{yr-1:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-        df[f'NIWR_VOLUME_01_{yr:02d}_acft'] = ((df[f'NIWR_01_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-        df[f'NIWR_VOLUME_02_{yr:02d}_acft'] = ((df[f'NIWR_02_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-        df[f'NIWR_VOLUME_03_{yr:02d}_acft'] = ((df[f'NIWR_03_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-        df[f'NIWR_VOLUME_04_{yr:02d}_acft'] = ((df[f'NIWR_04_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-        df[f'NIWR_VOLUME_05_{yr:02d}_acft'] = ((df[f'NIWR_05_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-        df[f'NIWR_VOLUME_06_{yr:02d}_acft'] = ((df[f'NIWR_06_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-        df[f'NIWR_VOLUME_07_{yr:02d}_acft'] = ((df[f'NIWR_07_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-        df[f'NIWR_VOLUME_08_{yr:02d}_acft'] = ((df[f'NIWR_08_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-        df[f'NIWR_VOLUME_09_{yr:02d}_acft'] = ((df[f'NIWR_09_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])
-        df[f'NIWR_VOLUME_10_{yr:02d}_acft'] = ((df[f'NIWR_10_{yr:02d}_in'] / 12) * df[f'ACRES_FTR_GEOM_{yr:02d}'])   
-        
-        
-    # regular expression to find columns containing the list of substrings below 
-    reg1 = '|'.join([f'GEOM_{yr_abr_list[0]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[0]}',f'ACRES_FTR_GEOM_{yr_abr_list[0]:02d}',f'IRRIGATED_{yr_abr_list[0]:02d}',f'WETLAND_{yr_abr_list[0]:02d}',f'{yr_abr_list[0]:02d}_MODE',f'ETD_{yr_abr_list[0]:02d}',
-                     f'ET_Fraction_11_{yr_abr_list[0]-1:02d}',f'ET_Fraction_12_{yr_abr_list[0]-1:02d}',f'ET_Fraction_01_{yr_abr_list[0]:02d}',f'ET_Fraction_02_{yr_abr_list[0]:02d}',
-                     f'ET_Fraction_03_{yr_abr_list[0]:02d}',f'ET_Fraction_04_{yr_abr_list[0]:02d}',f'ET_Fraction_05_{yr_abr_list[0]:02d}',f'ET_Fraction_06_{yr_abr_list[0]:02d}',
-                     f'ET_Fraction_07_{yr_abr_list[0]:02d}',f'ET_Fraction_08_{yr_abr_list[0]:02d}',f'ET_Fraction_09_{yr_abr_list[0]:02d}',f'ET_Fraction_10_{yr_abr_list[0]:02d}',
-                     f'11_{yr_abr_list[0]-1:02d}_in',f'12_{yr_abr_list[0]-1:02d}_in',f'01_{yr_abr_list[0]:02d}_in',f'02_{yr_abr_list[0]:02d}_in',f'03_{yr_abr_list[0]:02d}_in',
-                     f'04_{yr_abr_list[0]:02d}_in',f'05_{yr_abr_list[0]:02d}_in',f'06_{yr_abr_list[0]:02d}_in',f'07_{yr_abr_list[0]:02d}_in',f'08_{yr_abr_list[0]:02d}_in',
-                     f'09_{yr_abr_list[0]:02d}_in',f'10_{yr_abr_list[0]:02d}_in',f'11_{yr_abr_list[0]-1:02d}_acft',f'12_{yr_abr_list[0]-1:02d}_acft',f'01_{yr_abr_list[0]:02d}_acft',
-                     f'02_{yr_abr_list[0]:02d}_acft',f'03_{yr_abr_list[0]:02d}_acft',f'04_{yr_abr_list[0]:02d}_acft',f'05_{yr_abr_list[0]:02d}_acft',
-                     f'06_{yr_abr_list[0]:02d}_acft',f'07_{yr_abr_list[0]:02d}_acft',f'08_{yr_abr_list[0]:02d}_acft',f'09_{yr_abr_list[0]:02d}_acft',f'10_{yr_abr_list[0]:02d}_acft',f'{yr_list[0]}'])
-    reg2 = '|'.join([f'GEOM_{yr_abr_list[1]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[1]}',f'ACRES_FTR_GEOM_{yr_abr_list[1]:02d}',f'IRRIGATED_{yr_abr_list[1]:02d}',f'WETLAND_{yr_abr_list[1]:02d}',f'{yr_abr_list[1]:02d}_MODE',f'ETD_{yr_abr_list[1]:02d}',
-                     f'ET_Fraction_11_{yr_abr_list[1]-1:02d}',f'ET_Fraction_12_{yr_abr_list[1]-1:02d}',f'ET_Fraction_01_{yr_abr_list[1]:02d}',f'ET_Fraction_02_{yr_abr_list[1]:02d}',
-                     f'ET_Fraction_03_{yr_abr_list[1]:02d}',f'ET_Fraction_04_{yr_abr_list[1]:02d}',f'ET_Fraction_05_{yr_abr_list[1]:02d}',f'ET_Fraction_06_{yr_abr_list[1]:02d}',
-                     f'ET_Fraction_07_{yr_abr_list[1]:02d}',f'ET_Fraction_08_{yr_abr_list[1]:02d}',f'ET_Fraction_09_{yr_abr_list[1]:02d}',f'ET_Fraction_10_{yr_abr_list[1]:02d}',
-                     f'11_{yr_abr_list[1]-1:02d}_in',f'12_{yr_abr_list[1]-1:02d}_in',f'01_{yr_abr_list[1]:02d}_in',f'02_{yr_abr_list[1]:02d}_in',f'03_{yr_abr_list[1]:02d}_in',f'04_{yr_abr_list[1]:02d}_in',f'05_{yr_abr_list[1]:02d}_in',
-                     f'06_{yr_abr_list[1]:02d}_in',f'07_{yr_abr_list[1]:02d}_in',f'08_{yr_abr_list[1]:02d}_in',f'09_{yr_abr_list[1]:02d}_in',f'10_{yr_abr_list[1]:02d}_in',f'11_{yr_abr_list[1]-1:02d}_acft',f'12_{yr_abr_list[1]-1:02d}_acft',
-                     f'01_{yr_abr_list[1]:02d}_acft',f'02_{yr_abr_list[1]:02d}_acft',f'03_{yr_abr_list[1]:02d}_acft',f'04_{yr_abr_list[1]:02d}_acft',f'05_{yr_abr_list[1]:02d}_acft',
-                     f'06_{yr_abr_list[1]:02d}_acft',f'07_{yr_abr_list[1]:02d}_acft',f'08_{yr_abr_list[1]:02d}_acft',f'09_{yr_abr_list[1]:02d}_acft',f'10_{yr_abr_list[1]:02d}_acft',f'{yr_list[1]}'])
-    if 0 in yr_abr_list:
-        reg3 = '|'.join([f'GEOM_{yr_abr_list[2]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[2]}',f'ACRES_FTR_GEOM_{yr_abr_list[2]:02d}',f'IRRIGATED_{yr_abr_list[2]:02d}',f'WETLAND_{yr_abr_list[2]:02d}',f'{yr_abr_list[2]:02d}_MODE',f'ETD_{yr_abr_list[2]:02d}',
-                         'ET_Fraction_11_99','ET_Fraction_12_99',f'ET_Fraction_01_{yr_abr_list[2]:02d}',f'ET_Fraction_02_{yr_abr_list[2]:02d}',
-                         f'ET_Fraction_03_{yr_abr_list[2]:02d}',f'ET_Fraction_04_{yr_abr_list[2]:02d}',f'ET_Fraction_05_{yr_abr_list[2]:02d}',f'ET_Fraction_06_{yr_abr_list[2]:02d}',
-                         f'ET_Fraction_07_{yr_abr_list[2]:02d}',f'ET_Fraction_08_{yr_abr_list[2]:02d}',f'ET_Fraction_09_{yr_abr_list[2]:02d}',f'ET_Fraction_10_{yr_abr_list[2]:02d}',
-                         '11_99_in','12_99_in',f'01_{yr_abr_list[2]:02d}_in',f'02_{yr_abr_list[2]:02d}_in',f'03_{yr_abr_list[2]:02d}_in',f'04_{yr_abr_list[2]:02d}_in',f'05_{yr_abr_list[2]:02d}_in',
-                         f'06_{yr_abr_list[2]:02d}_in',f'07_{yr_abr_list[2]:02d}_in',f'08_{yr_abr_list[2]:02d}_in',f'09_{yr_abr_list[2]:02d}_in',f'10_{yr_abr_list[2]:02d}_in','11_99_acft','12_99_acft',
-                         f'01_{yr_abr_list[2]:02d}_acft',f'02_{yr_abr_list[2]:02d}_acft',f'03_{yr_abr_list[2]:02d}_acft',f'04_{yr_abr_list[2]:02d}_acft',f'05_{yr_abr_list[2]:02d}_acft',
-                         f'06_{yr_abr_list[2]:02d}_acft',f'07_{yr_abr_list[2]:02d}_acft',f'08_{yr_abr_list[2]:02d}_acft',f'09_{yr_abr_list[2]:02d}_acft',f'10_{yr_abr_list[2]:02d}_acft',f'{yr_list[2]}'])
-    else:
-        reg3 = '|'.join([f'GEOM_{yr_abr_list[2]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[2]}',f'ACRES_FTR_GEOM_{yr_abr_list[2]:02d}',f'IRRIGATED_{yr_abr_list[2]:02d}',f'WETLAND_{yr_abr_list[2]:02d}',f'{yr_abr_list[2]:02d}_MODE',f'ETD_{yr_abr_list[2]:02d}',
-                         f'ET_Fraction_11_{yr_abr_list[2]-1:02d}',f'ET_Fraction_12_{yr_abr_list[2]-1:02d}',f'ET_Fraction_01_{yr_abr_list[2]:02d}',f'ET_Fraction_02_{yr_abr_list[2]:02d}',
-                         f'ET_Fraction_03_{yr_abr_list[2]:02d}',f'ET_Fraction_04_{yr_abr_list[2]:02d}',f'ET_Fraction_05_{yr_abr_list[2]:02d}',f'ET_Fraction_06_{yr_abr_list[2]:02d}',
-                         f'ET_Fraction_07_{yr_abr_list[2]:02d}',f'ET_Fraction_08_{yr_abr_list[2]:02d}',f'ET_Fraction_09_{yr_abr_list[2]:02d}',f'ET_Fraction_10_{yr_abr_list[2]:02d}',
-                         f'11_{yr_abr_list[2]-1:02d}_in',f'12_{yr_abr_list[2]-1:02d}_in',f'01_{yr_abr_list[2]:02d}_in',f'02_{yr_abr_list[2]:02d}_in',f'03_{yr_abr_list[2]:02d}_in',f'04_{yr_abr_list[2]:02d}_in',f'05_{yr_abr_list[2]:02d}_in',
-                         f'06_{yr_abr_list[2]:02d}_in',f'07_{yr_abr_list[2]:02d}_in',f'08_{yr_abr_list[2]:02d}_in',f'09_{yr_abr_list[2]:02d}_in',f'10_{yr_abr_list[2]:02d}_in',f'11_{yr_abr_list[2]-1:02d}_acft',f'12_{yr_abr_list[2]-1:02d}_acft',
-                         f'01_{yr_abr_list[2]:02d}_acft',f'02_{yr_abr_list[2]:02d}_acft',f'03_{yr_abr_list[2]:02d}_acft',f'04_{yr_abr_list[2]:02d}_acft',f'05_{yr_abr_list[2]:02d}_acft',
-                         f'06_{yr_abr_list[2]:02d}_acft',f'07_{yr_abr_list[2]:02d}_acft',f'08_{yr_abr_list[2]:02d}_acft',f'09_{yr_abr_list[2]:02d}_acft',f'10_{yr_abr_list[2]:02d}_acft',f'{yr_list[2]}'])
-    reg4 = '|'.join([f'GEOM_{yr_abr_list[3]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[3]}',f'ACRES_FTR_GEOM_{yr_abr_list[3]:02d}',f'IRRIGATED_{yr_abr_list[3]:02d}',f'WETLAND_{yr_abr_list[3]:02d}',f'{yr_abr_list[3]:02d}_MODE',f'ETD_{yr_abr_list[3]:02d}',
-                     f'ET_Fraction_11_{yr_abr_list[3]-1:02d}',f'ET_Fraction_12_{yr_abr_list[3]-1:02d}',f'ET_Fraction_01_{yr_abr_list[3]:02d}',f'ET_Fraction_02_{yr_abr_list[3]:02d}',
-                     f'ET_Fraction_03_{yr_abr_list[3]:02d}',f'ET_Fraction_04_{yr_abr_list[3]:02d}',f'ET_Fraction_05_{yr_abr_list[3]:02d}',f'ET_Fraction_06_{yr_abr_list[3]:02d}',
-                     f'ET_Fraction_07_{yr_abr_list[3]:02d}',f'ET_Fraction_08_{yr_abr_list[3]:02d}',f'ET_Fraction_09_{yr_abr_list[3]:02d}',f'ET_Fraction_10_{yr_abr_list[3]:02d}',
-                     f'11_{yr_abr_list[3]-1:02d}_in',f'12_{yr_abr_list[3]-1:02d}_in',f'01_{yr_abr_list[3]:02d}_in',f'02_{yr_abr_list[3]:02d}_in',f'03_{yr_abr_list[3]:02d}_in',f'04_{yr_abr_list[3]:02d}_in',f'05_{yr_abr_list[3]:02d}_in',
-                     f'06_{yr_abr_list[3]:02d}_in',f'07_{yr_abr_list[3]:02d}_in',f'08_{yr_abr_list[3]:02d}_in',f'09_{yr_abr_list[3]:02d}_in',f'10_{yr_abr_list[3]:02d}_in',f'11_{yr_abr_list[3]-1:02d}_acft',f'12_{yr_abr_list[3]-1:02d}_acft',
-                     f'01_{yr_abr_list[3]:02d}_acft',f'02_{yr_abr_list[3]:02d}_acft',f'03_{yr_abr_list[3]:02d}_acft',f'04_{yr_abr_list[3]:02d}_acft',f'05_{yr_abr_list[3]:02d}_acft',
-                     f'06_{yr_abr_list[3]:02d}_acft',f'07_{yr_abr_list[3]:02d}_acft',f'08_{yr_abr_list[3]:02d}_acft',f'09_{yr_abr_list[3]:02d}_acft',f'10_{yr_abr_list[3]:02d}_acft',f'{yr_list[3]}'])
-    reg5 = '|'.join([f'GEOM_{yr_abr_list[4]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[4]}',f'ACRES_FTR_GEOM_{yr_abr_list[4]:02d}',f'IRRIGATED_{yr_abr_list[4]:02d}',f'WETLAND_{yr_abr_list[4]:02d}',f'{yr_abr_list[4]:02d}_MODE',f'ETD_{yr_abr_list[4]:02d}',
-                     f'ET_Fraction_11_{yr_abr_list[4]-1:02d}',f'ET_Fraction_12_{yr_abr_list[4]-1:02d}',f'ET_Fraction_01_{yr_abr_list[4]:02d}',f'ET_Fraction_02_{yr_abr_list[4]:02d}',
-                     f'ET_Fraction_03_{yr_abr_list[4]:02d}',f'ET_Fraction_04_{yr_abr_list[4]:02d}',f'ET_Fraction_05_{yr_abr_list[4]:02d}',f'ET_Fraction_06_{yr_abr_list[4]:02d}',
-                     f'ET_Fraction_07_{yr_abr_list[4]:02d}',f'ET_Fraction_08_{yr_abr_list[4]:02d}',f'ET_Fraction_09_{yr_abr_list[4]:02d}',f'ET_Fraction_10_{yr_abr_list[4]:02d}',
-                     f'11_{yr_abr_list[4]-1:02d}_in',f'12_{yr_abr_list[4]-1:02d}_in',f'01_{yr_abr_list[4]:02d}_in',f'02_{yr_abr_list[4]:02d}_in',f'03_{yr_abr_list[4]:02d}_in',f'04_{yr_abr_list[4]:02d}_in',f'05_{yr_abr_list[4]:02d}_in',
-                     f'06_{yr_abr_list[4]:02d}_in',f'07_{yr_abr_list[4]:02d}_in',f'08_{yr_abr_list[4]:02d}_in',f'09_{yr_abr_list[4]:02d}_in',f'10_{yr_abr_list[4]:02d}_in',f'11_{yr_abr_list[4]-1:02d}_acft',f'12_{yr_abr_list[4]-1:02d}_acft',
-                     f'01_{yr_abr_list[4]:02d}_acft',f'02_{yr_abr_list[4]:02d}_acft',f'03_{yr_abr_list[4]:02d}_acft',f'04_{yr_abr_list[4]:02d}_acft',f'05_{yr_abr_list[4]:02d}_acft',
-                     f'06_{yr_abr_list[4]:02d}_acft',f'07_{yr_abr_list[4]:02d}_acft',f'08_{yr_abr_list[4]:02d}_acft',f'09_{yr_abr_list[4]:02d}_acft',f'10_{yr_abr_list[4]:02d}_acft',f'{yr_list[4]}'])
-    reg6 = '|'.join([f'GEOM_{yr_abr_list[5]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[5]}',f'ACRES_FTR_GEOM_{yr_abr_list[5]:02d}',f'IRRIGATED_{yr_abr_list[5]:02d}',f'WETLAND_{yr_abr_list[5]:02d}',f'{yr_abr_list[5]:02d}_MODE',f'ETD_{yr_abr_list[5]:02d}',
-                     f'ET_Fraction_11_{yr_abr_list[5]-1:02d}',f'ET_Fraction_12_{yr_abr_list[5]-1:02d}',f'ET_Fraction_01_{yr_abr_list[5]:02d}',f'ET_Fraction_02_{yr_abr_list[5]:02d}',
-                     f'ET_Fraction_03_{yr_abr_list[5]:02d}',f'ET_Fraction_04_{yr_abr_list[5]:02d}',f'ET_Fraction_05_{yr_abr_list[5]:02d}',f'ET_Fraction_06_{yr_abr_list[5]:02d}',
-                     f'ET_Fraction_07_{yr_abr_list[5]:02d}',f'ET_Fraction_08_{yr_abr_list[5]:02d}',f'ET_Fraction_09_{yr_abr_list[5]:02d}',f'ET_Fraction_10_{yr_abr_list[5]:02d}',
-                     f'11_{yr_abr_list[5]-1:02d}_in',f'12_{yr_abr_list[5]-1:02d}_in',f'01_{yr_abr_list[5]:02d}_in',f'02_{yr_abr_list[5]:02d}_in',f'03_{yr_abr_list[5]:02d}_in',f'04_{yr_abr_list[5]:02d}_in',f'05_{yr_abr_list[5]:02d}_in',
-                     f'06_{yr_abr_list[5]:02d}_in',f'07_{yr_abr_list[5]:02d}_in',f'08_{yr_abr_list[5]:02d}_in',f'09_{yr_abr_list[5]:02d}_in',f'10_{yr_abr_list[5]:02d}_in',f'11_{yr_abr_list[5]-1:02d}_acft',f'12_{yr_abr_list[5]-1:02d}_acft',
-                     f'01_{yr_abr_list[5]:02d}_acft',f'02_{yr_abr_list[5]:02d}_acft',f'03_{yr_abr_list[5]:02d}_acft',f'04_{yr_abr_list[5]:02d}_acft',f'05_{yr_abr_list[5]:02d}_acft',
-                     f'06_{yr_abr_list[5]:02d}_acft',f'07_{yr_abr_list[5]:02d}_acft',f'08_{yr_abr_list[5]:02d}_acft',f'09_{yr_abr_list[5]:02d}_acft',f'10_{yr_abr_list[5]:02d}_acft',f'{yr_list[5]}'])
-    if (yr_list[0] == 1985 and yr_list[-1] == 1991) or (yr_list[0] == 2016 and yr_list[-1] == 2022):
-        reg7 = '|'.join([f'GEOM_{yr_abr_list[6]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[6]}',f'ACRES_FTR_GEOM_{yr_abr_list[6]:02d}',f'IRRIGATED_{yr_abr_list[6]:02d}',f'WETLAND_{yr_abr_list[6]:02d}',f'{yr_abr_list[6]:02d}_MODE',f'ETD_{yr_abr_list[6]:02d}',
-                         f'ET_Fraction_11_{yr_abr_list[6]-1:02d}',f'ET_Fraction_12_{yr_abr_list[6]-1:02d}',f'ET_Fraction_01_{yr_abr_list[6]:02d}',f'ET_Fraction_02_{yr_abr_list[6]:02d}',
-                         f'ET_Fraction_03_{yr_abr_list[6]:02d}',f'ET_Fraction_04_{yr_abr_list[6]:02d}',f'ET_Fraction_05_{yr_abr_list[6]:02d}',f'ET_Fraction_06_{yr_abr_list[6]:02d}',
-                         f'ET_Fraction_07_{yr_abr_list[6]:02d}',f'ET_Fraction_08_{yr_abr_list[6]:02d}',f'ET_Fraction_09_{yr_abr_list[6]:02d}',f'ET_Fraction_10_{yr_abr_list[6]:02d}',
-                         f'11_{yr_abr_list[6]-1:02d}_in',f'12_{yr_abr_list[6]-1:02d}_in',f'01_{yr_abr_list[6]:02d}_in',f'02_{yr_abr_list[6]:02d}_in',f'03_{yr_abr_list[6]:02d}_in',f'04_{yr_abr_list[6]:02d}_in',f'05_{yr_abr_list[6]:02d}_in',
-                         f'06_{yr_abr_list[6]:02d}_in',f'07_{yr_abr_list[6]:02d}_in',f'08_{yr_abr_list[6]:02d}_in',f'09_{yr_abr_list[6]:02d}_in',f'10_{yr_abr_list[6]:02d}_in',f'11_{yr_abr_list[6]-1:02d}_acft',f'12_{yr_abr_list[6]-1:02d}_acft',
-                         f'01_{yr_abr_list[6]:02d}_acft',f'02_{yr_abr_list[6]:02d}_acft',f'03_{yr_abr_list[6]:02d}_acft',f'04_{yr_abr_list[6]:02d}_acft',f'05_{yr_abr_list[6]:02d}_acft',
-                         f'06_{yr_abr_list[6]:02d}_acft',f'07_{yr_abr_list[6]:02d}_acft',f'08_{yr_abr_list[6]:02d}_acft',f'09_{yr_abr_list[6]:02d}_acft',f'10_{yr_abr_list[6]:02d}_acft',f'{yr_list[6]}'])
-    elif (yr_list[0] == 2016 and yr_list[-1] == 2023):
-        reg7 = '|'.join([f'GEOM_{yr_abr_list[6]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[6]}',f'ACRES_FTR_GEOM_{yr_abr_list[6]:02d}',f'IRRIGATED_{yr_abr_list[6]:02d}',f'WETLAND_{yr_abr_list[6]:02d}',f'{yr_abr_list[6]:02d}_MODE',f'ETD_{yr_abr_list[6]:02d}',
-                         f'ET_Fraction_11_{yr_abr_list[6]-1:02d}',f'ET_Fraction_12_{yr_abr_list[6]-1:02d}',f'ET_Fraction_01_{yr_abr_list[6]:02d}',f'ET_Fraction_02_{yr_abr_list[6]:02d}',
-                         f'ET_Fraction_03_{yr_abr_list[6]:02d}',f'ET_Fraction_04_{yr_abr_list[6]:02d}',f'ET_Fraction_05_{yr_abr_list[6]:02d}',f'ET_Fraction_06_{yr_abr_list[6]:02d}',
-                         f'ET_Fraction_07_{yr_abr_list[6]:02d}',f'ET_Fraction_08_{yr_abr_list[6]:02d}',f'ET_Fraction_09_{yr_abr_list[6]:02d}',f'ET_Fraction_10_{yr_abr_list[6]:02d}',
-                         f'11_{yr_abr_list[6]-1:02d}_in',f'12_{yr_abr_list[6]-1:02d}_in',f'01_{yr_abr_list[6]:02d}_in',f'02_{yr_abr_list[6]:02d}_in',f'03_{yr_abr_list[6]:02d}_in',f'04_{yr_abr_list[6]:02d}_in',f'05_{yr_abr_list[6]:02d}_in',
-                         f'06_{yr_abr_list[6]:02d}_in',f'07_{yr_abr_list[6]:02d}_in',f'08_{yr_abr_list[6]:02d}_in',f'09_{yr_abr_list[6]:02d}_in',f'10_{yr_abr_list[6]:02d}_in',f'11_{yr_abr_list[6]-1:02d}_acft',f'12_{yr_abr_list[6]-1:02d}_acft',
-                         f'01_{yr_abr_list[6]:02d}_acft',f'02_{yr_abr_list[6]:02d}_acft',f'03_{yr_abr_list[6]:02d}_acft',f'04_{yr_abr_list[6]:02d}_acft',f'05_{yr_abr_list[6]:02d}_acft',
-                         f'06_{yr_abr_list[6]:02d}_acft',f'07_{yr_abr_list[6]:02d}_acft',f'08_{yr_abr_list[6]:02d}_acft',f'09_{yr_abr_list[6]:02d}_acft',f'10_{yr_abr_list[6]:02d}_acft',f'{yr_list[6]}'])
-        reg8 = '|'.join([f'GEOM_{yr_abr_list[7]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[7]}',f'ACRES_FTR_GEOM_{yr_abr_list[7]:02d}',f'IRRIGATED_{yr_abr_list[7]:02d}',f'WETLAND_{yr_abr_list[7]:02d}',f'{yr_abr_list[7]:02d}_MODE',f'ETD_{yr_abr_list[7]:02d}',
-                         f'ET_Fraction_11_{yr_abr_list[7]-1:02d}',f'ET_Fraction_12_{yr_abr_list[7]-1:02d}',f'ET_Fraction_01_{yr_abr_list[7]:02d}',f'ET_Fraction_02_{yr_abr_list[7]:02d}',
-                         f'ET_Fraction_03_{yr_abr_list[7]:02d}',f'ET_Fraction_04_{yr_abr_list[7]:02d}',f'ET_Fraction_05_{yr_abr_list[7]:02d}',f'ET_Fraction_06_{yr_abr_list[7]:02d}',
-                         f'ET_Fraction_07_{yr_abr_list[7]:02d}',f'ET_Fraction_08_{yr_abr_list[7]:02d}',f'ET_Fraction_09_{yr_abr_list[7]:02d}',f'ET_Fraction_10_{yr_abr_list[7]:02d}',
-                         f'11_{yr_abr_list[7]-1:02d}_in',f'12_{yr_abr_list[7]-1:02d}_in',f'01_{yr_abr_list[7]:02d}_in',f'02_{yr_abr_list[7]:02d}_in',f'03_{yr_abr_list[7]:02d}_in',f'04_{yr_abr_list[7]:02d}_in',f'05_{yr_abr_list[7]:02d}_in',
-                         f'06_{yr_abr_list[7]:02d}_in',f'07_{yr_abr_list[7]:02d}_in',f'08_{yr_abr_list[7]:02d}_in',f'09_{yr_abr_list[7]:02d}_in',f'10_{yr_abr_list[7]:02d}_in',f'11_{yr_abr_list[7]-1:02d}_acft',f'12_{yr_abr_list[7]-1:02d}_acft',
-                         f'01_{yr_abr_list[7]:02d}_acft',f'02_{yr_abr_list[7]:02d}_acft',f'03_{yr_abr_list[7]:02d}_acft',f'04_{yr_abr_list[7]:02d}_acft',f'05_{yr_abr_list[7]:02d}_acft',
-                         f'06_{yr_abr_list[7]:02d}_acft',f'07_{yr_abr_list[7]:02d}_acft',f'08_{yr_abr_list[7]:02d}_acft',f'09_{yr_abr_list[7]:02d}_acft',f'10_{yr_abr_list[7]:02d}_acft',f'{yr_list[7]}'])
-    elif (yr_list[0] == 2016 and yr_list[-1] == 2024):
-        reg7 = '|'.join([f'GEOM_{yr_abr_list[6]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[6]}',f'ACRES_FTR_GEOM_{yr_abr_list[6]:02d}',f'IRRIGATED_{yr_abr_list[6]:02d}',f'WETLAND_{yr_abr_list[6]:02d}',f'{yr_abr_list[6]:02d}_MODE',f'ETD_{yr_abr_list[6]:02d}',
-                         f'ET_Fraction_11_{yr_abr_list[6]-1:02d}',f'ET_Fraction_12_{yr_abr_list[6]-1:02d}',f'ET_Fraction_01_{yr_abr_list[6]:02d}',f'ET_Fraction_02_{yr_abr_list[6]:02d}',
-                         f'ET_Fraction_03_{yr_abr_list[6]:02d}',f'ET_Fraction_04_{yr_abr_list[6]:02d}',f'ET_Fraction_05_{yr_abr_list[6]:02d}',f'ET_Fraction_06_{yr_abr_list[6]:02d}',
-                         f'ET_Fraction_07_{yr_abr_list[6]:02d}',f'ET_Fraction_08_{yr_abr_list[6]:02d}',f'ET_Fraction_09_{yr_abr_list[6]:02d}',f'ET_Fraction_10_{yr_abr_list[6]:02d}',
-                         f'11_{yr_abr_list[6]-1:02d}_in',f'12_{yr_abr_list[6]-1:02d}_in',f'01_{yr_abr_list[6]:02d}_in',f'02_{yr_abr_list[6]:02d}_in',f'03_{yr_abr_list[6]:02d}_in',f'04_{yr_abr_list[6]:02d}_in',f'05_{yr_abr_list[6]:02d}_in',
-                         f'06_{yr_abr_list[6]:02d}_in',f'07_{yr_abr_list[6]:02d}_in',f'08_{yr_abr_list[6]:02d}_in',f'09_{yr_abr_list[6]:02d}_in',f'10_{yr_abr_list[6]:02d}_in',f'11_{yr_abr_list[6]-1:02d}_acft',f'12_{yr_abr_list[6]-1:02d}_acft',
-                         f'01_{yr_abr_list[6]:02d}_acft',f'02_{yr_abr_list[6]:02d}_acft',f'03_{yr_abr_list[6]:02d}_acft',f'04_{yr_abr_list[6]:02d}_acft',f'05_{yr_abr_list[6]:02d}_acft',
-                         f'06_{yr_abr_list[6]:02d}_acft',f'07_{yr_abr_list[6]:02d}_acft',f'08_{yr_abr_list[6]:02d}_acft',f'09_{yr_abr_list[6]:02d}_acft',f'10_{yr_abr_list[6]:02d}_acft',f'{yr_list[6]}'])
-        reg8 = '|'.join([f'GEOM_{yr_abr_list[7]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[7]}',f'ACRES_FTR_GEOM_{yr_abr_list[7]:02d}',f'IRRIGATED_{yr_abr_list[7]:02d}',f'WETLAND_{yr_abr_list[7]:02d}',f'{yr_abr_list[7]:02d}_MODE',f'ETD_{yr_abr_list[7]:02d}',
-                         f'ET_Fraction_11_{yr_abr_list[7]-1:02d}',f'ET_Fraction_12_{yr_abr_list[7]-1:02d}',f'ET_Fraction_01_{yr_abr_list[7]:02d}',f'ET_Fraction_02_{yr_abr_list[7]:02d}',
-                         f'ET_Fraction_03_{yr_abr_list[7]:02d}',f'ET_Fraction_04_{yr_abr_list[7]:02d}',f'ET_Fraction_05_{yr_abr_list[7]:02d}',f'ET_Fraction_06_{yr_abr_list[7]:02d}',
-                         f'ET_Fraction_07_{yr_abr_list[7]:02d}',f'ET_Fraction_08_{yr_abr_list[7]:02d}',f'ET_Fraction_09_{yr_abr_list[7]:02d}',f'ET_Fraction_10_{yr_abr_list[7]:02d}',
-                         f'11_{yr_abr_list[7]-1:02d}_in',f'12_{yr_abr_list[7]-1:02d}_in',f'01_{yr_abr_list[7]:02d}_in',f'02_{yr_abr_list[7]:02d}_in',f'03_{yr_abr_list[7]:02d}_in',f'04_{yr_abr_list[7]:02d}_in',f'05_{yr_abr_list[7]:02d}_in',
-                         f'06_{yr_abr_list[7]:02d}_in',f'07_{yr_abr_list[7]:02d}_in',f'08_{yr_abr_list[7]:02d}_in',f'09_{yr_abr_list[7]:02d}_in',f'10_{yr_abr_list[7]:02d}_in',f'11_{yr_abr_list[7]-1:02d}_acft',f'12_{yr_abr_list[7]-1:02d}_acft',
-                         f'01_{yr_abr_list[7]:02d}_acft',f'02_{yr_abr_list[7]:02d}_acft',f'03_{yr_abr_list[7]:02d}_acft',f'04_{yr_abr_list[7]:02d}_acft',f'05_{yr_abr_list[7]:02d}_acft',
-                         f'06_{yr_abr_list[7]:02d}_acft',f'07_{yr_abr_list[7]:02d}_acft',f'08_{yr_abr_list[7]:02d}_acft',f'09_{yr_abr_list[7]:02d}_acft',f'10_{yr_abr_list[7]:02d}_acft',f'{yr_list[7]}'])
-        reg9 = '|'.join([f'GEOM_{yr_abr_list[8]:02d}','HUC','OWRD','Region','ITYPE','IRR_EFF','srctype','GRIDMET',f'IRR_STATUS_{yr_list[8]}',f'ACRES_FTR_GEOM_{yr_abr_list[8]:02d}',f'IRRIGATED_{yr_abr_list[8]:02d}',f'WETLAND_{yr_abr_list[8]:02d}',f'{yr_abr_list[8]:02d}_MODE',f'ETD_{yr_abr_list[8]:02d}',
-                         f'ET_Fraction_11_{yr_abr_list[8]-1:02d}',f'ET_Fraction_12_{yr_abr_list[8]-1:02d}',f'ET_Fraction_01_{yr_abr_list[8]:02d}',f'ET_Fraction_02_{yr_abr_list[8]:02d}',
-                         f'ET_Fraction_03_{yr_abr_list[8]:02d}',f'ET_Fraction_04_{yr_abr_list[8]:02d}',f'ET_Fraction_05_{yr_abr_list[8]:02d}',f'ET_Fraction_06_{yr_abr_list[8]:02d}',
-                         f'ET_Fraction_07_{yr_abr_list[8]:02d}',f'ET_Fraction_08_{yr_abr_list[8]:02d}',f'ET_Fraction_09_{yr_abr_list[8]:02d}',f'ET_Fraction_10_{yr_abr_list[8]:02d}',
-                         f'11_{yr_abr_list[8]-1:02d}_in',f'12_{yr_abr_list[8]-1:02d}_in',f'01_{yr_abr_list[8]:02d}_in',f'02_{yr_abr_list[8]:02d}_in',f'03_{yr_abr_list[8]:02d}_in',f'04_{yr_abr_list[8]:02d}_in',f'05_{yr_abr_list[8]:02d}_in',
-                         f'06_{yr_abr_list[8]:02d}_in',f'07_{yr_abr_list[8]:02d}_in',f'08_{yr_abr_list[8]:02d}_in',f'09_{yr_abr_list[8]:02d}_in',f'10_{yr_abr_list[8]:02d}_in',f'11_{yr_abr_list[8]-1:02d}_acft',f'12_{yr_abr_list[8]-1:02d}_acft',
-                         f'01_{yr_abr_list[8]:02d}_acft',f'02_{yr_abr_list[8]:02d}_acft',f'03_{yr_abr_list[8]:02d}_acft',f'04_{yr_abr_list[8]:02d}_acft',f'05_{yr_abr_list[8]:02d}_acft',
-                         f'06_{yr_abr_list[8]:02d}_acft',f'07_{yr_abr_list[8]:02d}_acft',f'08_{yr_abr_list[8]:02d}_acft',f'09_{yr_abr_list[8]:02d}_acft',f'10_{yr_abr_list[8]:02d}_acft',f'{yr_list[8]}'])
-        
-    # use regex matches to extract columsn for output files
-    df1o = df.loc[:,df.columns.str.contains(reg1)]
-    df2o = df.loc[:,df.columns.str.contains(reg2)]
-    df3o = df.loc[:,df.columns.str.contains(reg3)]
-    df4o = df.loc[:,df.columns.str.contains(reg4)]
-    df5o = df.loc[:,df.columns.str.contains(reg5)]
-    df6o = df.loc[:,df.columns.str.contains(reg6)]
+        for wy in yr_list:
     
-    # remove duplicate columns (static attributes)
-    df1o = df1o.loc[:,~df1o.columns.duplicated()].copy()
-    df2o = df2o.loc[:,~df2o.columns.duplicated()].copy()
-    df3o = df3o.loc[:,~df3o.columns.duplicated()].copy()
-    df4o = df4o.loc[:,~df4o.columns.duplicated()].copy()
-    df5o = df5o.loc[:,~df5o.columns.duplicated()].copy()
-    df6o = df6o.loc[:,~df6o.columns.duplicated()].copy()
+            cols_keep = columns_for_water_year(df_final, wy)
     
-    df1o = df1o.reset_index()
-    df2o = df2o.reset_index()
-    df3o = df3o.reset_index()
-    df4o = df4o.reset_index()
-    df5o = df5o.reset_index()
-    df6o = df6o.reset_index()
+            df_wy = df_final[cols_keep].copy()
+
+            df_wy = reorder_volume_columns(df_wy, wy)
     
-    # export files to CSV's
-    df1o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[0]}_gap_filled.csv'), index=False)
-    df2o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[1]}_gap_filled.csv'), index=False)
-    df3o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[2]}_gap_filled.csv'), index=False)
-    df4o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[3]}_gap_filled.csv'), index=False)
-    df5o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[4]}_gap_filled.csv'), index=False)
-    df6o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[5]}_gap_filled.csv'), index=False)
+            out_file = os.path.join(
+                out_path,
+                f"or_openet_etdemands_monthly_water_year_shift_1mo_{wy}_gap_filled.csv"
+            )
     
-    # additional years of processing done for certain windows
-    if (yr_list[0] == 1985 and yr_list[-1] == 1991) or (yr_list[0] == 2016 and yr_list[-1] == 2022):
+            df_wy.to_csv(out_file)
+    
+            logging.info(f"Saved water year {wy}")
+    
+    # ---------------------------------
+    # Remove climatology columns and duplicate columns
+    # ---------------------------------
+    df_final = df_final.drop(
+        columns=[c for c in df_final.columns if c.startswith("ETc_")],
+        errors="ignore"
+    )
+    df_final = df_final.loc[:, ~df_final.columns.duplicated()]
+    
+    # ---------------------------------
+    # Split and write individual water-year files
+    # ---------------------------------
+    split_and_save_by_water_year(
+        df_final=df_final,
+        yr_list=yr_list,
+        out_path=out_path
+    )
+
         
-        df7o = df.loc[:,df.columns.str.contains(reg7)]
-        
-        df7o = df7o.loc[:,~df7o.columns.duplicated()].copy()
-        
-        df7o = df7o.reset_index()
-    
-        df7o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[6]}_gap_filled.csv'), index=False)
-    elif (yr_list[0] == 2016 and yr_list[-1] == 2023):
-        df7o = df.loc[:,df.columns.str.contains(reg7)]
-        df8o = df.loc[:,df.columns.str.contains(reg8)]
-        
-        df7o = df7o.loc[:,~df7o.columns.duplicated()].copy()
-        df8o = df8o.loc[:,~df8o.columns.duplicated()].copy()
-        
-        df7o = df7o.reset_index()
-        df8o = df8o.reset_index()
-    
-        df7o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[6]}_gap_filled.csv'), index=False)
-        df8o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[7]}_gap_filled.csv'), index=False)
-    elif (yr_list[0] == 2016 and yr_list[-1] == 2024):
-        df7o = df.loc[:,df.columns.str.contains(reg7)]
-        df8o = df.loc[:,df.columns.str.contains(reg8)]
-        df9o = df.loc[:,df.columns.str.contains(reg9)]
-        
-        df7o = df7o.loc[:,~df7o.columns.duplicated()].copy()
-        df8o = df8o.loc[:,~df8o.columns.duplicated()].copy()
-        df9o = df9o.loc[:,~df9o.columns.duplicated()].copy()
-        
-        df7o = df7o.reset_index()
-        df8o = df8o.reset_index()
-        df9o = df9o.reset_index()
-    
-        df7o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[6]}_gap_filled.csv'), index=False)
-        df8o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[7]}_gap_filled.csv'), index=False)
-        df9o.to_csv(os.path.join(out_path, f'or_openet_etdemands_monthly_water_year_shift_1mo_{yr_list[8]}_gap_filled.csv'), index=False)
-    
-    print('exported all annual files')
-    
 def arg_parse():
     """"""
     parser = argparse.ArgumentParser(

@@ -67,6 +67,9 @@ def main(ini_path=None):
     # unique ID column/attribute for the field boundary dataset
     unique_id = ini['INPUTS']['unique_field_id']
 
+    # flag to export data for an individual field (True) or the entire field boundary dataset (False)
+    single_field_flag = ini['INPUTS']['test_flag']
+    
     # table export location in the cloud (cloud_storage or google_drive)
     out_location = ini['ZONAL_STATS']['export_location']
 
@@ -173,7 +176,7 @@ def main(ini_path=None):
     selector_list = ['OPENET_ID', 'HUC8_name', 'HUC8', 'HUC12_name','HUC12']
     
     # Export tasks
-    if export_location == 'google_drive':
+    if out_location == 'google_drive':
     
         # Export a CSV file to Google Drive.
         out_table_task = ee.batch.Export.table.toDrive(**{
@@ -185,7 +188,7 @@ def main(ini_path=None):
             'selectors': selector_list,
         })
     
-    elif export_location == 'cloud_storage':
+    elif out_location == 'cloud_storage':
         
         # Export a CSV file to Cloud Storage.
         out_table_task = ee.batch.Export.table.toCloudStorage(**{
