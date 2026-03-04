@@ -517,6 +517,87 @@ def main(ini_path=None):
         df_ts_an.write_csv(os.path.join(out_path, f'oregon_field_annual_summary_{year_list[0]}_{year_list[-1]}.csv'), separator=',')
         
         print(f'finished exporting reformatted data for {year_list[0]}-{year_list[-1]}')
+
+    if end_yr - start_yr <= 9:
+        filename_a1 = f'oregon_field_annual_summary_{start_yr}_{end_yr}.csv'
+            
+        df_ts_an_mpre = (
+            pl.scan_csv(os.path.join(out_path, filename_a1))
+                .collect(engine='auto')
+                .select(pl.all())
+        )
+        
+        
+    else:
+        # input filenames for the annual timeseries files
+        filename_a1 = 'oregon_field_annual_summary_1985_1994.csv'
+        filename_a2 = 'oregon_field_annual_summary_1995_2004.csv'
+        filename_a3 = 'oregon_field_annual_summary_2005_2014.csv'
+        filename_a4 = 'oregon_field_annual_summary_2015_2024.csv'
+        
+        try:
+            df_a1 = (
+                pl.scan_csv(os.path.join(out_path, filename_a1))
+                    .collect(engine='auto')
+                    .select(pl.all())
+            )
+            df_a2 = (
+                pl.scan_csv(os.path.join(out_path, filename_a2))
+                    .collect(engine='auto')
+                    .select(pl.all())
+            )
+            df_a3 = (
+                pl.scan_csv(os.path.join(out_path, filename_a3))
+                    .collect(engine='auto')
+                    .select(pl.all())
+            )
+            df_a4 = (
+                pl.scan_csv(os.path.join(out_path, filename_a4))
+                    .collect(engine='auto')
+                    .select(pl.all())
+            )
+        except Exception as e:
+            print(e)
+        
+        # concatenate the four dataframes vertically and re-sort
+        df_ts_an_mpre = pl.concat([df_a1, df_a2, df_a3, df_a4], how='vertical')
+        
+    df_ts_an_m = df_ts_an_mpre.select(pl.all().sort_by(['OPENET_ID','Date']))
+    
+    # calculate a mean annual dataframe to export grouped by DRI_ID, but first replace 0's with nans before calculating means
+    df_mean_an_pre = (
+        df_ts_an_m
+            .with_columns(
+                pl.col(pl.Float64).replace(0, np.nan)
+            )
+    )
+    
+    # prep stat settings for all columns, CDL needs to use a mode statistic
+    mode_cols = ['CDL']
+    
+    # mean annual dataframe
+    df_mean_an = (
+        df_mean_an_pre
+            .group_by('OPENET_ID', maintain_order=True)
+            .agg([pl.col('CDL').mode().first().alias('CDL')]
+                +
+                 [pl.col('IRR STATUS FLAG').mean().cast(pl.Int32).alias('IRR STATUS FLAG')]
+                +
+                 [pl.col(pl.Float64).exclude(mode_cols).mean()])
+            .with_columns(
+                (pl.col('ET RATE (inches)') / pl.col('PPT RATE (inches)')).alias('ET_to_PPT_ratio'),
+                (pl.col('PRZ RATE (inches)') / pl.col('PPT RATE (inches)')).alias('PRZ_to_PPT_ratio'),
+                pl.col(pl.Float64).round(3),
+            )
+            .fill_nan(0)
+    )
+    
+    # export annual dataframe
+    df_ts_an_m.write_csv(os.path.join(out_path, 'oregon_field_annual_summary.csv'), separator=',')
+    df_mean_an.write_csv(os.path.join(out_path, 'oregon_field_mean_annual_summary.csv'), separator=',')
+
+    print('saved mean annual summary table')
+        
     
 def arg_parse():
     """"""
