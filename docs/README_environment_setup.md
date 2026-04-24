@@ -5,9 +5,15 @@
 2. earthengine-api
 3. jupyterlab
 4. pandas
-5. numpy
-6. geopandas
-7. gdal
+5. polars
+6. refet
+7. xarray
+8. netcdf4
+9. joblib
+10. tqdm
+11. numpy
+12. geopandas
+13. gdal
 
 --------
 
