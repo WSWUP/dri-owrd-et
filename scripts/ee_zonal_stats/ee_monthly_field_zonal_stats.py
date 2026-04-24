@@ -96,12 +96,19 @@ def main(ini_path=None):
     study_end = '2025-11-01' # exclusive
     
     # dictionary containg variables (keys) and output variable names/dataset source assetIDs (values) that are used
-    dataset_dict = {
+    dataset_dict_v2_0 = {
         'et': ['ETa', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0'],
-        # 'et': ['ETa', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_1'], # 2025 updates uses the 2.1 version
         'et_reference': ['ET_Reference', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
-        'et_fraction': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'], 
-        # 'et_fraction': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_1', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'], # 2025 updates uses the 2.1 version
+        'et_fraction': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
+        'ppt': ['PPT', 'IDAHO_EPSCOR/GRIDMET'],
+        # 'count': ['MODEL_COUNT', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0']
+    }
+    
+    # 2025 updates uses 2.1 version
+    dataset_dict_v2_1 = {
+        'et': ['ETa', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_1'], # 2025 updates uses 2.1 version
+        'et_reference': ['ET_Reference', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
+        'et_fraction': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_1', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'], # 2025 updates uses the 2.1 version
         'ppt': ['PPT', 'IDAHO_EPSCOR/GRIDMET'],
         # 'count': ['MODEL_COUNT', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0']
     }
@@ -201,34 +208,28 @@ def main(ini_path=None):
     # prep image collections
     if variable == 'et':
     
-        # Nov 1984 - Sept 1999 ET collection
-        monthly_coll_1 = (
-            ee.ImageCollection(dataset_dict[variable][1])
+        # Nov 1984 - Sept 1999 ET collection v2.0
+        monthly_coll_1_v2_0 = (
+            ee.ImageCollection(dataset_dict_v2_0[variable][1])
                 .select(['et_ensemble_mad'], [variable])
                 .filter(ee.Filter.date(study_start, '1999-10-01'))
         )
     
-        # Oct 1999 - Sept 2022 ET collection
-        monthly_coll_2 = (
-            ee.ImageCollection(dataset_dict[variable][2])
+        # Oct 1999 - Dec 2024 ET collection v2.0
+        monthly_coll_2_v2_0 = (
+            ee.ImageCollection(dataset_dict_v2_0[variable][2])
                 .select(['et_ensemble_mad'], [variable])
-                .filter(ee.Filter.date('1999-10-01', study_end))
+                .filter(ee.Filter.date('1999-10-01', '2025-01-01'))
         )
         # 2025 updates have to be handled slightly different with v2.0 to v2.1 switch
-        # monthly_coll_1 = (
-        #     ee.ImageCollection('OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0')
-        #         .select(['et_ensemble_mad'], [variable])
-        #         .filter(ee.Filter.date('2024-11-01', '2025-01-01'))
-        # )
-
-        # monthly_coll_2 = (
-        #     ee.ImageCollection(dataset_dict[variable][2])
-        #         .select(['et_ensemble_mad'], [variable])
-        #         .filter(ee.Filter.date('2025-01-01', study_end))
-        # )
+        monthly_coll_1_v2_1 = (
+            ee.ImageCollection(dataset_dict_v2_1[variable][2])
+                .select(['et_ensemble_mad'], [variable])
+                .filter(ee.Filter.date('2025-01-01', study_end))
+        )
     
         # merge image collections
-        final_coll = monthly_coll_1.merge(monthly_coll_2)
+        final_coll = monthly_coll_1_v2_0.merge(monthly_coll_2_v2_0).merge(monthly_coll_1_v2_1)
     
     elif variable == 'et_reference':
     
@@ -241,38 +242,28 @@ def main(ini_path=None):
     
     elif variable == 'et_fraction':
     
-        # Nov 1984 - Sept 1999 ET collection
-        monthly_coll_1 = (
-            ee.ImageCollection(dataset_dict[variable][1])
-                .select(['et_ensemble_mad'], ['et'])
+        # Nov 1984 - Sept 1999 ET collection v2.0
+        monthly_coll_1_v2_0 = (
+            ee.ImageCollection(dataset_dict_v2_0[variable][1])
+                .select(['et_ensemble_mad'], [variable])
                 .filter(ee.Filter.date(study_start, '1999-10-01'))
-                .map(addDates)
         )
     
-        # Oct 1999 - Sept 2022 ET collection
-        monthly_coll_2 = (
-            ee.ImageCollection(dataset_dict[variable][2])
-                .select(['et_ensemble_mad'], ['et'])
-                .filter(ee.Filter.date('1999-10-01', study_end))
-                .map(addDates)
+        # Oct 1999 - Dec 2024 ET collection v2.0
+        monthly_coll_2_v2_0 = (
+            ee.ImageCollection(dataset_dict_v2_0[variable][2])
+                .select(['et_ensemble_mad'], [variable])
+                .filter(ee.Filter.date('1999-10-01', '2025-01-01'))
         )
         # 2025 updates have to be handled slightly different with v2.0 to v2.1 switch
-        # monthly_coll_1 = (
-        #     ee.ImageCollection('OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0')
-        #         .select(['et_ensemble_mad'], ['et'])
-        #         .filter(ee.Filter.date('2024-11-01', '2025-01-01'))
-        #         .map(addDates)
-        # )
-
-        # monthly_coll_2 = (
-        #     ee.ImageCollection(dataset_dict[variable][2])
-        #         .select(['et_ensemble_mad'], ['et'])
-        #         .filter(ee.Filter.date('2025-01-01', study_end))
-        #         .map(addDates)
-        # )
+        monthly_coll_1_v2_1 = (
+            ee.ImageCollection(dataset_dict_v2_1[variable][2])
+                .select(['et_ensemble_mad'], [variable])
+                .filter(ee.Filter.date('2025-01-01', study_end))
+        )
     
         # merge image collections
-        monthly_coll = monthly_coll_1.merge(monthly_coll_2)
+        monthly_coll = monthly_coll_1_v2_0.merge(monthly_coll_2_v2_0).merge(monthly_coll_1_v2_1)
     
         # gridMET ETo collection
         gridmet_coll = (
