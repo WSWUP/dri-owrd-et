@@ -94,14 +94,15 @@ def main(ini_path=None):
 
     # start/end dates for the statewide et project
     study_start = '1984-11-01'
-    study_end = '2024-11-01' # exclusive
+    study_end = '2025-11-01' # exclusive
     
     # dictionary containg variables (keys) and pixel class values/output variable names/dataset source assetIDs (values) that are used
     dataset_dict = {
         'crop_type': ['CROP', 'USDA/NASS/CDL'],
         'irrmapper_irrigated': [0, 'IRRIGATED', 'projects/ee-dgketchum/assets/IrrMapper/IrrMapperComp'],
         'irrmapper_wetland': [3, 'WETLAND', 'projects/ee-dgketchum/assets/IrrMapper/IrrMapperComp'],
-        'etof_irr_status': ['ETOF_IRR_STATUS_MODE', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
+        # 'etof_irr_status': ['ETOF_IRR_STATUS_MODE', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
+        'etof_irr_status': ['ETOF_IRR_STATUS_MODE', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_1', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
     }
     
     def addDates(img):
@@ -131,7 +132,7 @@ def main(ini_path=None):
     
     if variable == 'crop_type':
         # full list of years within the study period
-        potential_year_list = list(range(2007, 2025))
+        potential_year_list = list(range(2007, end_yr+1))
         
         if start_yr > end_yr:
             logging.error('end_year cannot be less than start_year, please check the parameters')
@@ -144,7 +145,7 @@ def main(ini_path=None):
             sys.exit()
     else:
         # full list of years within the study period
-        potential_year_list = list(range(1985, 2025))
+        potential_year_list = list(range(1985, end_yr+1))
         
         if start_yr > end_yr:
             logging.error('end_year cannot be less than start_year, please check the parameters')
@@ -201,15 +202,23 @@ def main(ini_path=None):
                     .filter(ee.Filter.date(study_start, '1999-10-01'))
             )
         
-            # Oct 1999 - Sept 2024 ET collection
+            # Oct 1999 - Sept 2024 ET collection 
             monthly_coll_2 = (
                 ee.ImageCollection(dataset_dict['etof_irr_status'][2])
                     .select(['et_ensemble_mad'], ['et'])
                     .filter(ee.Filter.date('1999-10-01', study_end))
             )
+            # 2025 data uses v2.1 not v2.0
+            # monthly_coll_1 = (
+            #     ee.ImageCollection(dataset_dict['etof_irr_status'][2])
+            #         .select(['et_ensemble_mad'], ['et'])
+            #         .filter(ee.Filter.date('2024-11-01', '2025-11-01'))
+            # )
+            
         
             # merge image collections
             final_coll = monthly_coll_1.merge(monthly_coll_2)
+            # final_coll = monthly_coll_1
     
             # make an annual image from monthly
             eta_an = (
@@ -322,10 +331,17 @@ def main(ini_path=None):
                     .filter(ee.Filter.date('1999-10-01', study_end))
                     .map(addDates)
             )
+            # 2025 uses v2.1 data not v2.0
+            # monthly_coll_1 = (
+            #     ee.ImageCollection(dataset_dict[variable][2])
+            #         .select(['et_ensemble_mad'], ['et'])
+            #         .filter(ee.Filter.date('2024-11-01', '2025-12-31'))
+            #         .map(addDates)
+            # )
             
             # merge image collections
             monthly_coll = monthly_coll_1.merge(monthly_coll_2)
-        
+            # monthly_coll = monthly_coll_1
         
             # -------------------------------- Build monthly EToF collection -----------------------------
             

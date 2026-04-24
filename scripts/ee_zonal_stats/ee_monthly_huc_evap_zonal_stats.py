@@ -61,7 +61,7 @@ def main(ini_path=None):
     huc_c = huc_code.replace('HUC', '')
 
     # flag to export data for an individual HUC (True) or the entire HUC boundary dataset for Oregon (False)
-    single_huc_flag = ini['ZONAL_STATS']['test_flag']
+    single_huc_flag = ini['INPUTS']['test_flag']
 
     # table export location in the cloud (cloud_storage or google_drive)
     out_location = ini['ZONAL_STATS']['export_location']
@@ -110,7 +110,7 @@ def main(ini_path=None):
     eto_b_coll_monthly = (
         ee.ImageCollection('projects/openet/assets/reference_et/conus/gridmet/monthly/v1')
             .select(['eto'], ['EToB'])
-            .filter(ee.Filter.date('1984-11-01', '2024-11-01'))
+            .filter(ee.Filter.date('1984-11-01', '2025-11-01'))
     )
     
     # image projection info
@@ -123,12 +123,12 @@ def main(ini_path=None):
     eto_n_coll_daily = (
         ee.ImageCollection("IDAHO_EPSCOR/GRIDMET")
             .select(['eto'], ['EToN'])
-            .filter(ee.Filter.date('1984-11-01', '2024-11-01'))
+            .filter(ee.Filter.date('1984-11-01', '2025-11-01'))
     )
     
     # start and end dates of the project
     Date_Start = ee.Date('1984-11-01')
-    Date_End = ee.Date('2024-10-01') # inclusive
+    Date_End = ee.Date('2025-10-01') # inclusive
     
     # Create list of dates for time series
     n_months = Date_End.difference(Date_Start,'month').round()
@@ -203,7 +203,7 @@ def main(ini_path=None):
         joined_bnds
             .updateMask(et_cells_mask)
             .reduceRegions(
-                collection=hucs.select([f'huc{huc_c}', 'name'], [f'{huc_code}_code', f'{huc_code}_name']),
+                collection=hucs.select([f'huc{huc_c}'], [f'{huc_code}_code']),
                 reducer=ee.Reducer.mean(),
                 # scale=4638.312116386398,
                 crs=ee_crs,
@@ -212,7 +212,7 @@ def main(ini_path=None):
             )
             .map(removGeom)
     )
-    
+        
     
     # Export tasks
     if out_location == 'google_drive':

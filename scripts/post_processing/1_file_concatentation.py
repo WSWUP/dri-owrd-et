@@ -44,7 +44,7 @@ def main(ini_path=None):
 
     """
 
-    logging.info('\nConcatenating all field-level summary tables')
+    logging.info('\nConcatenating all field-level summary tables (Step 1)')
 
     # Read config file
     ini = inputs.read(ini_path)
@@ -108,10 +108,11 @@ def main(ini_path=None):
             for key, fname in dynamic_files.items():
                 try:
                     dfs_to_concat.append(pd.read_csv(os.path.join(paths['table_path'], fname), index_col=unique_id))
+
                 except FileNotFoundError:
                     print(f"Warning: {fname} not found.")
                     continue
-    
+                    
             # Irrigation / wetland
             df_irr = pd.read_csv(os.path.join(paths['table_path'], f'or_field_summaries_{year}_irrmapper_irrigated.csv'), index_col=unique_id)
             df_irr[f'%_IRRIGATED_{yr_abbr}'] = (df_irr['ACRES_IRRIGATED'] / df_irr['ACRES_ALL']) * 100
@@ -139,11 +140,14 @@ def main(ini_path=None):
                  (df_combined['srctype'] != 0) &
                  (df_combined[f'ETOF_IRR_STATUS_{yr_abbr}_MODE'].isin([2,3,5])))
             ).astype(int)
-    
+
+            # remove duplicate columns
+            df_combined = df_combined.loc[:, ~df_combined.columns.duplicated()].copy()
+            
             # Reset index and save
             df_combined.reset_index().to_csv(
-                os.path.join(paths['out_path'], f'or_field_summaries_water_year_shift_1mo_{year}_pre_et_demands.csv'),
-                index=False
+                os.path.join(paths['out_path'], f'or_field_summaries_water_year_shift_1mo_{year}_pre_et_demands.csv.gz'),
+                index=False, compression='gzip'
             )
             print(f'Exported dataframe for {year}')
     

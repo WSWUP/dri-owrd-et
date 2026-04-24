@@ -93,25 +93,27 @@ def main(ini_path=None):
 
     # start/end dates for the statewide et project through 2024
     study_start = '1984-11-01'
-    study_end = '2024-11-01' # exclusive
+    study_end = '2025-11-01' # exclusive
     
     # dictionary containg variables (keys) and output variable names/dataset source assetIDs (values) that are used
     dataset_dict = {
         'et': ['ETa', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0'],
+        # 'et': ['ETa', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_1'], # 2025 updates uses the 2.1 version
         'et_reference': ['ET_Reference', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
-        'et_fraction': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
+        'et_fraction': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'], 
+        # 'et_fraction': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_1', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'], # 2025 updates uses the 2.1 version
         'ppt': ['PPT', 'IDAHO_EPSCOR/GRIDMET'],
         # 'count': ['MODEL_COUNT', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0']
     }
     
     # list of years to process based on start/end year parameters
-    potential_year_list = list(range(1985, 2025))
+    potential_year_list = list(range(1985, 2026))
     if start_yr > end_yr:
         print('end year cannot be less than start_year, please check the parameters')
     if start_yr not in potential_year_list:
-        print('start year is not within the 1985-2024 study period')
+        print('start year is not within the 1985-2025 study period')
     if end_yr not in potential_year_list:
-        print('end year is not within the 1985-2024 study period')
+        print('end year is not within the 1985-2025 study period')
     year_list = list(range(start_yr, end_yr+1))
 
     # general functions
@@ -212,6 +214,18 @@ def main(ini_path=None):
                 .select(['et_ensemble_mad'], [variable])
                 .filter(ee.Filter.date('1999-10-01', study_end))
         )
+        # 2025 updates have to be handled slightly different with v2.0 to v2.1 switch
+        # monthly_coll_1 = (
+        #     ee.ImageCollection('OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0')
+        #         .select(['et_ensemble_mad'], [variable])
+        #         .filter(ee.Filter.date('2024-11-01', '2025-01-01'))
+        # )
+
+        # monthly_coll_2 = (
+        #     ee.ImageCollection(dataset_dict[variable][2])
+        #         .select(['et_ensemble_mad'], [variable])
+        #         .filter(ee.Filter.date('2025-01-01', study_end))
+        # )
     
         # merge image collections
         final_coll = monthly_coll_1.merge(monthly_coll_2)
@@ -242,6 +256,20 @@ def main(ini_path=None):
                 .filter(ee.Filter.date('1999-10-01', study_end))
                 .map(addDates)
         )
+        # 2025 updates have to be handled slightly different with v2.0 to v2.1 switch
+        # monthly_coll_1 = (
+        #     ee.ImageCollection('OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0')
+        #         .select(['et_ensemble_mad'], ['et'])
+        #         .filter(ee.Filter.date('2024-11-01', '2025-01-01'))
+        #         .map(addDates)
+        # )
+
+        # monthly_coll_2 = (
+        #     ee.ImageCollection(dataset_dict[variable][2])
+        #         .select(['et_ensemble_mad'], ['et'])
+        #         .filter(ee.Filter.date('2025-01-01', study_end))
+        #         .map(addDates)
+        # )
     
         # merge image collections
         monthly_coll = monthly_coll_1.merge(monthly_coll_2)

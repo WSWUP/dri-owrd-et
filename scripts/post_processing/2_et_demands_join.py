@@ -46,7 +46,7 @@ def main(ini_path=None):
 
     """
 
-    logging.info('\nConcatenating all field-level summary tables')
+    logging.info('\nJoin ET Demands outputs to field-level summaries (Step 2)')
 
     # Read config file
     ini = inputs.read(ini_path)
@@ -162,7 +162,7 @@ def main(ini_path=None):
         df_fields = pd.read_csv(
             os.path.join(
                 in_path,
-                 f'or_field_summaries_water_year_shift_1mo_{year}_pre_et_demands.csv',
+                 f'or_field_summaries_water_year_shift_1mo_{year}_pre_et_demands.csv.gz',
             ),
             index_col=unique_id,
         )
@@ -271,9 +271,9 @@ def main(ini_path=None):
         df_fields = df_fields.drop(columns=['ETD_CROP','ETD_CROP_STR'])
         
         # export and benchmark
-        out_file = f'or_openet_etdemands_monthly_water_year_shift_1mo_{year}_pre_gapfill.csv'
+        out_file = f'or_openet_etdemands_monthly_water_year_shift_1mo_{year}_pre_gapfill.csv.gz'
     
-        df_fields.to_csv(os.path.join(out_path, out_file), index=False)
+        df_fields.to_csv(os.path.join(out_path, out_file), index=False, compression='gzip')
     
         t1 = perf_counter()
         print(f"Finished {year} in {t1 - t0:0.1f} seconds")

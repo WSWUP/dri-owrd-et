@@ -121,7 +121,7 @@ def parse_inputs(ini, section='INPUTS'):
         ['huc_level', 'huc_level', str],
         ['start_year', 'start_year', int],
         ['end_year', 'end_year', int],
-        ['irrigation_source_type', 'irrigation_source_type', str],
+        # ['irrigation_source_type', 'irrigation_source_type', str],
     ]
     for input_name, output_name, get_type in param_list:
         get_param(ini, section, input_name, output_name, get_type)
@@ -156,8 +156,8 @@ def parse_inputs(ini, section='INPUTS'):
     if ini[section]['end_year']:
         ini[section]['end_year'] = ini[section]['end_year']
 
-    if ini[section]['irrigation_source_type']:
-        ini[section]['irrigation_source_type'] = ini[section]['irrigation_source_type']
+    # if ini[section]['irrigation_source_type']:
+    #     ini[section]['irrigation_source_type'] = ini[section]['irrigation_source_type']
 
     # OPTIONAL PARAMETERS
     # param_section, input_name, output_name, get_type, default

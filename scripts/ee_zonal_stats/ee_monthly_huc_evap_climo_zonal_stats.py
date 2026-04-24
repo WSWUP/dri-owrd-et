@@ -61,7 +61,7 @@ def main(ini_path=None):
     huc_c = huc_code.replace('HUC', '')
 
     # flag to export data for an individual HUC (True) or the entire HUC boundary dataset for Oregon (False)
-    single_huc_flag = ini['ZONAL_STATS']['test_flag']
+    single_huc_flag = ini['INPUTS']['test_flag']
 
     # table export location in the cloud (cloud_storage or google_drive)
     out_location = ini['ZONAL_STATS']['export_location']
@@ -241,7 +241,6 @@ def main(ini_path=None):
             )
             .map(removGeom)
     )
-    
     
     # Export tasks
     if out_location == 'google_drive':

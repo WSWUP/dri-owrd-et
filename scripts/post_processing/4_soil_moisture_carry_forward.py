@@ -125,10 +125,10 @@ def main(ini_path=None):
     
         for i, wy in enumerate(year_list):
 
-            filename = f'or_openet_etdemands_monthly_water_year_shift_1mo_{wy}_gap_filled.csv'
+            filename = f'or_openet_etdemands_monthly_water_year_shift_1mo_{wy}_gap_filled.csv.gz'
             
             in_file  = os.path.join(in_path,  filename)
-            out_file = os.path.join(out_path, filename.replace('gap_filled','test'))
+            out_file = os.path.join(out_path, filename.replace('gap_filled', 'final'))
     
             df = pd.read_csv(in_file, index_col=unique_id)
     
@@ -158,7 +158,9 @@ def main(ini_path=None):
             df.fillna(0, inplace=True)
     
             df.reset_index(inplace=True)
-            df.to_csv(out_file, index=False)
+
+            # if not os.path.isfile(out_file):
+            df.to_csv(out_file, index=False, compression='gzip')
     
             print(f"Exported WY{wy}")
     

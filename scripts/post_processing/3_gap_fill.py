@@ -46,7 +46,7 @@ def main(ini_path=None):
 
     """
 
-    logging.info('\nGap-filling months of missing EToF')
+    logging.info('\nGap-filling months of missing EToF (Step 3)')
 
     # Read config file
     ini = inputs.read(ini_path)
@@ -69,13 +69,18 @@ def main(ini_path=None):
     table_path_main = os.path.join(root_path, 'tables')
     table_path = os.path.join(table_path_main, 'post_processing')
     table_path_ee = os.path.join(table_path_main, 'ee_exports')
-    
+    supp_path = os.path.join(root_path, "tables", "supplemental")
+
     # input path
     in_path = os.path.join(table_path, '3_pre_gap_filled')
     
     # output path
     out_path = os.path.join(table_path, '4_gap_filled')
-    
+
+    # List of bad geometries to remove
+    df_bad = pd.read_csv(os.path.join(supp_path, "bad_geometry_list.csv"), index_col=unique_id)
+    bad_list = list(df_bad.index)
+        
     # list of years and list of years abbreviations
     yr_list = list(range(start_yr, end_yr+1))
     yr_abr_list = [int(str(yr)[2:]) for yr in yr_list]
@@ -111,7 +116,10 @@ def main(ini_path=None):
         )
     
         df_c = pd.read_csv(climo_file, index_col=unique_id)
-    
+
+        # filter out bad geometries
+        df_c = df_c.loc[~df_c.index.isin(bad_list)]
+        
         df_c.columns = [
             "ETc_Fraction_11", "ETc_Fraction_12",
             "ETc_Fraction_01", "ETc_Fraction_02", "ETc_Fraction_03",
@@ -127,7 +135,7 @@ def main(ini_path=None):
     
         file_path = os.path.join(
             in_path,
-            f"or_openet_etdemands_monthly_water_year_shift_1mo_{year}_pre_gapfill.csv",
+            f"or_openet_etdemands_monthly_water_year_shift_1mo_{year}_pre_gapfill.csv.gz",
         )
     
         df = pd.read_csv(file_path, index_col=unique_id)
@@ -245,7 +253,7 @@ def main(ini_path=None):
         df = backfill_eta(df, yr_list)
         df = convert_mm_to_inches(df, mm_vars)
         df = calculate_volumes(df, yr_list, eff_ppt_var)
-    
+
         return df
     
     yr_list = list(range(start_yr, end_yr + 1))
@@ -323,7 +331,7 @@ def main(ini_path=None):
                 continue
     
             # -------------------------------------------------
-            # 2️Annual columns (2-digit or 4-digit year)
+            # Annual columns (2-digit or 4-digit year)
             # -------------------------------------------------
             annual_year = parse_annual_year(col)
     
@@ -333,7 +341,7 @@ def main(ini_path=None):
                 continue
     
             # -------------------------------------------------
-            # 3️Acreage column
+            # Acreage column
             # -------------------------------------------------
             if col.startswith("ACRES_FTR_GEOM_"):
                 if col.endswith(str(water_year)[-2:]):
@@ -391,14 +399,16 @@ def main(ini_path=None):
     
             df_wy = df_final[cols_keep].copy()
 
+            df_wy = df_wy.loc[:, ~df_wy.columns.duplicated()].copy()
+            
             df_wy = reorder_volume_columns(df_wy, wy)
-    
+
             out_file = os.path.join(
                 out_path,
-                f"or_openet_etdemands_monthly_water_year_shift_1mo_{wy}_gap_filled.csv"
+                f"or_openet_etdemands_monthly_water_year_shift_1mo_{wy}_gap_filled.csv.gz"
             )
     
-            df_wy.to_csv(out_file)
+            df_wy.to_csv(out_file, compression='gzip')
     
             logging.info(f"Saved water year {wy}")
     

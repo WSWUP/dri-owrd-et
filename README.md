@@ -43,9 +43,9 @@ The repository includes a collection of Python Scripts (located in the "scripts"
     > **3_gap_fill.py** - Gap fills missing months of EToF using linear interpolation (1mo) and fixed-window (e.g., 1984-1991) EToF climatologies (2+ mo)<br><br>
     > **4_soil_moisture_carry_forward.py** - Carries forward excess/stored soil moisture when monthly ETa < Prz and recalculates consumptive use<br><br>
     > **5_HUC_aggregations.py** - HUC8/HUC12 aggregations of field-level volumes with groundwater & surface water irrigation source breakouts<br><br>
-    > **6_HUC_shapefile_prep.py** - HUC8/HUC12 shapefile preparation for the geopackage/geodatabase from standalone tables<br><br>
-    > **7_field_geopackage_prep.py** - Field-level geopackage/geodatabase preparation from standalone tables<br><br>
-    > **8_HUC_geopackage_prep.py** - HUC-level geopackage/geodatabase preparation from shapefiles<br>
+    > **6_field_geopackage_prep.py** - Field-level geopackage/geodatabase preparation from standalone tables<br><br>
+    > **7_HUC_geopackage_prep.py** - HUC-level geopackage/geodatabase preparation from summaries<br>
+    > **9_reformat_for_EE_app.py** - Reformats the geodatabase to be a long timeseries that can be used in the Earth Engine data visualization/retrieval tool<br>
 
 The python scripts are initialized/controlled by configuration files (e.g., example_ee_exports.ini) within the "config" subfolder. Python scripts can be run from the Command Prompt (Windows) or Terminal (MacOS) after specifying parameters/settings in a configuration file:
 
@@ -298,21 +298,19 @@ CSV files with ET spatial summaries for each field or HUC, uniquely identified b
                 > 1998-2003<br>
                 > 2004-2009<br>
                 > 2010-2015<br>
-                > 2016-2022 (note: if processing 2023 and 2024 extend the end year from 2022)
+                > 2016-2022 (note: if processing 2023, 2024, and 2025 extend the end year from 2022)
     4. Soil moisture carry forward and applied water calculations
         - output filename example "or_openet_etdemands_monthly_water_year_shift_1mo_1985_final.csv"
             - Final field-level stats tables/CSVs will be produced during this step
             - **NOTE**: This step requires all individual gap-filled annual tables (1985-2022; 2023 & 2024 if updating the database within more recent data) from step 3 above to be prepared so that carry forward calculations are consistent throughout the study period
     5. HUC8/HUC12 aggregations of irrigation/water use summaries
         - output filename example "or_huc8_openet_etdemands_water_year_shift_1mo_srctype_all.csv"
-    6. HUC-level irrigation/water use shapefile preparation
-        - output filename example "or_openet_huc8_irrigated_all.shp"
-    7. Field-level geopackage preparation
+    6. Field-level geopackage preparation
         - output filename "or_field_geopackage.gpkg"
-    8. HUC-level geopackage preparation
+    7. HUC-level geopackage preparation
         - output filename "or_huc_geopackage.gpkg"
             - includes irrigation/water use and small pond evaporation summaries
-    9. Visualization tools<br>
+    8. Visualization tools<br>
         a. HUC8 CUirr/acreage histograms for 2017 & 2021<br><br>
             <center><img src="tables\post_processing\9_visualization\oregon_huc8_histograms_cuirr.png" width="500"/></center><br><br>
         b. HUC8 ETa/ETc and CUirr/NIWR box & whisker plots<br><br>
@@ -325,7 +323,7 @@ CSV files with ET spatial summaries for each field or HUC, uniquely identified b
             <center><img src="tables\post_processing\9_visualization\ec_vs_ensemble_plot_S2.png" width="300"/></center><br><br>
         f. Monthly cumulative ETa, Prz, and CUirr volume timeseries & distribution plots<br><br>
             <center><img src="docs\Oregon_Statewide_ET_et_cu_cumulative_plot_snippet.jpg" width="500"/></center><br><br>
-    10. Database reformatting for field-level GEE App [tool](https://dri-apps.projects.earthengine.app/view/owrd-oregon-etcu-field-summaries)<br><br>
+    9. Database reformatting for field-level GEE App [tool](https://dri-apps.projects.earthengine.app/view/owrd-oregon-etcu-field-summaries)<br><br>
         <center><img src="docs/Oregon_Statewide_ET_data_viz_tool_snippet.jpg" width="800"/></center><br>
 
 --------

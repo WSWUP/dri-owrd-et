@@ -176,6 +176,7 @@ def parse_zonal_stats(ini, section='ZONAL_STATS'):
     # DEADBEEF - What should the default Landsat products be?
     param_list = [
         ['monthly_variable', 'monthly_variable', str],
+        ['annual_variable', 'annual_variable', str],
         ['export_location', 'export_location', str],
     ]
     for input_name, output_name, get_type in param_list:
@@ -188,9 +189,20 @@ def parse_zonal_stats(ini, section='ZONAL_STATS'):
         ini[section]['monthly_variable'] = ini[section]['monthly_variable']
         if ini[section]['monthly_variable'] not in options:
             logging.error(
-                '\nERROR: Invalid data variable: {}\n'
+                '\nERROR: Invalid monthly data variable: {}\n'
                 '  Must be: {}'.format(
                     ini[section]['monthly_variable'], ', '.join(options)))
+            sys.exit()
+
+    # annual data variable to extract
+    if ini[section]['annual_variable']:
+        options = ['crop_type', 'irrmapper_irrigated', 'irrmapper_wetland', 'etof_irr_status']
+        ini[section]['annual_variable'] = ini[section]['annual_variable']
+        if ini[section]['annual_variable'] not in options:
+            logging.error(
+                '\nERROR: Invalid annual data variable: {}\n'
+                '  Must be: {}'.format(
+                    ini[section]['annual_variable'], ', '.join(options)))
             sys.exit()
     
     # export location
