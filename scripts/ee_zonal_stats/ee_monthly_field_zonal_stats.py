@@ -389,16 +389,37 @@ def main(ini_path=None):
         )
     
         # zonal stats computation (reduceRegions, spatial mean, composite dataframe output)
-        stats_out = (
-            all_bnds
-                .reduceRegions(
-                    collection=field_bound,
-                    reducer=ee.Reducer.mean(),
-                    scale=30,
-                    tileScale=16
-                )
-                .map(removGeom)
-        )
+        if variable == 'ppt' or variable == 'et_reference':
+            def get_centroids(ftr):
+                """convert field boundary geometry to field centroid for met data export"""
+                return ftr.setGeometry(ftr.centroid().geometry())
+                
+            field_bound_centroid = field_bound.map(get_centroids)
+
+            stats_out = (
+                all_bnds
+                    .reduceRegions(
+                        collection=field_bound_centroid,
+                        reducer=ee.Reducer.mean(),
+                        # scale=4638.3,
+                        crs='EPSG:4326',
+                        crsTransform=[0.041666666666666664, 0, -124.7875, 0, -0.041666666666666664, 49.42083333333334],
+                        tileScale=16
+                    )
+                    .map(removGeom)
+            )
+        
+        else:
+            stats_out = (
+                all_bnds
+                    .reduceRegions(
+                        collection=field_bound,
+                        reducer=ee.Reducer.mean(),
+                        scale=30,
+                        tileScale=16
+                    )
+                    .map(removGeom)
+            )
     
         def orgFeatColl(ftr):
             """adds formatted columns/properties to a feature using existing properties/values
