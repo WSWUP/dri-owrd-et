@@ -98,7 +98,11 @@ def main(ini_path=None):
     
     
     # output geopackage path
-    output_gpkg = os.path.join(out_path, 'or_huc_geopackage.gpkg')
+    output_gpkg = os.path.join(out_path, f'or_huc_geopackage_{start_yr}_{end_yr}.gpkg')
+
+    if os.path.isfile(output_gpkg):
+        print('HUC-level geopackage already exists, overwriting now')
+        os.remove(output_gpkg)
     
     # empty dictionary to fill with geodataframes
     gdf_dict = {}
@@ -169,11 +173,8 @@ def arg_parse():
     args = parser.parse_args()
 
     if args.ini and os.path.isfile(os.path.abspath(args.ini)):
-        
         args.ini = os.path.abspath(args.ini)
-    
     else:
-        
         args.ini = utils.get_ini_path(os.getcwd())
     
     return args

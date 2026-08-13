@@ -118,7 +118,7 @@ def main(ini_path=None):
             df_1[f'EFF_v_{str(yr)[2:]}'] = df_1.loc[:, df_1.columns.str.contains('EFF_VOLUMEadj')].sum(axis=1)
             df_1[f'NIWR_v_{str(yr)[2:]}'] = df_1.loc[:, df_1.columns.str.contains('NIWR_VOLUME')].sum(axis=1)
             df_1[f'CU_v_{str(yr)[2:]}'] = df_1.loc[:, df_1.columns.str.contains('IRR_CU_VOLUMEadj')].sum(axis=1)
-            df_1[f'AW_v_{str(yr)[2:]}'] = df_1.loc[:, df_1.columns.str.contains('AW_')].sum(axis=1)
+            df_1[f'AW_v_{str(yr)[2:]}'] = df_1.loc[:, (df_1.columns.str.contains('AW_') & ~df_1.columns.str.contains('PAW_'))].sum(axis=1)
         
             # locate mix source type fields and threshold the ET, EFF, CU and AW to be half to split surface/groundwater
             if (src_type == 'groundwater' or src_type == 'surface_water'):
@@ -189,8 +189,8 @@ def main(ini_path=None):
 
             df_out = df_out.fillna(0)
             
-            df_out.to_csv(os.path.join(out_path, fr'or_{huc_code.lower()}_openet_etdemands_water_year_shift_1mo_srctype_{src_type}.csv'), index=False)
-            logging.info(f'\nexported {huc_code.lower()} {src_type} source(s) table')
+            df_out.to_csv(os.path.join(out_path, fr'or_{huc_code.lower()}_openet_etdemands_water_year_shift_1mo_srctype_{src_type}.csv.gz'), index=False)
+            logging.info(f'\nexported {huc_code.lower()} {src_type} source table')
 
 
 def arg_parse():
@@ -210,13 +210,10 @@ def arg_parse():
     args = parser.parse_args()
 
     if args.ini and os.path.isfile(os.path.abspath(args.ini)):
-        
         args.ini = os.path.abspath(args.ini)
-    
     else:
-        
         args.ini = utils.get_ini_path(os.getcwd())
-    
+        
     return args
 
 

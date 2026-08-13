@@ -188,7 +188,16 @@ def main(ini_path=None):
                     df[frac_col] = df[frac_col].fillna(df[climo_col])
     
         return df
+
+    def interpolate_month_gaps_climo_missing(df):
+        frac_cols = df.filter(regex="ET_Fraction").columns
+
+        interp_vals = df[frac_cols].interpolate(method='linear', axis=1)
     
+        df[frac_cols] = df[frac_cols].fillna(interp_vals)
+    
+        return df
+        
     def backfill_eta(df, yr_list):
     
         for yr in yr_list:
@@ -250,6 +259,7 @@ def main(ini_path=None):
         df = fill_final_october(df, yr_list)
         df = interpolate_single_month_gaps(df)
         df = fill_with_climatology(df, yr_list)
+        df = interpolate_month_gaps_climo_missing(df) # additional etof fillna b/c 1984-1991 climo values for fields were null
         df = backfill_eta(df, yr_list)
         df = convert_mm_to_inches(df, mm_vars)
         df = calculate_volumes(df, yr_list, eff_ppt_var)
@@ -408,6 +418,7 @@ def main(ini_path=None):
                 f"or_openet_etdemands_monthly_water_year_shift_1mo_{wy}_gap_filled.csv.gz"
             )
     
+            # df_wy.to_csv(out_file)
             df_wy.to_csv(out_file, compression='gzip')
     
             logging.info(f"Saved water year {wy}")
@@ -448,13 +459,10 @@ def arg_parse():
     args = parser.parse_args()
 
     if args.ini and os.path.isfile(os.path.abspath(args.ini)):
-        
         args.ini = os.path.abspath(args.ini)
-    
     else:
-        
         args.ini = utils.get_ini_path(os.getcwd())
-    
+        
     return args
 
 

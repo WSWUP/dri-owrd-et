@@ -97,9 +97,9 @@ def main(ini_path=None):
     
     # dictionary containg variables (keys) and output variable names/dataset source assetIDs (values) that are used
     dataset_dict_v2_0 = {
-        'et': ['ETa', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0'],
+        'et': ['ETa', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0'],
         'et_reference': ['ET_Reference', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
-        'et_fraction': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
+        'et_fraction': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
         'ppt': ['PPT', 'IDAHO_EPSCOR/GRIDMET'],
         # 'count': ['MODEL_COUNT', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0']
     }
@@ -135,7 +135,7 @@ def main(ini_path=None):
         """
         
         return ftr.set({
-            'ACRES_FTR_GEOM_EE': ftr.geometry().area().divide(4047),
+            'ACRES_FTR_GEOM_EE': ftr.geometry().area(1).divide(4047),
         })
 
     def addDates(img):
@@ -178,15 +178,7 @@ def main(ini_path=None):
         return img.select(['et_fraction'])
 
     def removGeom(ftr):
-        """removes the geometry column from the field/feature
-    
-        Args:
-            ftr: earth engine feature
-    
-        Returns:
-            earth engine feature without geometry attributes
-        """
-        
+        """removes the geometry column from the field/feature"""
         return ftr.setGeometry(None)
     
     # field boundary assetID on GEE
@@ -235,7 +227,7 @@ def main(ini_path=None):
     
         # gridMET ETo collections
         final_coll = (
-            ee.ImageCollection(dataset_dict[variable][1])
+            ee.ImageCollection(dataset_dict_v2_0[variable][1])
                 .select(['eto'], [variable])
                 .filter(ee.Filter.date(study_start, study_end))
         )
@@ -245,29 +237,32 @@ def main(ini_path=None):
         # Nov 1984 - Sept 1999 ET collection v2.0
         monthly_coll_1_v2_0 = (
             ee.ImageCollection(dataset_dict_v2_0[variable][1])
-                .select(['et_ensemble_mad'], [variable])
+                .select(['et_ensemble_mad'], ['et'])
                 .filter(ee.Filter.date(study_start, '1999-10-01'))
+                .map(addDates)
         )
     
         # Oct 1999 - Dec 2024 ET collection v2.0
         monthly_coll_2_v2_0 = (
             ee.ImageCollection(dataset_dict_v2_0[variable][2])
-                .select(['et_ensemble_mad'], [variable])
+                .select(['et_ensemble_mad'], ['et'])
                 .filter(ee.Filter.date('1999-10-01', '2025-01-01'))
+                .map(addDates)
         )
         # 2025 updates have to be handled slightly different with v2.0 to v2.1 switch
         monthly_coll_1_v2_1 = (
             ee.ImageCollection(dataset_dict_v2_1[variable][2])
-                .select(['et_ensemble_mad'], [variable])
+                .select(['et_ensemble_mad'], ['et'])
                 .filter(ee.Filter.date('2025-01-01', study_end))
+                .map(addDates)
         )
     
         # merge image collections
         monthly_coll = monthly_coll_1_v2_0.merge(monthly_coll_2_v2_0).merge(monthly_coll_1_v2_1)
-    
+
         # gridMET ETo collection
         gridmet_coll = (
-            ee.ImageCollection(dataset_dict[variable][3])
+            ee.ImageCollection(dataset_dict_v2_0[variable][3])
                 .select(['eto'], ['et_reference'])
                 .filter(ee.Filter.date(study_start, study_end))
                 .map(addDates)
@@ -289,7 +284,7 @@ def main(ini_path=None):
                 .map(joinFunc)
                 .map(calcETF)
         )
-    
+        
     elif variable == 'ppt':
         
         # start and end dates of the OpenET data
@@ -308,7 +303,7 @@ def main(ini_path=None):
     
         # daily gridMET precip collection
         daily_coll = (
-            ee.ImageCollection(dataset_dict[variable][1])
+            ee.ImageCollection(dataset_dict_v2_0[variable][1])
                 .select(['pr'], [variable])
                 .filter(ee.Filter.date(study_start, study_end))
         )
@@ -418,18 +413,18 @@ def main(ini_path=None):
             
             return ftr.set({
                 'ACRES_FTR_GEOM': ftr.get('ACRES_FTR_GEOM_EE'),
-                f'{dataset_dict[variable][0]}_11_{str(year-1)[2:]}': ftr.get(f'{variable}_11'),
-                f'{dataset_dict[variable][0]}_12_{str(year-1)[2:]}': ftr.get(f'{variable}_12'),
-                f'{dataset_dict[variable][0]}_01_{str(year)[2:]}': ftr.get(f'{variable}_01'),
-                f'{dataset_dict[variable][0]}_02_{str(year)[2:]}': ftr.get(f'{variable}_02'),
-                f'{dataset_dict[variable][0]}_03_{str(year)[2:]}': ftr.get(f'{variable}_03'),
-                f'{dataset_dict[variable][0]}_04_{str(year)[2:]}': ftr.get(f'{variable}_04'),
-                f'{dataset_dict[variable][0]}_05_{str(year)[2:]}': ftr.get(f'{variable}_05'),
-                f'{dataset_dict[variable][0]}_06_{str(year)[2:]}': ftr.get(f'{variable}_06'),
-                f'{dataset_dict[variable][0]}_07_{str(year)[2:]}': ftr.get(f'{variable}_07'),
-                f'{dataset_dict[variable][0]}_08_{str(year)[2:]}': ftr.get(f'{variable}_08'),
-                f'{dataset_dict[variable][0]}_09_{str(year)[2:]}': ftr.get(f'{variable}_09'),
-                f'{dataset_dict[variable][0]}_10_{str(year)[2:]}': ftr.get(f'{variable}_10'),
+                f'{dataset_dict_v2_0[variable][0]}_11_{str(year-1)[2:]}': ftr.get(f'{variable}_11'),
+                f'{dataset_dict_v2_0[variable][0]}_12_{str(year-1)[2:]}': ftr.get(f'{variable}_12'),
+                f'{dataset_dict_v2_0[variable][0]}_01_{str(year)[2:]}': ftr.get(f'{variable}_01'),
+                f'{dataset_dict_v2_0[variable][0]}_02_{str(year)[2:]}': ftr.get(f'{variable}_02'),
+                f'{dataset_dict_v2_0[variable][0]}_03_{str(year)[2:]}': ftr.get(f'{variable}_03'),
+                f'{dataset_dict_v2_0[variable][0]}_04_{str(year)[2:]}': ftr.get(f'{variable}_04'),
+                f'{dataset_dict_v2_0[variable][0]}_05_{str(year)[2:]}': ftr.get(f'{variable}_05'),
+                f'{dataset_dict_v2_0[variable][0]}_06_{str(year)[2:]}': ftr.get(f'{variable}_06'),
+                f'{dataset_dict_v2_0[variable][0]}_07_{str(year)[2:]}': ftr.get(f'{variable}_07'),
+                f'{dataset_dict_v2_0[variable][0]}_08_{str(year)[2:]}': ftr.get(f'{variable}_08'),
+                f'{dataset_dict_v2_0[variable][0]}_09_{str(year)[2:]}': ftr.get(f'{variable}_09'),
+                f'{dataset_dict_v2_0[variable][0]}_10_{str(year)[2:]}': ftr.get(f'{variable}_10'),
             })
     
         # map the function to format 
@@ -438,17 +433,17 @@ def main(ini_path=None):
         # list of properties to export
         if variable == 'et':
             selector_list = [unique_id, 'ACRES_FTR_GEOM',
-                              f'{dataset_dict[variable][0]}_11_{str(year-1)[2:]}', f'{dataset_dict[variable][0]}_12_{str(year-1)[2:]}', f'{dataset_dict[variable][0]}_01_{str(year)[2:]}',
-                              f'{dataset_dict[variable][0]}_02_{str(year)[2:]}', f'{dataset_dict[variable][0]}_03_{str(year)[2:]}', f'{dataset_dict[variable][0]}_04_{str(year)[2:]}',
-                              f'{dataset_dict[variable][0]}_05_{str(year)[2:]}', f'{dataset_dict[variable][0]}_06_{str(year)[2:]}', f'{dataset_dict[variable][0]}_07_{str(year)[2:]}',
-                              f'{dataset_dict[variable][0]}_08_{str(year)[2:]}', f'{dataset_dict[variable][0]}_09_{str(year)[2:]}', f'{dataset_dict[variable][0]}_10_{str(year)[2:]}',
+                              f'{dataset_dict_v2_0[variable][0]}_11_{str(year-1)[2:]}', f'{dataset_dict_v2_0[variable][0]}_12_{str(year-1)[2:]}', f'{dataset_dict_v2_0[variable][0]}_01_{str(year)[2:]}',
+                              f'{dataset_dict_v2_0[variable][0]}_02_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_03_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_04_{str(year)[2:]}',
+                              f'{dataset_dict_v2_0[variable][0]}_05_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_06_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_07_{str(year)[2:]}',
+                              f'{dataset_dict_v2_0[variable][0]}_08_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_09_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_10_{str(year)[2:]}',
                             ]
         else:
             selector_list = [unique_id,
-                              f'{dataset_dict[variable][0]}_11_{str(year-1)[2:]}', f'{dataset_dict[variable][0]}_12_{str(year-1)[2:]}', f'{dataset_dict[variable][0]}_01_{str(year)[2:]}',
-                              f'{dataset_dict[variable][0]}_02_{str(year)[2:]}', f'{dataset_dict[variable][0]}_03_{str(year)[2:]}', f'{dataset_dict[variable][0]}_04_{str(year)[2:]}',
-                              f'{dataset_dict[variable][0]}_05_{str(year)[2:]}', f'{dataset_dict[variable][0]}_06_{str(year)[2:]}', f'{dataset_dict[variable][0]}_07_{str(year)[2:]}',
-                              f'{dataset_dict[variable][0]}_08_{str(year)[2:]}', f'{dataset_dict[variable][0]}_09_{str(year)[2:]}', f'{dataset_dict[variable][0]}_10_{str(year)[2:]}',
+                              f'{dataset_dict_v2_0[variable][0]}_11_{str(year-1)[2:]}', f'{dataset_dict_v2_0[variable][0]}_12_{str(year-1)[2:]}', f'{dataset_dict_v2_0[variable][0]}_01_{str(year)[2:]}',
+                              f'{dataset_dict_v2_0[variable][0]}_02_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_03_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_04_{str(year)[2:]}',
+                              f'{dataset_dict_v2_0[variable][0]}_05_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_06_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_07_{str(year)[2:]}',
+                              f'{dataset_dict_v2_0[variable][0]}_08_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_09_{str(year)[2:]}', f'{dataset_dict_v2_0[variable][0]}_10_{str(year)[2:]}',
                             ]
         
         # Export tasks

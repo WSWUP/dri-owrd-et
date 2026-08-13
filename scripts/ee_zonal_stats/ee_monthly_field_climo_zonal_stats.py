@@ -139,7 +139,7 @@ def main(ini_path=None):
         """
         
         return ftr.set({
-            'ACRES_FTR_GEOM_EE': ftr.geometry().area().divide(4047),
+            'ACRES_FTR_GEOM_EE': ftr.geometry().area(1).divide(4047),
         })
 
     def addDates(img):
@@ -182,15 +182,7 @@ def main(ini_path=None):
         return img.select(['et_fraction'])
 
     def removGeom(ftr):
-        """removes the geometry column from the field/feature
-    
-        Args:
-            ftr: earth engine feature
-    
-        Returns:
-            earth engine feature without geometry attributes
-        """
-        
+        """removes the geometry column from the field/feature"""
         return ftr.setGeometry(None)
     
     # field boundary assetID on GEE

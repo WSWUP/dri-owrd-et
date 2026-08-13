@@ -108,31 +108,35 @@ def main(ini_path=None):
     # static table attributes
     static_vars = [
         'ACRES_FTR_GEOM', 'GRIDMET_ID', 'HUC8', 'HUC8_name', 'HUC12', 
-        'HUC12_name', 'IRR_EFF', 'ITYPE', 'OWRD', 'Region', 'srctype', 'geometry'
+        'HUC12_name', 'IRR_EFF', 'ITYPE', 'OWRD', 'Region', 'srctype', 
+        'AWC', 'rooting_depth_ft', 'PAW_ft', 'PAW_acft', 'geometry'
     ]
     # static attribute dataframe column selection function
     static_var_sel = lambda x: unique_id in x  or 'ACRES_FTR_GEOM' in x or 'GRIDMET_ID' in x or 'HUC8' in x or 'HUC8_name' in x or 'HUC12' in x or \
-                               'HUC12_name' in x or 'IRR_EFF' in x or 'ITYPE' in x or 'OWRD' in x or 'Region' in x or 'srctype' in x
+                               'HUC12_name' in x or 'IRR_EFF' in x or 'ITYPE' in x or 'OWRD' in x or 'Region' in x or 'srctype' in x or 'AWC' in x or \
+                               'rooting_depth_ft' in x or 'PAW' in x
     
     # timeseries attributes
     timeseries_vars = [
-        'per_IRRIGATED','per_WETLAND','CROP','ETD','ETOF_IRR_STATUS', 'IRR_STATUS',
+        'per_IRRIGATED','per_WETLAND','CROP','ETD','ETOF_IRR_STATUS_MODE', 'IRR_STATUS',
         'AW','EFF_VOLUME','EFF_VOLUMEadj','ET_Fraction','ET_Reference',
         'ET_VOLUME','ETa','ETDa','ETDa_VOLUME','ETO_VOLUME','IRR_CU_VOLUME',
-        'IRR_CU_VOLUMEadj','NIWR','NIWR_VOLUME','P_eft','P_rz','PPT',
-        'PPT_VOLUME','WS_C'
+        'IRR_CU_VOLUMEadj','NIWR','NIWR_VOLUME','P_rz','PPT',
+        'PPT_VOLUME','WS_C','DPerc_add'
     ]
     
     # timeseries attribute dataframe column selection function
     timeseries_var_sel = lambda x: unique_id in x or '%_IRRIGATED' in x or '%_WETLAND' in x or 'CROP' in x or 'ETD' in x or 'IRR_STATUS' in x or 'AW' in x or \
                                    'EFF_VOLUME' in x or 'EFF_VOLUMEadj' in x or 'ET_Fraction' in x  or 'ET_Reference' in x or 'ET_VOLUME' in x or \
                                    'ETa' in x or 'ETDa' in x or 'ETDa_VOLUME' in x or 'ETO_VOLUME' in x or 'IRR_CU_VOLUME' in x or 'IRR_CU_VOLUMEadj' in x or \
-                                   'NIWR' in x or 'NIWR_VOLUME' in x or 'P_eft' in x or 'P_rz' in x or 'PPT' in x or 'PPT_VOLUME' in x or 'WS_C' in x
+                                   'NIWR' in x or 'NIWR_VOLUME' in x or 'P_rz' in x or 'PPT' in x or 'PPT_VOLUME' in x or 'WS_C' in x or \
+                                   'DPerc_add' in x
     
     # output geopackage path
-    output_gpkg = os.path.join(out_path, 'or_field_geopackage.gpkg')
+    output_gpkg = os.path.join(out_path, f'or_field_geopackage_{start_yr}_{end_yr}.gpkg')
     
     if os.path.isfile(output_gpkg):
+        print('field-level geopackage already exists, overwriting now')
         os.remove(output_gpkg)
     
     # field boundary dataframe with geometries
@@ -188,6 +192,8 @@ def main(ini_path=None):
                 filtered_cols = [col for col in select_year_df.columns if (timeseries_var in col and '_in' in col)]
             elif (timeseries_var == 'EFF_VOLUME') or (timeseries_var == 'IRR_CU_VOLUME'):
                 filtered_cols = [col for col in select_year_df.columns if (timeseries_var in col and 'adj' not in col)]
+            elif (timeseries_var == 'AW'):
+                filtered_cols = [col for col in select_year_df.columns if timeseries_var in col and 'PAW' not in col and 'AWC' not in col]
             else:
                 filtered_cols = [col for col in select_year_df.columns if timeseries_var in col]
             
@@ -219,13 +225,10 @@ def arg_parse():
     args = parser.parse_args()
 
     if args.ini and os.path.isfile(os.path.abspath(args.ini)):
-        
         args.ini = os.path.abspath(args.ini)
-    
     else:
-        
         args.ini = utils.get_ini_path(os.getcwd())
-    
+        
     return args
 
 

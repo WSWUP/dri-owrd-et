@@ -119,15 +119,7 @@ def main(ini_path=None):
         return img.set('date', img_date.format('yyyy-MM-dd'))
     
     def removGeom(ftr):
-        """removes the geometry column from the field/feature
-    
-        Args:
-            ftr: earth engine feature
-    
-        Returns:
-            earth engine feature without geometry attributes
-        """
-        
+        """removes the geometry column from the field/feature"""
         return ftr.setGeometry(None)
     
     if variable == 'crop_type':

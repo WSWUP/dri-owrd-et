@@ -26,7 +26,7 @@ import dri_owrd_et.inputs_post_processing as inputs
 import dri_owrd_et.utils as utils
 
 """
-This tool joins ET Demands Potential Crop ET (ETc) and Effective Precipitation (Prz) to 
+This tool joins ET Demands Potential Crop ET (ETc) and Effective Precipitation (Prz) to  
 field summaries.
 
 Data is joined by matching the field's crop type (CDL) and gridMET cell with the ET Demands
@@ -272,7 +272,8 @@ def main(ini_path=None):
         
         # export and benchmark
         out_file = f'or_openet_etdemands_monthly_water_year_shift_1mo_{year}_pre_gapfill.csv.gz'
-    
+
+        # df_fields.to_csv(os.path.join(out_path, out_file), index=False)
         df_fields.to_csv(os.path.join(out_path, out_file), index=False, compression='gzip')
     
         t1 = perf_counter()
@@ -296,11 +297,8 @@ def arg_parse():
     args = parser.parse_args()
 
     if args.ini and os.path.isfile(os.path.abspath(args.ini)):
-        
         args.ini = os.path.abspath(args.ini)
-    
     else:
-        
         args.ini = utils.get_ini_path(os.getcwd())
     
     return args

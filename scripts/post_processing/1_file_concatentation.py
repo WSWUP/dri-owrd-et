@@ -66,7 +66,7 @@ def main(ini_path=None):
     # flag to export data for an individual field (True) or the entire field boundary dataset (False)
     single_field_flag = ini['INPUTS']['test_flag']
 
-    def concat_field_summaries(year_list, paths, unique_id, bad_list, df_huc, df_cue, df_owrd, gdf_typ, df_c_pre):
+    def concat_field_summaries(year_list, paths, unique_id, bad_list, df_huc, df_cue, df_owrd, gdf_typ, df_c_pre, df_awc):
         """
         Concatenate all field summary tables for each water year.
     
@@ -80,7 +80,7 @@ def main(ini_path=None):
             Unique ID column for joining
         bad_list : list
             List of bad geometries to filter
-        df_huc, df_cue, df_owrd, gdf_typ, df_c_pre : DataFrames
+        df_huc, df_cue, df_owrd, gdf_typ, df_c_pre, df_awc : DataFrames
             Static attribute data
     
         Returns
@@ -96,7 +96,7 @@ def main(ini_path=None):
             dfs_to_concat = []
     
             # Static attributes
-            dfs_to_concat.extend([df_huc, df_cue, df_owrd, gdf_typ, df_c_pre[[f'CROP_{year}', 'GRIDMET_ID']]])
+            dfs_to_concat.extend([df_huc, df_cue, df_owrd, gdf_typ, df_c_pre[[f'CROP_{year}', 'GRIDMET_ID']], df_awc])
     
             # Dynamic tables (ET, ET Fraction, ET Reference, PPT)
             dynamic_files = {
@@ -131,7 +131,13 @@ def main(ini_path=None):
     
             # Filter bad geometries
             df_combined = df_combined.loc[~df_combined.index.isin(bad_list)]
-    
+
+            # Create field-specific cap for surplus soil moisture carried forward when ET < PRZ (assuming 2m ~ 6.6ft rooting depth) - Plant Available Water (PAW)
+            rooting_depth_m = 2.0
+            df_combined['rooting_depth_ft'] = rooting_depth_m * 3.281
+            df_combined['PAW_ft'] = df_combined['AWC'] * df_combined['rooting_depth_ft']
+            df_combined['PAW_acft'] = df_combined['PAW_ft'] * df_combined['ACRES_FTR_GEOM']
+            
             # Create irrigation status
             df_combined[f'IRR_STATUS_{year}'] = (
                 (df_combined[f'%_IRRIGATED_{yr_abbr}'] > 40) |
@@ -168,6 +174,7 @@ def main(ini_path=None):
     
     # --- Load static attributes ---
     df_huc = pd.read_csv(os.path.join(table_path, 'or_field_summaries_huc_attributes.csv'), index_col=unique_id)
+    df_awc = pd.read_csv(os.path.join(table_path, 'or_field_summaries_awc_attributes.csv'), index_col=unique_id)
     df_cue = pd.read_csv(os.path.join(supp_path, 'cuenca_regions.csv'), index_col=unique_id).fillna(0)
     df_owrd = pd.read_csv(os.path.join(supp_path, 'owrd_admin_bound.csv'), index_col=unique_id)
     df_c_pre = pd.read_csv(os.path.join(supp_path, 'crop_type_codes_and_gridmet_cells.csv'), index_col=unique_id)
@@ -195,6 +202,7 @@ def main(ini_path=None):
         gdf_typ = gdf_typ.loc[gdf_typ.index == oid]
         df_cue = df_cue.loc[df_cue.index == oid]
         df_owrd = df_owrd.loc[df_owrd.index == oid]
+        df_awc = df_awc.loc[df_awc.index == oid]
     else:
         print('processing all fields')
     
@@ -208,7 +216,8 @@ def main(ini_path=None):
         df_cue=df_cue,
         df_owrd=df_owrd,
         gdf_typ=gdf_typ,
-        df_c_pre=df_c_pre
+        df_c_pre=df_c_pre,
+        df_awc=df_awc,
     )
     
 
@@ -229,11 +238,8 @@ def arg_parse():
     args = parser.parse_args()
 
     if args.ini and os.path.isfile(os.path.abspath(args.ini)):
-        
         args.ini = os.path.abspath(args.ini)
-    
     else:
-        
         args.ini = utils.get_ini_path(os.getcwd())
     
     return args

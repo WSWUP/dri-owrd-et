@@ -231,7 +231,7 @@ def main(ini_path=None):
                     pl.scan_csv(path)
                         .collect(engine='auto')
                         .select(pl.all().sort_by(unique_id))
-                        .drop(f'ETOF_IRR_STATUS_{str(yr)[2:]}_MODE')
+                        .drop([f'ETOF_IRR_STATUS_{str(yr)[2:]}_MODE', 'PAW_ft', 'PAW_acft', 'AWC'])
                 )
             except Exception as e:
                 print(e)
