@@ -113,7 +113,7 @@ def main(ini_path=None):
 
     # dictionary containg variables (keys) and output variable names/dataset source assetIDs (values) that are used
     dataset_dict = {
-        'et_fraction_climo': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'OpenET/ENSEMBLE/CONUS/GRIDMET/MONTHLY/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
+        'et_fraction_climo': ['ET_Fraction', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0_pre2000', 'projects/openet/assets/ensemble/conus/gridmet/monthly/v2_0', 'projects/openet/assets/reference_et/conus/gridmet/monthly/v1'],
     }
     
     
